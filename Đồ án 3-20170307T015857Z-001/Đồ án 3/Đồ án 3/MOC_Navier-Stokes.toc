@@ -1,0 +1,34 @@
+\contentsline {chapter}{\numberline {1}X\IeC {\h \uhorn } l\IeC {\'y} \IeC {\h a}nh v\IeC {\`a} c\IeC {\'a}c v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\`\ecircumflex } c\IeC {\ohorn } b\IeC {\h a}n c\IeC {\h u}a x\IeC {\h \uhorn } l\IeC {\'y} \IeC {\h a}nh}{3}
+\contentsline {section}{\numberline {1.1}X\IeC {\h \uhorn } l\IeC {\'y} \IeC {\h a}nh l\IeC {\`a} g\IeC {\`\i }?}{3}
+\contentsline {section}{\numberline {1.2}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\`\ecircumflex } trong x\IeC {\h \uhorn } l\IeC {\'y} \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.1}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m trong x\IeC {\h \uhorn } l\IeC {\'y} \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.2}T\IeC {\u a}ng c\IeC {\uhorn }\IeC {\`\ohorn }ng kh\IeC {\^o}i ph\IeC {\d u}c \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.3}Bi\IeC {\'\ecircumflex }n \IeC {\dj }\IeC {\h \ocircumflex }i \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.4}Ph\IeC {\^a}n t\IeC {\'\i }ch \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.5}Nh\IeC {\d \acircumflex }n d\IeC {\d a}ng \IeC {\h a}nh}{6}
+\contentsline {subsection}{\numberline {1.2.6}N\IeC {\'e}n \IeC {\h a}nh}{6}
+\contentsline {chapter}{\numberline {2}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p ti\IeC {\'\ecircumflex }p c\IeC {\d \acircumflex }n ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh}{7}
+\contentsline {section}{\numberline {2.1}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh theo ng\IeC {\uhorn }\IeC {\~\ohorn }ng bi\IeC {\^e}n \IeC {\dj }\IeC {\d \ocircumflex }}{7}
+\contentsline {section}{\numberline {2.2}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh theo mi\IeC {\`\ecircumflex }n \IeC {\dj }\IeC {\`\ocircumflex }ng nh\IeC {\'\acircumflex }t}{8}
+\contentsline {subsection}{\numberline {2.2.1}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\'a}ch c\IeC {\^a}y t\IeC {\'\uhorn } ph\IeC {\^a}n}{9}
+\contentsline {subsection}{\numberline {2.2.2}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a v\IeC {\`a}o ph\IeC {\'a}t tri\IeC {\h \ecircumflex }n v\IeC {\`u}ng c\IeC {\d u}c b\IeC {\d \ocircumflex }}{10}
+\contentsline {subsection}{\numberline {2.2.3}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a tr\IeC {\^e}n h\IeC {\d \ohorn }p v\IeC {\`a} t\IeC {\'a}ch v\IeC {\`u}ng}{11}
+\contentsline {section}{\numberline {2.3}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a tr\IeC {\^e}n ph\IeC {\^a}n t\IeC {\'\i }ch k\IeC {\'\ecircumflex }t c\IeC {\'\acircumflex }u}{11}
+\contentsline {section}{\numberline {2.4}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a tr\IeC {\^e}n s\IeC {\d \uhorn } ph\IeC {\^a}n l\IeC {\'\ohorn }p \IeC {\dj }i\IeC {\h \ecircumflex }m \IeC {\h a}nh}{11}
+\contentsline {section}{\numberline {2.5}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a v\IeC {\`a}o l\IeC {\'y} thuy\IeC {\'\ecircumflex }t \IeC {\dj }\IeC {\`\ocircumflex } th\IeC {\d i}}{13}
+\contentsline {section}{\numberline {2.6}Ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh d\IeC {\d \uhorn }a tr\IeC {\^e}n bi\IeC {\h \ecircumflex }u di\IeC {\~\ecircumflex }n v\IeC {\`a} x\IeC {\h \uhorn } l\IeC {\'y} \IeC {\dj }a ph\IeC {\^a}n gi\IeC {\h a}i}{13}
+\contentsline {chapter}{\numberline {3}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p ph\IeC {\^a}n v\IeC {\`u}ng \IeC {\h a}nh s\IeC {\h \uhorn } d\IeC {\d u}ng bi\IeC {\^e}n \IeC {\dj }\IeC {\d \ocircumflex }ng}{14}
+\contentsline {section}{\numberline {3.1}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p Active contour without Edege}{14}
+\contentsline {subsection}{\numberline {3.1.1}M\IeC {\^o} h\IeC {\`\i }nh}{14}
+\contentsline {subsection}{\numberline {3.1.2}Gi\IeC {\h a}i quy\IeC {\'\ecircumflex }t v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\`\ecircumflex } s\IeC {\h \uhorn } d\IeC {\d u}ng ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\d \acircumflex }p m\IeC {\'\uhorn }c}{16}
+\contentsline {subsection}{\numberline {3.1.3}\IeC {\UHORN }u nh\IeC {\uhorn }\IeC {\d \ohorn }c \IeC {\dj }i\IeC {\h \ecircumflex }m c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh}{19}
+\contentsline {section}{\numberline {3.2}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p Local binary fiting energy}{19}
+\contentsline {subsection}{\numberline {3.2.1}M\IeC {\^o} h\IeC {\`\i }nh}{19}
+\contentsline {subsection}{\numberline {3.2.2}Gi\IeC {\h a}i quy\IeC {\'\ecircumflex }t v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\h \ecircumflex } s\IeC {\h \uhorn } d\IeC {\d u}ng ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\d \acircumflex }p m\IeC {\'\uhorn }c}{20}
+\contentsline {subsection}{\numberline {3.2.3}\IeC {\UHORN }u nh\IeC {\uhorn }\IeC {\d \ohorn }c \IeC {\dj }i\IeC {\h \ecircumflex }m c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh}{22}
+\contentsline {section}{\numberline {3.3}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p Local image fitting}{22}
+\contentsline {subsection}{\numberline {3.3.1}M\IeC {\^o} h\IeC {\`\i }nh v\IeC {\`a} ph\IeC {\uhorn }\IeC {\ohorn }ng tr\IeC {\`\i }nh v\IeC {\'\ohorn }i t\IeC {\d \acircumflex }p m\IeC {\'\uhorn }c}{22}
+\contentsline {subsection}{\numberline {3.3.2}\IeC {\UHORN }u nh\IeC {\uhorn }\IeC {\d \ohorn }c \IeC {\dj }i\IeC {\h \ecircumflex }m c\IeC {\h u}a m\IeC {\^o} h\IeC {\`\i }nh}{23}
+\contentsline {section}{\numberline {3.4}M\IeC {\^o} h\IeC {\`\i }nh k\IeC {\'\ecircumflex }t h\IeC {\d \ohorn }p Global v\IeC {\`a} Local}{24}
+\contentsline {subsection}{\numberline {3.4.1}M\IeC {\^o} h\IeC {\`\i }nh}{24}
+\contentsline {subsection}{\numberline {3.4.2}Gi\IeC {\h a}i s\IeC {\'\ocircumflex }}{26}

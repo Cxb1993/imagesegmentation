@@ -1,0 +1,1163 @@
+\documentclass[12pt,oneside,a4]{report}
+\usepackage{listings}
+\usepackage{color} % tô màu cho code
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{fancyhdr}
+\usepackage[left=3.50cm, right=2.00cm, top=3.50cm, bottom=3.00cm]{geometry}\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[ruled]{algorithm2e}
+\usepackage{url}
+\usepackage[titletoc]{appendix}
+\usepackage{cases}
+\usepackage{wrapfig}
+\usepackage[font=small,labelfont=bf]{caption} % R
+\makeindex
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\renewcommand{\baselinestretch}{1.5}
+
+\newcommand{\ora}{\overrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\Lra}{\Longrightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\Lla}{\Longleftarrow}
+\newcommand{\map}{\longmapsto}
+
+\newcommand{\pa}{\partial}
+\newcommand{\al}{\alpha}
+\newcommand{\bt}{\beta}
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\tta}{\theta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\na}{\nabla}
+\newcommand{\sm}{\sigma}
+\newcommand{\Sm}{\Sigma}
+\newcommand{\gm}{\gamma}
+\newcommand{\Gm}{\Gamma}
+\newcommand{\Om}{\Omega}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\Oo}{\mathcal O}
+\newcommand{\K}{\mathcal K}
+\newcommand{\G}{\mathcal G}
+\newcommand{\DD}{\mathcal D}
+\newcommand{\XX}{\mathcal X}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\TT}{\mathcal T}
+\newcommand{\VV}{\mathcal V}
+\newcommand{\WW}{\mathcal W}
+\newcommand{\UU}{\mathcal U}
+\newcommand{\PP}{\mathcal P}
+\newcommand{\LL}{\mathcal L}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\CC}{\mathcal C}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\QQ}{\mathcal Q}
+\newcommand{\cbe}{\scriptsize}
+\newcommand{\On}{\widetilde{\mathcal{O}}}
+\newcommand{\Mn}{\widetilde{M}}
+\newcommand{\sumh}{\overline{\sum}}
+\newcommand{\cho}[2]{\ensuremath{#1\choose#2}}
+\newcommand{\ve}[1]{{\bf #1}}
+\newcommand{\wt}[1]{\widetilde #1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{Defi}{Definition}
+\newtheorem{Not}{Notation}
+\newtheorem{Lem}{Lemma}
+\newtheorem{Hypo}{Hypothesis}
+\newtheorem{Theo}{Theorem}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Coro}{Corollary}
+%\newtheorem{Algo}{Algorithm}
+\newtheorem{Rem}{Remark}
+
+\usepackage{cite}
+\usepackage{array}
+
+%% Đoạn này thêm
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+%% Kết thúc đoạn thêm
+\begin{document}
+\tableofcontents
+%\newpage
+%\listoffigures
+%\newpage
+%\listoftables
+\newpage
+
+%\addcontentsline{toc}{chapter}{{\bf Lời nói đầu}}
+%
+%\chapter*{Lời nói đầu}
+%Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
+%Nội dung đồ án này được trình bày trong 4 chương:
+%\begin{itemize}
+%\item[i] Chương 1: trình bày sự cần thiết của nghiên cứu và một số vấn đề liên quan đối với các phương pháp số cho bài toán Navier-Stokes không nén.
+%\item[ii] Chương 2: trình bày các lý thuyết cơ bản về bài toán Navier-Stokes không nén và một số phương pháp giải số được áp dụng như: phương pháp đặc trưng và phương pháp phần tử hữu hạn.
+%\item[iii] Chương 3: trình bày kết quả của một số thí nghiệm giải số điển hình và các so sánh.
+%\item[iv] Chương 4: kết luận và đưa ra các hướng nghiên cứu trong tương lai.
+%\end{itemize}
+%Tính khoa học và tính mới mẻ của đồ án này nằm ở việc nghiên cứu các phương pháp đặc trưng và phương pháp phần tử hữu hạn và áp dụng các phương pháp này vào giải số cho bài toán Navier-Stokes không nén. Một số thí nghiệm Navier-Stokes không nén kinh điển đã được thực hiện nhằm kiểm tra tính tin cậy của lược đồ giải số. Các kết quả giải số trong hai chiều và ba chiều được đưa ra và so sánh với kết quả được đề cập trong nhiều nghiên cứu trước đây. Các so sánh cho thấy rằng, kết quả thu được hoàn toàn phù hợp và lược đồ giải số đưa ra là đáng tin cậy. Nội dung đồ án đã được gửi đăng kỷ yếu Hội nghị Toán ứng dụng và Tin học năm 2016.\\
+%Để đạt được những kết quả này, em xin gửi lời cảm ơn chân thành và sâu sắc nhất tới {\bf TS. Tạ Thị Thanh Mai}. Cô đã luôn tận tình hướng dẫn, giúp đỡ để em có thể hoàn thành đồ án này. Em cũng xin gửi lời cảm ơn tới các thầy cô trong Viện Toán ứng dụng và Tin học, Đại học Bách Khoa Hà Nội đã dành sự quan tâm, chỉ bảo cũng như tạo mọi điều kiện thuận lợi nhất cho em trong quá trình thực hiện đồ án.\\
+%Mặc dù em đã dành nhiều thời gian, công sức để hoàn thiện nhưng đồ án vẫn không thể tránh khỏi những sai sót. Em rất mong nhận được những góp ý quý báu của thầy cô và các bạn để nội dung đồ án được hoàn thiện hơn nữa.\\\\
+%Em xin chân thành cảm ơn!\\
+%
+%
+%\begin{flushright}
+%Hà Nội, ngày 22 tháng 12 năm 2016\\[0.5cm]
+%{Sinh viên thực hiện \hspace*{1.4cm}.}\\[0.1cm]
+%\textbf{Lê Văn Chiến\hspace*{2.0cm}}
+%\end{flushright}
+\chapter{Xử lý ảnh và các vấn đề cơ bản của xử lý ảnh}
+\section{Xử lý ảnh là gì?}
+Một ảnh có thể được đại diện bởi một hàm 2 chiều $f(x,y)$.$(x, y)$ là tọa độ của các điểm trong mặt phẳng, giá trị $f$ tại các cặp tọa độ $(x,y)$ được gọi là cường độ  hay mức xám của ảnh tại điểm đó. Ảnh số là tâp hợp hữu hạn các  phần tử, mỗi phần tử có một tọa độ riêng và một giá trị $f$ riêng. Các giá trị này gọi là $pixel$ hay $ image elements$ . Một tron các ứng dụng của ảnh số là trong ngành công nghiệp báo chí, khi ảnh lần đầu tiên được truyền qua cáp biến giữa London và NewYork. Việc truyền ảnh qua cáp biển này đã rút ngắn quá trình truyền ảnh qua Đại Tây Dương từ hơn một tuần xuống còn chưa đến 3 giờ. Một máy in đặc biệt mã hóa bức ảnh để truyền tải đi và khôi phục lại ảnh gốc ở đầu cuối. Sự phát triển của phần cứng máy tính đã giúp cho lĩnh vực đồ họa và xử lý ảnh phát triển một cách mạnh mẽ và ngày càng có nhiều ứng dụng trong cuộc sống.
+\begin{center}
+\includegraphics[]{figure/1921.png}
+\captionof{figure}{Một bức ảnh được tạo ra bởi máy điện ấn năm 1921}
+\end{center}
+
+Quá trình xử lý ảnh được xem là quá trình tho tác với ảnh đầu vào để đưa ra một kết quả mong muốn. Quá trình xử lý ảnh có thể được mô tả theo sơ đồ sau:
+\begin{center}
+\includegraphics[]{figure/htxulyanh.png}
+\captionof{figure}{Các quá trình của xử lý ảnh}
+\end{center}
+Đầu tiên là quá trình thu nhận ảnh. Ảnh có thể được thu nhận qua camera. Đầu ra có thể là dạng tín hiệu tương tự hoặc cũng có thể là tín hiệu số hóa. Ngoài ra ảnh còn có thể được thu nhận qua bộ cảm ứng sensor ,tranh, ảnh được quét thông qua máy quét.
+Quá trình số hóa thực hiện biến đổi tín hiệu tương tự thành tín hiệu rời rạc sau đó được đưa vào quá trình phân tích,xử lý hoặc thực hiện lưu trữ ảnh.
+
+Quá trình phân tích ảnh bao gồm nhiều bước nhỏ. Với một số ảnh, do thiết bị thu nhận ảnh, nguồn sáng hay nhiễu mà ảnh có thể bị suy biến. Do vậy chúng ta cần thực hiện quá trình tăng cường ảnh nhằm tăng chất lương hoặc làm nổi bật một số đặc tính chính của ảnh. Tiếp theo là quá tình phát hiện các đặc tính như biên ảnh (Edge Detection), phân vùng ảnh (Segmentation)...
+Cuối cùng tùy theo ứng dụng mà có thể thực hiện quá trình nhận dạng, phân lớp hay ra quyết định 
+Một hệ sử lý ảnh có thể được mô tả gồm các thành phần như bên dưới
+\begin{center}
+\includegraphics[]{figure/tpxulyanh.png}
+\captionof{figure}{Các thành phần chính của hệ thống xử lý ảnh}
+\end{center}
+\section{Một số vấn đề trong xử lý ảnh}
+\subsection{Một số khái niệm trong xử lý ảnh}
+\begin{itemize}
+\item Điểm ảnh: là một phần tử nhỏ nhất của ảnh. Một điểm ảnh có thể xem là tọa độ và cường độ sáng tại một điểm trong không gian của đối tượng. 
+\item Mức xám, màu: là kết quả của sự mã hóa cường độ sáng của một điểm ảnh với một giá trị số.
+\end{itemize}
+\subsection{Tăng cường khôi phục ảnh}
+\subsection{Biến đổi ảnh}
+\subsection{Phân tích ảnh}
+\subsection{Nhận dạng ảnh}
+\subsection{Nén ảnh}
+
+%\subsection{Thu nhận ảnh và các thiết bị thu nhận, biểu diễn ảnh}
+%Hầu hết các ảnh chúng ta quan tâm ngày nay được tạo ra nhờ sự tổng hợp các yếu tố như : nguồn sáng, và sự phản xạ hấp thụ của các phần tử trong khung nhìn của ảnh. Các thiết bị thu nhận ảnh thông thường bao gồm máy quay (camera) cộng với bộ chuyển đổi tương tự số hoặc máy quét (scanner). Các thiết bị này có thể cho màu đen trắng hoặc ảnh màu. Với ảnh đen trắng, mức xám có thể nằm trong khoảng từ 0 đến 1. Với ảnh đa cấp xám, mức xám sẽ nằm trong khoảng từ 0 đến 255. Với ảnh màu, mỗi điểm ảnh được lưu trữ trong 3 byte vì vậy ta có khoảng $2^{8*3}=2^24$ màu. 
+%
+%Thiết bị ra ảnh có thể là máy in đen trắng, máy in màu hay máy vẽ (ploter). 
+%Các hệ thống thu nhận ảnh thực hiện 2 quá trình:
+\chapter{Một số phương pháp tiếp cận phân vùng ảnh}
+Phân vùng ảnh là một bước quan trọng trong xử lý ảnh, quá trình này nhằm phân tích ảnh thành các thành phần có cùng tính chất nào đó dựa theo biên hay các vùng liên thông. Vùng ảnh là tập hợp các điểm ảnh có cùng hay gần cùng một đặc điểm nào đó. Ví dụ như mức xám, mức màu .. Đường bao quanh vùng ảnh được gọi là biên ảnh
+\section{Phân vùng ảnh theo ngưỡng biên độ}
+Một ảnh được đặc trưng bởi các tính chất như: mức xám, độ tương phản, màu sắc,.... Ta có thể dùng ngưỡng biên độ với các đặc trưng trên để phân đoạn ảnh trong trường hợp ngưỡng biên độ đủ lớn đặc trưng cho ảnh. Kỹ thuật phân ngưỡng theo biên độ có lợi thế với ảnh nhị phân như bản in, đồ họa, ảnh màu
+Việc chọn ngưỡng sẽ bao gồm các bước sau:
+\begin{itemize}
+\item Xác định các đỉnh và khe của ảnh dựa vào việc phân tích lược đồ xám. Các khe có thể dùng để chọn ngưỡng
+\item Chọn ngưỡng t sao cho một phần xác định trước của toàn bộ mẫu là thấp hơn t
+\item Điều chỉnh ngưỡng dựa trên lược đồ xám của các điểm lân cận
+\item Chọn ngưỡng theo lược đồ xám của các điểm thỏa mãn tiêu chuẩn chọn
+\item Khi có mô hình phân lớp xác suất, ta thực hiện xác định ngưỡng dựa vào tiêu chuẩn xác suất nhằm cực tiểu hóa xác suất sai
+\item Ta có ví dụ minh họa cho việc phân vùng dựa trên ngưỡng như sau:
+\begin{center}
+\includegraphics[]{figure/nguongbiendo.png}
+\captionof{figure}{Ví dụ minh họa cách chọn ngưỡng}
+\end{center}
+Ở đây 5 ngưỡng được chọn và ảnh sẽ được phân vùng thành 4 vùng. Ta ký hiệu các vùng đó là $C_k$ trong đó $k=1,2,3,4$   . Các vùng sẽ được phân như sau:
+\begin{equation}
+P(m,n) \in C_{k} nếu T_{k-1}<P(m,n)<T_{k}; k=1,2,3,4
+\end{equation} 
+\end{itemize}
+Nếu sau khi phân vùng theo ngưỡng vừa mà chọn ảnh rõ nét thì kết thúc, ngược lại phải điều chỉnh ngưỡng và phân vùng lại cho đến khi đạt được kết quả mong muốn
+\section{Phân vùng ảnh theo miền đồng nhất}
+Kỹ thuật này sử dụng tính chất đồng nhất của các đặc trưng nào đó của ảnh. Cách thức phân vùng sẽ phụ thuộc vào việc lựa chọn đặc trưng dùng để thực hiện phân vùng. Các đặc trưng thường được dùng là mức xám với ảnh đen trắng và màu với ảnh màu
+Với cách tiếp cận này, các phương pháp thường được sử dụng là :
+\begin{itemize}
+\item  Phương pháp tách cây tứ phân
+\item Phương pháp cục bộ
+\item Phương pháp tổng hợp
+\end{itemize}
+\subsection{Phương pháp tách cây tứ phân}
+Một tiêu chuẩn đồng nhất sẽ được chọn. Quá trình phân vùng sẽ thực hiện như sau: Đầu tiên ta thực hiện kiểm tra tính chất đồng nhất trên toàn bộ miền ảnh. Nếu tính đồng nhất thỏa mãn thì kết thúc thuật toán. Ngược lại miền ảnh sẽ được chia làm 4 miền con. Tiếp tục kiểm tra tính chất đồng nhất của các miền con và thực hiện phân tách khi tính chất đồng nhất không thỏa mãn. Quá trình kết thúc khi tất cả các miền con trong miền ảnh ban đầu thỏa mãn tính đồng nhất
+Phương pháp này được mô tả như sau
+\begin{lstlisting}
+Func Phanvung(MienAnh)
+{
+dsmiencon.Push(MienAnh)
+	while(dsmiencon.Count()!=0)
+	{
+	miendangxet=dsmiencon.Pop();
+	if(!ktdongnhat(miendangxet))
+		{
+			m1,m2,m3,m4=miendangxet.chiamien();
+			for(int i=0;i<4;i++)
+			{
+			dsmiencon.Push(m_i)
+			}
+		}
+	}
+}
+\end{lstlisting}
+
+Tiêu chuẩn đồng nhất có thể dựa vào mức xám. Một cách đơn giản ta có thể chọn giá trị chênh lệch giữa giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất trong miền đang xét. Hàm kiểm tra mức xám có thể được viết như sau: Giả sử $(m1,n1), (m_2,n_2)$ là tọa độ điểm đầu và điểm cuối của miền đang xét
+\begin{lstlisting}
+Func ktdongnhat(miendangxet)
+{
+int min=0;
+int max=255
+for(i=n1;i<n_2;i++)
+for(j=m1;j<m_2;j++)
+	{
+		if(I(i,j)<min)
+		I(i,j)=min;
+		if(I(i,j)>max)
+		I(i,j)=max;
+	}
+	if((max-min)<nguong) return 1;
+	return 0;
+}
+\end{lstlisting}
+\subsection{Phân vùng ảnh dựa vào phát triển vùng cục bộ}
+Ý tưởng của phương pháp này ngược lại với phương pháp cây tứ phân. Phương pháp thực hiện xét từ các miền ảnh nhỏ nhất của ảnh rồi nối chúng lại nếu chúng thỏa mãn điều kiện đồng nhất. Thực hiện tiếp tục khi không thể tiếp tục nối các miền lại với nhau nữa.
+Trong cách này, hai vùng sẽ được nối lại với nhau nếu chúng thỏa mãn 2 điều kiện :
+\begin{itemize}
+\item Kế cận nhau
+\item Có mức xám đồng nhất
+\end{itemize}
+
+Để xác định tính kế cần giữa 2 vùng người ta sử dụng tính liên thông. Có 2 quan niệm về liên thông là 4 liên thông và 8 liên thông. Với 4 liên thông,  một điểm ảnh sẽ có 4 điểm ảnh kế cận theo 2 hướng $x,y$. Còn với 8 liên thông, một điểm ảnh sẽ có 4 điểm ảnh theo 2 hướng $x,y$ là 4 điểm ảnh theo các hướng chéo $45$ độ
+\subsection{Phân vùng ảnh dựa trên hợp và tách vùng}
+Đề khắc phục được nhược điểm của 2 phương pháp cây tứ phân và phương pháp phát triển cục bộ người ta đưa ra phương pháp kết hợp ý tưởng hợp và tách vùng của 2 phương pháp trên. Với phương pháp tách, việc thực hiện chia quá chi tiết còn với phương pháp hợp mặc dù giảm được tối thiểu số vùng sau khi chia tuy nhiên không cho ta thấy rõ được mối liên hệ giữa các miền.
+Phương pháp kết hợp giữa hợp và tách thực hiện như sau. Đầu tiên , ta thực hiện tách miền ảnh theo cây tứ phân, thực hiện phân đoạn từ gốc đến lá, tiếp theo tiến hành duyệt cây theo chiều ngược lại để hợp các vùng đồng nhất. Trong thao tác hợp các vùng đồng nhất, có thể có nhiều vùng thỏa mãn điều kiện đồng nhất. Vì vậy ta phải xây dựng một hàm đánh giá giá trị đồng nhất của các vùng với nhau trả về các giá trị trong đoạn $[0,1]$ trong  đó 0 là không đồng nhất, và 1 là hoàn toàn đồng nhất. Với hàm đánh giá kiểu này,  trong quá trình thực hiện thao tác hợp, trong trường hợp có nhiều vùng thỏa mãn điều kiện đồng nhất, ta sẽ thực hiện chọn vùng mà giá trị hàm đồng nhất trả về lớn nhất để thực hiện hợp vùng.
+\section{Phân vùng ảnh dựa trên phân tích kết cấu}
+
+\section{Phân vùng ảnh dựa trên sự phân lớp điểm ảnh}
+Cho một ảnh với các điểm ảnh: $p_{i}$ với $i=[1,N*M]$, $M,N$ lần lượt là chiều rộng và chiều cao của ảnh. Với mỗi điểm ảnh ta chọn một thuộc tính để phục vụ cho việc phân vùng. Giả sử giá trị thuộc tính là $A(p_{i})$ với điểm ảnh thứ $i$. Thuật toán thực hiện chia tập hợp các điểm ảnh thành vào cá lớp và từ các lớp này tiến hành xây dựng vùng tương ứng. Tiêu chí dùng để phân vùng là độ tương đồng giữa các điểm ảnh trên thuộc tính phân vùng được chọn. Ta hoàn toản có thể sử dụng thuộc tính phân vùng nhiều chiều tùy vào yêu cầu của việc phân vùng.
+Ta có ví dụ về việc phân vùng với thuộc tính được chọn là một chiều, cụ thể là mức xám của điểm ảnh:
+\begin{itemize}
+\item Bước 1:
+Khởi tạo $t=0$:
+\begin{itemize}
+\item Thực hiện phân tích lược đồ xám để dự đoán số lớp cần phân
+\item Giả sử số lớp chọn được là K, ta khởi tạo các ngưỡng đều nhau. Cụ thể là:
+\begin{equation}
+T_i(t)=i\dfrac{lmax-lmin}{K}+l_{min}; i=0,...K. 
+\end{equation}
+Với $l_{max},l_{min}$ lần lượt là giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất của các điểm ảnh trong ảnh.
+\end{itemize}
+\item Bước 2: Thực hiện bước lặp theo thời gian:
+\begin{itemize}
+\item Phân lớp theo các ngưỡng $T_i(k-1)$ với tiêu chí
+\begin{equation}
+p_i\in C_k nếu T_{k-1}(t-1)<A(p_i)<T_{k}(t-1), i=1...K
+\end{equation}
+\item Tính giá trị trung bình mức xám của các lớp 
+
+\begin{equation}
+m_k(t-1)= avarage_{pi\in C_k}A(p_i)
+\end{equation}
+\item Tính lại giá trị ngưỡng dựa trên giá trị trung bình mức xám của các lớp như sau:
+\begin{equation}
+T_i(t)=\dfrac{m_{i+1}(t-1)-m_{i}(t)}{2}
+\end{equation}
+\item Kiểm tra điều kiện dừng
+Nếu $T_i(t)\approx T_i(t-1)$ hoặc $m_{i}(t-1)\approx m_{i}(t)$ Thì dừng
+\end{itemize}
+\item Thực hiện xây dựng vùng theo các lớp vừa phân
+\end{itemize}
+\section{Phân vùng ảnh dựa vào lý thuyết đồ thị}
+\section{Phân vùng ảnh dựa trên biểu diễn và xử lý đa phân giải}
+\chapter{Phương pháp phân vùng ảnh sử dụng biên động}
+Ý tưởng của các phương pháp theo hướng tiếp cận này là xuất phát từ đường cong ban đầu, ta thực hiện biến đổi đường biên ban đầu theo thời gian  và dừng lại ở biên của vật. Việc biến đổi đường biên được thực hiện thông qua xây dựng một vòng lặp nhằm đạt được giá trị cuối cùng của đường cong thỏa mãn cực tiểu hoặc cực đại một hàm năng lượng (enery function) nào đó.
+\section{Phương pháp Active contour without Edege}
+
+
+\subsection{Mô hình}
+Chúng ta định nghĩa đường cong $C\in \Omega$ là biên của một tập con mở $\omega$ của $\Omega$. Giả sử rằng ảnh được chia làm hai vùng được xấp xỉ bởi các hằng số cường độ khác nhau $u_0^i và u_0^0$. Đối tượng cần xác định trong ảnh được đại diện bởi vùng có cường độ $u_0^i$. Giả sử biên của nó là $C_0$. Vì vậy chúng ta có $u_0\approx u_0^i$ trong đối tượng, và $u_0\approx u_0^o$.
+\begin{center}
+\includegraphics[scale=1]{figure/ytuong.png}
+\end{center}
+Mô hình bao gồm 2 phần chính Fitting term và Regularization term: 
+
+- Fitting term: Đặt
+
+\begin{center}
+\begin{align}
+F_1=\iint_{inside(C)} |u_0-c_1|^2 \,dx\,dy\\
+F_2=\iint_{inside(C)} |u_0-c_2|^2 \,dx\,dy
+\end{align}
+\end{center}
+Trong đó
+\begin{center}
+\begin{align}
+c_1=average(u_0 inside(C))\\
+c_2=average(u_0 outside(C))
+\end{align}
+\end{center} 
+Trong trường hợp đường cong C nằm ngoài đối tượng, ta có $F_1>0, F_2\approx 0$. Nếu đường cong $C$ nằm trong đối tượng ta có $F_1 \approx0, F_2> 0$. Nếu đường cong $C$ một phần nằm trong và một phần nằm ngoài đối tượng ta có $F_1>0, F_2> 0$. Nếu đường cong $C$ khớp với đối tượng $F_1 \approx 0, F_2\approx 0$:
+\begin{center}
+\includegraphics[scale=1]{figure/fitting.png}
+\end{center}
+- Regularization term:
+\begin{equation}
+\mu .|C|+\nu .Area(inside(C))
+\end{equation}
+Trong đó $C$ là độ dài đường cong $C$, $Area(inside(C))$ là độ lớn phần diện tích giới hạn bởi đường cong. Trong hầu hết bài toán ta chọn $\nu=0$ và $\mu$ là tham số thay đổi tùy theo đầu vào để được kết quả tốt. Tham số $\mu $ được chọn càng nhỏ thì mô hình càng có khả năng phát hiện các đối tượng nhỏ. Trong trường hợp chỉ cần phát hiện các đối tượng có kích thước lớn, $\mu$ được chọn lớn hơn.\\
+
+Tổng kết lại ta có hàm năng lượng
+
+\begin{equation}
+\begin{split}
+inf_{c_1,c_2,C} F(c_1, c_2, C)&=\mu .|C|+\nu .Area(inside(C)) \\ 
+&+\lambda_1 .\iint_{inside(C)} |u_0-c_1|^2 \,dx\,dy+\lambda_2 .\iint_{outside(C)} |u_0-c_2|^2 \,dx\,dy
+\end{split}
+\end{equation}
+Bài toán cực tiểu đặt ra là
+\begin{equation}
+inf_{c_1,c_2,C} F(c_1, c_2, C)
+\end{equation}
+ 
+\subsection{Giải quyết vấn đề sử dụng phương pháp tập mức}
+Ta coi biên C được đại diện bởi tập mức 0 của một hàm $\phi: \omega \rightarrow \mathbb{R}$. Đặt 
+\begin{equation}
+\begin{cases}
+ C= \omega ={(x,y)\in \Omega: \Phi(x,y)=0}\\
+ inside(C)=\partial \omega ={(x,y)\in \Omega: \Phi(x,y)>0}\\
+ outside(C)=\Omega \/ \omega ={(x,y)\in \Omega: \Phi(x,y)<0}
+   \end{cases}
+\end{equation}
+ 
+Thay biến chưa biết C bởi biến chưa biết $\Phi$.  Trong quá trình xây dựng lại phương trình theo $\Phi$ ta sử dụng hàm Heviside $\Phi$ và Hàm Delta Dirac $\delta_0$
+ \begin{equation}
+ H(z)=
+\begin{cases}
+ 1 & \text{nếu z >0}\\
+0 & \text{nếu z<0}
+   \end{cases}
+\end{equation}
+Hàm năng lượng sẽ được viết lại thành
+\begin{equation}
+\begin{split}
+inf_{c_1,c_2,\Phi} F(c_1, c_2, C)&=\mu \int_{\Omega}\delta(x,y)|\nabla \Phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \Phi(x,y))\,dx\,dy \\ 
+&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+\end{split}
+\end{equation}
+Trong đó $c_1, c_2$ có thể được tính theo $\Phi$ theo công thức:
+\begin{equation}
+c_1(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\Phi(x,y))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y))\,dx\,dy}
+\end{equation}
+\begin{equation}
+c_2(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\Phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y)1-H(\Phi(x,y)))\,dx\,dy}
+\end{equation}
+Để tính toán phương trình Euler-Lagrange cho hàm $\Phi$ ta thực hiện chuẩn hóa $H$ và $\delta_0$ tương ứng thành  $H_{\epsilon}$ và $\delta_{\epsilon}$, $\epsilon \rightarrow 0$. $H_{\epsilon}$ là mở rộng của $H$ trên $C^2(\bar{\Omega})$ và $\delta_{\epsilon}=H'_{\epsilon}$. Hàm mở rộng của $F(c_1,c_2,C)$ thành
+\begin{equation}
+\begin{split}
+F(c_1, c_2, \Phi)&=\mu \int_{\Omega}\delta_0(x,y)|\nabla \Phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \Phi(x,y))\,dx\,dy \\ 
+&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+\end{split}
+\end{equation}
+Cố định $c_1, c_2$, thực hiện cực tiểu hàm $F_{\epsilon}$ theo $\Phi$, ta thu được phương trình Euler-Lagrange theo $\Phi$. Tham số hóa $\Phi$ theo thời gian và áp dụng phương pháp hướng giảm ta được:
+\begin{equation}
+\dfrac{\partial \Phi}{\partial t}= \delta_{\epsilon}(\Phi)[\mu- div(\dfrac{\nabla \Phi}{|\nabla \Phi|})- \nu- \lambda_1 (u_0-c_1)^2-\lambda_2 (u_0-c_2)^2]  \text{trong} (0,\infty)\times \Omega
+\end{equation}
+\begin{equation}
+\Phi(0,x,y)=\Phi_0(x,y) \text{trong} \Omega 
+\end{equation}
+\begin{equation}
+\dfrac{\delta_{\epsilon}(\Phi)}{|\nabla \Phi|}\dfrac{\partial \Phi}{\partial \vec{n}}=0
+\end{equation}
+
+Trong đó $\vec{n}$ là vector pháp tuyến hướng ra ngoài của biên $\Omega$, và $\dfrac{\partial \Phi}{\partial \vec{n}} $ là đạo hàm theo vector pháp tuyến của $\Phi$. Trong quá trình tính toán xấp xỉ các giá trị $\Phi_x, \Phi_y$ ở các điểm gần biên, ta cần biết được giá trị $\Phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên $\partial \Omega$ trong khi ta chỉ có giá trị tại các điểm nằm trong và trên biên của $\Omega$, một cách tự nhiên người ta có thể chọn $\Phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên bằng với giá trị của $\Phi(x,y)$ tại điểm gần $(x,y)$  nhất trên biên, hay $\dfrac{\partial \Phi}{\partial \vec{n}}=0$. Thuật toán theo mô hình này được mô tả cụ thể như sau:
+
+\begin{itemize}
+\item Bước 1: Khởi tạo $\Phi^0=\Phi_0, n=0$
+\item Bước 2: Tính toán các giá trị $c_1(\Phi^n), c_2(\Phi^n)$
+\item Bước 3: Giải phương trình đạo hàm riêng (1.14) để có $\Phi^{n+1}$
+\item Bước 4: Khởi tạo lại hàm $\Phi$ bằng hàm dấu khoảng cách tới đường cong
+\item Bước 5: Kiểm tra điều kiện dừng, nếu không thỏa mãn thì gán $n=n+1$ và quay lại bước 2
+\end{itemize}
+Các tính toán xấp xỉ được dùng trong quá trình giải số hệ phương trình đạo hàm riêng (1.14) như sau:
+\begin{equation}
+\begin{split}
+&k=div(\dfrac{\nabla \Phi}{|\Phi|})=\dfrac{\Phi_{xx}\Phi^2_{y}-2\Phi_{xy}\Phi_{x}\Phi{y}+\Phi_{yy}\Phi^2_{x}}{(\Phi^2_x+\Phi^2_y)^{3/2}}\\
+&\Phi_x= \dfrac{1}{2h}(\Phi_{i+1,j}-\Phi_{i-1,j}) \\ 
+&\Phi_x= \dfrac{1}{2h}(\Phi_{i,j+1}-\Phi_{i,j-1}) \\
+&\Phi_{xx}= \dfrac{1}{h^2}(\Phi_{i+1,j}-\Phi_{i,j}+\Phi_{i-1,j}) \\
+&\Phi_{yy}= \dfrac{1}{h^2}(\Phi_{i,j+1}-\Phi_{i,j}+\Phi_{i,j-1}) \\
+&\Phi_{xy}= \dfrac{1}{h^2}(\Phi_{i+1,j+1}-\Phi_{i-1,j+1}-\Phi_{i,j+1}+\Phi_{i,j-1}) 
+\end{split}
+\end{equation}
+trong đó $h$ là khoảng cách lưới. Khi đó (7) có thể được rời rạc hóa thành thành
+\begin{equation}
+\dfrac{\Phi_{n+1}-\Phi{n}}{\Delta t}=\delta_{\epsilon}(\Phi_{n+1})[\mu k-\lambda_1 (u_{i,j}-c_1(\Phi^{n}))^2+\lambda_2 (u_{i,j}-c_2(\Phi^{n}))^2]
+\end{equation}
+Từ đó ta có thể tính được $\Phi^{n+1}$ theo $\Phi{n}$
+\subsection{Ưu nhược điểm của mô hình}
+\hspace{0.5cm}Ưu điểm của mô hình là có thể phát hiện được biên trơn, xử lý tốt với ảnh nhiễu, mô hình có thể phát hiện được biên từ duy nhất một đường cong khởi tạo ban đầu. Đường cong này có thể ở mọi vị trí trên ảnh mà không nhất thiết phải bao quanh đối tượng trong ảnh.
+
+Nhược điểm của mô hình  là độ phức tạp tính toán còn lớn do thao tác re-initialization và kết quả còn thiếu chính xác trong trường hợp ảnh không đồng nhất cường độ.
+
+%\begin{wrapfigure}{r}{0.5\textwidth}
+%  \caption{Kết quả với ảnh không đồng nhất cường độ}
+%  \centering
+%    \includegraphics[width=0.5\textwidth]{figure/mistake.png}
+%\end{wrapfigure}
+\begin{center}
+
+\includegraphics[scale=0.5]{figure/mistake.png}
+
+\end{center}
+
+\section{Phương pháp Local binary fiting energy}
+\subsection{Mô hình}
+\hspace{0.5cm}Cho ảnh $I: \Omega \rightarrow \mathbb{R}^d$. Trong đó $\Omega \subset \mathbb{R}^2$  là miền ảnh, $d>1$ là bậc của vector $I(x)$. Với ảnh xám d=1, với ảnh màu d=3. Gọi $C$ là biên của ảnh trong $\Omega$, với mỗi x ta đinh nghĩa một hàm năng lượng sau:
+\begin{equation}
+\epsilon_x^LBF(C, f_1(x), f_2(x))=\lambda_1 \int_{in(C)} K(x-y)|I(y)-f_1(x)|^2\,dy+ \lambda_2 \int_{out(C)} K(x-y)|I(y)-f_2(x)|^2\,dy 
+\end{equation}
+trong đó $\lambda_1, \lambda_2$ là các hằng số dương, $K$ là hàm nhân với thuộc tính địa phương $K(u)$ giảm và dần về 0 khi |u| giảm, $f_1(x), f_2(x)$ là hai số khớp với cường độ ảnh taị các điểm gần x. Ta gọi x là điểm trung tâm của hàm năng lượng trên. Trong mô hình này $K$ được chọn là hàm nhân Gaussian
+\begin{equation}
+K_{\sigma}(x)=\dfrac{1}{(2\pi)^{n/2}\sigma^n}e^{-|x|^2/2\sigma^2}
+\end{equation}
+với $\sigma$ là tham số dương có thể tùy chỉnh được. Nhấn mạnh rằng $f_1(x), f_2(x)$ thay đổi theo x. $f_1(x), f_2(x)$ làm phương pháp này trở nên khác các phương pháp khác.
+
+Trong mô hình này, hàm năng lượng có tính đại phương với $x$ hay $f_1(x), f_2(x)$  chỉ khớp với cường độ ảnh tại các điểm gần $x$. Điều này có được là do tính chất của hàm $K$ là $K(x-y)$ có giá trị lớn hơn khi y gần $x$. Vì vậy cường độ ảnh tại các điểm $y$ gần $x$ ảnh hưởng nhiều hơn đến giá trị $f_1, f_2$ làm cực tiểu hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$, trong khi cường độ ảnh tại các điểm y xa x hầu như không ảnh hưởng tới các giá trị $f_1, f_2$
+
+Tại mỗi điểm trung tâm x, hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$   có thể đạt cực tiểu khi đường con C khớp với biên của đối tượng và các giá trị $f_1, f_2$ được chọn sao tối ưu. Tuy nhiên hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$ được định nghĩa một cách cục bộ theo điểm trung tâm x. Để tìm được toàn bộ biên của vật, ta cần cực tiểu hàm $\epsilon_x^{LBF}$  với mọi x trong miền ảnh $\Omega$. Điều này có thể làm được bằng cách định nghĩa hàm năng lượng mới sau
+\begin{equation}
+\epsilon(C, f_1, f_2)=\int_{\Omega} \epsilon_x^{LBF}(C, f_1(x), f_2(x))\,dx
+\end{equation}
+\subsection{Giải quyết vấn để sử dụng phương pháp tập mức}
+Đường con $C \subset \Omega$ được đại diện bởi tập mức 0 của một hàm Lipschit $\Phi \rightarrow \mathbb{R}$
+Viết lại hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$ theo $\Phi$ ta được
+\begin{equation}
+\begin{split}
+\epsilon_x^{LBF}(\Phi, f_1(x), f_2(x))
+=&\lambda_1 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\Phi(y))\,dy\\ &+ \lambda_2 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\Phi(y)))\,dy 
+\end{split}
+\end{equation}
+trong đó $H$ là hàm Heaviside. Theo đó hàm năng lượng $\epsilon^{LBF}$ có thể được viết lại thành
+\begin{equation}
+\begin{split}
+\epsilon(C, f_1, f_2)&=\int_{\Omega} \epsilon_x^{LBF}(C, f_1(x), f_2(x))\,dx\\
+&=\lambda_1 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\Phi(y))\,dy]\,dx \\
+&+ \lambda_2 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\Phi(y)))\,dy \,dx
+\end{split}
+\end{equation}
+Để đảm bảo rằng $\Phi$ ổn định, chúng ta thêm hàm độ lệch giữa hàm tập mức $\Phi$ và hàm dấu khoảng cách.
+\begin{equation}
+P(\Phi)= \int_{\Omega}\dfrac{1}{2}(|\nabla \Phi|-1)^2\,dx
+\end{equation}
+\begin{equation}
+\mathcal{L}(\Phi)=\int_{\Omega}\delta(\Phi(x))|\nabla \Phi(x)|\,dx
+\end{equation}
+Bây giờ ta có hàm energy cuối cùng
+\begin{equation}
+\mathcal{F}(\Phi,f_1,f_2)=\epsilon(C, f_1, f_2)+\mu \mathcal{P}(\Phi)+\nu \mathcal{L}(\Phi)
+\end{equation}
+trong đó $\mu$ và $\nu$ là các hằng số. Trong thực tế, các $H$ được xấp xỉ bởi một hàm trơn $H_{\epsilon}$
+\begin{equation}
+H_{\epsilon}(x)=\dfrac{1}{2}[1+\dfrac{2}{\pi}\arctan(\dfrac{x}{\epsilon})]
+\end{equation}
+và $\delta_{\epsilon}(x)$ được chọn là
+\begin{equation}
+\delta_{\epsilon}(x)=H_{\epsilon}'(x)=\dfrac{1}{\pi}\dfrac{\epsilon}{\epsilon^2+x^2}
+\end{equation}
+Hàm năng lượng này sẽ được cực tiểu hóa để tìm biên 
+Với $\Phi$ cố định ta thực hiện cực tiểu hàm năng lượng $\epsilon(C, f_1, f_2)$  theo $f_1, f_2$ ta tìm được $f_1, f_2$ như sau:
+\begin{equation}
+f_1(x)=\dfrac{K_{\sigma}*[(H_{\epsilon}(\Phi(x)))*I(x)]}{K_{\sigma}*(H_{\epsilon}(\Phi(x))}
+\end{equation}
+\begin{equation}
+f_1(x)=\dfrac{K_{\sigma}*[(1-H_{\epsilon}(\Phi(x)))*I(x)]}{K_{\sigma}*(1-H_{\epsilon}(\Phi(x))}
+\end{equation}
+Theo công thức $f_1, f_2$ ở trên luôn dương do $H_{\epsilon}$ và $1-H_{\epsilon}$ luôn dương. Cố định $f_1, f_2$ và cực tiểu hàm $\epsilon^{LBF}(\Phi, f_1(x), f_2(x))$ theo $\Phi$, sử dụng phương pháp hướng giảm ta được:
+
+\begin{equation}
+\begin{split}
+\dfrac{\partial \Phi}{\partial t}=&- \delta_{\epsilon}(\Phi)(\lambda_1 e_1 -\lambda_2 e_2)+\nu \delta_{\epsilon}(\Phi)div(\dfrac{\nabla \Phi}{|\nabla \Phi|})\\
+&+\mu(\nabla^2 \Phi -div(\dfrac{\nabla \Phi}{|\nabla \Phi|}))
+\end{split}
+\end{equation} 
+trong đó $\delta_{\epsilon}(x)$ là hàm trơn Dirac được cho như công thức trên và $e_1(x), e_2(x)$ được tính theo công thức sau:
+\begin{equation}
+e_1(x)=\int_{\Omega}K_{\sigma}(y-x)|I(x)-f_1(y)|^2 \,dy
+\end{equation}
+\begin{equation}
+e_1(x)=\int_{\Omega}K_{\sigma}(y-x)|I(x)-f_2(y)|^2 \,dy
+\end{equation}
+\subsection{Ưu nhược điểm của mô hình}
+Ưu điểm của mô hình này là không cần thiết phải chuẩn hóa $f_1, f_2$. Thực tế, $f_1, f_2$ làm cực tiểu hàm năng lượng có thể được cho bởi công thức (14)(15) và là các hàm trơn. Hơn nữa mô hình này cũng không cần phải mở rộng $f_1, f_2$ vì nó được định nghĩa trên toàn miền ảnh $\Omega$. Một ưu điểm nữa của mô hình này là việc khởi tạo lại hàm $\Phi$ là không cần thiết do việc thêm hàm chuẩn hóa khoảng cách. Nhờ việc chuẩn hóa khoảng cách này mà việc khởi tạo hàm $\Phi$ lúc đầu trở nên linh hoạt hơn.
+Tuy nhiên việc tính toán $\lambda_1 e_1 -\lambda_2 e_2$ còn tốn nhiều tài nguyên
+\section{Phương pháp Local image fitting}
+\subsection{Mô hình và phương trình với tập mức}
+Một hàm khớp địa phương (Local fitted image fomulation) được định nghĩa như sau:
+\begin{equation}
+I^{LFI}= m_1H_{\epsilon}(\Phi)+m_2(1-H_{\epsilon}(\Phi))
+\end{equation}
+Trong đó $m_1,m_2$ được định nghĩa như sau
+\begin{equation}
+\begin{cases}
+ m_1=mean(I\in (\{x\in \Omega|\Phi(x)<0\}\cap W_k(x)))\\
+  m_2=mean(I\in (\{x\in \Omega|\Phi(x)>0\}\cap W_k(x)))
+   \end{cases}
+\end{equation}
+trong đó $W_k(x)$ là một hàm cửa sổ hình chữ nhật. Ở đây ta chọn $W_k(x)$  là hàm cửa sổ Guassian $K_{\sigma}(x)$ với độ lệch chuẩn $\sigma$ và với kích thước $4k+1$ và $4k+1$ với $k$ là số nguyên lớn nhất không vượt quá $\sigma$. Mô hình này sử dụng hàm năng lượng khớp địa phương (local image fitting energy functional) thể hiện độ lệch giữa ảnh sau khi khớp và ảnh gốc:
+\begin{equation}
+E^{LIF}(\Phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-I^{LFI}(x)|^2\,dx
+\end{equation}
+Sử dụng phương pháp hướng giảm ta có
+\begin{equation}
+\dfrac{\partial \Phi}{\partial t}=(I-I^{LFI})(m_1-m_2)\delta_{\epsilon}(\Phi)
+\end{equation}
+Trong quá trình làm việc theo phương pháp với tập mức, để đảm bảo tính hội tụ của $\Phi$, ta cần thực hiện thao tác khởi tạo lại $\Phi$. Tuy nhiên việc này đòi hỏi khá nhiều tài nguyên. Li et al đề xuất việc thêm hàm phạt độ lệch giữa $\Phi$ và hàm dấu khoảng cách(SDF).
+
+Các bước của thuật toán như sau:
+\begin{itemize}
+\item Bước 1: Khởi tạo hàm $\Phi$ là hàm nhị phân như sau:
+\begin{equation}
+\Phi_(x,t=0)=\begin{cases}
+-\rho, x\in \Omega_0 -\partial \Omega_0\\
+0, x\in \partial \Omega_0\\
+\rho, x\in \Omega- \Omega_0
+\end{cases}
+\end{equation}
+ trong đó $\rho>0$ là hằng số, $\Omega_0$ là tập con  của miền ảnh $\Omega$ và $\partial \Omega_0$ là biên của $\Omega_0$
+ \item Bước 2: Tính toán $\Phi$ sử dụng phương trình (3.4)
+ \item Bước 3: Chuẩn hóa hàm tập mức $\Phi$ bởi hàm nhân Gaussian. Ví dụ $\Phi=\G_{\psi}*\Phi$ trong đó $\psi$ là độ lệch chuẩn thỏa mãn lớn hơn $\sqrt{t}$ để tăng cường khả năng làm mịn
+ \item Bước 4: Kiểm tra điều kiện dừng, nếu không thỏa mãn quay lại bước 2
+\end{itemize}
+Qua quá trình thử nghiệm, tham số $\psi$ ở bước 3 thường được chọn trong khoảng 0.45 đến 1. Nếu nhiễu lớn thì $\psi$ nên chọn lớn hơn
+\subsection{Ưu nhược điểm của mô hình}
+So với mô hình LBF, tuy mô hình LBF không cần thao tác re-initialization không cần thiết, tuy nhiên độ phức tạp tính toán còn tương đối cao. Chi phí tính toán của mô hình LBF chủ yếu nằm ở thao tác tính toán $\lambda_1 e_1-\lambda_2 e_2$. Mô hình LIF có tốc độ tính toán tốt hơn hiều so với LBF. Đồng thời thực nghiệm cho thấy mô hình LIF có thể đạt tới việc phân chia nhỏ hơn pixel. Hình dưới cho thấy với phương pháp C-V kết quả cuối cùng thu được 2 ngón tay ở giữa bị dính vào nhau trong khi với phương pháp LIF thì chúng tách rời hoàn toàn.
+\begin{center}
+\begin{figure}
+\caption{Hình b và c thể hiện kết quả của phương pháp C-V, hình  d và e thể hiện kết quả của phương pháp LIF}
+\includegraphics[scale=0.7]{figure/subpixel.png}
+\end{figure}
+
+\end{center}   
+\section{Mô hình kết hợp Global và Local}
+\subsection{Mô hình}
+Cả 3 phương pháp phân vùng sử dụng biên động như đã trình bày ở trên đều có ưu nhược điểm của riêng mình. Với mô hình CV, nó hoạt động tốt với các ảnh mà cường độ xám trong và ngoài đối tượng trong ảnh đồng nhất, trong trường hợp  ảnh có cường độ sáng không đồng nhất thì mô hình này thường cho ra kết quả sai. Ngược lại, mô hình LBF,LIF trình bày ở phần 2,3 lại hoạt động tốt với ảnh không đồng nhất mức xám và tỏ ra không hiệu quả với ảnh đồng nhất mức xám. Trong phần này tôi đề xuất một mô hình kết hợp mô hình Global và Local để có thể xử lý được với nhiều loại ảnh khác nhau, giảm thời gian tính toán, đồng thời tăng tính hội tụ do việc giảm bớt các thành phần dễ bị ảnh hường bởi đường biên ban đầu. Trong mô hình CV ta lấy thành phần fitting term và bỏ đi thành phần regulalize term :
+\begin{equation}
+E^(GIF)=\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y))+ |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+\end{equation} 
+Chúng ta gọi nó là GIF (Global image fitting). Ngoài ra trong mô hình này sử dụng thêm thành phần $E^{LIF}$ trong mô hình LIF:
+\begin{equation}
+E^{LIF}(\Phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\Phi))|^2\,dx
+\end{equation}
+trong đó 
+\begin{equation}
+\Phi_(x,t=0)=\begin{cases}
+-\rho, x\in \Omega_0 -\partial \Omega_0\\
+0, x\in \partial \Omega_0\\
+\rho, x\in \Omega- \Omega_0
+\end{cases}
+\end{equation}
+Hàm năng lượng được đề xuất chứa thành phần global và thành phần local :
+\begin{equation}
+E^{GLIF}=\alpha E^{LIF}+(1-\alpha)E^{GIF}
+\end{equation}
+trong đó $\alpha$ là số không âm nằm trong đoạn [0,1]. Khi xử lý với ảnh có cường độ ảnh đồng nhất ta sử dụng hệ số alpha cao. Trong khi xử lý với ảnh có cường độ không đồng nhất ta sử dụng hệ số alpha thấp. Thành phần LIF chứa lực địa phương (local force) để trích biên và dừng nó ở biên của vật. Thành phần này cho phép mô hình có thể xử lý với vấn đề cường độ không đồng nhất. Thành phần GIF chứa lực toàn cục (global force) cho phép dịch chuyển biên khi biên tạm ở xa biên của vật. Điều này cho phép mô hình xử lý linh động hơn với các đường cong khởi tạo ban đầu.
+Ảnh hưởng của các lực địa phương và lực toàn cục bổ sung cho nhau. Lực địa phương có hiệu quả khi ở gần biên của đối tượng trong khi lực toàn cục có hiệu quả khi ở xa biên của đối tượng. 
+
+Tham số độ lệch chuẩn $\sigma$, và tham số chuẩn hóa $\psi$ đóng vai trò quan trọng trong mô hình.  Tham số $\sigma$ cho phép điều khiển khả năng mở rộng khu phực (region-scalability) từ một lân cận nhỏ cho đến toàn bộ miền ảnh. Tùy thuộc vào chất lượng ảnh và nội dung của ảnh mà ta chọn tham số $\sigma$ cho phù hợp. Thực tế cho thấy với các ảnh nhiều nhiễu hoặc độ tương phản thấp thì tham số $\sigma$ cần được chọn lớn. Điều này sẽ gây  ảnh hưởng đến tốc độ chạy thuật toán. Cùng với đó, nếu chọn $\sigma$ quá nhỏ sẽ làm ảnh hưởng đến kết quả dẫn đến kết quả không mong muốn.
+\subsection{Giải số}
+Tiếp theo chúng ta sẽ xây dựng các bước giải số cho mô hình. Giá trị $c_1, c_2$ làm cực tiểu hàm năng lượng trên được xác định như sau:
+\begin{equation}
+c_1(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\Phi(x,y))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y))\,dx\,dy}
+\end{equation}
+\begin{equation}
+c_2(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\Phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y)1-H(\Phi(x,y)))\,dx\,dy}
+\end{equation}
+Cố định $c_1, c_2$ . Đạo hàm theo $\Phi$ và cho $\epsilon$ tiến dần tới 0 ta có
+\begin{equation}
+\begin{split}
+\dfrac{\delta E^{GLIF}}{\delta\bar{\Phi} } &=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\bar{\Phi})-m2(1-H_{\epsilon}(\bar{\Phi}))|^2\,dx) \\ 
+&+\int_{\Omega} |u_0-c_1|^2H(\bar{\Phi})+ |u_0-c_2|^2(1-H(\bar{\Phi})) \,dx\\
+&=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(-\int_{\Omega}-\delta_{\epsilon}(\Phi)(I(x)-m_1H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\bar{\Phi})))(m_1-m_2)\psi\,dx) \\ 
+&+\alpha\delta_{\epsilon}(\bar{\Phi})\int_{\Omega} (I-c_1)^2+ (I_0-c_2)^2)\psi \,dx\\
+&=-(\int_{\Omega}-\delta_{\epsilon}(\Phi)(I(x)-m_1 H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\Phi)))(m_1-m_2)\psi\,dx)\\
+&+\alpha\delta_{\epsilon}(\Phi)\int_{\Omega} ((I-c_1)^2+ (I_0-c_2)^2)\psi \,dx
+\end{split}
+\end{equation}
+Theo đó ta có phương trình Euler-Lagarange:
+\begin{equation}
+\sigma_{\epsilon}(\Phi)\{(I-I^{LIF})(m_1-m_2)+\alpha((I-c_1)^2+ (I_0-c_2)^2)\}
+\end{equation}
+\chapter{Áp dụng mô hình GLIF trong tìm biên đối tượng trong video }
+Cụ thể các bước của thuật toán sẽ như sau:
+\begin{itemize}
+\item Bước 1: Khởi tạo đường cong $\Phi_0$ ban đầu
+\item Bước 2: Tính $c_1, c_2$ theo công thức 
+\item Bước 3: Tính giá trị $\Phi_{n+1}$ theo $\Phi_{n}$ theo công thức 
+\item Bước 4: Chuẩn hóa hàm tập mức $\Phi$ sử dụng hàm nhân Gauss $\Phi=G_{\psi}\Phi$, trong đó $\psi$ là độ lệch chuẩn
+\item Bước 5: Kiểm tra điều kiện dừng. Nếu thỏa mãn quay lại bước 2
+
+\end{itemize}
+%Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
+%Ta biết rằng, việc xấp xỉ tuyến tính cho cả vận tốc và áp suất trong bài toán Navier-Stokes sẽ dẫn đến một phép rời rạc hóa không ổn định, do không thỏa mãn điều kiện Babuska-Brezzi. Một phương pháp xấp xỉ rất phổ biến đối với bài toán Stokes được đề xuất bởi Arnold, Brezzi and Fortin \cite{ABF84}. Phương pháp này đề xuất xây dựng không gian các hàm "bubble", hay còn được biết đến là các phần tử Mini (Mini-element). Một tài liệu tham khảo chuẩn tắc về các phương pháp phần tử hữu hạn hỗn hợp là cuốn sách của Brezzi và Fortin \cite{BF91}. Giải pháp cho các kết hợp không hợp lý như trên là bổ sung các thành phần ổn định \cite{BF08,BH08}. Nói cách khác, một nhược điểm của quá trình giải số cho bài toán Navier-Stokes là tính ổn định của thành phần đối lưu trong phương trình động lực. Nhiều tác giả đã sử dụng kỹ thuật "upwinding" để xử lý thành phần hyperbolic này, chẳng hạn như \cite{RR99} dựa trên lược đồ phân phối thặng dư PSI (positive stream invariant), \cite{Mau95} đề xuất phương pháp Arbitrary Lagrangian Eulerian (ALE).\\
+%Các nghiên cứu trong đồ án này nhằm mục đích sử dụng các lợi thế của phép xấp xỉ liên tục Galerkin (phần tử hữu hạn Taylor-Hood) \cite{Qua09} và phương pháp đặc trưng cho thành phần không tuyến tính. Xấp xỉ này cho phép ta rời rạc hóa thời gian và tránh những hạn chế về mặt lý thuyết của CFL (Courant-Friedrichs-Levy) trên mỗi bước thời gian (\cite{PLT92} đề xuất cách lựa chọn bước thời gian phù hợp là $\De t \approx 1.5h$).
+%Hơn nữa, nếu quỹ đạo đặc trưng được tính toán chính xác thì kết quả của lược đồ giải số là {\it ổn định không điều kiện}.
+%%-----------------
+%\chapter{Nội dung nghiên cứu}
+%\section{Phương trình Navier-Stokes không nén}
+%Trong đồ án này, ta xét các bài toán Navier-Stokes không nén phụ thuộc thời gian có dạng:
+%\begin{equation}\label{eq:NS1}
+%\begin{cases}
+% 	\rho\left(\dfrac{\pa{\ve{u}}}{\pa t} + (\ve{u} \cdot \na) \ve{u}\right)-\mu \Delta \ve{u} +\na p &= \rho\ve{f},\quad (\ve{x}, t) \in  \Om\times [0,T]\\
+%	\qquad \qquad \qquad \qquad \qquad \qquad \text{div} \ve{u}&=0, \,\,\, \quad (\ve{x}, t) \in  \Om\times [0,T],
+%\end{cases}
+%\end{equation}
+%trong đó, $\Om$ là miền bị chặn trong không gian $\R^d (d=2,3)$ và có biên liên tục Lipschitz $\pa\Om$, $\ve{u} = \ve{u}(\ve{x}, t) \in \R^d$ là vận tốc của dòng chảy ở vị trí $\ve{x}$ tại thời điểm $t$, $p = p(\ve{x}, t) \in \R$ là áp suất dòng chảy, $\ve{f} = \ve{f}(\ve{x}, t) \in \R^d$ là lực tác động từ bên ngoài, $\mu$ là hệ số nhớt và $\rho$ là hệ số mật độ.\\
+%Phương trình thứ nhất của hệ \eqref{eq:NS1} biểu diễn nguyên lý bảo toàn động lượng, trong khi phương trình thứ hai thể hiện đặc tính bảo toàn khối lượng của dòng chảy không nén.\\
+%Đặt $\nu = {\mu}/{\rho}, p={p}/{\rho}$, ta thu được phương trình Navier-Stokes không nén có dạng đơn giản như sau:
+%\begin{equation}\label{eq:NS2}
+%\begin{cases}
+% \left(\dfrac{\partial{\ve{u}}}{\partial t}+(\ve{u} \cdot \nabla) \ve{u}\right)-\nu \Delta \ve{u} +\nabla p&= \ve{f},\quad (\ve{x}, t) \in  \Om\times [0,T]\\
+%\qquad \qquad \qquad \qquad \qquad \qquad \text{div} \ve{u}&=0, \quad (\ve{x}, t) \in  \Om\times [0,T],
+%\end{cases}
+%\end{equation}
+%trong đó, $\nu$ thể hiện hằng số nhớt {\it động học} của chất lỏng.\\
+%Cho $L$ là độ dài đặc trưng của dòng chảy. Khi đó, ta định nghĩa số Reynolds:
+%\begin{equation}
+%Re = \frac{|\ve{u}|.L}{\nu}
+%\end{equation} 
+%Số Reynolds thể hiện tỉ lệ giữa lực quán tính và lực nhớt. Khi giá trị của $\nu$ lớn, lực nhớt chiếm ưu thế vượt trội, do đó thành phần đối lưu trong phương trình Navier-Stokes có thể bỏ qua. Điều này dẫn đến việc xét phương trình Stokes không dừng sau:
+%\begin{equation}\label{eq:S}
+%\begin{cases}
+% \dfrac{\partial{\ve{u}}}{\partial t}-\nu \Delta \ve{u} +\nabla p&= \ve{f}, \quad (\ve{x}, t) \in \Om\times [0,T]\\
+%\qquad \qquad \qquad \text{div} \ve{u}&=0,\quad (\ve{x}, t) \in  \Om\times [0,T] 
+%\end{cases}
+%\end{equation}
+%Để đảm bảo tính đặt chỉnh của bài toán, hệ phương trình \eqref{eq:NS2} cần bổ sung các điều kiện biên thích hợp (Dirichlet, Neumann, slip,...). Đồng thời, các điều kiện biên này cũng cần tương thích với các điều kiện ban đầu, i.e. $\ve{u}(\ve{x},0)=\ve{u}_0(\ve{x}), \, \text{div}\ve{u}_0=0$.
+%\section{Phương pháp đặc trưng}
+%Trong phần này, ta sẽ tập trung nghiên cứu phương pháp rời rạc hóa thời gian cho phương trình Navier-Stokes bằng phương pháp đặc trưng bậc nhất. Phương pháp này, còn được biết với tên gọi phương pháp Lagrange-Galerkin được giới thiệu đầu tiên bởi Benque \cite{BIK+80}.\\
+%Kí hiệu $\ve{X}(\ve{x},s;t)$ là đường cong đặc trưng kết hợp với trường vận tốc $\ve{u}$, là nghiệm của hệ phương trình vi phân thường:
+%\begin{equation} \label{eq:ODE1}
+%\begin{cases} 
+%\dfrac{d\ve{X}(\ve{x},s;t)}{dt}&=\ve{u}(\ve{X}(\ve{x},s;t),t)\\
+%\ve{X}(\ve{x},s;s)&=\ve{x},
+%\end{cases}
+%\end{equation}
+%trong đó, điểm $\ve{X}(\ve{x},s;t)$ thể hiện vị trí của dòng chảy tại thời điểm $t$, khi biết tại thời điểm $s$ nó đạt tại vị trí $\ve{x}$.\\
+%Lấy đạo hàm trường vận tốc $\ve{u}$ theo đường cong đặc trưng, ta thu được:
+%\begin{equation}
+%\begin{aligned}
+%\dfrac{d\ve{u}(\ve{X}(\ve{x},s;t), t)}{dt} &= \dfrac{\pa\ve{u}}{\pa t} + \na \ve{u}\dfrac{d\ve{X}(\ve{x},s;t)}{dt} = \dfrac{\pa\ve{u}}{\pa t} + \na \ve{u}.\ve{u}(\ve{X}(\ve{x},s;t), t)\\
+%&= \dfrac{\pa\ve{u}}{\pa t} + \left(\ve{u}.\na\right)\ve{u}
+%\end{aligned}
+%\end{equation}
+%Phương trình thứ nhất của hệ \eqref{eq:NS2} được viết lại dưới dạng:
+%\begin{equation}\label{eq:NS3}
+%\dfrac{d{\ve{u}(\ve{X}(\ve{x},s;t),t)}}{dt}-\nu \Delta \ve{u} +\nabla p=\ve{f}
+%\end{equation}
+%Do đó, việc tính toán thành phần đối lưu phi tuyến trong phương trình Navier-Stokes có thể đưa về bài toán tìm vị trí đặc trưng $\ve{X}(\ve{x},s;t)$, i.e. vị trí của dòng chảy tại thời điểm trước đó.\\
+%Giả sử rằng khoảng thời gian $[0,T]$ được chia thành nhiều khoảng bé hơn có cùng độ dài $\De t$ và kí hiệu $t^n=n\De t$. Với mỗi $(t, \ve{x}) \in [t_n, t_{n+1}]\times\overline{\Omega}$, lấy tích phân phương trình \eqref{eq:NS3} theo đường cong đặc trưng, ta thu được:
+%\begin{align}\label{eq:NS4}
+%\begin{split}
+%\ve{u}^{n+1}(\ve{x}) &= \ve{u}^{n}(\ve{X}(\ve{x}, t_{n+1}; t_n))+ \nu\int_{t_n}^{t_{n+1}}\Delta\ve{u}(\ve{X}(\ve{x}, t_{n+1}; t), t) dt\\ 
+%&- \int_{t_n}^{t_{n+1}}\na p(\ve{X}(\ve{x}, t_{n+1}; t), t) dt + \int_{t_n}^{t_{n+1}}\ve{f}(\ve{X}(\ve{x}, t_{n+1}; t), t)dt,
+%\end{split}
+%\end{align}
+%trong đó, ta sử dụng các ký hiệu $\ve{u}^n(\cdot) = \ve{u}(\cdot, t_n)$, $p^n(\cdot) = p(\cdot, t_n)$ và $\ve{f}^n(\cdot) = \ve{f}(\cdot, t_n)$. \\
+%Các tích phân trong phương trình \eqref{eq:NS4} có thể được ước lượng bằng các lược đồ xấp xỉ. Trong đồ án này, ta rời rạc bước Stokes theo thời gian sử dụng lược đồ $\tta (0\leq \tta \leq 1)$ cho các thành phần của vận tốc và ngoại lực và lược đồ Euler ẩn bậc nhất cho thành phần áp suất. Khi đó ta thu được xấp xỉ:
+%\begin{align}\label{eq:NS5}
+%\begin{split}
+%\ve{u}^{n+1}(\ve{x}) &= \ve{u}^{n}(\ve{X}(\ve{x}, t_{n+1}; t_n))+ \nu\De t\left[\tta\Delta\ve{u}^{n+1}(\ve{x}) + (1-\tta)\Delta\ve{u}^{n}(\ve{X}(\ve{x}, t_{n+1}; t_n))\right]\\ 
+%&-  \De t\na p^{n+1}(\ve{X}(\ve{x}, t_{n+1})) + \De t\left[\tta\ve{f}^{n+1}(\ve{x}) + (1-\tta)\ve{f}^{n}(\ve{X}(\ve{x}, t_{n+1};t_n))\right]
+%\end{split}
+%\end{align}
+%Rời rạc bước Stokes theo thời gian có thể được viết lại dưới dạng:
+%\begin{align}
+%\begin{cases}
+%\dfrac{\ve{u}^{n+1}}{\Delta t} - {\tta}.{\nu}\Delta\ve{u}^{n+1} + \na p^{n+1} = \ve{F}^{n+1} &, \, \ve{x} \in  \, \Omega \\
+%\na \cdot \ve{u}^{n+1} = 0 &, \, \ve{x} \in \, \Omega
+%\end{cases}
+%\end{align}
+%trong đó $$\ve{F}^{n+1} = \dfrac{\ve{u}^{*n}}{\Delta t} + (1-\tta).{\nu}\Delta\ve{u}^{*n} + \left(\tta\ve{f}^{n+1} +(1-\tta) \ve{f}^{*n}\right),$$ 
+%$$\ve{u}^{*n} = \ve{u}^n(\ve{X}(\ve{x}, t_{n+1}; t_n)), \quad \ve{f}^{*n} = \ve{f}^n(\ve{X}(\ve{x}, t_{n+1}; t_n)).$$
+%Trường hợp $\tta = 1$, lược đồ xấp xỉ $\tta$ được gọi là {\it lược đồ Euler ẩn bậc nhất}. Trường hợp khác khi $\tta = 1/2$, lược đồ $\tta$ trở thành {\it phương pháp Crank-Nicolson bậc hai}.\\
+%Như vậy, tại mỗi bước thời gian, việc tìm nghiệm của bài toán Navier-Stokes sẽ được đưa về giải quyết hai bài toán: bài toán Stokes không dừng và bài toán tìm nghiệm tại bước thời gian trước đó theo đường cong đặc trưng của trường vận tốc $\ve{u}$. Phương pháp rời rạc hóa thời gian cho phương trình Navier-Stokes được chia thành hai bước:
+%\begin{itemize}
+%\item[i] Giải bài toán vi phân thường \eqref{eq:ODE1} trong khoảng thời gian $[t_n, t_{n+1}]$.
+%\item[ii] Giải phương trình Stokes tổng quát được định nghĩa bởi hệ:
+%\begin{equation}
+%\begin{cases}\label{Stokes}
+%\alpha \ve{u} - \beta\Delta\ve{u} + \na p = \ve{F}, & \ve{x} \in\,  \Omega\\
+%\na \cdot \ve{u} = 0, &\ve{x}\in \, \Omega,
+%\end{cases}
+%\end{equation}
+%trong đó $\alpha$ ký hiệu cho $\dfrac{1}{\Delta t}$ và $\beta = \tta{\nu}$.
+%\end{itemize}
+%
+%\section{Dạng biến phân của phương trình Navier-Stokes}
+%Như đã thảo luận trong phần trước, tại mỗi bước thời gian, ta phải giải một bài toán Stokes không dừng \eqref{Stokes}. Cách giải số cho bài toán này bằng phương pháp phần tử hữu hạn sẽ dẫn đến một công thức biến phân.\\
+%Đầu tiên, ta giới thiệu các không gian Sobolev sau:
+%\begin{align}
+%&H_0^1(\Omega)^d=\{\ve{v}\in H^1(\Omega)^d: \ve{v}|_{\pa \Om}=0\} \label{eq:V}\\ 
+%&L_0^2(\Omega)=\{q\in L^2(\Omega) :\int_\Omega q=0\}\label{eq:M}
+%\end{align}
+%Ký hiệu $V$ và $M$ là các không gian hàm cho vận tốc và áp suất tương ứng. Ta xét dạng biến phân của bài toán Stokes tổng quát trong trường hợp điều kiện biên Dirichlet thuần nhất, i.e $\ve{u}|_{ \pa \Om}=0$. Khi đó, $V$ sẽ được chọn trùng với $H^1_0(\Omega)^d$ và $M=L^2_0(\Omega)$ cho áp suất.\\
+%Cho trước $\ve{v} \in V$. Nhân $\ve{v}$ vào hai vế của phương trình thứ nhất trong hệ \eqref{Stokes} rồi lấy tích phân, ta được:
+%\begin{equation}\label{Stokes1}
+%\alpha \int_\Om {\ve{u}}.{\ve{v}}dx - \beta \int_\Om{ \Delta \ve{u}.\ve{v}} dx + \int_\Om \na p.\ve{v}dx = \int_\Omega\ve{F}.{\ve{v}}dx
+%\end{equation}
+%Từ công thức Green, ta có:
+%\begin{align}\notag
+%- \beta\int_{\Omega} \Delta \ve{u} \ve{v} dx 
+%&=  \beta \int_{\Omega}\nabla \ve{u}: \nabla \ve{v}dx - \beta \int_{\partial{\Omega} } \nabla \ve{u} \ve{n}.\ve{v}ds \notag\\
+%\int_{\Omega} \nabla p.\ve{v}dx&= -\int_{\Omega} p\text{div}\ve{v}dx + \int_{\partial{\Omega} } p\ve{n}.\ve{v}ds \notag
+%\end{align}
+%Thay các đẳng thức này vào \eqref{Stokes1}, ta được phương trình sau:
+%\begin{align}
+%\alpha \int_\Om {\ve{u}} .{\ve{v}}dx+ \beta \int_\Om{\nabla \ve{u}: \nabla\ve{v}} dx-\int_\Om p\text{div}\ve{v}dx&= \int_\Om \ve{F}.{\ve{v}}dx +\int_{\partial{\Omega} } (\beta  \nabla \ve{u}-pI_d) \ve{n}.\ve{v}ds\label{eq:NSv}
+%\end{align}
+%Do $\ve{v}=0$ trên $\pa \Om$ nên ta có:
+%\begin{align} \notag
+%\alpha\int_\Om{\ve{u}} .{\ve{v}}dx+ \beta \int_\Om{\nabla \ve{u}: \nabla\ve{v}} dx-\int_\Omega p\text{div}\ve{v}dx&= \int_\Om \ve{F}.{\ve{v}}dx\notag 
+%\end{align}
+%Chọn hàm thử $q \in M$ và nhân cả hai vế của phương trình thứ hai trong hệ \eqref{Stokes} với $q$ trong không gian $L^2(\Om)$, ta thu được dạng biến phân của bài toán thuần nhất: Cho hàm $\ve{F}\in {H^{-1}(\Om)}^d$, các hằng số dương $\alpha$ và $\beta$; tìm $\ve{u} \in V$ và $p \in M$ là nghiệm của hệ:
+%\begin{equation} \label{eq:Var}
+%\begin{cases}
+%\displaystyle \alpha \int_\Om{\ve{u}} .{\ve{v}}dx+ {\beta\int_\Om \nabla \ve{u}: \nabla\ve{v}} dx-\int_\Om p\text{div}\ve{v}dx
+%&= \displaystyle\int_\Om \ve{F}.{\ve{v}}dx, \quad \forall \ve{v} \in V\\ \notag
+%\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\displaystyle\int_\Omega q\text{div}\ve{u}dx &= 0, \quad\quad\,\,\,\quad\quad \forall q \in M
+%\end{cases}
+%\end{equation} 
+%Bài toán này có thể được viết dưới dạng yếu tương đương: Tìm $(\ve{u},p) \in (V \times M)$ thỏa mãn:
+%\begin{equation}\label{eq:ab}
+%\begin{cases}
+%\forall \ve{v}\in V &a(\ve{u},\ve{v}) + b(\ve{v},p) = l(\ve{v})\\
+%\forall q\in M  &b(\ve{u},q) \qquad \qquad= 0,
+%\end{cases}
+%\end{equation}
+%trong đó $l(\cdot)$ là dạng tuyến tính liên tục được định nghĩa trên $V$: $$l(\ve{v})=\int_\Om\ve{F}.{\ve{v}}dx$$
+%và $a(\ve{u},\ve{v}), b(\ve{v},p)$ là các dạng song tuyến tính liên tục được định nghĩa trên $V\times V$ và $V\times M$ tương ứng:
+%\begin{equation}
+%\begin{cases}
+%a(\ve{u},\ve{v}) &= \alpha \displaystyle\int_\Om {\ve{u}} .{\ve{v}}dx+ \beta\int_\Om{ \nabla \ve{u}: \nabla \ve{v}} dx\\
+%b(\ve{v},p) &=  \displaystyle-\int_\Om p\text{div}\ve{v}dx
+%\end{cases}
+%\end{equation}
+%Sự tồn tại và duy nhất nghiệm của dạng yếu của bài toán Stokes tổng quát đã được chứng minh trong nhiều nghiên cứu trước đây (xem \cite{GR86} hoặc \cite{EG04}). Các chứng minh này bao gồm: i. tính elliptic của dạng song tuyến tính $a(.,.)$ là kết quả của bất đẳng thức Friedrichs-Poincare; ii. các không gian hàm của vận tốc và áp suất thỏa mãn điều kiện Babuska-Brezzi, còn được gọi là {\it điều kiện inf-sup} trên dạng song tuyến tính $b(.,.)$, i.e. tồn tại một hằng số dương $C$ thỏa mãn:
+%\begin{equation}
+%\underset{q\in M}{\text{inf}}\underset{\ve{v}\in V}{\text{sup}} \dfrac{b(\ve{v},q)}{\|\ve{v}\|_1\|q\|_0} \ge C >0,
+%\end{equation}
+%trong đó, $\|\ve{v}\|_1=\left(\Sigma_{i=1}^{d} {\|{v_i}\|_1}^2\right)^{1/2}$ và $\|.\|_1$, $\|.\|_0$ là các chuẩn trong các không gian  Sobolev $H^1(\Om)$, $L^2(\Om)$ tương ứng.
+%\section{Rời rạc hóa không gian}
+%Bằng cách sử dụng phép xấp xỉ bởi các phần tử hữu hạn Galerkin, dạng rời rạc hóa theo không gian tương ứng với bài toán \eqref{eq:ab} được viết lại như sau: Tìm $(\ve{u}_h, p_h) \in V_h \times M_h$ thỏa mãn:
+%\begin{equation}\label{eq:abh}
+%\begin{cases}
+%\forall \ve{v}_h\in V_h &a_h(\ve{u}_h,\ve{v}_h) + b_h(\ve{v}_h,p_h) = l_h(\ve{v}_h)\\
+%\forall q_h\in M _h &b_h(\ve{u}_h,q_h) \qquad \qquad \qquad= 0,
+%\end{cases}
+%\end{equation}
+%trong đó, $V_h \subset V$ và $M_h \subset M$ là hai họ các không gian con hữu hạn chiều phụ thuộc vào một tham số rời rạc hóa $h$-{\it kích thước phần tử đặc trưng} của một phép tam giác phân $T_h$ trên miền $\Omega$;
+%và $a_h(\ve{u}_h,\ve{v}_h)$, $b_h(\ve{v}_h,p_h)$, $l_h(\ve{v}_h)$ được định nghĩa như sau:
+%\begin{equation}\label{eq:abl_h}
+%\begin{cases}
+%\displaystyle a_h(\ve{u}_h,\ve{v}_h) = \sum_{K\in T_h}\alpha\int_K  {\ve{u}_h} .{\ve{v}_h}dx + \displaystyle\sum_{K\in T_h} \beta \int_K{\nabla \ve{u}_h: \nabla \ve{v}_h} dx\\
+%\displaystyle b_h(\ve{v}_h,p_h) =  -\sum_{K\in T_h}\int_Kp_h\text{div}\ve{v}_hdx\\
+%\displaystyle l_h(\ve{v}_h)= \sum_{K\in T_h}\int_K \ve{F}_h.{\ve{v}_h}dx
+%\end{cases}
+%\end{equation}
+%Bài toán xấp xỉ này cũng yêu cầu các điều kiện tương thích rời rạc, còn được gọi là {\it điều kiện inf-sup rời rạc}, nghĩa là tồn tại một hằng số dương $C_h$ thỏa mãn:
+%\begin{equation}\label{eq:inf_sup_h}
+%\underset{q_h\in M_h}{\text{inf}}\underset{\ve{v}_h\in V_h}{\text{sup}} \dfrac{b_h(\ve{v}_h,p_h)}{\|\ve{v}_h\|_1\|q_h\|_0} \ge C_h >0
+%\end{equation}
+%Do đó, ta chọn các hàm đa thức từng phần bậc $k\geq 2$ cho không gian hàm của vận tốc $V_h$ và bậc $k-1$ cho không gian hàm của áp suất $M_h$. Trong thực tế, ta chọn các phần tử hữu hạn từng phần dạng bậc hai $\Pp_2$ cho vận tốc và các phần tử hữu hạn tuyến tính $\Pp_1$ cho áp suất. Đây là cặp phần tử có bậc nhỏ nhất của họ các phần tử Taylor-Hood có dạng $\Pp_k /\Pp_{k-1}, k \geq 2$ (vận tốc liên tục và áp suất liên tục) và thỏa mãn {\it điều kiện cân bằng inf-sup}.
+%\section{Hệ phương trình tuyến tính rời rạc}
+%Đặt $\{\vp_i\}_{i=1,...,nv}$ và $\{\phi_j\}_{j=1,...,np}$ là họ các hàm cơ sở của các không gian $V_h$ và $M_h$ tương ứng, với $nv=\text{dim}V_h$ và $np=\text{dim}M_h$. Cho trước $\ve{u}_h \in V_h$, $p_h \in M_h$, ta có phân tích:
+%\begin{equation}
+%\begin{aligned}
+%\displaystyle \ve{u_h} &= \sum_{i=1}^{nv}u_i \vp_i, \qquad
+%\displaystyle p_h&= \sum_{j=1}^{np}p_j \phi_j
+%\end{aligned}
+%\end{equation}
+%Ta giới thiệu các ma trận hệ số:
+%\begin{align} \notag
+%A_{i,j} = a_h(\vp_i,\vp_j),\qquad
+%B_{i,j}=b_h(\vp_i,\phi_j),\qquad
+%F_i=l_h(\vp_i),
+%\end{align} 
+%trong đó, các ma trận $A,B$ tương ứng với các dạng song tuyến tính $a_h,b_h$ và vector $F$ tương ứng với dạng tuyến tính $l_h$ được định nghĩa trong \eqref{eq:abl_h}.\\
+%Ký hiệu các vector $U=(u_i)_{i=1,...,nv}$ và $P=(p_j)_{j=1,...,np}$, bài toán \eqref{eq:abh} tương đương với bài toán giải hệ phương trình tuyến tính sau:
+%\begin{equation}\label{eq:matrix}
+%\begin{pmatrix}A & B^t \\B & 0\end{pmatrix}
+%\begin{pmatrix}U\\P\end{pmatrix} =
+%\begin{pmatrix}F\\0\end{pmatrix}
+%\end{equation}  
+%Hệ \eqref{eq:matrix} là hệ thưa, đối xứng nhưng không xác định và kích thước của nó là dim$V_h$ + dim$M_h$.\\
+%Có nhiều phương pháp số đã được đề xuất để giải hệ phương trình tuyến tính  \eqref{eq:matrix}. Một phương pháp cổ điển thường được sử dụng là phương pháp {\it Uzawa} \cite{AHU58}, bằng cách đưa hệ \eqref{eq:matrix} về hai hệ phương trình nhỏ hơn, một cho vận tốc chưa biết $U$ và một cho áp suất $P$. Điều này dẫn đến việc giải hai hệ phương trình sau:
+%\begin{equation}
+%BA^{-1}B^tP=BA^{-1}F, \qquad AU=F-B^tP.
+%\end{equation}
+%Chú ý, phương pháp {\it Penalty} có thể được sử dụng để tìm $U$ và $P$ trong hệ phương trình tuyến tính sau:
+%\begin{equation}
+%\begin{pmatrix}A & B^t \\B & \epsilon I_d\end{pmatrix}
+%\begin{pmatrix}U\\P\end{pmatrix} =
+%\begin{pmatrix}F\\0\end{pmatrix}
+%\end{equation}
+%trong đó, $I_d$ là ma trận đơn vị cấp $d = \text{dim}M_h$ và giá trị của $\epsilon$ trong khoảng từ $10^{-6}$ đến $10^{-4}$.\\
+%Do đó, tại mỗi bước thời gian, bài toán Stokes tổng quát sẽ dẫn đến việc giải một hoặc nhiều hệ phương trình tuyến tính. Các thí nghiệm của chúng tôi được tiến hành với công cụ Freefem++ (\url{http://www.freefem.org}), dựa trên các thuật toán giải hệ phương trình tuyến tính Conjugate Gradient (CG) và Crout. Các phương pháp này được áp dụng phổ biến trong giải hệ phương trình tuyến tính thưa, xem thêm chi tiết trong \cite{She94,Saa03,YJ07}.
+%%%%%%%
+%\section{Sự ổn định không điều kiện}
+%Trong phần này, ta sẽ chứng minh tính {\it ổn định không điều kiện} của lược đồ giải số đã trình bày ở trên trong trường hợp $\tta \geq 1/2$.\\
+%Ký hiệu:
+%\begin{align*}
+%W &= \left\lbrace \ve{v}\in V: \left(q, \na .\ve{v}\right) = 0, \forall q\in M \right\rbrace,\\
+%W_h &= \left\lbrace \ve{v}_h\in V_h: \left(q_h, \na .\ve{v}_h\right) = 0, \forall q_h\in M_h \right\rbrace
+%\end{align*}
+%Chọn $\ve{v} \in W$, phương trình đầu tiên trong hệ \eqref{eq:Var} có thể được viết lại dưới dạng:
+%\begin{equation}
+%\begin{aligned} \label{eq:Time1}
+%\displaystyle \int_\Om \dfrac{\ve{u}^{n+1}}{\De t} {\ve{v}}dx + \theta\nu \int_\Om{ \nabla \ve{u}^{n+1}: \nabla\ve{v}} dx &=\displaystyle\int_\Om \dfrac{\ve{u}^{*n}}{\De t}{\ve{v}}dx + (1-\theta)\nu\int_\Om{\nabla \ve{u}^{*n}: \nabla\ve{v}}dx\\ 
+%&+ \theta \int_\Om {\ve{f}^{n+1}\ve{v}dx} + (1-\theta) \int_\Om {\ve{f}^{*n}\ve{v}dx},\quad \forall \ve{v} \in W
+%\end{aligned}
+%\end{equation}
+%Chọn $\ve{v} = \ve{u}^{n+1}$, ta có:
+%\begin{equation}
+%\begin{aligned} \label{eq:Time2}
+%\displaystyle \int_\Om \left(\ve{u}^{n+1}\right)^2dx  + \theta\nu\De t \int_\Om{ \nabla \ve{u}^{n+1}: \nabla\ve{u}^{n+1}} dx &=(1-\theta)\nu\De t\int_\Om{\nabla \ve{u}^{*n}: \nabla\ve{u}^{n+1}}dx\\ 
+%&+ \displaystyle\int_\Om \ve{u}^{*n}{\ve{u}^{n+1}}dx  + \theta\De t \int_\Om {\ve{f}^{n+1}\ve{u}^{n+1}dx}\\
+%& + (1-\theta)\De t \int_\Om {\ve{f}^{*n}\ve{u}^{n+1}dx}
+%\end{aligned}
+%\end{equation}
+%Viết lại dưới dạng chuẩn, ta có:
+%\begin{equation}
+%\begin{aligned}
+%\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2 \leq &\left(\norm{\ve{u}^{n}}_0 + \theta\De t \norm{\ve{f}^{n+1}}_0 + (1-\theta)\De t\norm{\ve{f}^n}_0\right)\norm{\ve{u}^{n+1}}_0 \\
+%&+(1-\theta)\nu\De t\norm{\nabla\ve{u}^n}_0\norm{\nabla\ve{u}^{n+1}}_0
+%\end{aligned}
+%\end{equation}
+%Do $\tta \geq 1/2$ nên $1-\tta \leq \tta$. Do đó:
+%\begin{equation}
+%\begin{aligned}
+%\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2 \leq &\left(\norm{\ve{u}^{n}}_0 + \theta\De t \norm{\ve{f}^{n+1}}_0 + (1-\theta)\De t\norm{\ve{f}^n}_0\right).\\
+%&\left(\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2\right)^{1/2} \\
+%&+ \sqrt{\theta\nu\De t} \norm{\nabla\ve{u}^n}_0.\left(\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2\right)^{1/2}
+%\end{aligned}
+%\end{equation}
+%Suy ra:
+%\begin{equation}
+%\begin{aligned}
+%\left(\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2\right)^{1/2} \leq & \norm{\ve{u}^{n}}_0 + \theta\De t \norm{\ve{f}^{n+1}}_0 + (1-\theta)\De t\norm{\ve{f}^n}_0\\
+%&+ \sqrt{\theta\nu\De t} \norm{\nabla\ve{u}^n}_0
+%\end{aligned}
+%\end{equation}
+%Theo bất đẳng thức Cauchy-Schwarz, ta có (xem thêm phần phụ lục):
+%\begin{equation}
+%\norm{\ve{u}^{n}}_0 + \sqrt{\theta\nu\De t} \norm{\nabla\ve{u}^n}_0 \leq \sqrt{2}.\left(\norm{\ve{u}^{n}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n}}_0^2\right)^{1/2}
+%\end{equation}
+%Như vậy, với $\theta \geq 1/2$:
+%\begin{equation}
+%\begin{aligned}
+%\left(\norm{\ve{u}^{n+1}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2\right)^{1/2} \leq &\theta\De t \norm{\ve{f}^{n+1}}_0 + (1-\theta)\De t\norm{\ve{f}^n}_0\\
+%& + \sqrt{2} \left(\norm{\ve{u}^{n}}_0^2 + \theta\nu\De t\norm{\nabla\ve{u}^{n}}_0^2\right)^{1/2}
+%\end{aligned}
+%\end{equation}
+%Bất đẳng thức này thể hiện tính {\it ổn định không điều kiện} của phương pháp giải số. Đặc biệt, trong trường hợp cụ thể, với {\it lược đồ Euler ẩn}, tính {\it ổn định không điều kiện} được biểu diễn qua bất đẳng thức:
+%\begin{equation}
+%\begin{aligned}
+%\left(\norm{\ve{u}^{n+1}}_0^2 + \nu\De t\norm{\nabla\ve{u}^{n+1}}_0^2\right)^{1/2} \leq \De t \norm{\ve{f}^{n+1}}_0 + \left(\norm{\ve{u}^{n}}_0^2 + \nu\De t\norm{\nabla\ve{u}^{n}}_0^2\right)^{1/2}
+%\end{aligned}
+%\end{equation}
+
+%
+%\subsection{The error estimate}
+%To simplify, we consider \textit{implicit Euler method}, that mean $\theta = 1$. We call in our problem, the exact solution at the time $t^{n+1}$ is denoted by $\ve{u}^{n+1}$ is solution of equations \eqref{eq:Time1} with:
+%\begin{equation}
+%\begin{aligned} \label{eq:Err1}
+%\displaystyle \int_\Om \dfrac{\ve{u}^{n+1}}{\De t} .{\ve{v}}dx + \nu \int_\Om{ \nabla \ve{u}^{n+1}: \nabla\ve{v}} dx-\int_\Om p^{n+1}\text{div}\ve{v}dx = \displaystyle\int_\Om \dfrac{\ve{u}^{*n}}{\De t}.{\ve{v}}dx  + \int_\Om {\ve{f}^{n+1}.\ve{v}dx}, \quad \forall\ve{v}\in V
+%\end{aligned}
+%\end{equation}
+%while the approximate solution at the time $t^{n+1}$ denoted $\ve{u}_h^{n+1}$ is solution of equation:
+%\begin{equation}
+%\begin{aligned} \label{eq:Err2}
+%\displaystyle \int_\Om \dfrac{\ve{u}_h^{n+1}}{\De t} {\ve{v}_h}dx + \nu \int_\Om{ \nabla \ve{u}_h^{n+1}: \nabla\ve{v}_h} dx-\int_\Om p_h^{n+1}\text{div}\ve{v}_hdx = \displaystyle\int_\Om \dfrac{\ve{u}_h^{n}(\tilde{\ve{X}}_h^n)}{\De t}{\ve{v}_h}dx + \int_\Om {\ve{f}_h^{n+1}\ve{v}_hdx}, \forall\ve{v}_h\in V_h
+%\end{aligned}
+%\end{equation}
+%Denote
+%\begin{equation*}
+%\ve{{\delta}}^{n+1} = \ve{u}_h^{n+1} - \ve{u}^{n+1}
+%\end{equation*}
+%Choose test function $\ve{v} = \ve{v}_h$ in $W_h$ for the equation \eqref{eq:Err1} and subtraction of equation \eqref{eq:Err2}, we obtain:
+%\begin{equation}\label{eq:Err3}
+%\begin{aligned}
+%\left(\ve{\delta}^{n+1}, \ve{v}_h \right) + \nu\De t\left(\ve{\na\delta}^{n+1}, \ve{\na v}_h \right) = \De t\left(\ve{f}_h^{n+1} - \ve{f}^{n+1}, \ve{\na v}_h \right) + \left(\ve{\delta}^{n}(\tilde{\ve{X}}^n_h), \ve{v}_h \right) + \left(\ve{u}^n(\tilde{\ve{X}}_h^n) - \ve{u}^n(\ve{X}^n) ,\ve{v}_h\right)
+%\end{aligned}
+%\end{equation}
+%where the second term in right side is subtracted and by $\left(\ve{u}^n(\tilde{\ve{X}}_h^n),\ve{v}_h\right)$.\\
+%As in \cite{Pir82} we define $\ve{\eta}^{n+1}$ by
+%\begin{equation}\label{eq:Err4}
+%\left(\ve{\eta}^{n+1}, \ve{v}_h\right) + \nu\De t\left(\na\ve{\eta}^{n+1}, \na\ve{v}_h\right) = \left(\ve{\eta}^{n+1}, \ve{v}_h\right) + \nu\De t\left(\na\ve{\delta}^{n+1}, \na\ve{v}_h\right), \forall \ve{v}_h \in W_h
+%\end{equation}
+%then
+%\begin{equation}\label{eq:Err5}
+%\ve{\eta}^{n+1} = \ve{\delta}^{n+1} + \left(\ve{u}^{n+1}-\Pi\ve{u}^{n+1}\right),
+%\end{equation}
+%where $\Pi$ is the projector on $V_h$ with respect to the norm
+%\begin{equation*}
+%\left(\norm{.}_0^2 + \nu\De t\norm{\na .}_0^2\right)^{1/2} = \norm{.}_1
+%\end{equation*}
+%Replace $\ve{v}_h = \ve{\eta}^{n+1}$ in equations \eqref{eq:Err3} and thanks to \eqref{eq:Err4} we have
+%\begin{equation*}
+%\norm{\ve{\eta}^{n+1}}_0^2 +\nu\De t\norm{\na\ve{\eta}^{n+1}}_0^2 \leq \left(\De t\norm{\ve{f}_h^{n+1} - \ve{f}^{n+1}}_0 + \norm{\ve{\delta}^n}_0 + \norm{\ve{u}^n(\tilde{\ve{X}}^h_n) - \ve{u}^n(\ve{X}^n)}_0 \right)\norm{\ve{\eta}^{n+1}}_0
+%\end{equation*}
+%that is
+%\begin{equation*}
+%\left(\norm{\ve{\eta}^{n+1}}_0^2 + \nu\De t\norm{\na\ve{\eta}^{n+1}}_0^2\right)^{1/2} \leq \left(\De t\norm{\ve{f}_h^{n+1} - \ve{f}^{n+1}}_0 + \norm{\ve{\delta}^n}_0 + \norm{\ve{u}^n(\tilde{\ve{X}}^h_n) - \ve{u}^n(\ve{X}^n)}_0 \right)
+%\end{equation*}
+%From \eqref{eq:Err5} we have
+%\begin{align*}
+%\norm{\ve{\delta}^{n+1}}_1 \leq \norm{\ve{u}^{n+1} - \Pi\ve{u}^{n+1}}_1 + \De t\norm{\ve{f}_h^{n+1} - \ve{f}^{n+1}}_0 + \norm{\ve{\delta}^n}_0 +\norm{\ve{u}^n(\tilde{\ve{X}}_h^n) - \ve{u}^n(\ve{X}^n)}_0
+%\end{align*}
+%We will continue with the estimation of $\norm{\ve{u}^n(\tilde{\ve{X}}_h^n) - \ve{u}^n(\ve{X}^n)}_0$ in the right hand side.
+%By using the mean value theorem, we get:
+%\begin{equation}\label{eq:Err6}
+%\begin{aligned}
+%\norm{\ve{u}^n(\tilde{\ve{X}}_h^n) - \ve{u}^n(\ve{X}^n)}_0 &\leq |\na\ve{u}|_\infty\norm{\tilde{\ve{X}}_h^n - \ve{X}^n}_0\\
+%&\leq |\na\ve{u}|_\infty\left(\norm{\tilde{\ve{X}}_h^n - \ve{X}^n_h}_0 + \norm{\ve{X}_h^n - \ve{X}^n}_0\right)
+%\end{aligned}
+%\end{equation}
+%Set:
+%\begin{align*}
+%\alpha (t) = \ve{X}_h(\ve{x}, t^{n+1};t) - \ve{X}(\ve{x}, t^{n+1}; t), \quad t\in \left[t^n, t^{n+1}\right]
+%\end{align*}
+%we have $\alpha(t^{n+1}) = 0$
+%By setting $\tau = t^{n+1}-t$ then
+%\begin{align*}
+%\alpha(\tau) = \ve{X}_h(\ve{x}, t^{n+1}; t^{n+1} - \tau)- \ve{X}(\ve{x}, t^{n+1}; t^{n+1} - \tau), \quad t\in \left[0, \De t\right]
+%\end{align*}
+%and $\alpha(0) = 0; \alpha(\De t) = \ve{X}_h^n - \ve{X}^n$.
+%We have:
+%\begin{align*}
+%\dfrac{d|\alpha(\tau)|}{d\tau} & \leq |\ve{u}_h^n(\ve{X}_h, t^{n+1 - \tau}) - \ve{u}(\ve{X, t^{n+1} - \tau})|\\
+%&\leq |\ve{u}_h^n(\ve{X}_h) - \ve{u}^n(\ve{X}_h)| + |\ve{u}^n(\ve{X}_h) - \ve{u}^n(\ve{X})|\\
+%&\leq |\ve{u}_h^n(\ve{X}_h) - \ve{u}^n(\ve{X}_h)| + |\na\ve{u}|_\infty|\ve{X}_h - \ve{X}|
+%\end{align*}
+%so
+%\begin{align*}
+%\dfrac{d|\alpha(\tau)|}{d\tau} \leq |\ve{u}_h^n(\ve{X}_h) - \ve{u}^n(\ve{X}_h)| + |\na\ve{u}|_\infty|\alpha(\tau)|
+%\end{align*}
+%Using Gronwall-Bellman's lemma we have:
+%\begin{align*}
+%|\alpha(\De t)| \leq e^{|\na\ve{u}|_\infty\De t}\int_0^{\De t}|\ve{u}_h^n(\ve{X}_h, t^{n+1} - \tau) - \ve{u}^n(\ve{X}_h, t^{n+1} - \tau)|d\tau
+%\end{align*}
+%Change the variable of the integral this means that:
+%\begin{align*}
+%|\ve{X}_h^n - \ve{X}^n| \leq e^{|\na\ve{u}|_\infty\De t} \int_{t^n}^{t^{n+1}}|\ve{u}_h^n(\ve{X}_h, t) - \ve{u}^n(\ve{X}_h, t)|dt
+%\end{align*}
+%therefore
+%\begin{align*}
+%|\ve{X}_h^n - \ve{X}^n|^2 \leq e^{2|\na\ve{u}|_\infty\De t} \left(\int_{t^n}^{t^{n+1}}|\ve{u}_h^n(\ve{X}_h, t) - \ve{u}^n(\ve{X}_h, t)|dt\right)^2
+%\end{align*}
+%Using the Schwartz inequality, we have:
+%\begin{align*}
+%\int_{\Om}|\ve{X}_h^n - \ve{X}^n|^2dx \leq e^{2|\na\ve{u}|_\infty\De t} \De t \int_{t^n}^{t^{n+1}}\left(\int_{\Om}|\ve{u}_h^n(\ve{X}_h, t) - \ve{u}^n(\ve{X}_h, t)|^2dx\right)dt
+%\end{align*}
+%Because $\ve{X}_h(t)$ can be replaced by $\ve{x}$, hence
+%\begin{align}\label{eq:Err7}
+%\norm{\ve{X}_h^n - \ve{X}^n}_0 \leq e^{2|\na\ve{u}|_\infty\De t} \De t\norm{\ve{u}_h^n - \ve{u}^n}_0
+%\end{align}
+%Otherwise, if $\ve{X}_n^h$ is approximated by Euler method, we have:
+%\begin{align*}
+%|\tilde{\ve{X}}_h^n - \ve{X}_h^n| \leq 2|\na\ve{u}|_\infty |\ve{u}|_\infty\De t e^{|\na\ve{u}|_\infty\delta t} \delta t
+%\end{align*}
+%so there is constant $C$ such that:
+%\begin{align}\label{eq:Err8}
+%\norm{\tilde{\ve{X}}_h^n - \ve{X}_h^n}_0 \leq 2|\na\ve{u}_\infty |\ve{u}|_\infty\De t e^{|\na\ve{u}|_\infty\delta t} \delta t
+%\end{align}
+%From \eqref{eq:Err6}, \eqref{eq:Err7} and \eqref{eq:Err8} we have:
+%\begin{align}\label{eq:Err9}
+%\norm{\ve{u}^n(\tilde{\ve{X}}_h^n) - \ve{u}^n(\ve{X}^n)}_0 \leq |\na\ve{u}|_\infty \De t\left( \norm{\ve{\delta}^n}_0 e^{|\na\ve{u}|_\infty\De t} + C\delta t e^{|\na\ve{u}|_\infty\delta t}\right)
+%\end{align}
+%Finally we obtain the estimation as following:
+%\begin{equation}
+%\begin{aligned}
+%\norm{\ve{\delta}^{n+1}}_1 \leq &\norm{\ve{u}^{n+1} - \Pi\ve{u}^{n+1}}_1 + \De t\norm{\ve{f}_h^{n+1} - \ve{f}^{n+1}}_0 + \norm{\ve{\delta}^n}_0 \\
+%&+ |\na\ve{u}|_\infty\De t\left(\norm{\ve{\delta}^n}_0 e^{|\na\ve{u}|_\infty\De t} + C\delta t e^{|\na\ve{u}|_\infty\delta t}\right)
+%\end{aligned}
+%%%%%%%%%
+%\chapter{Các ví dụ số}
+%\section{Lid-driven cavity}
+%Bài toán {\it "lid-driven cavity"} được xem là một trong những ví dụ giải số kinh điển của phương trình Navier-Stokes. Nhiều nghiên cứu sử dụng thí nghiệm này như một tài liệu tham khảo và so sánh. Bài toán {\it "lid-driven cavity"} nghiên cứu dòng chảy trong một miền đơn vị $\Om = [0,1]^d (d=2;3)$ (hình vuông đơn vị trong không gian hai chiều hoặc hình lập phương trong ba chiều). Điều kiện biên Dirichlet thuần nhất được áp dụng trên tất cả các biên ngoại trừ một cạnh (mặt) phía trên. Động lượng chuyển động của dòng chảy được tạo ra ở nắp phía trên nhờ một vận tốc không đổi $u_x = 1 m/s$ theo hướng trục $x$. Độ nhớt của chất lỏng được điều chỉnh để đạt được số Reynolds như mong muốn.\\
+%Trong không gian hai chiều, ta tiến hành mô phỏng cho các trường hợp Reynolds từ 100 đến 1000. Miền tính toán được rời rạc hóa bởi một phép tam giác phân đều với 2601 đỉnh và 5000 phần tử tam giác. Trong thí nghiệm này, chuyển động của dòng chảy tạo nên một xoáy chính tại trung tâm và các xoáy khác ở góc khi Re tăng lên. Khi số Reynolds tăng, số lượng các xoáy tăng lên, đồng thời vị trí tâm xoáy chính cũng có xu hướng di chuyển từ góc dưới bên phải vào trung tâm miền tính toán. Trong bảng \ref{center}, ta so sánh các vị trí của tâm xoáy chính tại thời điểm cân bằng trong các trường hợp $Re=100, 400, 1000$. Vận tốc và {\it streamline} cho các trường hợp Re khác nhau được thể hiện trong hình \ref{lid2D_vol} và hình \ref{lid2D_stream}. Các kết quả này hoàn toàn phù hợp với kết quả nghiên cứu trong nhiều tài liệu tham khảo khác, ví dụ \cite{Ghia,RR99,ABPV12,APV14}. 
+%
+%\begin{table}[http] 
+%\centering
+%\begin{tabular}{| l | c | c | c | c |} \hline
+%Reynolds& present(Euler)    & present(Crank Nicolson)  &Ghia et al \cite{Ghia}&NSIKE \cite{RR99}\\ \hline
+%100         &x= 0.600&x=0.590                   &x = 0.617 &x = 0.610\\ 
+%               &y = 0.730&y=0.760                  &y = 0.734 &y = 0.750\\ \hline
+%400         &x = 0.580&x= 0.550                 &x = 0.554&x = 0.580\\
+%               &y = 0.640 &y = 0.650               &y = 0.606 &y = 0.615 \\ \hline
+%1000       &x = 0.540 &x = 0.520               & x = 0.531&x = 0.545 \\ 
+%               &y = 0.580&y = 0.580                & y = 0.562 &y = 0.560 \\ \hline
+%\end{tabular}\\
+%\caption{\em Cavity in 2D: so sánh vị trí tâm của xoáy chính cho các Reynolds khác nhau.}\label{center}
+%\end{table}
+%%--------------
+%\begin{figure}[http]
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[width=0.35\textwidth]{Figure/Lid2D_velocity_cha_Re1_2.png} &
+%\includegraphics[width=0.35\textwidth]{Figure/Lid2D_velocity_cha_Re1000_2.png}\\
+%$Re = 1$ &$Re = 1000$ 
+%\end{tabular}
+%\caption{\em Cavity in 2D: Vận tốc với các Reynolds khác nhau.}\label{lid2D_vol}
+%\end{figure}
+%
+%\begin{figure}[http]
+%\centering
+%\begin{tabular}{ccc}
+%\includegraphics[width=0.3\textwidth]{Figure/Lid2D_stream_cha_Re100.png} &
+%\includegraphics[width=0.3\textwidth]{Figure/Lid2D_stream_cha_Re400.png} &
+%\includegraphics[width=0.3\textwidth]{Figure/Lid2D_stream_cha_Re1000.png}\\
+%$Re = 100$&$Re = 400$ & $Re = 1000$ \\
+%\end{tabular}
+%\caption{\em Cavity in 2D: Streamlines với các Reynolds khác nhau.}\label{lid2D_stream}
+%\end{figure}
+%\section{Lid-driven cavity in 3D}
+%Ta sử dụng hai lưới khác nhau để mô phỏng bài toán {\it "lid-driven cavity"} trong không gian ba chiều: một lưới chứa 11037 đỉnh và 56244 tứ diện với các trường hợp $Re = 100, \, Re = 400$ và một lưới gồm 35723 đỉnh và 193586 tứ diện cho $Re = 1000$. Các kết quả 3D được biểu diễn trong hình \ref{fig:streamline3D}. Kết quả này thực sự có ý nghĩa do chưa có nhiều tài liệu đề cập đến các đường {\it streamline} trong 3D cho bài toán này. Thí nghiệm giải số được phát triển trên ngôn ngữ lập trình C, các kết quả hình ảnh được hỗ trợ bởi phần mềm medit do Pascal Frey (\url{http://www.ann.jussieu.fr/frey/software.html}) xây dựng.\\
+%Các kết quả 3D được khảo sát bằng các mặt cắt trong 2D. Các đường {\it streamline} và vận tốc thu được bởi mặt phẳng cắt $z=const$ hoàn toàn khớp với các kết quả đã khảo sát trong 2D, tham khảo thêm hình \ref{fig:velo3D}.
+%
+%%%Thêm
+% \begin{figure}[http]
+%\centering
+%\begin{tabular}{ccc}
+%\hspace{-1cm}
+%\includegraphics[width=0.35\textwidth]{Figure/cube1} &
+%\hspace{-1cm}
+%\includegraphics[width=0.35\textwidth]{Figure/cube2}&
+%\hspace{-1cm}
+%\includegraphics[width=0.35\textwidth]{Figure/cube3}\\
+%\end{tabular}
+%\caption{\em Cavity in 3D: Streamlines với Re = 1000.}\label{fig:streamline3D}
+%\end{figure}
+%%Thay thế = hình này
+%\begin{figure}[http]
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[height=5cm,width=5cm]{Figure/cube2_velo}&
+%\includegraphics[height=5cm,width=5cm]{Figure/cavite3D_Rey1000}\\
+%(a)&(b)
+%\end{tabular}
+%\caption{\em Cavity in 3D: (a) vận tốc dòng chảy, (b) streamlines trong mặt phẳng ($z=0.5$) với $Re = 1000$}\label{fig:velo3D}
+%\end{figure}
+%%%%%
+%Ta tiến hành so sánh nghiệm giải số thu được trong thí nghiệm này với các kết quả trong \cite{Ku87} đối với các trường hợp Reynolds khác nhau. Các so sánh trong hình \ref{Ku} thể hiện sự thống nhất giữa các kết quả số thu được trong 2D, 3D với các kết quả được đề cập trong tài liệu tham khảo.
+%%%%
+%\begin{figure}[http]
+%\centering
+%\begin{tabular}{ccc}
+%\hspace{-1.5cm} 
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re100Ux}&
+%\hspace{-1cm}
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re400Ux}&
+%\hspace{-1cm}
+%\vspace{-0.5cm}
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re1000Ux}\\
+%\hspace{-1.3cm} 
+%\includegraphics[height=3.5cm,width=4.8cm]{Figure/1}&
+%\hspace{-0.5cm}
+%\includegraphics[height=3.5cm,width=4.6cm]{Figure/3}&
+%\hspace{-0.5cm}
+%\includegraphics[height=3.5cm,width=4.6cm]{Figure/5}\\
+%\vspace{-1cm}
+%\hspace{-2cm} 
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re100Uy}&
+%\hspace{-1cm}
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re400Uy}&
+%\hspace{-1cm}
+%\includegraphics[height=4.7cm,width=5.5cm]{Figure/Re1000Uy}\\
+%\hspace{-1.5cm} 
+%\includegraphics[height=4.0cm,width=4.8cm]{Figure/2}&
+%\hspace{-0.5cm}
+%\includegraphics[height=4.6cm,width=4.6cm]{Figure/4}&
+%\hspace{-0.5cm}
+%\includegraphics[height=4.4cm,width=4.6cm]{Figure/6}
+%\end{tabular}
+%\caption{\em Cavity in 3D: vận tốc dọc theo đường thẳng đứng qua tâm. Hàng 1 và hàng 3: kết quả giải số. Hàng 2 và hàng 4: các kết quả trong \cite{Ku87}.} \label{Ku}
+%\end{figure}
+%\section{Backward facing step}
+%Các thí nghiệm về dòng chảy có bước nhảy đã được đề cập trong nhiều nghiên cứu trước đây \cite{ADPS83,LMK97,Hac10}. Bài toán {\it "backward facing step"} là một thí nghiệm điển hình cho các nghiên cứu về dòng chảy hỗn loạn. Miền tính toán và các điều kiện biên của bài toán được thể hiện trong hình \ref{step_ini}. Tại biên đầu vào, một dòng chảy vào cố định có giá trị trung bình $u_1=2/3$ theo chiều ngang và $u_2=0$ theo chiều dọc được sử dụng. Ở biên đầu ra, điều kiện biên Neumann được sử dụng để mô tả dòng chảy ra tự do.
+%\begin{figure}[http]
+%\centering
+%\includegraphics[height=2cm,width=15cm]{Figure/Step_domain.png}
+%\caption{\em Backward facing step in 2D: Miền tính toán và các điều kiện biên}\label{step_ini}
+%\end{figure}
+%Mặc dù miền tính toán và các điều kiện biên tương đối đơn giản nhưng dòng chảy trong thí nghiệm này có những đặc trưng rất phức tạp và có tính phân lớp.\\
+%\begin{figure}[http]
+%\centering
+%\includegraphics[height=1.5cm,width=15cm]{Figure/Step_velocity_cha_Re400_2.png}
+%\caption{\em Backward facing step in 2D: Vận tốc với Re=400.}\label{step_vel}
+%\end{figure}
+%\begin{figure}[http]
+%\centering
+%\includegraphics[height=1.5cm,width=15cm]{Figure/Step_pressure_cha_Re400_2.png}
+%\caption{\em Backward facing step in 2D: Áp suất dòng chảy với Re=400.}\label{step_pressure}
+%\end{figure}
+%Ta tiến hành tính toán trên một lưới có 23966 đỉnh và 46830 tam giác. Hình \ref{step_vel} và hình \ref{step_pressure} thể hiện vận tốc và áp suất của dòng chảy với $Re=400$. Chiều dài của chu trình chính đo được là 8.2. Kết quả này hoàn toàn phù hợp với thực nghiệm được đề cập trong \cite{RR99}.
+%%-----------------------
+%\chapter{Kết luận}
+%Trong đồ án này, em đã trình bày những lý thuyết cơ bản về phương trình Navier-Stokes không nén và một lược đồ giải số cho phương trình Navier-Stokes không nén sử dụng phương pháp đặc trưng và phương pháp phần tử hữu hạn. Trong những phân tích lý thuyết của phương pháp đặc trưng cho phương trình Navier-Stokes, sai số ước lượng được xác định có dạng $O(h^m + {\De t}^m + h^{m+1}/\De t)$ trong \cite{Pir82} (một lược đồ sai số bậc $(h+\De t+h^2/\De t)$ cho phần tử Crouzeix-Raviant và lược đồ sai số bậc $(h^2+{\De t}^2+h^3/\De t)$ cho các phần tử Taylor-Hood). Có thể thấy rằng, sai số ước lượng được điều khiển bởi phần tử lưới đặc trưng $h,\De t$ và mối quan hệ của $h$ và $\De t$. Một sai số ước lượng tối ưu cho xấp xỉ phần tử hữu hạn Lagrange-Galerkin hỗn hợp trong phương trình Navier-Stokes đã được đề cập bởi Suli \cite{Sul98}, cũng có thể xem trong \cite{Zhi11} và các tài liệu tham khảo được trích dẫn.\\
+%Các nghiên cứu đầy đủ hơn về sai số ước lượng cho mỗi phần tử hữu hạn chưa được đề cập trong nội dung đồ án này. Trong đồ án này, em đã trình bày một lược đồ giải số với độ chính xác nghiệm phù hợp trong các thí nghiệm điển hình. Các nghiên cứu trong tương lai nên tập trung phát triển lược đồ Navier-Stokes và kết hợp với các lược đồ khác để mô hình hóa các hiện tượng phức tạp trong thực tế.
+%
+%\bibliographystyle{alpha}
+%\thispagestyle{empty}
+%
+%
+%\bibliography{references}
+%
+%\newpage 
+%\begin{appendices}
+%\chapter{Bất đẳng thức Cauchy-Schwarz}
+%Giả sử $x$ và $y$ là hai phần tử trong không gian định chuẩn $H$. Ta có bất đẳng thức sau, gọi là bất đẳng thức Cauchy-Schwarz (hoặc bất đẳng thức Cauchy hoặc bất đẳng thức Cauchy-Bunyakovsky-Schwarz):
+%\begin{equation}\label{CS}
+%|\left\langle x, y\right\rangle| \leq \norm{x}.\norm{y}
+%\end{equation}
+%Xét trường hợp $H = \R^2$ với chuẩn khoảng cách thông thường, ta có $x=(a, b)^t, y=(c,d)^t (a, b, c, d\in \R)$. Ta có thể phát biểu lại bất đẳng thức Cauchy-Schwarz như sau:
+%\begin{equation}\label{CSR}
+% |ac+bd|\leq \sqrt{a^2 + b^2}.\sqrt{c^2 + d^2}
+%\end{equation}
+%Xét $a=b=1$, ta thu được bất đẳng thức:
+%\begin{equation}\label{CSR}
+% |c+d|\leq \sqrt{2}.\sqrt{c^2 + d^2},\quad \forall c, d\in \R
+%\end{equation}
+%\end{appendices}
+
+\end{document}
+
+

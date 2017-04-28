@@ -1,0 +1,37 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{HRK{\etalchar{+}}10}
+
+\bibitem[HRK{\etalchar{+}}10]{Hac10}
+E.~Hachem, B.~Rivaux, T.~Kloczko, H.~Digonnet, and T.~Coupez.
+\newblock Stabilized finite element method for incompressible flows with high
+  reynolds number.
+\newblock {\em Journal of Computational Physics}, 299(23):8643--8665, November
+  2010.
+
+\bibitem[KHT87]{Ku87}
+H.~C. Ku, R.~S. Hirsh, and T.~D. Taylor.
+\newblock A pseudospectral method for solution of the three-dimensional
+  incompressible navier-stokes equations.
+\newblock {\em Journal of Computational Physics}, 70(2):439--462, June 1987.
+
+\bibitem[TCT95]{Tang95}
+L.~Q. Tang, T.~Cheng, and T.~T.~H. Tsang.
+\newblock Transient solutions for three-dimensional lid-driven cavity flows by
+  a least-squares finite element method.
+\newblock {\em International Journal for Numerical Methods in Fluids},
+  21(5):413--432, september 1995.
+
+\bibitem[UG82]{Ghia}
+C.T~Shin U.~Ghia, K.N.~Ghia.
+\newblock High-re solution for incompressible flow using the navier-stokes
+  equations and a multigrid method.
+\newblock {\em Journal of Computational Physics}, 48(3):387--411, 1982.
+
+\bibitem[YYCH98]{Yang98}
+J-Y. Yang, S-C. Yang, Y-N. Chen, and C-A. Hsu.
+\newblock Implicit weighted eno schemes for the three-dimensional
+  incompressible navier--stokes equations.
+\newblock {\em Journal of Computational Physics}, 146(1):464--487, October
+  1998.
+
+\end{thebibliography}

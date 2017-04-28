@@ -1,0 +1,756 @@
+\documentclass[14pt]{extreport}
+\usepackage[utf8]{vietnam}
+%\usepackage{type1cm}
+\usepackage[left=3.50cm, right=2.00cm, top=3.50cm, bottom=3.00cm]{geometry}
+\usepackage{graphicx}
+\usepackage{mathrsfs} 
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage[intlimits]{amsmath}
+\usepackage{array}
+\usepackage{color, colortbl}
+\usepackage{amsxtra,amssymb,latexsym,amscd,amsthm}
+\usepackage[titletoc]{appendix}
+\usepackage[]{mcode}
+
+%\newtheorem{theorem}{\MakeUppercase{K}ết quả}[section]
+% khoảng cách dòng 1.5 lines (như trong MS Word)
+\renewcommand{\baselinestretch}{1.25}
+
+\theoremstyle{definition} 
+\newtheorem*{proposition}{Mệnh đề}
+\newtheorem*{definition}{Định nghĩa} 
+\newtheorem{exercise}{Bài tập}[chapter] 
+\newtheorem{example}{Ví dụ}[section]
+
+
+\theoremstyle{plain} 
+\newtheorem*{theorem}{Định lý}
+
+\theoremstyle{remark} 
+\newtheorem*{remark}{Chú ý}
+\definecolor{orange}{rgb}{1,0.5,0}
+\definecolor{brown}{rgb}{0.647, 0.165, 0.160}
+\definecolor{purple}{rgb}{0.5, 0, 0.5}
+\definecolor{maroon}{rgb}{0.5, 0, 0}
+
+
+%——————–
+\begin{document}
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\listoftables
+
+\newpage
+\addcontentsline{toc}{chapter}{{\bf Mở đầu}}
+\chapter*{Mở đầu}
+Ô nhiễm không khí đang là một vấn đề bức xúc, đặc biệt là đối với các môi trường đô thị, công nghiệp và làng nghề ở nước ta hiện nay. Ô nhiễm không khí gây tác động xấu đối với sức khoẻ con người, ảnh hưởng đến các hệ sinh thái và biến đổi khí hậu,... Chỉ số chất lượng không khí (\textbf{A}ir \textbf{Q}uality \textbf{I}ndex - AQI) là một trong những cách phổ biến nhất để xác định mức độ ô nhiễm không khí. Trong đồ án này, em đề xuất xây dựng một chỉ số chất lượng không khí mới và so sánh với một số chỉ số chất lượng không khí phổ biến khác để kiểm tra tính hiệu quả của chỉ số mới này.
+
+Nội dung đồ án được trình bày trong 4 chương:
+\begin{itemize}
+\item Chương 1 nêu thực trạng ô nhiễm không khí tại nước ta hiện nay và cách xác định mức độ ô nhiễm không khí.
+\item Chương 2 trình bày một số chỉ số chất lượng không khí phổ biến trên thế giới và tại Việt Nam, đồng thời đề xuất xây dựng một chỉ số chất lượng không khí mới.
+\item Chương 3 trình bày kết quả so sánh các chỉ số chất lượng không khí trên dữ liệu thực tế thu thập tại Hà Nội.
+\item Chương 4 đưa ra kết luận và định hướng các nghiên cứu trong tương lai.
+\end{itemize}
+
+Tính mới của đồ án nằm ở phương pháp tiếp cận mới mẻ đối với một vấn đề thực tế - ô nhiễm không khí. Trong đồ án này, em sử dụng một số phương pháp phân tích và thống kê dữ liệu để ước lượng các hệ số và đề xuất một chỉ số chất lượng không khí mới. Nội dung đồ án đã được đăng trên kỷ yếu Hội nghị Ứng dụng Toán học lần thứ 4 năm 2015 và đạt giải khuyến khích tại Hội nghị Sinh viên nghiên cứu khoa học trường Đại học Bách Khoa Hà Nội năm 2016.	
+
+Em xin gửi lời cảm ơn chân thành tới \textbf{TS. Nguyễn Thị Ngọc Anh} đã tận tình hướng dẫn để em có thể hoàn thành đồ án này. Em cũng xin gửi lời cảm ơn tới \textbf{TS. Hoàng Anh Lê}, Khoa Môi trường, Đại học Khoa Học Tự Nhiên, Đại học Quốc Gia Hà Nội đã tận tình giúp đỡ em các kiến thức cơ bản về môi trường. Em xin cảm ơn các thầy cô trong Viện Toán ứng dụng và Tin học, Đại học Bách Khoa Hà Nội đã dành sự quan tâm, dạy bảo cũng như tạo điều kiện thuận lợi cho em trong quá trình thực hiện đồ án.
+
+Mặc dù em đã cố gắng để hoàn thành đồ án một cách tốt nhất, tuy nhiên không thể tránh khỏi những sai sót. Em rất mong nhận được những góp ý của thầy cô và các bạn để nội dung đồ án được hoàn thiện hơn.
+
+\begin{flushright}
+Hà Nội, ngày 06 tháng 06 năm 2016\\[0.5cm]
+{Sinh viên thực hiện \hspace*{1.4cm}.}\\[0.1cm]
+\textbf{Lê Văn Chiến\hspace*{2.2cm}}
+\end{flushright}
+
+%\addcontentsline{toc}{chapter}{{\bf Đặt vấn đề}}
+\chapter{Đặt vấn đề}
+\section{Hiện trạng môi trường không khí}
+Ô nhiễm môi trường không khí đang là một vấn đề bức xúc, đặc biệt đối với các môi trường đô thị, công nghiệp và làng nghề ở nước ta hiện nay \cite{HN2016}. Ô nhiễm không khí có tác động xấu đối với sức khoẻ con người (gây ra các bệnh đường hô hấp, da liễu, tim mạch), ảnh hưởng đến các hệ sinh thái và biến đổi khí hậu (hiệu ứng nhà kính, mưa axit, suy giảm tầng ôzôn). Khí thải và bụi từ các hoạt động sản xuất, giao thông, sinh hoạt đang làm suy giảm nhanh chóng chất lượng không khí \cite{Jianlin2015}. Vì vậy, yêu cầu bảo vệ môi trường không khí và đưa ra cảnh báo về mức độ ô nhiễm không khí tới cộng đồng ngày càng trở nên quan trọng hơn bao giờ hết.
+
+\section{Xác định mức độ ô nhiễm không khí}
+Mức độ ô nhiễm không khí được xác định thông qua nồng độ các chất gây ô nhiễm trong không khí. Các chất gây ô nhiễm không khí có thể chia thành nhiều loại: các loại khí (ví dụ như $CO, CO_2, SO_2, NO_x$), các loại hợp chất khí halogen (ví dụ như $HCl, HF, HBr$), các chất hữu cơ tổng hợp, các chất quang hóa (ví dụ như $O_3$), các chất lơ lửng (sương mù, bụi, than bếp), nhiệt, tiếng ồn, phóng xạ \cite{TCMT2011}. 
+
+Nồng độ mỗi chất ô nhiễm trong không khí có thể khác nhau, đồng thời khả năng ảnh hưởng tới sức khỏe của mỗi chất cũng không giống nhau. Do đó, việc sử dụng trực tiếp nồng độ các chất để xác định mức độ ô nhiễm không khí sẽ gây khó khăn cho cộng đồng. Thay vào đó, việc sử dụng một thang đánh giá từ tốt đến nguy hiểm sẽ là cách đơn giản và hiệu quả hơn để xác định mức độ ô nhiễm không khí. 
+
+Các thang đánh giá chất lượng không khí đã được phát triển từ những năm 1970 \cite{Babcock1970}. Hiện nay, chỉ số chất lượng không khí (\textbf{A}ir \textbf{Q}uality \textbf{I}ndex – viết tắt là AQI) là thang đánh giá được sử dụng phổ biến nhất trên thế giới. “Chỉ số chất lượng không khí là chỉ số được tính toán từ các thông số quan trắc các chất ô nhiễm trong không khí, nhằm cho biết tình trạng chất lượng không khí và mức độ ảnh hưởng đến sức khỏe con người, được biểu diễn qua một thang điểm” \cite{TCMT2011}. 
+
+Trên thế giới, có nhiều loại chỉ số chất lượng không khí AQI được đề xuất và sử dụng. AQI được sử dụng phổ biến nhất do Cơ quan bảo vệ môi trường Hoa Kì (U.S. Enviromental Protection Agency) ban hành, gọi tắt là CAQI (\textbf{C}ommon \textbf{A}ir \textbf{Q}uality \textbf{I}ndex) \cite{USEPA2013}. Tại Việt Nam, Tổng cục Môi trường cũng ban hành chỉ số chất lượng không khí áp dụng để xác định mức độ ô nhiễm không khí, gọi tắt là AQIVN \cite{TCMT2011}. Tuy nhiên, hai chỉ số này chưa đánh giá đầy đủ mức độ ảnh hưởng của ô nhiễm không khí đến sức khỏe con người. Nhiều nghiên cứu khác đã được tiến hành nhằm phát triển một phương pháp thay thế có thể xem xét đến tác động kết hợp của các chất ô nhiễm tới sức khỏe con người. 
+
+Swamee và Tyagi đã đề xuất phương pháp kết hợp chỉ số chất lượng không khí của từng chất ô nhiễm để tạo nên một chỉ số chất lượng không khí tổng hợp, gọi tắt là AAQI (\textbf{A}ggregate \textbf{A}ir \textbf{Q}uality \textbf{I}ndex) \cite{Swamee1999}. Một phương pháp khác cũng được đề xuất, dựa trên nguy cơ ảnh hưởng đến sức khỏe của các chất ô nhiễm, gọi tắt là HAQI (\textbf{H}ealth-based \textbf{A}ir \textbf{Q}uality \textbf{I}ndex) \cite{Cairncross2007}. Trong các phần sau, chúng ta sẽ đi làm rõ từng chỉ số chất lượng không khí này.
+
+\section{Mục tiêu nghiên cứu}
+Trong đồ án này, em sẽ trình bày một số chỉ số chất lượng không khí phổ biến: AQIVN, CAQI, AAQI và HAQI. Mỗi chỉ số chất lượng không khí đều có những ưu, nhược điểm riêng, đặc biệt trong việc thể hiện tác động kết hợp cũng như xem xét vai trò khác nhau của các chất ô nhiễm. Dựa trên cơ sở đó, em sẽ đề xuất một chỉ số chất lượng không khí tổng hợp mới, gọi tắt là NAAQI (\textbf{N}ew \textbf{A}ggregate  \textbf{A}ir \textbf{Q}uality \textbf{I}ndex). NAAQI đánh giá chất lượng không khí thông qua mối quan hệ tổng hợp của các chất ô nhiễm, đồng thời xem xét đến vai trò khác nhau của mỗi chất ô nhiễm trong mối quan hệ đó. Cuối cùng, các chỉ số chất lượng không khí sẽ được so sánh với nhau trên dữ liệu thực tế được thu thập tại Hà Nội nhằm kiểm tra tính hiệu quả của các AQI, đồng thời đưa ra những cảnh báo tới cộng đồng về nguy cơ tác động đến sức khỏe của không khí và các hành động phòng tránh phù hợp.
+
+
+%----------------------------------------------
+\chapter{Phương pháp nghiên cứu}
+\section{Khu vực nghiên cứu và nguồn dữ liệu}
+Các dữ liệu không khí sử dụng trong đồ án này được thu thập tại thành phố Hà Nội. Đây là thành phố đông dân cư, công nghiệp hóa và đô thị hóa phát triển mạnh mẽ nhất cả nước. Đi kèm theo đó là những hậu quả khôn lường về môi trường, đặc biệt là môi trường không khí. Các hiện tượng sương mù, bụi dày đặc thường xuyên xảy ra. Nồng độ các chất ô nhiễm trong không khí cũng ngày càng tăng cao, đặc biệt là $O_3$, thủy ngân và bụi. Các tác động của ô nhiễm không khí tới sức khỏe con người ngày càng rõ rệt, đặc biệt là gây ra các bệnh đường hô hấp và tim mạch. Tình trạng này đã và đang gây hoang mang trong dư luận xã hội thời gian qua.
+
+Trong đồ án này, em sử dụng dữ liệu của trạm quan trắc không khí tự động 556 Nguyễn Văn Cừ, Long Biên, Hà Nội. Dữ liệu trong vòng một năm từ 01:00 ngày 01/01/2011 đến 00:00 ngày 01/01/2012 được sử dụng trong ước lượng các hệ số. Dữ liệu hai năm từ 01:00 ngày 01/01/2012 đến 00:00 ngày 01/01/2013 và từ 01:00 ngày 01/01/2014 đến 00:00 ngày 01/01/2015 được sử dụng trong so sánh giữa các chỉ số chất lượng không khí.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{bando.jpg}
+\end{center}
+\caption{Vị trí trạm quan trắc không khí tự động 556 Nguyễn Văn Cừ, Long Biên, Hà Nội.}
+\end{figure}
+
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|} 
+ \hline
+\hspace{0.2cm}Chất ô nhiễm \hspace{0.2cm} & \hspace{0.2cm}Trung bình 1h\hspace{0.2cm} & \hspace{0.2cm}Trung bình 8h\hspace{0.2cm} & \hspace{0.2cm}Trung bình 24h\hspace*{0.2cm} \\
+ \hline\hline
+ $NO_2$ & 200 & - & 100\\
+ $SO_2$ & 350 & - & 125\\
+ $CO$ & 30000 & 10000 & -\\
+ $O_3$ & 200 & 120 & -\\
+ $PM_{10}$ & - & - & 150\\
+ $PM_{2.5}$ & - & - & 50\\
+ \hline
+\end{tabular}
+\caption{Giá trị quy chuẩn của các chất ô nhiễm QCVN 05:2013/BTNMT ($mg/m^3$).}
+\textit{\small{Ghi chú: dấu (-) là không quy định}}
+\end{table}
+
+\section{Chỉ số chất lượng không khí tại Việt Nam}
+Chỉ số chất lượng không khí tại Việt Nam (gọi tắt là AQIVN) do Tổng cục Môi trường ban hành. AQIVN được tính toán từ giá trị quan trắc của sáu chất ô nhiễm là $NO_2, SO_2, CO, O_3, PM_{10}$ và $PM_{2.5}$. AQIVN được chia thành 2 loại: AQI theo giờ và AQI theo ngày \cite{TCMT2011}.
+
+Từ giờ trở đi, ta sử dụng các chỉ số từ 1 đến 6 để thể hiện các thông số tương ứng của các chất ô nhiễm. Các chỉ số từ 1 đến 6 lần lượt tương ứng với các chất ô nhiễm $NO_2, SO_2, CO, O_3, PM_{10}$ và $PM_{2.5}$.
+
+\example Ví dụ đánh chỉ số cho các chất ô nhiễm
+\begin{itemize}
+\item	$AQI_1$ đến $AQI_6$ lần lượt tương ứng là giá trị AQI của các chất ô nhiễm $NO_2, SO_2, CO, O_3, PM_{10}$ và $PM_{2.5}$.
+\item 	$HAQI_1$ là giá trị HAQI của chất ô nhiễm $NO_2$.
+\item 	$AAQI_5$ là giá trị AAQI của chất ô nhiễm $PM_{10}$.
+\end{itemize} 	
+
+\subsection{Giá trị AQI theo 1h}
+Giá trị AQI 1h của từng chất ô nhiễm được tính toán theo công thức \cite{TCMT2011}:
+
+\begin{equation}
+AQI_i^h = \dfrac{TS_i}{QC_i}, \hspace{0.5cm}  \forall i=\overline{1,6},
+\end{equation}
+trong đó:	 
+\begin{itemize}
+\item $TS_i$: giá trị quan trắc (nồng độ) trung bình 1h của chất thứ $i$.
+\item $QC_i$: giá trị quy chuẩn trung bình 1h của chất thứ $i$ (bảng 2.1).
+\end{itemize}
+
+Giá trị AQI chung 1h là giá trị AQI theo giờ lớn nhất của các chất ô nhiễm \cite{TCMT2011}:
+\begin{equation}
+AQI^h = \max_{i=\overline{1,6}}\left\lbrace AQI_i^h\right\rbrace.
+\end{equation}
+
+\subsection{Giá trị AQI theo 8h}
+Giá trị AQI 8h của từng chất ô nhiễm được tính toán theo công thức \cite{TCMT2011}:
+
+\begin{equation}
+AQI_i^{8h} = \dfrac{TS_i}{QC_i}, \hspace{0.5cm}  \forall i=\overline{1,6},
+\end{equation}
+trong đó:	 
+\begin{itemize}
+\item $TS_i$: giá trị quan trắc (nồng độ) trung bình 8h của chất thứ $i$.
+\item $QC_i$: giá trị quy chuẩn trung bình 8h của chất thứ $i$ (bảng 2.1).
+\end{itemize}
+
+Giá trị AQI chung 8h là giá trị AQI theo giờ lớn nhất của các chất ô nhiễm \cite{TCMT2011}:
+\begin{equation}
+AQI^{8h} = \max_{i=\overline{1,6}}\left\lbrace AQI_i^{8h}\right\rbrace.
+\end{equation}
+
+
+\subsection{Giá trị AQI theo 24h}
+Giá trị AQI 24h của từng chất ô nhiễm được tính toán theo công thức \cite{TCMT2011}:
+
+\begin{equation}
+AQI_i^{24h} = \dfrac{TS_i}{QC_i}, \hspace{0.5cm}  \forall i=\overline{1,6},
+\end{equation}
+trong đó:	 
+\begin{itemize}
+\item $TS_i$: giá trị quan trắc (nồng độ) trung bình 24h của chất thứ $i$.
+\item $QC_i$: giá trị quy chuẩn trung bình 24h của chất thứ $i$ (bảng 2.1).
+\end{itemize}
+
+Giá trị AQI chung 24h là giá trị AQI theo giờ lớn nhất của các chất ô nhiễm \cite{TCMT2011}:
+\begin{equation}
+AQI^{24h} = \max_{i=\overline{1,6}}\left\lbrace AQI_i^{24h}\right\rbrace.
+\end{equation}
+
+\subsection{Giá trị AQI theo ngày}
+Giá trị AQI theo ngày của từng chất ô nhiễm được tính toán theo công thức \cite{TCMT2011}:
+\begin{equation}
+AQI_i^d = \max\left\lbrace AQI_i^{h}, AQI_i^{8h}, AQI_i^{24h} \right\rbrace, \hspace{0.5cm} \forall i=\overline{1,6}.
+\end{equation}
+
+Giá trị AQI chung theo ngày là giá trị AQI theo ngày lớn nhất của các chất ô nhiễm \cite{TCMT2011}:
+\begin{equation}
+AQI^d = \max_{i=\overline{1,6}}\left\lbrace AQI_i^d \right\rbrace.
+\end{equation}
+
+
+Sau khi tính được chỉ số chất lượng không khí, giá trị AQI sẽ được đối chiếu với bảng phân cấp để xác định mức độ ô nhiễm và ảnh hưởng đến sức khỏe của không khí (bảng 2.2).
+
+\begin{table}
+\begin{tabular}{|p{2.5cm}||p{2.5cm}||p{7.2cm}||p{2cm}|} 
+ \hline
+Khoảng giá trị AQI &Chất lượng không khí & Ảnh hưởng đến sức khỏe &Màu \\
+ \hline\hline \rowcolor{green}
+0 – 50 & Tốt & Không ảnh hưởng đến sức khỏe &{Xanh}\\
+ \hline \rowcolor{yellow}
+51 – 100 & Trung bình &	Nhóm nhạy cảm nên hạn chế thời gian ở bên ngoài	& Vàng\\
+ \hline \rowcolor{orange}
+101 – 200 &	Kém	& Nhóm nhạy cảm cần hạn chế thời gian ở bên ngoài	& Da cam\\
+ \hline \rowcolor{red}
+ 201 – 300  &  Xấu	& Nhóm nhạy cảm tránh ra ngoài. Những người khác hạn chế ở bên ngoài	& Đỏ\\ 
+ \hline \rowcolor{brown}
+\textcolor{white}{Trên 300} &	\textcolor{white}{Nguy hại}	& \textcolor{white}{Mọi người nên ở trong nhà} &	\textcolor{white}{Nâu}\\
+ \hline
+\end{tabular}
+\caption{Bảng phân cấp chất lượng không khí theo AQIVN \cite{TCMT2011}.}
+\textit{\small{Ghi chú: nhóm nhạy cảm bao gồm trẻ em, người già và những người mắc bệnh hô hấp.}}
+\end{table}
+
+\section{Một số chỉ số chất lượng không khí phổ biến khác}
+\subsection{Chỉ số chất lượng không khí tại Mỹ}
+Mỹ là quốc gia có mạng lưới quan trắc không khí rất hoàn chỉnh và đồng bộ. Đây là cơ sở để xây dựng các loại chỉ số chất lượng không khí và đưa ra các cảnh báo kịp thời về hiện trạng của môi trường không khí. Chỉ số chất lượng không khí thời gian thực của Mỹ được công bố trên hầu khắp lãnh thổ.
+		
+Chỉ số chất lượng không khí của Mỹ (\textbf{C}ommon \textbf{A}ir \textbf{Q}uality \textbf{I}ndex - gọi tắt là CAQI) được tính toán từ giá trị quan trắc của sáu chất ô nhiễm là $NO_2, SO_2, CO, O_3, PM_{10}$ và $PM_{2.5}$ và có thang đo từ 0 đến 500. 
+
+Để tiện cho quá trình so sánh sau này, ta quy thang đo của tất cả các chỉ số chất lượng không khí về khoảng từ 0 đến 500. Những giá trị AQI lớn hơn 500 được quy về giá trị 500.
+
+Giá trị CAQI của mỗi chất ô nhiễm được tính toán theo công thức \cite{USEPA2013}:
+\begin{equation}
+I_i = \dfrac{I_{Hi} - I_{Lo}}{BP_{Hi} - BP_{Lo}}\left(C_i - BP_{Lo}\right) + I_{Lo},\hspace{0.5cm} \forall i=\overline{1,6},
+\end{equation}
+trong đó:	
+\begin{itemize}
+\item $I_i$: Chỉ số chất lượng không khí của chất ô nhiễm thứ $i$.
+\item $C_i$: Nồng độ của chất ô nhiễm thứ $i$.
+\item $BP_{Hi}$: Chỉ số trên của $C_i$ (bảng 2.4).
+\item $BP_{Lo}$: Chỉ số dưới của $C_i$ (bảng 2.4).
+\item $I_{Hi}$: Chỉ số AQI ứng với nồng độ $BP_{Hi}$ (bảng 2.4).
+\item $I_{Lo}$: Chỉ số AQI ứng với nồng độ $BP_{Lo}$ (bảng 2.4).
+\end{itemize}
+
+Giá trị CAQI chung được tính toán theo công thức \cite{USEPA2013}:
+\begin{equation}
+CAQI = \max_{i=\overline{1,6}} \left\lbrace I_i  \right\rbrace.
+\end{equation}
+
+\begin{table}
+\begin{tabular}{|c|p{10.8cm}|} 
+ \hline
+ Khoảng giá trị AQI & \hspace{2.5cm}Chất lượng môi trường\hspace{3cm}\\
+ \hline \hline \rowcolor{green}
+ 0 - 50 & Tốt\\\rowcolor{yellow}
+ 51 – 100  & Trung bình\\\rowcolor{orange}
+ 101 – 150	& 	Ảnh hưởng xấu đến nhóm nhạy cảm \\\rowcolor{red}
+ 151 – 200  &	Ảnh hưởng xấu đến sức khỏe\\\rowcolor{purple}  
+ \textcolor{white}{201 – 300}	& 	 \textcolor{white}{Ảnh hưởng rất xấu đến sức khỏe} \\\rowcolor{maroon}
+ \textcolor{white}{301 – 500} 	& 	 \textcolor{white}{Nguy hiểm}\\
+ \hline
+\end{tabular}
+\caption{Bảng phân cấp chất lượng không khí theo CAQI.}
+
+\begin{center}
+\includegraphics[scale=1.05]{chisotrenduoi.jpg}
+\end{center}
+\caption{Các chỉ số trên và chỉ số dưới để tính AQI tại Mỹ}
+\textit{\small{Ghi chú: dấu (-) là không quy định.}}
+\end{table}
+
+Các chỉ số chất lượng không khí tại Mỹ và Việt Nam tương đối đơn giản. Tuy nhiên, hai chỉ số lại này chưa đánh giá đầy đủ tác động kết hợp của các chất ô nhiễm đối với sức khỏe con người, đặc biệt khi có nhiều hơn một chất ô nhiễm có nồng độ vượt ngưỡng giới hạn cho phép. Trong phần tiếp theo, em sẽ trình bày hai loại chỉ số chất lượng không khí khác, thể hiện tác động kết hợp của các chất ô nhiễm đối với sức khỏe con người.
+
+\subsection{Chỉ số chất lượng không khí tổng hợp}
+Chỉ số chất lượng không khí tổng hợp (\textbf{A}ggregate \textbf{A}ir \textbf{Q}uality \textbf{I}ndex - gọi tắt là AAQI) được xây dựng nhằm đánh giá tác động kết hợp của các chất ô nhiễm đối với sức khỏe con người. Chỉ số này được đề xuất bởi Swamee, Tyagi và Kyrkilis và được tính toán thông qua công thức \cite{Swamee1999, Kyrkilis2007}:
+
+\begin{equation}
+AAQI = {\left( \sum_{i = 1}^6 AQI_i^{\rho} \right)}^{1/\rho},
+\end{equation}
+{trong đó,  \begin{itemize}
+\item $AQI_i$ là giá trị AQI của chất ô nhiễm thứ $i$, theo công thức AQI Việt Nam.
+\item $\rho$ là hằng số dương.
+\end{itemize} }
+
+Trong trường hợp đặc biệt, nếu $\rho = +\infty$, AAQI trở thành giá trị lớn nhất của các AQI thành phần. Khi đó, AAQI chính là AQI Việt Nam được định nghĩa ở trên. Trong trường hợp $\rho=1$, AAQI là tổng tuyến tính của các AQI thành phần. 
+
+Lựa chọn giá trị phù hợp nhất của $\rho$ để AAQI thể hiện tốt nhất quan hệ kết hợp của các chất ô nhiễm vẫn đang là bài toán mở. Tuy nhiên, trong những nghiên cứu trước đây, nhiều tác giả đã đề xuất nên chọn giá trị $\rho$ trong khoảng từ 2 đến 3 \cite{Khanna2000, Swamee1999}. Trong đồ án này, em chọn $\rho=2$ cho các so sánh của mình (các giá trị khác của $\rho$ xin tham khảo tại \cite{Jianlin2015}).
+
+\subsection{Chỉ số chất lượng không khí dựa trên nguy cơ sức khỏe}
+Các chỉ số chất lượng không khí dựa trên nguy cơ tác động đến sức khỏe (\textbf{H}ealth-based \textbf{A}ir \textbf{Q}uality \textbf{I}ndex - gọi tắt là HAQI) đã được đề xuất trong nhiều nghiên cứu trước đây, điển hình là các chỉ số của Cairncross và Sicard \cite{Cairncross2007, Sicard2012}. Trong nghiên cứu của mình, Cairncross và các cộng sự đã xây dựng một chỉ số dựa trên ảnh hưởng của ô nhiễm không khí tới sức khỏe con người thông qua nguy cơ phơi nhiễm của mỗi chất ô nhiễm. Trong khi đó, Sicard xem xét mối quan hệ kết hợp giữa tổng nguy cơ tử vong với mỗi chất ô nhiễm thông qua việc phân tích chuỗi thời gian quá trình ô nhiễm không khí. Trong đồ án này, em sẽ trình bày HAQI theo cách tiếp cận của Cairncoss\cite{Cairncross2007}.
+
+Nguy cơ tương đối (\textit{Relative Risk - RR}) của mỗi chất ô nhiễm, dựa trên các nghiên cứu về ảnh hưởng của nó tới sức khỏe, được tính toán thông qua công thức \cite{Cairncross2007}:
+
+\begin{equation}
+RR_i =
+\begin{cases}  
+e^{\beta_i\left(C_i - C_{i0} \right)}      &C_i > C_{i0} \\ 
+1          &C_i \leq C_{i0}
+\end{cases} 
+  , \hspace{0.5cm} \forall i = \overline{1, 6},
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $\beta_i$ là hệ số tương đối, thể hiện nguy cơ tác động đến sức khỏe (hoặc nguy cơ tử vong) khi nồng độ chất ô nhiễm thứ $i$ trong không khí xung quanh tăng thêm 1 đơn vị.
+\item $C_i$ là giá trị quan trắc (nồng độ) của chất ô nhiễm thứ $i$.
+\item $C_{i0}$ là giá trị quy chuẩn của chất ô nhiễm thứ $i$ (bảng 2.5).
+\end{itemize}
+
+Giá trị $C_{i0}$ thể hiện ngưỡng nồng độ giới hạn cho phép mà dưới nồng độ đó, chất ô nhiễm được xem là không gây tác hại đối với sức khỏe con người (tương ứng với $RR=1$). Nói cách khác, những chất ô nhiễm có nồng độ không vượt quá nồng độ giới hạn cho phép có nguy cơ tương đối $RR=1$. Trong bài này, em sử dụng giá trị quy chuẩn trung bình 1h và 24h của các chất ô nhiễm.
+
+Nguy cơ phơi nhiễm (\textit{Excess Risk – ER}) của mỗi chất ô nhiễm được định nghĩa \cite{Cairncross2007}:
+\begin{equation}
+ER_i = RR_i - 1, \hspace{0.5cm} \forall i=\overline{1,6}.
+\end{equation}
+
+Tổng nguy cơ phơi nhiễm của tất cả các chất ô nhiễm \cite{Cairncross2007}:
+\begin{equation}
+ER_{total} = \sum_{i=1}^6 ER_i = \sum_{i=1}^6 (RR_i - 1).
+\end{equation}
+
+Chỉ số chất lượng không khí dựa trên nguy cơ sức khỏe được tính toán dựa vào nồng độ tương đương $C^*$ của các chất ô nhiễm. Nồng độ tương đương của một chất ô nhiễm được định nghĩa là nồng độ mà tại đó nguy cơ dư thừa của chất ô nhiễm bằng tổng nguy cơ dư thừa của tất cả các chất ô nhiễm \cite{Cairncross2007}:
+
+\begin{equation}
+C_i^* = \dfrac{ln(ER_{total} + 1)}{\beta_i} + C_{i0}.
+\end{equation}
+
+Nồng độ tương đương thể hiện tác động kết hợp của tất cả các chất ô nhiễm có nồng độ vượt ngưỡng giới hạn tới sức khỏe con người. Từ các công thức 2.12 đến 2.15, ta thấy rằng khi có nhiều hơn một chất có nồng độ vượt ngưỡng giới hạn cho phép, nồng độ tương đương của các chất gây ô nhiễm cao hơn giá trị nồng độ quan trắc được. Sau khi tính được nồng độ tương đương, giá trị HAQI của mỗi chất ô nhiễm được tính tương tự như AQIVN:
+
+\begin{equation}
+HAQI = \dfrac{C_i^*}{C_{i0}}\times 100,\hspace{0.5cm} \forall i=\overline{1,6}.
+\end{equation}
+
+Giá trị HAQI chung là giá trị HAQI lớn nhất của các chất ô nhiễm: 
+
+\begin{equation}
+HAQI = \max_{i=\overline{1,6}}\left\lbrace HAQI_i \right\rbrace.
+\end{equation}
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|} 
+ \hline
+ \hspace{0.6cm}$NO_2$ \hspace{0.6cm} & \hspace{0.65cm}$SO_2$\hspace{0.65cm} & \hspace{0.7cm}$CO$\hspace{0.7cm} & \hspace{0.7cm}$O_3$\hspace{0.7cm} & \hspace{0.55cm}$PM_{10}$\hspace{0.55cm} & \hspace{0.55cm}$PM_{2.5}$\hspace*{0.55cm}\\
+ \hline \hline
+ $200^{(1)}$	&	$350^{(1)}$		&	$30000^{(1)}$	&	$200^{(1)}$		&	$150^{(2)}$		&	$50^{(2)}$\\
+ \hline
+\end{tabular}
+\caption{Bảng giá trị quy chuẩn của các chất ô nhiễm  theo HAQI \cite{TCMT2011}.}
+\textit{\small{Ghi chú: (1) : giá trị quy chuẩn 1h, (2): giá trị quy chuẩn 24h.}}
+\end{table}
+
+Lưu ý rằng, hai phương trình 2.8 và 2.17 có vẻ giống nhau nhưng là rất khác nhau nếu nhìn từ góc độ đánh giá nguy cơ tác động đến sức khỏe. Phương trình 2.8 thể hiện rằng chỉ chất có AQI cao nhất mới ảnh hưởng đến sức khỏe. Ngược lại, HAQI của mỗi chất ô nhiễm đã xem xét đến tác động kết hợp của các chất ô nhiễm vượt ngưỡng tới sức khỏe con người. Do đó, việc lựa chọn giá trị lớn nhất trong phương trình 2.17 chỉ là một cách làm thận trọng hơn để ước tính nguy cơ tác động đến sức khỏe của các chất ô nhiễm.
+
+Để tính giá trị HAQI, ta cần xác định hệ số tương đối $\beta_i$ của mỗi chất ô nhiễm. Các giá trị $\beta_i$ khác nhau sẽ đưa đến các kết quả HAQI khác nhau. Sau đây, chúng tôi sẽ trình bày cách ước lượng các hệ số tương đối $\beta$ bằng phương pháp cực tiểu bình phương sai số.
+
+\subsection{Ước lượng các hệ số tương đối bằng phương pháp cực tiểu bình phương sai số }
+Từ công thức 2.12, ta có thể tính hệ số tương đối $\beta_i$ thông qua nồng độ quan trắc $C_i$ và nồng độ quy chuẩn $C_{i0}$ của các mỗi chất ô nhiễm:
+
+\begin{equation}
+\beta_i = \dfrac{ln(RR_i)}{C_i - C{i0}}, \hspace{0.5cm} C_i > C_{i0}, \hspace{0.5cm} \forall i = 1, \ldots 6.
+\end{equation}
+
+Giả sử cần ước lượng hệ số tương đối mẫu $\overline{\beta_i}$ cho $\beta_i$. Ta cần cực tiểu hàm bình phương sai số:
+
+\begin{equation}
+e(\overline{\beta_i}) = \sum_{k=1}^N \left(\overline{\beta_i} - \beta_i^k  \right)^2   \rightarrow \min,
+\end{equation}
+trong đó, N là kích thước của tập dữ liệu dùng để ước lượng.
+
+Lấy đạo hàm $e(\overline{\beta_i})$ theo $\overline{\beta_i}$, ta được:
+
+\begin{equation}
+e'(\overline{\beta_i}) = 2\sum_{k=1}^N \left(\overline{\beta_i} - \beta_i^k  \right) = 2\left(N.\overline{\beta_i} - \sum_{k=1}^N \beta_i^k \right).
+\end{equation}
+
+Giải phương trình $e'(\overline{\beta_i}) = 0$, ta được hệ số tương đối mẫu $\overline{\beta_i}$ cần tìm:
+
+\begin{equation}
+\overline{\beta_i} = \dfrac{1}{N}.\sum_{k=1}^N \beta_i^k = \dfrac{1}{N}.\sum_{k=1}^N \dfrac{ln(RR_i)}{C_i^k - C_{i)}}.
+\end{equation}
+
+Trong nghiên cứu này, chúng tôi sử dụng các giá trị nguy cơ tương đối $RR_i$ tiêu chuẩn do WHO phát hành (bảng 2.6).
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|} 
+ \hline
+ \hspace{0.65cm}$NO_2$ \hspace{0.65cm} & \hspace{0.65cm}$SO_2$\hspace{0.65cm} & \hspace{0.7cm}$CO$\hspace{0.7cm} & \hspace{0.7cm}$O_3$\hspace{0.7cm} & \hspace{0.55cm}$PM_{10}$\hspace{0.55cm} & \hspace{0.55cm}$PM_{2.5}$\hspace*{0.55cm}\\
+ \hline \hline
+ $1.003$	&	$1.004$		&	$1.04^{(1)}$	&	$1.0051$		&	$1.0074$		&	$1.015$\\
+ \hline
+\end{tabular}
+\caption{Nguy cơ tương đối RR tiêu chuẩn của các chất ô nhiễm \cite{WHO2001, Schwart1995}}
+\textit{\small{Ghi chú: (1) :  (Schwart, J., 1995).}}
+\end{table}
+
+Sử dụng công thức ước lượng 2.21 trên dữ liệu một năm tại Hà Nội, ta nhận được các hệ số tương đối mẫu như bảng 2.7.
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|} 
+ \hline
+ \hspace{0.65cm}$NO_2$ \hspace{0.65cm} & \hspace{0.65cm}$SO_2$\hspace{0.65cm} & \hspace{0.7cm}$CO$\hspace{0.7cm} & \hspace{0.7cm}$O_3$\hspace{0.7cm} & \hspace{0.55cm}$PM_{10}$\hspace{0.55cm} & \hspace{0.55cm}$PM_{2.5}$\hspace*{0.55cm}\\
+ \hline \hline
+ $0.0073\%$	&	$0.029\%$		&	$0.0033\%$	&	$0.019\%$		&	$0.049\%$		&	$0.078\%$ \\
+\hline
+\end{tabular}
+\caption{Hệ số tương đối mẫu ước lượng.}
+\end{table}
+
+Chỉ số chất lượng không khí dựa trên nguy cơ sức khỏe HAQI đã xem xét đến ảnh hưởng khác nhau của các chất gây ô nhiễm đối với sức khỏe con người. Tuy nhiên, HAQI chỉ xem xét tác động của các chất ô nhiễm có nồng độ vượt ngưỡng giới hạn cho phép mà không xem xét tác động tổng hợp hợp của tất cả các chất. 
+
+Chỉ số chất lượng không khí tổng hợp AAQI đã xem xét tác động tổng hợp của các chất ô nhiễm đối với sức khỏe con người. Tuy nhiên, AAQI vẫn chưa thể hiện được vai trò khác nhau của các chất ô nhiễm đối với sức khỏe con người. 
+
+Trong phần sau, em sẽ xây dựng một chỉ số chất lượng không khí tổng hợp mới, trong đó có xem xét đầy đủ mối quan hệ tổng hợp của tất cả các chất ô nhiễm đối với sức khỏe con người cũng như vai trò khác nhau của mỗi chất ô nhiễm trong mối quan hệ đó.
+
+\section{Xây dựng chỉ số chất lượng không khí tổng hợp mới}
+Trong môi trường không khí, mỗi chất ô nhiễm đều gây ra những tác động nhất định đối với sức khỏe con người. Đặc biệt, khi có nhiều hơn một chất có nồng độ vượt ngưỡng giới hạn cho phép, các chất ô nhiễm còn gây ra những tác động cộng hưởng, ảnh hưởng lớn hơn đối với sức khỏe con người. Chẳng hạn, khi trong không khí nồng độ bụi $PM_{2.5}$ và ozon $O_3$ đồng thời vượt mức giới hạn cho phép, khi đó, không khí gây ra tác động rất lớn đối với sức khỏe, đặc biệt là các bệnh đường hô hấp, tim, phổi. Nguy cơ này lớn hơn rất nhiều khi chỉ có một chất ô nhiễm có nồng độ vượt ngưỡng cho phép. Như vậy, chất lượng không khí không chỉ được đánh giá thông qua chất lượng của từng chất ô nhiễm, mà còn phải được đánh giá thông qua tác động cộng hưởng của tất cả các chất lên sức khỏe con người, đặc biệt khi có nhiều hơn một chất ô nhiễm có nồng độ vượt ngưỡng giới hạn cho phép.
+
+Trong mối quan hệ tổng hợp, mỗi chất ô nhiễm có một vai trò và tác động riêng. Các chất ô nhiễm khác nhau có vai trò không giống nhau đối với chất lượng không khí nói chung. Các chất thường xuyên bị ô nhiễm ở mức độ cao sẽ gây ra những tác động lớn hơn những chất ít gây ô nhiễm hoặc gây ô nhiễm ở mức độ thấp hơn. Do đó, việc đánh giá chất lượng không khí nói chung không thể chỉ xem xét tác động tổng hợp của các chất ô nhiễm, mà còn phải xem xét đến vai trò khác nhau của mỗi chất đối với chất lượng không khí nói chung cũng như đối với sức khỏe con người.
+
+Dựa trên cách tiếp cận các chỉ số chất lượng không khí đã được trình bày ở trên, em đề xuất một chỉ số chất lượng không khí tổng hợp mới (\textbf{N}ew \textbf{A}ggregate  \textbf{A}ir \textbf{Q}uality \textbf{I}ndex - kí hiệu là NAAQI). NAAQI không chỉ đánh giá tác động kết hợp của tất cả các chất ô nhiễm mà còn xem xét đến vai trò khác nhau của mỗi chất ô nhiễm thông qua một hệ số tỉ lệ $\varphi_i$. Hệ số tỉ lệ $\varphi_i$ của mỗi chất ô nhiễm đánh giá vai trò của chất ô nhiễm thứ $i$ trong mối quan hệ tổng hợp của các chất ô nhiễm. Các hệ số tỉ lệ khác nhau thể hiện các vai trò, mức độ ảnh hưởng khác nhau của mỗi chất ô nhiễm đối với chất lượng không khí và sức khỏe con người. Hệ số tỉ lệ $\varphi_i$ càng lớn thể hiện chất ô nhiễm có vai trò càng lớn. Ngược lại, $\varphi_i$ càng nhỏ thể hiện chất ô nhiễm càng ít ảnh hưởng đến chất lượng không khí nói chung.
+
+Trong đồ án này, em sử dụng các hệ số tỉ lệ $\varphi_i$ trong khoảng [0,1]. Chỉ số chất lượng không khí tổng hợp mới được tính toán thông qua công thức:
+
+\begin{equation}
+NAAQI = {\left( \sum_{i = 1}^6 \left(\varphi_i. AQI_i\right)^{\rho} \right)}^{1/\rho},
+\end{equation}
+trong đó,  
+\begin{itemize}
+\item $AQI_i$ là giá trị AQIVN của chất ô nhiễm thứ $i$.
+\item $\rho$ là hằng số dương.
+\end{itemize}
+
+Như vậy, hệ số tỉ lệ $\varphi_i$ thể hiện mối quan hệ tương quan giữa mức độ ô nhiễm của chất thứ $i$ và chất lượng không khí nói chung. $\varphi_i$ càng lớn thể hiện tương quan giữa mức độ ô nhiễm của chất thứ $i$ và chất lượng không khí chung càng lớn, nói cách khác, chất ô nhiễm thứ $i$ có vai trò càng lớn đối với chất lượng không khí chung. Ngược lại, $\varphi_i$ càng thấp thể hiện tương quan giữa mức độ ô nhiễm của chất thứ $i$ và chất lượng không khí chung càng thấp, hay chất ô nhiễm thứ $i$ thường có mức độ ô nhiễm thấp hơn so với các chất còn lại.
+
+Từ các lập luận ở trên, em sử dụng hệ số tương quan giữa chỉ số chất lượng không khí của các chất ô nhiễm với chỉ số chất lượng chung của không khí để ước lượng hệ số tỉ lệ của các chất ô nhiễm. Bằng cách này, các hệ số tỉ lệ sẽ thể hiện được vai trò cũng như ảnh hưởng của mỗi chất ô nhiễm đối với chất lượng không khí nói chung:
+
+\begin{equation}
+\varphi_i = r_{AQI,AQI_i} = \dfrac{cov(AQI, AQI_i)}{\sqrt{var(AQI).var(AQI_i}},
+\end{equation}
+trong đó, 
+\begin{itemize}
+\item $cov(AQI,AQI_i)$ là hiệp phương sai của AQI chung với AQI thành phần của chất ô nhiễm thứ $i$.
+\item $var(AQI)$ là phương sai của AQI chung.
+\item $var(AQI_i)$ là phương sai của AQI của chất thứ ô nhiễm thứ $i$.
+\end{itemize}
+
+Các giá trị phương sai và hiệp phương sai của AQI chung và các AQI thành phần chưa biết. Do đó, ta sử dụng các phương sai và hiệp phương sai mẫu để ước lượng cho các giá trị này (xem chi tiết tại phụ lục C):
+\begin{equation}
+cov(AQI,AQI_i) = \dfrac{1}{N-1}\times \sum_{j=1}^N \left(AQI_j - \overline{AQI} \right)\left(AQI_{i_j} - \overline{AQI_i}\right),
+\end{equation}
+\begin{equation}
+var(AQI) = \dfrac{1}{N-1}\times \sum_{j=1}^N \left(AQI_j - \overline{AQI}\right)^2,
+\end{equation}
+\begin{equation}
+var(AQI_i) = \dfrac{1}{N-1}\times \sum_{j=1}^N\left(AQI_{i_j} - \overline{AQI_i}\right)^2,
+\end{equation}
+
+trong đó,
+\begin{itemize}
+\item N là kích thước mẫu (số ngày thu thập được dữ liệu để ước lượng).
+\item $AQI_j$ là AQIVN chung trong ngày thứ $j$.
+\item $AQI_{i_j}$ là AQIVN của chất ô nhiễm thứ $i$ trong ngày thứ $j$.
+\item $\overline{AQI}$ là giá trị trung bình AQIVN chung.
+\item $\overline{AQI_i}$ là giá trị trung bình AQIVN của chất ô nhiễm thứ $i$.
+\end{itemize}
+
+Các giá trị trung bình AQIVN chung và AQIVN thành phần của các chất ô nhiễm được ước lượng từ các kì vọng mẫu thông qua công thức (xem chi tiết tại phụ lục C):
+
+\begin{equation}
+\overline{AQI} = \dfrac{1}{N} \sum_{j=1}^N AQI_j,\hspace{1cm}
+\overline{AQI_i} = \dfrac{1}{N} \sum_{j=1}^N AQI_{i_j},
+\end{equation}
+
+Sử dụng các công thức từ 2.23 đến 2.28 trên bộ dữ liệu quan trắc không khí thực tế năm 2011 tại Hà Nội, ta nhận được hệ số tỉ lệ ước lượng của các chất ô nhiễm như bảng 2.8.
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|} 
+ \hline
+ \hspace{0.8cm}$\varphi_1$ \hspace{0.8cm} & \hspace{0.8cm}$\varphi_2$\hspace{0.8cm} & \hspace{0.8cm}$\varphi_3$\hspace{0.8cm} & \hspace{0.8cm}$\varphi_4$\hspace{0.8cm} & \hspace{0.8cm}$\varphi_5$\hspace{0.8cm} & \hspace{0.8cm}$\varphi_6$ \hspace*{0.8cm}\\\hline \hline
+ $0.7215$	&	$0.5901$		&	$0.0024$	&	$0.6954$		&	$0.5374$		&	$0.9829$ \\
+\hline
+\end{tabular}
+\caption{Hệ số tỉ lệ của các chất ô nhiễm.}
+\end{table}
+
+Kết quả ước lượng các hệ số tỉ lệ cho thấy rằng, tại khu vực quan trắc, $PM_{2.5}$ có vai trò rất lớn đến chất lượng không khí nói chung. Ngược lại, khí $CO$ lại có vai trò rất nhỏ trong việc làm suy giảm chất lượng không khí. Do đó, chất lượng không khí tại khu vực này phụ thuộc lớn vào mức độ ô nhiễm của $PM_{2.5}$ và hầu như không phụ thuộc vào mức độ ô nhiễm của $CO$.
+
+Như vậy, chỉ số chất lượng không khí tổng hợp mới NAAQI đã xem xét tác động tổng hợp của các chất ô nhiễm đối với chất lượng không khí chung. Đồng thời, thông qua việc xem xét tương quan giữa mức độ ô nhiễm của mỗi chất ô nhiễm và chất lượng không khí nói chung, NAAQI còn thể hiện được vai trò, ảnh hưởng khác nhau của mỗi chất ô nhiễm đối với chất lượng không khí chung, cũng như đối với sức khỏe con người.
+
+Trong phần tiếp theo, chúng tôi sẽ tiến hành so sánh các chỉ số chất lượng không khí AQIVN, CAQI, AAQI, HAQI và NAAQI trên dữ liệu quan trắc không khí thực tế tại Hà Nội trong 2 năm 2012 và 2014. Các kết quả so sánh sẽ tập trung xem xét tính hiệu quả của NAAQI, thông qua việc kiểm tra vai trò, ảnh hưởng thực tế của mỗi chất ô nhiễm đối với chất lượng không khí nói chung. Đồng thời, từ các kết quả so sánh, chúng tôi cũng đánh giá về hiệu quả thực tế của AQIVN, từ đó đưa ra những khuyến cáo tới cộng đồng về chất lượng không khí và các hành động phòng tránh thích hợp để bảo vệ sức khỏe.
+
+\chapter{Kết quả nghiên cứu}
+Tiến hành tính toán các chỉ số chất lượng không khí đã được trình bày trên dữ liệu không khí thực tế thu thập tại Hà Nội trong 2 năm 2012 và 2014.
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|c|c|} 
+ \hline
+ Mức &\hspace{0.05cm} $NO_2$ \hspace{0.05cm}& \hspace{0.05cm} $SO_2$ \hspace{0.05cm} & \hspace{0.05cm} $CO$\hspace{0.1cm} & \hspace{0.1cm} $O_3$ \hspace{0.1cm} & $PM_{10}$ & $PM_{2.5}$& AQI ngày\\
+ \hline \hline
+ Tốt	&	24	&	66	&	289	& 47 & 26	&	0 & 0\\\hline
+Trung bình & 44 & 7 & 1 & 15 & 93 & 18 & 18\\\hline
+Kém & 8 & 213 & 0 & 53 & 167 & 41 & 31\\\hline
+Xấu & 202 & 4 & 0 & 169 & 5 & 64 & 66\\\hline
+Nguy hại & 13 & 1 & 1 & 7 & 0 & 168 & 176\\\hline
+Tổng & 291 & 291 & 291 & 291 & 291 & 291 & 291\\\hline
+\end{tabular}
+\caption{Số ngày tương ứng của mỗi mức phân loại theo AQIVN.}
+\end{table}
+
+Nhìn vào bảng số liệu, trong 291 ngày có dữ liệu đầy đủ của 2 năm 2012 và 2014, chỉ có 1 ngày nồng độ CO vượt ngưỡng giới hạn cho phép. Đặc biệt, có đến 289/291 ngày chất lượng không khí của CO ở mức tốt, tức không quá 50. Như vậy, trong không khí xung quanh khu vực quan trắc, nồng độ khí CO hầu như luôn ở dưới ngưỡng giới hạn cho phép, do đó, CO hầu như không gây ra các ảnh hưởng trực tiếp đối với sức khỏe con người. 
+
+Ngược lại đối với $PM_{2.5}$, có đến 168/291 ngày chất lượng không khí của $PM_{2.5}$ ở mức nguy hại, trong khi chỉ có 18 ngày nồng độ của chất này không vượt ngưỡng giới hạn cho phép. Điều này chứng tỏ rằng, tại khu vực quan trắc, nồng độ $PM_{2.5}$ trong không khí luôn ở mức rất cao so với nồng độ giới hạn cho phép, do dó, nguy cơ $PM_{2.5}$ gây tác hại trực tiếp đến sức khỏe con người là rất lớn. 
+
+Các hệ số tỉ lệ được ước lượng như trong bảng 2.8 hoàn toàn phù hợp với các số liệu thống kê số ngày ô nhiễm của mỗi chất trong bảng 2.9, đặc biệt đối với $PM_{2.5}$ và $CO$. Như vậy, các hệ số tỉ lệ được tính toán thông qua công thức 2.23 đã đánh giá đúng vai trò cũng như ảnh hưởng khác nhau của các chất ô nhiễm đối với chất lượng không khí nói chung. Điều này chứng tỏ rằng chỉ số chất lượng không khí tổng hợp mới NAAQI không những xem xét đến mối quan hệ tổng hợp của các chất ô nhiễm đối với chất lượng không khí chung mà còn đánh giá đúng vai trò khác nhau của mỗi chất trong mối quan hệ đó.
+    	
+Nhìn một cách tổng thể, trong số những ngày có dữ liệu, có tới 60\% số ngày chỉ số chất lượng không khí tại Việt Nam ở mức nguy hại, 23\% số ngày ở mức xấu và chỉ có 6\% số ngày nồng độ tất cả các chất ô nhiễm dưới ngưỡng giới hạn cho phép. Như vậy, trong khu vực quan trắc, không khí luôn trong tình trạng ô nhiễm rất đáng báo động. Dân cư sống trong khu vực này cũng như toàn thành phố Hà Nội cần nắm bắt được thông tin thường xuyên hơn để có những hành động phòng tránh phù hợp nhằm bảo vệ sức khỏe cho mình.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1]{AQIVN.jpg}
+\end{center}
+\caption{Số ngày tương ứng với mỗi mức phân loại theo AQIVN}
+\end{figure}
+
+Một mối quan tâm khác trong ô nhiễm không khí là ô nhiễm đa nhiễm. Ô nhiễm không khí đa nhiễm là hiện tượng xảy ra khi nhiều hơn 1 chất ô nhiễm có nồng độ trong không khí vượt ngưỡng giới hạn cho phép. Ngược lại, khi trong không khí chỉ có một chất ô nhiễm có nồng độ vượt ngưỡng giới hạn cho phép, ta gọi đó là hiện tượng ô nhiễm không khí đơn nhiễm. Khi hiện tượng ô nhiễm đa nhiễm xảy ra, các chất ô nhiễm gây ra những tác động cộng hưởng lớn hơn khi xảy ra ô nhiễm đơn nhiễm. Do đó, các chỉ số đánh giá chất lượng không khí chung dựa trên chỉ số chất lượng không khí thành phần có giá trị lớn nhất của các chất ô nhiễm, chẳng hạn như AQIVN, chỉ đánh giá được tác động riêng biệt của một chất ô nhiễm mà bỏ qua tác động của các chất gây ô nhiễm khác cũng như tác động tổng hợp của chúng. Nói cách khác, AQIVN vô hình chung đã bỏ qua mức độ cộng hưởng của hiện tượng đa nhiễm tới chất lượng không khí cũng như tới sức khỏe con người.
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+ \hline
+ \hspace{0.75cm}0 \hspace{0.75cm} & \hspace{0.8cm}1\hspace{0.8cm} & \hspace{0.8cm}2\hspace{0.8cm} & \hspace{0.8cm}3\hspace{0.8cm} & \hspace{0.8cm}4\hspace{0.8cm} & \hspace{0.8cm}5\hspace*{0.8cm}& \hspace{0.75cm}6\hspace*{0.75cm}\\
+ \hline \hline
+ 18	&	32		&	12	&	13		&	60		&	155 & 1 \\\hline
+\end{tabular}
+\caption{Số chất ô nhiễm đồng thời vượt ngưỡng cho phép và số ngày tương ứng.}
+\end{table}
+
+Kết quả về số ngày ô nhiễm được thể hiện trong bảng 2.10. Chỉ có 18 ngày không khí ở dưới mức ô nhiễm, 32 ngày không khí ô nhiễm đơn nhiễm và lên đến 241 ngày xảy ra hiện tượng ô nhiễm đa nhiễm. Đặc biệt nghiêm trọng, có tới 155/291 (chiếm 53.26\%) ngày 5 chất ô nhiễm đồng thời cùng có nồng độ vượt ngưỡng giới hạn cho phép. Như vậy, không khí xung quanh khu vực quan trắc nói riêng cũng như thành phố Hà Nội nói chung đang ở mức ô nhiễm rất đáng báo động. Điều này không chỉ thể hiện ở số ngày không khí bị ô nhiễm mà còn thể hiện ở số chất gây ô nhiễm vượt ngưỡng giới hạn cho phép, đồng thời tác động trực tiếp đến sức khỏe cộng đồng.
+
+Như đã trình bày ở trên, HAQI đánh giá chất lượng không khí dựa trên tác động kết hợp của các chất gây ô nhiễm đồng thời. Nói cách khác, tại các khu vực thường xuyên xảy ra ô nhiễm đa nhiễm, HAQI đánh giá tác động của không khí tới sức khỏe con người tốt hơn AQIVN. Để thấy rõ hơn điều này cũng như tác động mạnh mẽ của ô nhiễm không khí đa nhiễm tới chất lượng không khí chung tại Việt Nam, ta so sánh kết quả tính toán 2 chỉ số chất lượng không khí: HAQI và AQIVN.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{HAQI_AQI.jpg}
+\end{center}
+\caption{Tương quan 2 chỉ số chất lượng không khí: HAQI và AQIVN}
+\end{figure}
+
+Trong những ngày ô nhiễm đa nhiễm, HAQI luôn có giá trị lớn hơn AQIVN. HAQI bằng AQIVN trong những ngày không khí dưới mức ô nhiễm hoặc chỉ có một chất ô nhiễm có nồng độ vượt ngưỡng cho phép. Trong hầu hết những ngày AQIVN có giá trị lớn hơn 200 và xảy ra hiện tượng ô nhiễm đa nhiễm, HAQI đều đạt giá trị cực đại 500. Phần lớn những ngày AQIVN có giá trị nhỏ hơn 200, HAQI có giá trị bằng AQIVN. Như vậy, những ngày xảy ra hiện tượng ô nhiễm đa nhiễm đều là những ngày có AQIVN rất cao, không khí bị ô nhiễm rất nặng nề. Có 5 ngày giá trị HAQI nhỏ hơn AQIVN. Việc chọn các giá trị quy chuẩn cho HAQI chính là nguyên nhân dẫn đến kết quả sai lệch này.
+
+Để đánh giá tính hiệu quả của AQI tại Việt Nam, ta so sánh chỉ số này với 2 AQI phổ biến khác: CAQI và AAQI.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{CAQI_AQI.jpg}
+\end{center}
+\caption{Tương quan giữa 2 chỉ số chất lượng không khí: CAQI và AQIVN}
+
+\begin{center}
+\includegraphics[scale=0.8]{AAQI_AQI.jpg}
+\end{center}
+\caption{Tương quan giữa 2 chỉ số chất lượng không khí: AAQI và AQIVN}
+\end{figure}
+
+Trong hầu hết những ngày có dữ liệu, chỉ số chất lượng không khí của Mỹ CAQI đều có giá trị nhỏ hơn chỉ số chất lượng không khí do Tổng cục Môi trường ban hành, đặc biệt trong những ngày AQIVN lớn hơn 150 và những ngày xảy ra hiện tượng đa nhiễm. Điều đó chứng tỏ rằng phương pháp và các giá trị quy chuẩn của AQI tại Mỹ không phù hợp khi sử dụng để đánh giá chất lượng không khí tại Việt Nam.
+ 
+Ngược lại, AAQI có giá trị cao hơn AQIVN trong tất cả các ngày. Đặc biệt trong những ngày giá trị AQIVN lớn hơn 300, CAQI hầu như đều đạt giá trị cực đại 500. Như vậy, giá trị AAQI khá tương đồng với HAQI. Nguyên nhân là do số ngày xảy ra ô nhiễm đa nhiễm lớn, dẫn đến giá trị của HAQI và CAQI tăng cao, chủ yếu nhận giá trị cực đại 500.
+
+		Cuối cùng, ta so sánh 2 chỉ số chất lượng không khí NAAQI và AQIVN. Giá trị NAAQI lớn hơn AQIVN trong hầu hết những ngày giá trị AQIVN cao hơn 250, đồng thời đều là những ngày xảy ra hiện tượng đa nhiễm. Trong những ngày còn lại, giá trị NAAQI phần lớn đều bằng giá trị AQIVN. Tỉ lệ NAAQI/AQI nằm trong khoảng từ 0.91 đến 1.47. Kì vọng và độ lệch chuẩn của tỉ lệ này lần lượt là 1.15 và 0.12. 
+		
+Như vậy, về cả ba phương diện: đánh giá tác động cộng hưỡng, đánh giá vai trò khác nhau của các chất ô nhiễm không khí và đánh giá nguy cơ của hiện tượng ô nhiễm đa nhiễm, NAAQI đều thể hiện được sự ưu việt hơn so với AQI đang được sử dụng tại Việt Nam cũng như so với các chỉ số chất lượng không khí phổ biến khác.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{NAAQI_AQI.jpg}
+\end{center}
+\caption{Tương quan giữa 2 chỉ số chất lượng không khí: NAAQI và AQIVN}
+\end{figure}
+
+\chapter{Kết luận}
+Trong đồ án này, em đã trình bày một số chỉ số chất lượng không khí phổ biến tại Việt Nam và trên thế giới: AQI tại Mỹ, AQI tổng hợp và AQI dựa trên nguy cơ sức khỏe. Trên cơ sở đánh giá về ưu, nhược điểm của các phương pháp tính AQI này, em đề xuất xây dựng một chỉ số chất lượng không khí mới, nhằm đánh giá tác động tổng hợp cũng như xem xét vai trò khác nhau của mỗi chất ô nhiễm đối với chất lượng không khí nói chung. Các phương pháp ước lượng mẫu phổ biến cũng được trình bày và thực hiện nhằm ước lượng các tham số trên dữ liệu thực tế được thu thập tại Hà Nội. Cuối cùng, so sánh giữa các chỉ số chất lượng không khí được tiến hành, nhằm đánh giá tính hiệu quả của chỉ số chất lượng không khí đang được sử dụng tại Việt Nam và chỉ số chất lượng không khí tổng hợp mới.
+
+Qua đồ án này, em đã đạt được những kết quả nhất định. Em đã chỉ ra được rằng, chỉ số chất lượng không khí đang được sử dụng tại Việt Nam không đánh giá đúng mức độ tác động của không khí xung quanh tới sức khỏe con người. Em cũng đã chứng tỏ được tính hiệu quả của chỉ số chất lượng không khí tổng hợp mới trên cùng dữ liệu không khí thực tế được thu thập tại Hà Nội. Theo đó, NAAQI đã đánh giá được mức độ nguy hiểm của hiện tượng ô nhiễm không khí đa nhiễm cũng như tác động tổng hợp và vai trò khác nhau của các chất ô nhiễm đối với chất lượng không khí nói chung. Cuối cùng, thông qua các tính toán và so sánh được tiến hành, em đã đưa ra được những cảnh báo mạnh mẽ tới cộng đồng về mức độ ô nhiễm không khí nặng nề tại khu vực quan trắc nói riêng cũng như tại Hà Nội nói chung. Các so sánh đã chỉ ra rằng, hiện nay, ô nhiễm không khí tại Hà Nội đang diễn ra ở mức vô cùng báo động, cả về số lượng ngày ô nhiễm, số chất gây ô nhiễm đồng thời cũng như mức độ ô nhiễm cao của các chất. Qua đây, em cũng đưa ra những khuyến cáo tới cộng đồng, đặc biệt là những nhóm dân cư nhạy cảm nên có những biện pháp phòng tránh nghiêm ngặt hơn, hạn chế tối đa thời gian ở ngoài để bảo vệ sức khỏe cho mình.
+
+Với những nghiên cứu của mình, em đã đưa một chỉ số chất lượng không khí tối ưu hơn nhằm đánh giá tốt hơn mức độ ô nhiễm của không khí cũng như mức độ tác động của nó tới sức khỏe con người. Tuy nhiên, đồ án này sẽ đặc biệt có ý nghĩa nếu các so sánh được tiến hành trên cả những dữ liệu thực tế về sức khỏe cộng đồng. 
+
+Cách tiếp cận các phương pháp thống kê để nghiên cứu và xây dựng chỉ số chất lượng không khí tổng hợp mới trong bài viết này không nhằm thay thế các chỉ số chất lượng không khí hiện tại, nhưng cũng có thể được xem như một phương pháp tiếp cận mới. Các nghiên cứu trong tương lai nên tập trung vào việc xác định mối quan hệ nội tại giữa các chất ô nhiễm cũng như tác động của các mối quan hệ này đối với sức khỏe con người. 
+
+%\chapter*{Danh mục công trình công bố của tác giả}
+%\begin{flushleft}
+%\quad $[1]$\ Vũ Thu Thảo, Nguyễn Ngọc Doanh, Nguyễn Nhị Gia %Vinh, Nguyễn Thị Ngọc Anh, \textit{"Mô hình hóa ảnh hưởng %phân bố không gian của hoa diệt rầy tới
+%sự phát triển của rầy nâu hại lúa"}, Tạp chí Khoa học và %Công nghệ - Đại học Thái Nguyên, 2015, pp.119-123.\\
+%\end{flushleft}
+
+\newpage
+\addcontentsline{toc}{chapter}{{Tài liệu tham khảo}}
+\begin{thebibliography}{9}
+
+\bibitem{Babcock1970}
+  Babcock L.R.,
+  \emph{A combined pollution index for measurement of total air pollution},
+  J. Air Pollut. Control Assoc. 20,
+  1970.
+  	
+\bibitem{Cairncross2007}
+	Cairncross, E.K., John, J., Zunckel, M,
+	\emph{A novel air pollution index bases on the relative risk of daily mortality associated with short-term exposure to common air pollutions},
+	Atmos. Environ. 41,
+	2007.
+
+\bibitem{HN2016}
+	Cổng thông tin điện tử Bộ Giao thông Vận tải,
+	\emph{Ô nhiễm không khí ở Hà Nội lên mức nguy hại},
+	http://www.mt.gov.vn/moitruong/tin-tuc/1090/40892/o-nhiem-khong-khi-o-ha-noi-len-muc-nguy-hai.aspx,
+	March 4th, 2016.
+	
+\bibitem{Jianlin2015}
+	Jianlin Hu, Qi Ying, Yungang Wang, Hongliang Zhang,
+	\emph{Characterizing multi-pollutant air pollution in China: Comparison of three air quality indices},
+	Enviroment International 84,
+	2015.
+
+\bibitem{Khanna2000}
+	Khanna, N.,
+	\emph{Measuring environmental quality: an index of pollution},
+	Ecol. Econ. 35,
+	2000.
+
+\bibitem{Kyrkilis2007}
+	Kyrkilis, G., Chaloulakou, A., Kassomenos, P.A.,
+	\emph{Developing a risk-based air quality index},
+	Envirion. Int. 33,
+	2007.
+	
+\bibitem{Schwart1995}
+	Schwart, J.,
+	\emph{Is carbon monoxide a risk factor for hospital admission for heart failure?},
+	American Jounal of Public Health 85 (10),
+	1995.
+		
+\bibitem{Sicard2012}
+	Sicard, P., Talbot, C., Lesne, O., Mangin, A., Alexandre, N., Collomp, R.,
+	\emph{The aggregate risk index: an intuitive tool providing the health risks of air pollution to health care community and public},
+	Atmos. Environ. 46,
+	2012.
+	
+\bibitem{Stied2008}
+	Stied, D.M., Burnett, R.T., Smith-Doiron, M., Brion, O., Shin, H.H., Economou, V.,
+	\emph{A new multipollutant, no threshold air quality health index based on short-term associations observed in daily timeseries analyses},
+	J. Air Waste Manage. Assoc. 58,
+	2008.
+
+\bibitem{Swamee1999}
+	Swamee, P.K., Tagi, A.,
+	\emph{Formation of an air pollution index},
+	J. Air Waste Manage. Assoc. 49,
+	1999.
+
+\bibitem{TCMT2011}
+	Tổng cục môi trường,
+	\emph{Phương pháp tính toán chỉ số chất lượng không khí (AQI)},
+	2011.	
+	
+\bibitem{USEPA2013}
+	U.S. Enviromental Protection Agency,
+	\emph{Technical Assistance Document for the Reporting of Daily Air Quality – the Air Quality Index (AQI)},
+	2013.
+
+\bibitem{WHO2001}
+	WHO,
+	\emph{Health impact assessment of air pollution in the WHO European Region. WHO/Euro product no: 876.03.01 (50263446)},
+	2001a.	
+	
+\bibitem{Wong2013}
+	Wong, T.W., Tam, W.W.S., Yu, I.T.S., Lau, A.K.H., Pang, S.W., Wong, A.H.S.,
+	\emph{Developing a risk-based air quality index},
+	Atmos. Environ. 76,
+	2013.
+	
+\end{thebibliography}
+
+
+\newpage 
+\begin{appendices}
+\chapter{Dữ liệu}
+Đồ án này sử dụng dữ liệu quan trắc trong vòng 3 năm 2011, 2012 và 2014 của trạm quan trắc không khí tự động, liên tục, cố định 556 Nguyễn Văn Cừ, Long Biên, Hà Nội. Dữ liệu quan trắc không khí được lưu trữ dưới dạng bảng trong các file .xls.
+
+Mỗi dòng trong bảng dữ liệu thể hiện các giá trị quan trắc không khí trung bình trong 1 giờ. Mỗi cột thể hiện một thông số môi trường được quan trắc. 
+
+Các thông số môi trường được quan trắc bao gồm:
+\begin{itemize}
+\item Nhiệt độ.
+\item Độ ẩm.
+\item Tốc độ gió.
+\item Hướng gió.
+\item Áp suất.
+\item Nồng độ các chất ô nhiễm: $NO_2, SO_2, CO, O3, PM_{10}, PM_{2.5}, CH_4,\ldots$.
+\item $\ldots$
+\end{itemize}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8, angle = 90]{Data.jpg}
+\caption{Dữ liệu mẫu}
+\end{center}
+\end{figure}
+
+\chapter{Chương trình Matlab}
+\subsection{Chương trình tính toán chỉ số chất lượng không khí tại Mỹ CAQI}
+\lstinputlisting{CAQI.m}
+
+\subsection{Chương trình tính toán chỉ số chất lượng không khí tổng hợp AAQI}
+\lstinputlisting{AAQI.m}
+
+\subsection{Chương trình tính toán chỉ số chất lượng không khí dựa trên nguy cơ sức khỏe HAQI}
+\lstinputlisting{HAQI.m}
+
+\subsection{Chương trình tính toán chỉ số chất lượng không khí tổng hợp mới NAAQI}
+\lstinputlisting{NAAQI.m}
+
+\chapter{Cách ước lượng các đặc trưng dữ liệu}
+Giả sử quan sát một biến ngẫu nhiên $n$ chiều $X$, ta thu được một tập mẫu có kích thước $N$:
+\begin{equation}
+\Omega = \left\lbrace x_k| x_k \in \mathbb{R}^n, k=1, 2, \ldots, N \right\rbrace.
+\end{equation}
+\begin{flushleft}
+Ước lượng không chệch cho giá trị kì vọng của $X$:
+\end{flushleft}
+\begin{equation}
+\overline{X} = \dfrac{1}{N} \sum_{k=1}^N x_k.
+\end{equation}
+
+\begin{flushleft}
+Ước lượng không chệch cho ma trận hiệp phương sai của $X$:
+\end{flushleft}
+\begin{equation}
+\Sigma = cov(X) = \dfrac{1}{N - 1} \sum_{k=1}^N (x_k - \overline{X})(x_k - \overline{X})^t.
+\end{equation}
+
+\begin{flushleft}
+Ma trận hiệp phương sai $\Sigma = \left(\sigma_{ij} \right)_{i,j = 1}^n$ là một ma trận đối xứng xác định dương, trong đó $\sigma_{ij} (i\neq j)$ là hiệp phương sai của thành phần thứ $i$ và thành phần thứ $j$, $\sigma_{ii}$ là phương sai của thành phần thứ $i$.
+\end{flushleft}
+
+\begin{flushleft}
+Hệ số tương quan của thành phần thứ $i$ và thành phần thứ $j$ được tính bằng công thức:
+\end{flushleft}
+\begin{equation}
+r(X_i, X_j) = \dfrac{cov(X_i,X_j)}{\sqrt{var(X_i).var(X_j)}},
+\end{equation}
+trong đó:
+\begin{itemize}
+\item $cov(X_i,X_j)$ là hiệp phương sai của thành phần thứ $i$ và thành phần thứ $j$ của biến ngẫu nhiên $n$ chiều $X$.
+\item $var(X_i), var(X_j)$ lần lượt là phương sai của thành phần thứ $i$ và thành phần thứ $j$ của biến ngẫu nhiên $X$.
+\end{itemize}
+
+\end{appendices}
+\end{document}

@@ -1,0 +1,155 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{HRK{\etalchar{+}}10}
+
+\bibitem[ABF84]{ABF84}
+D.~Arnold, F.~Brezzi, and M.~Fortin.
+\newblock A stable finite element for the stokes equations.
+\newblock Calcolo 23, 1984.
+
+\bibitem[ABPV12]{ABPV12}
+R.~Araya, G.~R. Barrenechea, A.~H. Poza, and F.~Valentin.
+\newblock Convergence analysis of a residual local projection finite element
+  method for the \text{Navier-Stokes} equations.
+\newblock {\em SIAM J. Numer. Anal.}, 50(2):669--699, 2012.
+
+\bibitem[ADPS83]{ADPS83}
+B.~F. Armaly, F.~Durst, J.~C.~F. Pereira, and B.~Schonung.
+\newblock Experimental and theoretical investigation of backward-facing step
+  flow.
+\newblock {\em J . Fluid Mech.}, 127:473--496, 1983.
+
+\bibitem[AHU58]{AHU58}
+K.J. Arrow, L.~Hurwicz, and H.~Uzawa.
+\newblock {\em Studies in linear and non-linear programming}, volume~II.
+\newblock Stanford University Press, Stanford, Calif, 1958.
+
+\bibitem[APV14]{APV14}
+R.~Araya, A.~H. Poza, and Fr{\'e}d{\'e}ric Valentin.
+\newblock An adaptive residual local projection finite element method for the
+  \text{Navier--Stokes} equations.
+\newblock {\em Adv Comput Math}, 2014.
+
+\bibitem[BF91]{BF91}
+F.~Brezzi and M.~Fortin.
+\newblock {\em Mixed and Hybrid Finite Element Methods}, volume vol. 15 of {\em
+  Springer Series in Computational Mathematics}.
+\newblock Springer-Verlag, New-York, 1991.
+
+\bibitem[BF08]{BF08}
+E.~Burman and M.~A. Fernandez.
+\newblock Galerkin nite element methods with symmetric pressure stabilization
+  for the transient stokes 'equations: stability and convergence analysis.
+\newblock {\em SIAM Journal on Numerical Analysis, Society for Industrial and
+  Applied Mathematics}, 47(1):409--439, 2008.
+
+\bibitem[BH08]{BH08}
+R.~Becker and P.~Hansbo.
+\newblock A simple pressure stabilization method for the stokes equation.
+\newblock {\em Commun. Numer. Meth. Engng}, 24:1421--1430, 2008.
+
+\bibitem[BIKL80]{BIK+80}
+J.P. Benqu{\'e}, B.~Ibler, A.~Keramsi, and G.~Labadir.
+\newblock A finite element method for the \text{Navier-Stokes} equations.
+\newblock In {\em Proceedings of the third international conference on the
+  finite elements in flow problems}, 1980.
+
+\bibitem[EG04]{EG04}
+A.~Ern and J.~L. Guermond.
+\newblock {\em Theory and Practice of Finite Elements}, volume 159.
+\newblock Springer, 2004.
+
+\bibitem[GM99]{RR99}
+M.~Gorazd and B.~Mohammadi.
+\newblock \text{NSIKE}- an incompressible \text{Navier-Stokes} solver for
+  unstructured meshes.
+\newblock Technical Report 3644, INRIA Rocquencourt, March 1999.
+
+\bibitem[GR86]{GR86}
+V.~Girault and P.A Raviart.
+\newblock {\em Finite Element Methods for Navier-Stokes Equations}.
+\newblock Springer Verlag, 1986.
+
+\bibitem[HRK{\etalchar{+}}10]{Hac10}
+E.~Hachem, B.~Rivaux, T.~Kloczko, H.~Digonnet, and T.~Coupez.
+\newblock Stabilized finite element method for incompressible flows with high
+  \text{Reynolds} number.
+\newblock {\em Journal of Computational Physics}, 299(23):8643--8665, November
+  2010.
+
+\bibitem[KHT87]{Ku87}
+H.C. Ku, R.S. Hirsh, and T.D. Taylor.
+\newblock A pseudospectral method for solution of the three-dimensional
+  incompressible \text{Navier-Stokes} equations.
+\newblock {\em Journal of Computational Physics}, 70(2):439--462, June 1987.
+
+\bibitem[LMK97]{LMK97}
+H.~Le, P.~Moin, and J.~Kim.
+\newblock Direct numerical simulation of turbulent flow over a backward-facing
+  step.
+\newblock {\em J. Fluid Mech}, 330(349-374), 1997.
+
+\bibitem[Mau96]{Mau95}
+B.~Maury.
+\newblock Characteristic ale method for the unsteady 3d navier-stokes equations
+  with a free surface.
+\newblock {\em Comp. Fluid Dym}, 6:175--188, 1996.
+
+\bibitem[Pir82]{Pir82}
+O.~Pironneau.
+\newblock On the transport-diffusion algorithm and its applications to the
+  \text{Navier-Stokes} equations.
+\newblock {\em Numerische Mathematik}, 38(3):309--332, 1982.
+
+\bibitem[PLT92]{PLT92}
+O.~Pironneau, J.~Liou, and T.~Tezduyar.
+\newblock \text{Characteristic-Galerkin} and \text{Galerkin}/least-squares
+  space-time formulations for the advectiondiffusion equation with
+  time-denpendent domains.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  100(117-141), 1992.
+
+\bibitem[Qua09]{Qua09}
+A.~Quarteroni.
+\newblock {\em Numerical Models for Differential Problems}, volume~2 of {\em
+  MS-A}.
+\newblock Springer, 2009.
+
+\bibitem[Saa03]{Saa03}
+Y.~Saad.
+\newblock {\em Iterative methods for sparse linear systems}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
+  2003.
+
+\bibitem[She94]{She94}
+J.R. Shewchuk.
+\newblock An introduction to the conjugate gradient method without the
+  agonizing pain.
+\newblock School of Computer Science, Carnegie Mellon University, Pittsburgh,
+  1994.
+
+\bibitem[Sul98]{Sul98}
+E.~Suli.
+\newblock Convergence and nonlinear stability of the \text{Lagrange-Galerkin}
+  method for the \text{Navier-Stokes} equations.
+\newblock {\em Numercical Mathematic}, 53:459--483, 1998.
+
+\bibitem[UG82]{Ghia}
+C.T~Shin U.~Ghia, K.N.~Ghia.
+\newblock High-resolution for incompressible flow using the
+  \text{Navier-Stokes} equations and a multigrid method.
+\newblock {\em Journal of Computational Physics}, 48(3):387--411, 1982.
+
+\bibitem[YJ07]{YJ07}
+G.~Yang and P.~Jiang.
+\newblock \text{SSOR} and \text{ASSOR} preconditioners for \text{Block-Broyden}
+  method.
+\newblock {\em Applied Mathematics and Computation}, 188:194--205, 2007.
+
+\bibitem[Zhi12]{Zhi11}
+S.~Zhi.
+\newblock Second order modified method of characteristics mixed
+  defect-correction finite element method for time dependent
+  \text{Navier-Stokes} problems.
+\newblock {\em Numerical Algorithms}, 59(2):271--300, 2012.
+
+\end{thebibliography}
