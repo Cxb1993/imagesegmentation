@@ -615,7 +615,6 @@ Theo đó ta có phương trình Euler-Lagarange:
 \begin{equation}
 \sigma_{\epsilon}(\Phi)\{(I-I^{LIF})(m_1-m_2)+\alpha((I-c_1)^2+ (I_0-c_2)^2)\}
 \end{equation}
-\chapter{Áp dụng mô hình GLIF trong tìm biên đối tượng trong video }
 Cụ thể các bước của thuật toán sẽ như sau:
 \begin{itemize}
 \item Bước 1: Khởi tạo đường cong $\Phi_0$ ban đầu
@@ -623,8 +622,61 @@ Cụ thể các bước của thuật toán sẽ như sau:
 \item Bước 3: Tính giá trị $\Phi_{n+1}$ theo $\Phi_{n}$ theo công thức 
 \item Bước 4: Chuẩn hóa hàm tập mức $\Phi$ sử dụng hàm nhân Gauss $\Phi=G_{\psi}\Phi$, trong đó $\psi$ là độ lệch chuẩn
 \item Bước 5: Kiểm tra điều kiện dừng. Nếu thỏa mãn quay lại bước 2
+\end{itemize}
+\chapter{Áp dụng mô hình GLIF trong theo dõi đối tượng trong video }
+\section{Theo dõi đối tượng trong video là gì? Tại sao phải theo dõi đối tượng trong video}
+Theo vết đối tượng là một vấn đề quan trọng trong trong lĩnh vực thị giác may tính. Sự xuất hiện của các máy tính cấu hình mạnh và các camera chất lượng cao và sự cần thiết của việc phân tích video  là điều kiện để thúc đẩy sự phát triển của các thuật toán theo vết. Có 3 bước chính trong phân tích video là: Phát hiện các đối tượng chuyển động trong video, theo vết các đối đó theo từng frame, phân tích vết để phát hiện hành động của đối tượng. Do vậy, theo vết đối tượng phù hợp với: 
+\begin{itemize}
+\item Nhận dạng dựa trên chuyển động
+\item Giám sát tự động, hay là theo dõi một cảnh để phát hiện các hoạt động đáng ngờ hoặc các sự kiện bất thường.
+\item Lập chỉ mục video, tạo chú thích tự động và tìm iến video trong cơ sở dữ liệu
+\item Tương tác giữa con người và máy tính, hay là nhận diện cử chỉ, theo dõi mắt làm đầu vào cho máy tính. 
+\item Theo dõi giao thông, thu thập thống kê dòng phương tiện
+\end{itemize}
+Ở dạng đơn giản nhất, theo vết có thể được định nghĩa là ước lượng chuyển động của đối tượng trong miền ảnh khi nó chuyển động xung quanh miền ảnh. Một cách khác, người theo dõi thực hiện gán nhãn các đối tượng được theo dõi trong các khung hình của video. Ngoài ra, tùy thuộc vào miền ảnh, việc theo dõi có thể cung cấp các đặc tính của đối tượng như: hình dạng, vị trí, hướng. Việc theo vết đối tượng có thể gặp khó khăn do một số ấn đề như: 
+\begin{itemize}
+\item Thiếu thông tin do các phép chiếu từ khung cảnh 3D ngoài đời thực vào ảnh 3D
+\item Ảnh nhiễu
+\item Những chuyển động phức tạp của đối tượng
+\item Thay đổi khung cảnh
+\item Yêu cầu xử lý thời gian thực
+\end{itemize} 
+Điều này có thể đơn giản hơn nhờ việc đưa vào các ràng buộc về chuyển động cũng như là bề ngoài củ đối tượng. Ví dụ, hầu hết các thuật toán theo vết đối tượng đều đưa vào ràng buộc tốc độ và gia tốc là hằng số. 
+
+Có nhiều phương pháp theo vết đối tượng được đề xuất. Các hướng này khác nhau ở cách tiếp cận để trả lời các câu hỏi: Đối tượng nào thích hợp để theo dõi? Các đặc tính nào của ảnh có thể sử dụng? Làm sao để mô hình hóa hình dạng, chuyển động của đối tượng trong video? Việc trả lời các câu hỏi này còn tùy thuộc vào hoàn cảnh, điều kiện 
+\section{Biểu diễn đối tượng }
+Đối tượng có thể được định nghĩa là bất kỳ thứ gì mà người ta quan tâm và muốn phân tích nó. Ví dụ như các phương tiện ở trên đường, người đi bộ trên đường, hay các bong bóng ở trong nước .... Các đối tượng có thể được đại diện bởi hình dạng, đối tượng.... Dưới đây là một số cách dùng để biểu diễn hình dạng đối tượng thường được sử dụng trong  theo vết. 
+\begin{itemize}
+\item Điểm: Một đối tượng được biểu diễn bởi một tập hợp các điểm. Cách này thường được dùng trong trường hợp đối tượng được theo vết có kích thước nhỏ
+\item Các hình dạng đơn giản: Đối tượng được đại diện bởi các tam giác, elips,.... Chuyển động của đối tượng theo cách tiếp cận này được mô hình hóa bằng các dịch chuyển, tuyến tính, hay phép chiếu. Mặc dù cách này phù hợp với việc theo dấu các đối tượng cứng rắn tuy nhiên nó có thể dùng cho các đối tượng không cứng
+\item Đường viền : Đường viền đại diện cho biên của vật. Phần bên trong đường viền được gọi là silhouette của đối tượng. Cách biểu diễn sử dụng đường biên này phù hợp với đối tượng non-rigrid
+\item Khớp nối: Một đối tượng sẽ được chia thành các phần khác nhau và được kết nối bởi các khớp nối. Ví dụ với cơ thể người có thể được chia ra làm các phần: thân, chân, tay,  đầu được kết nối bởi các khớp nối. Quan hệ giữa các thành phần được chi phối bởi các mô hình động học.
+\end{itemize}
+\subsection{Lựa chọn đặc tính để thực hiện theo vết}
+Thông thường, để đạt được kết quả như mong muốn, người ta thường chọn thuộc tính đảm bảo được tính duy nhất để đảm bảo đối tượng có thể được phân biệt. Các đặc tính này thường được chọn để phù hợp với cách biểu diễn đối tượng. Ví dụ màu thường được dùng làm đặc tính để tìm vết trong trường hợp đối tượng được biểu diễn bởi biểu đồ histogram. Còn cạnh đối tượng thường được dùng làm đặc tính trong trường hợp biểu diễn đối tượng bằng đường viền. Và thông thường chúng thường trong thực tế chúng thường được kết hợp với nhau để được kết quả cao hơn. Các đặc tính thường được dùng là:
+\begin{itemize}
+
+\item Màu sắc rõ ràng của một vật bị ảnh hường bởi các yếu tố  phân bố điện quang của ánh sáng và tính chất phản xạ bề mặt của đối tượng. Không gian màu RGB thường được dùng nhiều trong xử lý ảnh, nó là không gian màu không đồng nhất cảm quan(non perceptually uniform ), hay sự khác biêt về màu trong hệ RGB không tương ứng với sự khác biệt về màu đối với cảm nhận của con người. Ngược lại hệ màu $L^*u^*v, L^*a^*b$ lại là không gian màu đồng nhất cảm quan. Tuy vậy nó lại nhạy cảm với nhiễu. Do  mỗi không gian màu sẽ có một ưu nhược điểm riêng và không thể nói được rằng không gian màu nào được dùng sẽ hiệu quả hơn nên trong thực tế người ta dùng rất nhiều loại không gian màu khác nhau để thực hiện tìm vết
+\item Cạnh : Biên của đối tượng thường là nơi có sự thay đổi lớn về cường độ ảnh. Thuộc tính quan trọng của đặc tính này là nó ít nhạy cảm hơn với sự thay đổi về độ sáng hơn là đặc tính màu. 
+
+\item Texture: Texture giống như một độ đo sự biến đổi cường độ trên bề mặt thỏa mãn các thuộc tính. như độ trơn, độ đều. So với màu, texture cần thêm thao tác xử lý để có được đặc tính. 
 
 \end{itemize}
+\section{Theo vết đối tượng sử dụng mô hình GLIF}
+Thuật toán dừng lại cơ bản là áp dụng mô hình GLIF trong mỗi frame trong video. Tôi sử dụng kết quả cuối cùng của một khung hình làm đầu vào cho khung hình sau. Dưới đây là giả code cho mô hình này:
+\begin{listing}
+Co=initial Contour
+for k=1 to n_frame
+{
+C_k=GLIF(C_{k-1},I_{k});
+draw contour on image
+output frame
+}
+
+\end{listing}
+
+Thuât toán gặp khó khăn trong trường hợp đối tượng trong frame sau không giao với đường biên cuối cùng ở frame trước. Điều này có thể dẫn đến kết quả không mong muốn.
+\section{Kết quả}
 %Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
 %Ta biết rằng, việc xấp xỉ tuyến tính cho cả vận tốc và áp suất trong bài toán Navier-Stokes sẽ dẫn đến một phép rời rạc hóa không ổn định, do không thỏa mãn điều kiện Babuska-Brezzi. Một phương pháp xấp xỉ rất phổ biến đối với bài toán Stokes được đề xuất bởi Arnold, Brezzi and Fortin \cite{ABF84}. Phương pháp này đề xuất xây dựng không gian các hàm "bubble", hay còn được biết đến là các phần tử Mini (Mini-element). Một tài liệu tham khảo chuẩn tắc về các phương pháp phần tử hữu hạn hỗn hợp là cuốn sách của Brezzi và Fortin \cite{BF91}. Giải pháp cho các kết hợp không hợp lý như trên là bổ sung các thành phần ổn định \cite{BF08,BH08}. Nói cách khác, một nhược điểm của quá trình giải số cho bài toán Navier-Stokes là tính ổn định của thành phần đối lưu trong phương trình động lực. Nhiều tác giả đã sử dụng kỹ thuật "upwinding" để xử lý thành phần hyperbolic này, chẳng hạn như \cite{RR99} dựa trên lược đồ phân phối thặng dư PSI (positive stream invariant), \cite{Mau95} đề xuất phương pháp Arbitrary Lagrangian Eulerian (ALE).\\
 %Các nghiên cứu trong đồ án này nhằm mục đích sử dụng các lợi thế của phép xấp xỉ liên tục Galerkin (phần tử hữu hạn Taylor-Hood) \cite{Qua09} và phương pháp đặc trưng cho thành phần không tuyến tính. Xấp xỉ này cho phép ta rời rạc hóa thời gian và tránh những hạn chế về mặt lý thuyết của CFL (Courant-Friedrichs-Levy) trên mỗi bước thời gian (\cite{PLT92} đề xuất cách lựa chọn bước thời gian phù hợp là $\De t \approx 1.5h$).

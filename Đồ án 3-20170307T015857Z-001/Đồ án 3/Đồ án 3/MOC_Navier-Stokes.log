@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  23 APR 2017 21:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  30 APR 2017 08:57
 entering extended mode
 **./MOC_Navier-Stokes.tex
 (MOC_Navier-Stokes.tex
@@ -1080,8 +1080,11 @@ File: figure/subpixel.png Graphic file (type png)
 <use figure/subpixel.png>
 Package pdftex.def Info: figure/subpixel.png used on input line 565.
 (pdftex.def)             Requested size: 414.19461pt x 98.01552pt.
- [23] [24 <./figure/subpixel.png>] [25] [26]
-(MOC_Navier-Stokes.aux) )
+ [23] [24 <./figure/subpixel.png>] [25] [26] [27]
+Ch\uhorn \ohorn ng 4.
+[28
+
+] [29] (MOC_Navier-Stokes.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
@@ -1108,9 +1111,9 @@ rogram Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/vntex/vnr/vnr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /vntex/vnr/vnr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vntt10.
 pfb>
-Output written on MOC_Navier-Stokes.pdf (26 pages, 591453 bytes).
+Output written on MOC_Navier-Stokes.pdf (29 pages, 596321 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
+ 171 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
