@@ -167,11 +167,54 @@ Một hệ sử lý ảnh có thể được mô tả gồm các thành phần n
 \item Mức xám, màu: là kết quả của sự mã hóa cường độ sáng của một điểm ảnh với một giá trị số.
 \end{itemize}
 \subsection{Tăng cường khôi phục ảnh}
-\subsection{Biến đổi ảnh}
-\subsection{Phân tích ảnh}
-\subsection{Nhận dạng ảnh}
-\subsection{Nén ảnh}
+Tăng cường và khôi phục ảnh là hai quá trình có mục đích khác nhau. Tăng cường ảnh bao gồm các thao tác nhằm làm hoàn thiện trạng thái quan sát của một ảnh như: tăng cường độ tương phản, khử nhiễu. Trong khi đó khôi phục ảnh nhằm khôi phục ảnh  gần với ảnh thực nhất do nó bị biến dạng do nhiều nguyên nhân khác nhau.
 
+Việc khôi phục ảnh nhằm tối thiểu hóa ảnh hưởng của các yếu tố môi trường bên ngoài và các hệ thống thu nhận và lưu trữ ảnh. Quá trình khôi phục ảnh có thể coi là quá trình xây dựng mô hình toán học cho các ảnh hưởng sau đó dùng ánh xạ ngược để xác định lại ảnh 
+\subsection{Biến đổi ảnh}
+
+\subsection{Phân tích ảnh}
+Việc phân tích ảnh nhằm đưa ra các mô tả đặc trưng về ảnh. Các kỹ thuật được xử dụng ở bước này nhằm xác định biên của ảnh. Ngoài ra người ta cũng sử dụng các kỹ thuật để phân vùng ảnh. Các kỹ thuật thường hay dùng là tách, hợp thành phần dựa theo các tiêu chuẩn đánh giá như màu sắc, cường độ ,... Các phương pháp thường được dùng như phân tích cây tứ phân, phân vùng dựa theo cấu trúc, phân vùng dựa theo đồ thị.
+\subsection{Nhận dạng ảnh}
+Nhận dạng là quá trình phân loại các đối tượng được biểu diễn theo một mô hình nào đó và gán cho chúng vào các lớp dựa theo các quy luật. Quá trình nhận dạng theo các mẫu có trước được gọi là học có thầy (supervised learning), trong trường hợp ngược lại gọi là học không có thầy. Có ba cách tiếp cận khác nhau trong nhận dạng ảnh: 
+\begin{itemize}
+\item Nhận dạng dựa vào phân hoạch không gian
+\item Nhận dạng  cấu trúc
+\item Nhận dạng theo mạng nơron
+\end{itemize}
+Với hai cách tiếp cận đầu, sau khi thu nhận, ảnh cần trải qua các bước tiền xử lý làm tăng chất lượng và làm nổi bật các chi tiết, sau đó là quá trình biễu diễn và trích chọn các đặc trưng, cuối cùng mới là quá trình nhận dạng.
+
+Trong thực tế, người ta đã áp dụng thành công nhận dạng cho nhiều đối tượng khác nhau như: 
+
+\begin{itemize}
+\item Nhận dạng vân tay phục vụ cho mục đích bảo mật và phát hiện tội phạm
+\item Nhận dạng chữ in phục vụ  cho quá trình số hóa tài liệu, tự động đọc tài liệu
+\item Nhận dạng chữ viết tay với các ràng buộc về cách viết, kiểu chữ... 
+\end{itemize}
+\subsection{Nén ảnh}
+Việc truyền ảnh qua mạng là một thao tác được dùng thường xuyên, trong khi lượng thông tin dùng để biểu diễn ảnh lại là khá lớn. Do vậy việc nén ảnh để giảm lượng thông tin truyền đi là một nhu cầu cần thiết.
+
+Nén ảnh là kỹ thuật lợi dụng sự dư thừa thông tin của ảnh nhằm biến đổi dữ liệu ảnh thành dạng từ mã. Mỗi phương pháp nén ảnh dựa trên các định nghĩa dư thừa khác nhau. Các định nghĩa dư thừa hay được dùng như: sự phân bố mức xám, sự lặp lại mức xám, những mẫu sử dụng tần suất cao hoặc độ dư thừa vị trí .Tùy vào thuật toán và loại ảnh mà ta có tỷ lệ nén khác nhau: 
+\begin{equation}
+\textrm{Tỷ lệ nén} =\dfrac{\textrm{Dữ liệu sau nén}}{\textrm{Dữ liệu trước khi nén}}
+\end{equation}
+Dựa theo các cách phân loại khác nhau người ta có các phương pháp nén ảnh khác nhau:
+\begin{itemize}
+\item Phân loại theo lý thuyết nén
+\begin{itemize}
+\item Nén không mất mát thông tin
+\item Nén mất mát thông tin
+\end{itemize}
+\item Phân loại dựa theo cách thức thực hiện nén: 
+\begin{itemize}
+\item Phương pháp không gian
+\item Phương pháp dựa trên  biến đổi
+\end{itemize}
+\item Phân loại dựa trên phương pháp mã hóa:
+\begin{itemize}
+\item Phương pháp nén thế hệ thứ nhất
+\item Phương pháp nén thế hệ thứ hai
+\end{itemize}
+\end{itemize}
 %\subsection{Thu nhận ảnh và các thiết bị thu nhận, biểu diễn ảnh}
 %Hầu hết các ảnh chúng ta quan tâm ngày nay được tạo ra nhờ sự tổng hợp các yếu tố như : nguồn sáng, và sự phản xạ hấp thụ của các phần tử trong khung nhìn của ảnh. Các thiết bị thu nhận ảnh thông thường bao gồm máy quay (camera) cộng với bộ chuyển đổi tương tự số hoặc máy quét (scanner). Các thiết bị này có thể cho màu đen trắng hoặc ảnh màu. Với ảnh đen trắng, mức xám có thể nằm trong khoảng từ 0 đến 1. Với ảnh đa cấp xám, mức xám sẽ nằm trong khoảng từ 0 đến 255. Với ảnh màu, mỗi điểm ảnh được lưu trữ trong 3 byte vì vậy ta có khoảng $2^{8*3}=2^24$ màu. 
 %
@@ -296,6 +339,43 @@ Nếu $T_i(t)\approx T_i(t-1)$ hoặc $m_{i}(t-1)\approx m_{i}(t)$ Thì dừng
 \item Thực hiện xây dựng vùng theo các lớp vừa phân
 \end{itemize}
 \section{Phân vùng ảnh dựa vào lý thuyết đồ thị}
+Đây là một hướng tiếp cận mới được đưa ra gần đây. Với cách tiếp cận này, hình ảnh sẽ được biểu diễn bởi một đồ thị, trong đó các điểm ảnh là các đỉnh của đồ thị còn các cạnh trên đồ thị sẽ nối các điểm lân cận với nhau. Ngoài việc sử dụng cách phân vùng thông qua lựa chọn cạnh còn có thể phân vùng dựa trên mức độ khác nhau trong nội tại vùng và giữa các vùng với nhau.
+\subsection{Cách biểu diễn ảnh dưới dạng đồ thị}
+Ảnh được biểu diễn như là một đồ thị $G=(V,E)$. Trong đó $V$ là tập hợp các đỉnh, $E$ là tập hợp các cạnh của đồ thị. Mỗi đỉnh $v_i\in V$ đại diện cho một điểm ảnh. Mỗi cạnh $(v_i,v_j)\in E$ tương ứng với cạnh kết nối hai cặp điểm lân cận. Mỗi cạnh $(v_i,v_j)$ sẽ có một trọng số tương ứng với độ chênh lệch về màu sắc hay mức xám giữa hai điểm ảnh tương ứng với hai đỉnh $v_i, v_j $. Trọng số này được ký hiệu là $w(v_i, v_j)$
+%Thêm ảnh vào đây
+\begin{itemize}
+\item Đỉnh kề: Hai đỉnh $v_i, v_j$ trong đồ thị được gọi là kề nhau nếu $(v_i,v_j)$ là cạnh của đồ thị. Bậc của một đỉnh $deg(v)$ là số cạnh nối với đỉnh $v$
+\item Đồ thị con và đồ thị riêng:
+Đồ thị $G'=(V',E')$ là đồ thị con của đồ thị $G=(V,E)$ nếu $V'\in V$ và $E'=E\cap (V',V')$ 
+Đồ thị  $G''=(V,E')$ được gọi là đồ thị riêng của đồ thị $G=(V,E)$ nếu $E'\in E$
+\item Cây bao chùm tối thiểu: Một cây được gọi là cây bao chùm tối thiểu của đồ thị $G$  nếu nó chứa tất cả các đỉnh của $G$ và trọng số nối mỗi đỉnh với một đỉnh bất kỳ là cạnh có trọng số nhỏ nhất trong các cạnh nối với đỉnh đó trong G. 
+\item Vùng ảnh trên đồ thị: Với một phân vùng S, một vùng $C\in S$ tương ứng với một thành phần liên thông $G'=(V', E')$ trong đó  $V'\in V, E' \in E$ sao cho trong một vùng, trọng số nối hai cạnh bất kỳ nhỏ còn trọng số ứng với cạnh nối hai vùng có giá trị lớn.
+\end{itemize}
+\subsection{Các định nghĩa và tính chất liên quan}
+Để có được việc phân vùng chúng ta cần xây dựng một tính chất để biết được có hay không môt ranh giới giữa hai vùng trong một phân vùng. Tính chất này được xây dựng thông qua việc so sánh sự khác nhau giữa các điểm ảnh trong cùng một vùng và sự khác nhau giữa các điểm ảnh giữa hai vùng dọc theo ranh giới giữa hai vùng.
+Sự khác nhau trong nội tại vùng được định nghĩa là giá trị trọng số lớn nhất của cây bao trùm tối thiểu ứng với phần đồ thị tương ứng với vùng cần xét:
+\begin{equation}
+Int(C)=\max_{e\in MST(C,E)}(w(e))
+\end{equation}
+Sự khác nhau giữa các vùng được định nghĩa là trọng số nhỏ nhất của cạnh kết nối hai đỉnh đại diện cho hai vùng:
+\begin{equation}
+Dif(C_1,C_2)=\min_{v_1\in C_1, v_2 \in C_2,(v_1, v_2) \in E}(w(v_i, v_j))
+\end{equation}
+
+Trong trường hợp không có cạnh nối hai vùng thì $Dif(C_1,C_2)= \infty$. Gữa hai vùng sẽ có ranh giới nếu giá trị khác biệt giữa hai vùng lớn hơn giá trị khác biệt trong nội tại trong ít nhất 1 vùng. 
+Chúng ta định nghĩa  sự khác biệt nội bộ tối thiểu của hai vùng $C_1, C_2$ được định nghĩa như sau: 
+\begin{equation}
+Mint(C_1, C_2)= min(Int(C_1)+T(C_1),Int(C_2)+T(C_2))
+\end{equation}
+với $T=\dfrac{k}{|C|}$, k là hằng số, $|C|$ là kích thước của vùng $C$. Lúc này ta có tính chất so sánh $C_1, C_2$  được định nghĩa như sau:
+\begin{equation}
+D(C_1, C_2)=
+\begin{cases}
+ 1, if Diff(C_1, C_2)>Mint(C_1, C_2)\\
+ 0, if otherwise\\
+   \end{cases}
+\end{equation}
+Trong thực tế $k$ không cố định và được chọn tùy vào ý kiến chuyên gia. Trong trường hợp $ k$ lớn thì kích thước các vùng đầu ra sẽ lớn, ngược lại kích thước đầu ra sẽ nhỏ. Giá trị của $k$ sẽ không nhỏ hơn kích thước  của vùng nhỏ nhất
 \section{Phân vùng ảnh dựa trên biểu diễn và xử lý đa phân giải}
 \chapter{Phương pháp phân vùng ảnh sử dụng biên động}
 Ý tưởng của các phương pháp theo hướng tiếp cận này là xuất phát từ đường cong ban đầu, ta thực hiện biến đổi đường biên ban đầu theo thời gian  và dừng lại ở biên của vật. Việc biến đổi đường biên được thực hiện thông qua xây dựng một vòng lặp nhằm đạt được giá trị cuối cùng của đường cong thỏa mãn cực tiểu hoặc cực đại một hàm năng lượng (enery function) nào đó.
@@ -664,19 +744,34 @@ Thông thường, để đạt được kết quả như mong muốn, người t
 \end{itemize}
 \section{Theo vết đối tượng sử dụng mô hình GLIF}
 Thuật toán dừng lại cơ bản là áp dụng mô hình GLIF trong mỗi frame trong video. Tôi sử dụng kết quả cuối cùng của một khung hình làm đầu vào cho khung hình sau. Dưới đây là giả code cho mô hình này:
-\begin{listing}
+\begin{lstlisting}
 Co=initial Contour
-for k=1 to n_frame
+for k=1 to n_frame 
 {
-C_k=GLIF(C_{k-1},I_{k});
+C_k=GLIF(C{k-1},I_{k});
 draw contour on image
 output frame
 }
 
-\end{listing}
+\end{lstlisting}
 
 Thuât toán gặp khó khăn trong trường hợp đối tượng trong frame sau không giao với đường biên cuối cùng ở frame trước. Điều này có thể dẫn đến kết quả không mong muốn.
 \section{Kết quả}
+\chapter{Áp dụng GLIF trong phân vùng ảnh 3 chiều}
+\section{Ảnh 3 chiều trong thực tế}
+Ngày nay, với sự ra đời của các thiết bị y tế  như máy chụp cắt lớp(CT), máy cộng hưởng từ(MRI) với khả năng cung cấp hình ảnh 3 chiều của các bộ phận trong cơ thể, các bác sĩ đã dễ dàng chuẩn đoán và thực hiện thao tác với các bộ phận trong thực tế hơn nhờ quan sát trên các hình ảnh  3 chiều. Các thiết bị hoạt động theo cơ chế dùng tia X quang chụp cắt lớp các bộ phận theo nhiều hướng khác nhau. Hình ảnh cắt lớp 2 chiều được chụp từ các thiết bị này sau đó sẽ được đưa vào máy tính xử lý để có thể tạo dựng lại hình ảnh 3 chiều 
+Một ảnh 3 chiều được định nghĩa trên miền ảnh $\Omega$ như sau: 
+\begin{equation}
+\begin{split}
+&f(x)\in \mathbb{R}\\
+&x\in \Omega
+\end{split}
+\end{equation} 
+Trong đó $\Omega$ là không gian rời rạc 3 chiều. Một ảnh đã được phân vùng được định nghĩa trong cùng miền $\Omega$ với ảnh f nhưng lấy giá trị trong không gian nhãn rời rạc. 
+\begin{equation}
+g(x)\in \mathbb{N}
+\end{equation}
+Ảnh nhị phân là một trường hợp đặc biệt của định nghĩa này, hàm g nhận giá trị 0 hoặc 1 tương ứng với nền và phần nội dung trong ảnh. 
 %Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
 %Ta biết rằng, việc xấp xỉ tuyến tính cho cả vận tốc và áp suất trong bài toán Navier-Stokes sẽ dẫn đến một phép rời rạc hóa không ổn định, do không thỏa mãn điều kiện Babuska-Brezzi. Một phương pháp xấp xỉ rất phổ biến đối với bài toán Stokes được đề xuất bởi Arnold, Brezzi and Fortin \cite{ABF84}. Phương pháp này đề xuất xây dựng không gian các hàm "bubble", hay còn được biết đến là các phần tử Mini (Mini-element). Một tài liệu tham khảo chuẩn tắc về các phương pháp phần tử hữu hạn hỗn hợp là cuốn sách của Brezzi và Fortin \cite{BF91}. Giải pháp cho các kết hợp không hợp lý như trên là bổ sung các thành phần ổn định \cite{BF08,BH08}. Nói cách khác, một nhược điểm của quá trình giải số cho bài toán Navier-Stokes là tính ổn định của thành phần đối lưu trong phương trình động lực. Nhiều tác giả đã sử dụng kỹ thuật "upwinding" để xử lý thành phần hyperbolic này, chẳng hạn như \cite{RR99} dựa trên lược đồ phân phối thặng dư PSI (positive stream invariant), \cite{Mau95} đề xuất phương pháp Arbitrary Lagrangian Eulerian (ALE).\\
 %Các nghiên cứu trong đồ án này nhằm mục đích sử dụng các lợi thế của phép xấp xỉ liên tục Galerkin (phần tử hữu hạn Taylor-Hood) \cite{Qua09} và phương pháp đặc trưng cho thành phần không tuyến tính. Xấp xỉ này cho phép ta rời rạc hóa thời gian và tránh những hạn chế về mặt lý thuyết của CFL (Courant-Friedrichs-Levy) trên mỗi bước thời gian (\cite{PLT92} đề xuất cách lựa chọn bước thời gian phù hợp là $\De t \approx 1.5h$).

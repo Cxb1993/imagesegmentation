@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  30 APR 2017 08:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  7 MAY 2017 23:59
 entering extended mode
 **./MOC_Navier-Stokes.tex
 (MOC_Navier-Stokes.tex
@@ -999,66 +999,66 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
- [5 <./figure/tpxulyanh.png>] [6]
+ [5 <./figure/tpxulyanh.png>] [6] [7] [8]
 Ch\uhorn \ohorn ng 2.
-[7
+[9
 
-] <figure/nguongbiendo.png, id=38, 304.13625pt x 117.43875pt>
+] <figure/nguongbiendo.png, id=44, 304.13625pt x 117.43875pt>
 File: figure/nguongbiendo.png Graphic file (type png)
 
 <use figure/nguongbiendo.png>
-Package pdftex.def Info: figure/nguongbiendo.png used on input line 193.
+Package pdftex.def Info: figure/nguongbiendo.png used on input line 236.
 (pdftex.def)             Requested size: 304.1355pt x 117.43845pt.
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 198.
+LaTeX Warning: Command \' invalid in math mode on input line 241.
 
 Missing character: There is no ¸ in font cmr12!
-[8 <./figure/nguongbiendo.png>]
-LaTeX Font Info:    Try loading font information for T5+cmtt on input line 213.
+[10 <./figure/nguongbiendo.png>]
+LaTeX Font Info:    Try loading font information for T5+cmtt on input line 256.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\vntex\t5cmtt.fd"
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [9] [10] [11]
+) [11] [12] [13]
 
-LaTeX Warning: Command \' invalid in math mode on input line 282.
+LaTeX Warning: Command \' invalid in math mode on input line 325.
 
 Missing character: There is no ¸ in font cmr12!
-[12] [13]
+[14] [15] [16]
 Ch\uhorn \ohorn ng 3.
 
-LaTeX Warning: Command \` invalid in math mode on input line 306.
+LaTeX Warning: Command \` invalid in math mode on input line 385.
 
 Missing character: There is no   in font cmr12!
-<figure/ytuong.png, id=64, 301.125pt x 77.53969pt>
+<figure/ytuong.png, id=75, 301.125pt x 77.53969pt>
 File: figure/ytuong.png Graphic file (type png)
  <use figure/ytuong.png>
-Package pdftex.def Info: figure/ytuong.png used on input line 308.
+Package pdftex.def Info: figure/ytuong.png used on input line 387.
 (pdftex.def)             Requested size: 301.12425pt x 77.53947pt.
 
-[14
+[17
 
-] <figure/fitting.png, id=68, 337.26pt x 100.87688pt>
+] <figure/fitting.png, id=79, 337.26pt x 100.87688pt>
 File: figure/fitting.png Graphic file (type png)
 
 <use figure/fitting.png>
-Package pdftex.def Info: figure/fitting.png used on input line 329.
+Package pdftex.def Info: figure/fitting.png used on input line 408.
 (pdftex.def)             Requested size: 337.25917pt x 100.87662pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--336
+Underfull \hbox (badness 10000) in paragraph at lines 413--415
 
  []
 
-[15 <./figure/ytuong.png> <./figure/fitting.png>] [16] [17] [18]
-<figure/mistake.png, id=86, 306.39468pt x 213.79875pt>
+[18 <./figure/ytuong.png> <./figure/fitting.png>] [19] [20] [21]
+<figure/mistake.png, id=96, 306.39468pt x 213.79875pt>
 File: figure/mistake.png Graphic file (type png)
 
 <use figure/mistake.png>
-Package pdftex.def Info: figure/mistake.png used on input line 437.
+Package pdftex.def Info: figure/mistake.png used on input line 516.
 (pdftex.def)             Requested size: 153.19696pt x 106.89911pt.
 
-Overfull \hbox (20.02058pt too wide) detected at line 446
+Overfull \hbox (20.02058pt too wide) detected at line 525
 \OML/cmm/m/it/12 []BF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C; f[]\OT1/cmr/m/n/12 (
 \OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 x\OT1/cmr/m/n/12 )) = \OML/cmm/m/it/12 [] [][] K\OT1/cmr/m/n/12 (\
@@ -1073,27 +1073,31 @@ f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j[] \OM
 L/cmm/m/it/12 dy
  []
 
-[19 <./figure/mistake.png>] [20] [21] [22]
-<figure/subpixel.png, id=100, 591.71063pt x 140.02313pt>
+[22 <./figure/mistake.png>] [23] [24] [25]
+<figure/subpixel.png, id=110, 591.71063pt x 140.02313pt>
 File: figure/subpixel.png Graphic file (type png)
 
 <use figure/subpixel.png>
-Package pdftex.def Info: figure/subpixel.png used on input line 565.
+Package pdftex.def Info: figure/subpixel.png used on input line 644.
 (pdftex.def)             Requested size: 414.19461pt x 98.01552pt.
- [23] [24 <./figure/subpixel.png>] [25] [26] [27]
+ [26] [27 <./figure/subpixel.png>] [28] [29] [30]
 Ch\uhorn \ohorn ng 4.
-[28
+[31
 
-] [29] (MOC_Navier-Stokes.aux) )
+] [32] [33] [34] [35]
+Ch\uhorn \ohorn ng 5.
+[36
+
+] [37] (MOC_Navier-Stokes.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8499 strings out of 493333
- 115997 string characters out of 3139177
+ 8531 strings out of 493333
+ 116287 string characters out of 3139177
  214921 words of memory out of 3000000
- 11862 multiletter control sequences out of 15000+200000
+ 11894 multiletter control sequences out of 15000+200000
  20311 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,18n,58p,1345b,4263s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1111,9 +1115,9 @@ rogram Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/vntex/vnr/vnr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /vntex/vnr/vnr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vntt10.
 pfb>
-Output written on MOC_Navier-Stokes.pdf (29 pages, 596321 bytes).
+Output written on MOC_Navier-Stokes.pdf (37 pages, 618688 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
+ 199 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
