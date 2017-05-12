@@ -11,6 +11,10 @@
 \usepackage[titletoc]{appendix}
 \usepackage{cases}
 \usepackage{wrapfig}
+
+%\usepackage[demo]{graphicx}
+\usepackage{subfig}
+\usepackage{tabularx}
 \usepackage[font=small,labelfont=bf]{caption} % R
 \makeindex
 \renewcommand{\labelenumi}{(\roman{enumi})}
@@ -147,7 +151,7 @@ Một ảnh có thể được đại diện bởi một hàm 2 chiều $f(x,y)$
 
 Quá trình xử lý ảnh được xem là quá trình tho tác với ảnh đầu vào để đưa ra một kết quả mong muốn. Quá trình xử lý ảnh có thể được mô tả theo sơ đồ sau:
 \begin{center}
-\includegraphics[]{figure/htxulyanh.png}
+\includegraphics[scale=0.7]{figure/htxulyanh.png}
 \captionof{figure}{Các quá trình của xử lý ảnh}
 \end{center}
 Đầu tiên là quá trình thu nhận ảnh. Ảnh có thể được thu nhận qua camera. Đầu ra có thể là dạng tín hiệu tương tự hoặc cũng có thể là tín hiệu số hóa. Ngoài ra ảnh còn có thể được thu nhận qua bộ cảm ứng sensor ,tranh, ảnh được quét thông qua máy quét.
@@ -171,7 +175,13 @@ Tăng cường và khôi phục ảnh là hai quá trình có mục đích khác
 
 Việc khôi phục ảnh nhằm tối thiểu hóa ảnh hưởng của các yếu tố môi trường bên ngoài và các hệ thống thu nhận và lưu trữ ảnh. Quá trình khôi phục ảnh có thể coi là quá trình xây dựng mô hình toán học cho các ảnh hưởng sau đó dùng ánh xạ ngược để xác định lại ảnh 
 \subsection{Biến đổi ảnh}
-
+Trong xử lý ảnh, một số trường hợp có phức tạp tính toán cao hoăc là số lượng điểm ảnh lớn. Việc dùng các phương pháp thông thường trở nên không khả thi. Vì vậy người ta thực hiện xây dựng một không gian khác đơn giản hơn và thực hiện bước chuyển đổi từ không gian gốc sang không gian này để dễ tính toán hơn. Sau khi thực hiện xử lý trên không gian mới xong, dùng phép biến đổi ngược để đưa về miền xác định ban đầu. Một số biến đổi thường được hay dùng là:
+\begin{itemize}
+\item Biến đổi Fourier, Sin,  Cosin
+\item Biên đổi bằng tích chập, tích Kronecker
+\item Các biến đổi như Kahumen Loeve, Hadamard
+\end{itemize}
+Ngoài ra người ta còn sử dụng một số công cụ thống kê trong biến đổi ảnh.
 \subsection{Phân tích ảnh}
 Việc phân tích ảnh nhằm đưa ra các mô tả đặc trưng về ảnh. Các kỹ thuật được xử dụng ở bước này nhằm xác định biên của ảnh. Ngoài ra người ta cũng sử dụng các kỹ thuật để phân vùng ảnh. Các kỹ thuật thường hay dùng là tách, hợp thành phần dựa theo các tiêu chuẩn đánh giá như màu sắc, cường độ ,... Các phương pháp thường được dùng như phân tích cây tứ phân, phân vùng dựa theo cấu trúc, phân vùng dựa theo đồ thị.
 \subsection{Nhận dạng ảnh}
@@ -378,8 +388,14 @@ D(C_1, C_2)=
 Trong thực tế $k$ không cố định và được chọn tùy vào ý kiến chuyên gia. Trong trường hợp $ k$ lớn thì kích thước các vùng đầu ra sẽ lớn, ngược lại kích thước đầu ra sẽ nhỏ. Giá trị của $k$ sẽ không nhỏ hơn kích thước  của vùng nhỏ nhất
 \section{Phân vùng ảnh dựa trên biểu diễn và xử lý đa phân giải}
 \chapter{Phương pháp phân vùng ảnh sử dụng biên động}
+Mô hình biên động là một mô hình thành công nhất trong phân vùng ảnh. Các mô hình biên động hiện tại đang có có thể chia làm hai loại chính là: mô hình dựa trên cạnh (edge-based models), và mô hình dựa trên vùng (region-based models). Cả hai loại này đều có ưu, nhược điểm riêng và việc lựa chọn cách nào còn tùy thuộc vào ứng dung
+
 Ý tưởng của các phương pháp theo hướng tiếp cận này là xuất phát từ đường cong ban đầu, ta thực hiện biến đổi đường biên ban đầu theo thời gian  và dừng lại ở biên của vật. Việc biến đổi đường biên được thực hiện thông qua xây dựng một vòng lặp nhằm đạt được giá trị cuối cùng của đường cong thỏa mãn cực tiểu hoặc cực đại một hàm năng lượng (enery function) nào đó.
-\section{Phương pháp Active contour without Edege}
+
+Mô hình dựa trên cạnh sử dụng gradient ảnh để dừng đường biên tại biên của vật. Mô hình dựa trên cạnh thường gồm hai thành phần dừng dựa trên cạnh  và thành phần lực cầu để kiểm soát chuyển động của đường biên. Thành phần dừng phục vụ cho việc dừng đường biên tại biên mong muốn. Thành phần lực cầu thực hiện co, mở rộng cạnh. Do vậy đường biên khởi tạo ban đầu có thể ở xa biên mong muốn. Khó khăn của mô hình này là việc lựa chọn lực cầu cho phù hợp. Nếu chọn lực cầu quá nhỏ, có thể quá trình phát triển biên sẽ không thể vượt qua một số vùng bằng phằng của đối tượng. Ngược lại nó có thể bỏ qua một số vùng biên yếu của vật.
+
+Mô hình dựa trên miền có một số lợi thế so với mô hình dựa trên cạnh. Đầu tiên là việc mô hình dựa trên miền không sử dụng gradient ảnh do đó nó có hiệu suất tốt hơn đối với ảnh có biên yếu. Tiếp theo, nó ít ảnh hưởng bởi đường cong khởi tạo ban đầu hơn so với mô hình dựa trên canh.  Phần dưới đây sẽ là ba mô hình biên động dựa trên miền điển hình và một mô hình cải tiến kết hợp các lợi thế của các mô hình trên để giải quyết tốt hơn với các đầu vào đa dạng.
+\section{Phương pháp Chan-Vese(CV)}
 
 
 \subsection{Mô hình}
@@ -431,13 +447,16 @@ inf_{c_1,c_2,C} F(c_1, c_2, C)
 Ta coi biên C được đại diện bởi tập mức 0 của một hàm $\phi: \omega \rightarrow \mathbb{R}$. Đặt 
 \begin{equation}
 \begin{cases}
- C= \omega ={(x,y)\in \Omega: \Phi(x,y)=0}\\
- inside(C)=\partial \omega ={(x,y)\in \Omega: \Phi(x,y)>0}\\
- outside(C)=\Omega \/ \omega ={(x,y)\in \Omega: \Phi(x,y)<0}
+ C= \omega ={(x,y)\in \Omega: \phi(x,y)=0}\\
+ inside(C)=\partial \omega ={(x,y)\in \Omega: \phi(x,y)>0}\\
+ outside(C)=\Omega \/ \omega ={(x,y)\in \Omega: \phi(x,y)<0}
    \end{cases}
 \end{equation}
- 
-Thay biến chưa biết C bởi biến chưa biết $\Phi$.  Trong quá trình xây dựng lại phương trình theo $\Phi$ ta sử dụng hàm Heviside $\Phi$ và Hàm Delta Dirac $\delta_0$
+ \begin{center}
+\includegraphics[scale=0.6]{figure/insideoutside.png}
+\captionof{figure}{Đường cong $C=\{(x, y), \phi(x,y)=0 \}$}
+\end{center}
+Thay biến chưa biết C bởi biến chưa biết $\phi$.  Trong quá trình xây dựng lại phương trình theo $\phi$ ta sử dụng hàm Heviside $\phi$ và Hàm Delta Dirac $\delta_0$
  \begin{equation}
  H(z)=
 \begin{cases}
@@ -448,64 +467,79 @@ Thay biến chưa biết C bởi biến chưa biết $\Phi$.  Trong quá trình 
 Hàm năng lượng sẽ được viết lại thành
 \begin{equation}
 \begin{split}
-inf_{c_1,c_2,\Phi} F(c_1, c_2, C)&=\mu \int_{\Omega}\delta(x,y)|\nabla \Phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \Phi(x,y))\,dx\,dy \\ 
-&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+inf_{c_1,c_2,\phi} F(c_1, c_2, C)&=\mu \int_{\Omega}\delta(x,y)|\nabla \phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \phi(x,y))\,dx\,dy \\ 
+&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\phi(x,y))) \,dx\,dy
 \end{split}
 \end{equation}
-Trong đó $c_1, c_2$ có thể được tính theo $\Phi$ theo công thức:
+Trong đó $c_1, c_2$ có thể được tính theo $\phi$ theo công thức:
 \begin{equation}
-c_1(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\Phi(x,y))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y))\,dx\,dy}
+c_1(\phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\phi(x,y))\,dx \,dy}{\int_{\Omega}H(\phi(x,y))\,dx\,dy}
 \end{equation}
 \begin{equation}
-c_2(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\Phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y)1-H(\Phi(x,y)))\,dx\,dy}
+c_2(\phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\phi(x,y)1-H(\phi(x,y)))\,dx\,dy}
 \end{equation}
-Để tính toán phương trình Euler-Lagrange cho hàm $\Phi$ ta thực hiện chuẩn hóa $H$ và $\delta_0$ tương ứng thành  $H_{\epsilon}$ và $\delta_{\epsilon}$, $\epsilon \rightarrow 0$. $H_{\epsilon}$ là mở rộng của $H$ trên $C^2(\bar{\Omega})$ và $\delta_{\epsilon}=H'_{\epsilon}$. Hàm mở rộng của $F(c_1,c_2,C)$ thành
+Để tính toán phương trình Euler-Lagrange cho hàm $\phi$ ta thực hiện chuẩn hóa $H$ và $\delta_0$ tương ứng thành  $H_{\epsilon}$ và $\delta_{\epsilon}$, $\epsilon \rightarrow 0$. Hàm mở rộng $H_{\epsilon}$ có thể chọn là hàm $H_{1,{\epsilon}}$ trên $C^2(\bar{\Omega})$ của $H$ và $\delta_{\epsilon}=H'_{\epsilon}$:
+\begin{equation}
+ H_{1,\epsilon}(z)=
+\begin{cases}
+ 1 & \text{nếu} z> \epsilon\\
+0 & \text{nếu} z <\epsilon \\
+\dfrac{1}{2}(1+\dfrac{z}{\epsilon}+\dfrac{1}{\pi}\sin(\dfrac{\pi z}{\epsilon})) & \text{nếu} z <|\epsilon|\\
+   \end{cases}
+\end{equation}
+Ngoài ra ta có thể sử dụng hàm mở rộng của H trên $C^{\infty}(\bar{\Omega})$:
+\begin{equation}
+ H_{2,\epsilon}(z)=\dfrac{1}{2}(1+\dfrac{z}{\epsilon}+\dfrac{1}{\pi}\sin(\dfrac{\pi z}{\epsilon}))  \text{nếu} z <|\epsilon|
+\end{equation}
+Cả hai hàm $ H{1,\epsilon}(z),  H{2,\epsilon}(z)$ đều tiến dần đến $H$ và $ \delta_{1,\epsilon}(z),  \delta_{2,\epsilon}(z)$ đều tiến dần đến $\delta_0$ khi $\epsilon\rightarrow 0$ khi $\epsilon\rightarrow 0$. Tuy vậy điều khác nhau là $ \delta_{1,\epsilon}$ hỗ trợ ít hơn, cụ thể là trong đoạn $[-\epsilon, \epsilon]$ còn $ \delta_{2,\epsilon}$ lại khác 0 tại mọi điểm. Do hàm năng lượng đã xây dựng bên trên không lồi do vậy có thể có cực trị địa phương, và kết quả có thể phụ thuộc vào đường cong khởi tạo ban đầu. Với $H{1,\epsilon}(z), \delta_{1,\epsilon}(z)$ thuật toán có thể đưa ra kết quả là cực trị địa phương, trong khi với $H{1,\epsilon}(z), \delta_{1,\epsilon}(z)$ thuật toán có xu hướng đưa ra kết quả là cực trị toàn cục
+ Hàm mở rộng của $F(c_1,c_2,C)$ thành
 \begin{equation}
 \begin{split}
-F(c_1, c_2, \Phi)&=\mu \int_{\Omega}\delta_0(x,y)|\nabla \Phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \Phi(x,y))\,dx\,dy \\ 
-&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+F(c_1, c_2, \phi)&=\mu \int_{\Omega}\delta_0(x,y)|\nabla \phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \phi(x,y))\,dx\,dy \\ 
+&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\phi(x,y))) \,dx\,dy
 \end{split}
 \end{equation}
-Cố định $c_1, c_2$, thực hiện cực tiểu hàm $F_{\epsilon}$ theo $\Phi$, ta thu được phương trình Euler-Lagrange theo $\Phi$. Tham số hóa $\Phi$ theo thời gian và áp dụng phương pháp hướng giảm ta được:
+Cố định $c_1, c_2$, thực hiện cực tiểu hàm $F_{\epsilon}$ theo $\phi$, ta thu được phương trình Euler-Lagrange theo $\phi$. Tham số hóa $\phi$ theo thời gian và áp dụng phương pháp hướng giảm ta được:
 \begin{equation}
-\dfrac{\partial \Phi}{\partial t}= \delta_{\epsilon}(\Phi)[\mu- div(\dfrac{\nabla \Phi}{|\nabla \Phi|})- \nu- \lambda_1 (u_0-c_1)^2-\lambda_2 (u_0-c_2)^2]  \text{trong} (0,\infty)\times \Omega
+\dfrac{\partial \phi}{\partial t}= \delta_{\epsilon}(\phi)[\mu- div(\dfrac{\nabla \phi}{|\nabla \phi|})- \nu- \lambda_1 (u_0-c_1)^2-\lambda_2 (u_0-c_2)^2]  \text{trong} (0,\infty)\times \Omega
 \end{equation}
 \begin{equation}
-\Phi(0,x,y)=\Phi_0(x,y) \text{trong} \Omega 
+\phi(0,x,y)=\phi_0(x,y) \text{trong} \Omega 
 \end{equation}
 \begin{equation}
-\dfrac{\delta_{\epsilon}(\Phi)}{|\nabla \Phi|}\dfrac{\partial \Phi}{\partial \vec{n}}=0
+\dfrac{\delta_{\epsilon}(\phi)}{|\nabla \phi|}\dfrac{\partial \phi}{\partial \vec{n}}=0
 \end{equation}
 
-Trong đó $\vec{n}$ là vector pháp tuyến hướng ra ngoài của biên $\Omega$, và $\dfrac{\partial \Phi}{\partial \vec{n}} $ là đạo hàm theo vector pháp tuyến của $\Phi$. Trong quá trình tính toán xấp xỉ các giá trị $\Phi_x, \Phi_y$ ở các điểm gần biên, ta cần biết được giá trị $\Phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên $\partial \Omega$ trong khi ta chỉ có giá trị tại các điểm nằm trong và trên biên của $\Omega$, một cách tự nhiên người ta có thể chọn $\Phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên bằng với giá trị của $\Phi(x,y)$ tại điểm gần $(x,y)$  nhất trên biên, hay $\dfrac{\partial \Phi}{\partial \vec{n}}=0$. Thuật toán theo mô hình này được mô tả cụ thể như sau:
-
+Trong đó $\vec{n}$ là vector pháp tuyến hướng ra ngoài của biên $\Omega$, và $\dfrac{\partial \phi}{\partial \vec{n}} $ là đạo hàm theo vector pháp tuyến của $\phi$. Trong quá trình tính toán xấp xỉ các giá trị $\phi_x, \phi_y$ ở các điểm gần biên, ta cần biết được giá trị $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên $\partial \Omega$ trong khi ta chỉ có giá trị tại các điểm nằm trong và trên biên của $\Omega$, một cách tự nhiên người ta có thể chọn $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên bằng với giá trị của $\phi(x,y)$ tại điểm gần $(x,y)$  nhất trên biên, hay $\dfrac{\partial \phi}{\partial \vec{n}}=0$. Thuật toán theo mô hình này được mô tả cụ thể như sau:
+Khi làm việc với hàm Level set, thủ tục cần thiết là khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách ứng với $\phi$. Điều này giúp ngăn việc hàm $\phi$ ko trở nên quá lớn dẫn đến việc thuật toán không hội tụ.
 \begin{itemize}
-\item Bước 1: Khởi tạo $\Phi^0=\Phi_0, n=0$
-\item Bước 2: Tính toán các giá trị $c_1(\Phi^n), c_2(\Phi^n)$
-\item Bước 3: Giải phương trình đạo hàm riêng (1.14) để có $\Phi^{n+1}$
-\item Bước 4: Khởi tạo lại hàm $\Phi$ bằng hàm dấu khoảng cách tới đường cong
+\item Bước 1: Khởi tạo $\phi^0=\phi_0, n=0$
+\item Bước 2: Tính toán các giá trị $c_1(\phi^n), c_2(\phi^n)$
+\item Bước 3: Giải phương trình đạo hàm riêng (1.14) để có $\phi^{n+1}$
+\item Bước 4: Khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách tới đường cong
 \item Bước 5: Kiểm tra điều kiện dừng, nếu không thỏa mãn thì gán $n=n+1$ và quay lại bước 2
 \end{itemize}
 Các tính toán xấp xỉ được dùng trong quá trình giải số hệ phương trình đạo hàm riêng (1.14) như sau:
 \begin{equation}
 \begin{split}
-&k=div(\dfrac{\nabla \Phi}{|\Phi|})=\dfrac{\Phi_{xx}\Phi^2_{y}-2\Phi_{xy}\Phi_{x}\Phi{y}+\Phi_{yy}\Phi^2_{x}}{(\Phi^2_x+\Phi^2_y)^{3/2}}\\
-&\Phi_x= \dfrac{1}{2h}(\Phi_{i+1,j}-\Phi_{i-1,j}) \\ 
-&\Phi_x= \dfrac{1}{2h}(\Phi_{i,j+1}-\Phi_{i,j-1}) \\
-&\Phi_{xx}= \dfrac{1}{h^2}(\Phi_{i+1,j}-\Phi_{i,j}+\Phi_{i-1,j}) \\
-&\Phi_{yy}= \dfrac{1}{h^2}(\Phi_{i,j+1}-\Phi_{i,j}+\Phi_{i,j-1}) \\
-&\Phi_{xy}= \dfrac{1}{h^2}(\Phi_{i+1,j+1}-\Phi_{i-1,j+1}-\Phi_{i,j+1}+\Phi_{i,j-1}) 
+&k=div(\dfrac{\nabla \phi}{|\phi|})=\dfrac{\phi_{xx}\phi^2_{y}-2\phi_{xy}\phi_{x}\phi{y}+\phi_{yy}\phi^2_{x}}{(\phi^2_x+\phi^2_y)^{3/2}}\\
+&\phi_x= \dfrac{1}{2h}(\phi_{i+1,j}-\phi_{i-1,j}) \\ 
+&\phi_x= \dfrac{1}{2h}(\phi_{i,j+1}-\phi_{i,j-1}) \\
+&\phi_{xx}= \dfrac{1}{h^2}(\phi_{i+1,j}-\phi_{i,j}+\phi_{i-1,j}) \\
+&\phi_{yy}= \dfrac{1}{h^2}(\phi_{i,j+1}-\phi_{i,j}+\phi_{i,j-1}) \\
+&\phi_{xy}= \dfrac{1}{h^2}(\phi_{i+1,j+1}-\phi_{i-1,j+1}-\phi_{i,j+1}+\phi_{i,j-1}) 
 \end{split}
 \end{equation}
 trong đó $h$ là khoảng cách lưới. Khi đó (7) có thể được rời rạc hóa thành thành
 \begin{equation}
-\dfrac{\Phi_{n+1}-\Phi{n}}{\Delta t}=\delta_{\epsilon}(\Phi_{n+1})[\mu k-\lambda_1 (u_{i,j}-c_1(\Phi^{n}))^2+\lambda_2 (u_{i,j}-c_2(\Phi^{n}))^2]
+\dfrac{\phi_{n+1}-\phi{n}}{\Delta t}=\delta_{\epsilon}(\phi_{n+1})[\mu k-\lambda_1 (u_{i,j}-c_1(\phi^{n}))^2+\lambda_2 (u_{i,j}-c_2(\phi^{n}))^2]
 \end{equation}
-Từ đó ta có thể tính được $\Phi^{n+1}$ theo $\Phi{n}$
+Từ đó ta có thể tính được $\phi^{n+1}$ theo $\phi{n}$
+Chú ý là thành phần $|C|$ có thể viết lại dưới dạng tổng quát hơn thành $|C|^p$. Nếu ta xét đến trường hợp số chiều $N>1(\Omega \in \mathrm{R}^N )$, khi đó ta có thể chọn $p=1$ hoặc $p=\dfrac{N}{N-1}$
 \subsection{Ưu nhược điểm của mô hình}
 \hspace{0.5cm}Ưu điểm của mô hình là có thể phát hiện được biên trơn, xử lý tốt với ảnh nhiễu, mô hình có thể phát hiện được biên từ duy nhất một đường cong khởi tạo ban đầu. Đường cong này có thể ở mọi vị trí trên ảnh mà không nhất thiết phải bao quanh đối tượng trong ảnh.
 
-Nhược điểm của mô hình  là độ phức tạp tính toán còn lớn do thao tác re-initialization và kết quả còn thiếu chính xác trong trường hợp ảnh không đồng nhất cường độ.
+Nhược điểm của mô hình  là độ phức tạp tính toán còn lớn do thao tác re-initialization và kết quả còn thiếu chính xác trong trường hợp ảnh không đồng nhất cường độ. Điều này có thể giải thích là do việc coi giá trị mức xám của các điểm trong đối tượng, ngoài đối tượng là đồng nhất, trong khi sự chênh lệch giữa mức xám giữa các điểm ảnh lại lớn trong trường hợp ảnh không đồng nhất cường độ.
 
 %\begin{wrapfigure}{r}{0.5\textwidth}
 %  \caption{Kết quả với ảnh không đồng nhất cường độ}
@@ -513,56 +547,75 @@ Nhược điểm của mô hình  là độ phức tạp tính toán còn lớn 
 %    \includegraphics[width=0.5\textwidth]{figure/mistake.png}
 %\end{wrapfigure}
 \begin{center}
-
-\includegraphics[scale=0.5]{figure/mistake.png}
-
+\includegraphics[]{figure/mistake.png}
+\captionof{figure}{Kết quả của mô hình C-V trong trường hợp ảnh không đồng nhất}
 \end{center}
 
-\section{Phương pháp Local binary fiting energy}
+\section{Phương pháp Local binary fiting energy (LBF)}
+Phần trên đã đề cập đến việc mô hình CV tỏ ra không hiệu quả đối với ảnh không đồng nhất cường độ do mô hình CV chỉ sử dụng thông tin toàn cục của ảnh. Mô hình LBF được tạo ra để giải quyết vấn đề này. Mô hình LBF sử dụng thêm thông tin địa phương nhờ việc sử dụng cửa sổ Gauss thông qua sử dụng hàm nhân Gauss.
 \subsection{Mô hình}
 \hspace{0.5cm}Cho ảnh $I: \Omega \rightarrow \mathbb{R}^d$. Trong đó $\Omega \subset \mathbb{R}^2$  là miền ảnh, $d>1$ là bậc của vector $I(x)$. Với ảnh xám d=1, với ảnh màu d=3. Gọi $C$ là biên của ảnh trong $\Omega$, với mỗi x ta đinh nghĩa một hàm năng lượng sau:
 \begin{equation}
-\epsilon_x^LBF(C, f_1(x), f_2(x))=\lambda_1 \int_{in(C)} K(x-y)|I(y)-f_1(x)|^2\,dy+ \lambda_2 \int_{out(C)} K(x-y)|I(y)-f_2(x)|^2\,dy 
+\epsilon_x^{LBF}(C, f_1(x), f_2(x))=\lambda_1 \int_{in(C)} K(x-y)|I(y)-f_1(x)|^2\,dy+ \lambda_2 \int_{out(C)} K(x-y)|I(y)-f_2(x)|^2\,dy 
 \end{equation}
 trong đó $\lambda_1, \lambda_2$ là các hằng số dương, $K$ là hàm nhân với thuộc tính địa phương $K(u)$ giảm và dần về 0 khi |u| giảm, $f_1(x), f_2(x)$ là hai số khớp với cường độ ảnh taị các điểm gần x. Ta gọi x là điểm trung tâm của hàm năng lượng trên. Trong mô hình này $K$ được chọn là hàm nhân Gaussian
 \begin{equation}
 K_{\sigma}(x)=\dfrac{1}{(2\pi)^{n/2}\sigma^n}e^{-|x|^2/2\sigma^2}
 \end{equation}
 với $\sigma$ là tham số dương có thể tùy chỉnh được. Nhấn mạnh rằng $f_1(x), f_2(x)$ thay đổi theo x. $f_1(x), f_2(x)$ làm phương pháp này trở nên khác các phương pháp khác.
+\begin{center}
+\includegraphics[scale=0.7]{figure/LBFresult.png}
+\captionof{figure}{Kết quả của mô hình LBF trong trường hợp ảnh không đồng nhất}
+\end{center}
 
 Trong mô hình này, hàm năng lượng có tính đại phương với $x$ hay $f_1(x), f_2(x)$  chỉ khớp với cường độ ảnh tại các điểm gần $x$. Điều này có được là do tính chất của hàm $K$ là $K(x-y)$ có giá trị lớn hơn khi y gần $x$. Vì vậy cường độ ảnh tại các điểm $y$ gần $x$ ảnh hưởng nhiều hơn đến giá trị $f_1, f_2$ làm cực tiểu hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$, trong khi cường độ ảnh tại các điểm y xa x hầu như không ảnh hưởng tới các giá trị $f_1, f_2$
+%%Ảnh nhiễu
 
+
+\begin{figure}[]
+\def\tabularxcolumn#1{m{#1}}
+%
+\begin{tabular}{cc}
+\subfloat[Đường cong khởi tạo]{\includegraphics[width=7cm]{figure/noisyinit.png}} 
+   & \subfloat[Bước lặp 10]{\includegraphics[width=7cm]{figure/noisy10.png}}\\  
+    \subfloat[Bước lặp 30]{\includegraphics[width=7cm]{figure/noisy30.png}} 
+   & \subfloat[Bước lặp 130]{\includegraphics[width=7cm]{figure/noisy130.png}}    
+   \end{tabular}
+
+
+\caption{Kết quả LBF  với ảnh nhiễu}\label{foo}
+\end{figure}
 Tại mỗi điểm trung tâm x, hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$   có thể đạt cực tiểu khi đường con C khớp với biên của đối tượng và các giá trị $f_1, f_2$ được chọn sao tối ưu. Tuy nhiên hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$ được định nghĩa một cách cục bộ theo điểm trung tâm x. Để tìm được toàn bộ biên của vật, ta cần cực tiểu hàm $\epsilon_x^{LBF}$  với mọi x trong miền ảnh $\Omega$. Điều này có thể làm được bằng cách định nghĩa hàm năng lượng mới sau
 \begin{equation}
 \epsilon(C, f_1, f_2)=\int_{\Omega} \epsilon_x^{LBF}(C, f_1(x), f_2(x))\,dx
 \end{equation}
 \subsection{Giải quyết vấn để sử dụng phương pháp tập mức}
-Đường con $C \subset \Omega$ được đại diện bởi tập mức 0 của một hàm Lipschit $\Phi \rightarrow \mathbb{R}$
-Viết lại hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$ theo $\Phi$ ta được
+Đường cong $C \subset \Omega$ được đại diện bởi tập mức 0 của một hàm Lipschit $\phi \rightarrow \mathbb{R}$
+Viết lại hàm năng lượng $\epsilon_x^{LBF}(C,f_1, f_2)$ theo $\phi$ ta được
 \begin{equation}
 \begin{split}
-\epsilon_x^{LBF}(\Phi, f_1(x), f_2(x))
-=&\lambda_1 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\Phi(y))\,dy\\ &+ \lambda_2 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\Phi(y)))\,dy 
+\epsilon_x^{LBF}(\phi, f_1(x), f_2(x))
+=&\lambda_1 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\phi(y))\,dy\\ &+ \lambda_2 \int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\phi(y)))\,dy 
 \end{split}
 \end{equation}
 trong đó $H$ là hàm Heaviside. Theo đó hàm năng lượng $\epsilon^{LBF}$ có thể được viết lại thành
 \begin{equation}
 \begin{split}
 \epsilon(C, f_1, f_2)&=\int_{\Omega} \epsilon_x^{LBF}(C, f_1(x), f_2(x))\,dx\\
-&=\lambda_1 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\Phi(y))\,dy]\,dx \\
-&+ \lambda_2 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\Phi(y)))\,dy \,dx
+&=\lambda_1 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_1(x)|^2H(\phi(y))\,dy]\,dx \\
+&+ \lambda_2 \int_{\Omega}\int_{\Omega} K_{\sigma}(x-y)|I(y)-f_2(x)|^2(1-H(\phi(y)))\,dy \,dx
 \end{split}
 \end{equation}
-Để đảm bảo rằng $\Phi$ ổn định, chúng ta thêm hàm độ lệch giữa hàm tập mức $\Phi$ và hàm dấu khoảng cách.
+Để đảm bảo rằng $\phi$ ổn định, chúng ta thêm hàm độ lệch giữa hàm tập mức $\phi$ và hàm dấu khoảng cách.
 \begin{equation}
-P(\Phi)= \int_{\Omega}\dfrac{1}{2}(|\nabla \Phi|-1)^2\,dx
+P(\phi)= \int_{\Omega}\dfrac{1}{2}(|\nabla \phi|-1)^2\,dx
 \end{equation}
 \begin{equation}
-\mathcal{L}(\Phi)=\int_{\Omega}\delta(\Phi(x))|\nabla \Phi(x)|\,dx
+\mathcal{L}(\phi)=\int_{\Omega}\delta(\phi(x))|\nabla \phi(x)|\,dx
 \end{equation}
 Bây giờ ta có hàm energy cuối cùng
 \begin{equation}
-\mathcal{F}(\Phi,f_1,f_2)=\epsilon(C, f_1, f_2)+\mu \mathcal{P}(\Phi)+\nu \mathcal{L}(\Phi)
+\mathcal{F}(\phi,f_1,f_2)=\epsilon(C, f_1, f_2)+\mu \mathcal{P}(\phi)+\nu \mathcal{L}(\phi)
 \end{equation}
 trong đó $\mu$ và $\nu$ là các hằng số. Trong thực tế, các $H$ được xấp xỉ bởi một hàm trơn $H_{\epsilon}$
 \begin{equation}
@@ -573,19 +626,19 @@ và $\delta_{\epsilon}(x)$ được chọn là
 \delta_{\epsilon}(x)=H_{\epsilon}'(x)=\dfrac{1}{\pi}\dfrac{\epsilon}{\epsilon^2+x^2}
 \end{equation}
 Hàm năng lượng này sẽ được cực tiểu hóa để tìm biên 
-Với $\Phi$ cố định ta thực hiện cực tiểu hàm năng lượng $\epsilon(C, f_1, f_2)$  theo $f_1, f_2$ ta tìm được $f_1, f_2$ như sau:
+Với $\phi$ cố định ta thực hiện cực tiểu hàm năng lượng $\epsilon(C, f_1, f_2)$  theo $f_1, f_2$ ta tìm được $f_1, f_2$ như sau:
 \begin{equation}
-f_1(x)=\dfrac{K_{\sigma}*[(H_{\epsilon}(\Phi(x)))*I(x)]}{K_{\sigma}*(H_{\epsilon}(\Phi(x))}
+f_1(x)=\dfrac{K_{\sigma}*[(H_{\epsilon}(\phi(x)))*I(x)]}{K_{\sigma}*(H_{\epsilon}(\phi(x))}
 \end{equation}
 \begin{equation}
-f_1(x)=\dfrac{K_{\sigma}*[(1-H_{\epsilon}(\Phi(x)))*I(x)]}{K_{\sigma}*(1-H_{\epsilon}(\Phi(x))}
+f_1(x)=\dfrac{K_{\sigma}*[(1-H_{\epsilon}(\phi(x)))*I(x)]}{K_{\sigma}*(1-H_{\epsilon}(\phi(x))}
 \end{equation}
-Theo công thức $f_1, f_2$ ở trên luôn dương do $H_{\epsilon}$ và $1-H_{\epsilon}$ luôn dương. Cố định $f_1, f_2$ và cực tiểu hàm $\epsilon^{LBF}(\Phi, f_1(x), f_2(x))$ theo $\Phi$, sử dụng phương pháp hướng giảm ta được:
+Theo công thức $f_1, f_2$ ở trên luôn dương do $H_{\epsilon}$ và $1-H_{\epsilon}$ luôn dương. Cố định $f_1, f_2$ và cực tiểu hàm $\epsilon^{LBF}(\phi, f_1(x), f_2(x))$ theo $\phi$, sử dụng phương pháp hướng giảm ta được:
 
 \begin{equation}
 \begin{split}
-\dfrac{\partial \Phi}{\partial t}=&- \delta_{\epsilon}(\Phi)(\lambda_1 e_1 -\lambda_2 e_2)+\nu \delta_{\epsilon}(\Phi)div(\dfrac{\nabla \Phi}{|\nabla \Phi|})\\
-&+\mu(\nabla^2 \Phi -div(\dfrac{\nabla \Phi}{|\nabla \Phi|}))
+\dfrac{\partial \phi}{\partial t}=&- \delta_{\epsilon}(\phi)(\lambda_1 e_1 -\lambda_2 e_2)+\nu \delta_{\epsilon}(\phi)div(\dfrac{\nabla \phi}{|\nabla \phi|})\\
+&+\mu(\nabla^2 \phi -div(\dfrac{\nabla \phi}{|\nabla \phi|}))
 \end{split}
 \end{equation} 
 trong đó $\delta_{\epsilon}(x)$ là hàm trơn Dirac được cho như công thức trên và $e_1(x), e_2(x)$ được tính theo công thức sau:
@@ -595,50 +648,92 @@ e_1(x)=\int_{\Omega}K_{\sigma}(y-x)|I(x)-f_1(y)|^2 \,dy
 \begin{equation}
 e_1(x)=\int_{\Omega}K_{\sigma}(y-x)|I(x)-f_2(y)|^2 \,dy
 \end{equation}
+Ta sẽ có thuật toán như sau:
+\begin{itemize}
+\item Bước 1: Khởi tạo $\phi^0=\phi_0, n=0$
+\item Bước 2: Tính toán các giá trị $c_1(\phi^n), c_2(\phi^n)$
+\item Bước 3: Giải phương trình đạo hàm riêng (1.14) để có $\phi^{n+1}$
+\item Bước 4: Kiểm tra điều kiện dừng, nếu không thỏa mãn thì gán $n=n+1$ và quay lại bước 2
+\end{itemize}
+Với việc này
 \subsection{Ưu nhược điểm của mô hình}
-Ưu điểm của mô hình này là không cần thiết phải chuẩn hóa $f_1, f_2$. Thực tế, $f_1, f_2$ làm cực tiểu hàm năng lượng có thể được cho bởi công thức (14)(15) và là các hàm trơn. Hơn nữa mô hình này cũng không cần phải mở rộng $f_1, f_2$ vì nó được định nghĩa trên toàn miền ảnh $\Omega$. Một ưu điểm nữa của mô hình này là việc khởi tạo lại hàm $\Phi$ là không cần thiết do việc thêm hàm chuẩn hóa khoảng cách. Nhờ việc chuẩn hóa khoảng cách này mà việc khởi tạo hàm $\Phi$ lúc đầu trở nên linh hoạt hơn.
-Tuy nhiên việc tính toán $\lambda_1 e_1 -\lambda_2 e_2$ còn tốn nhiều tài nguyên
-\section{Phương pháp Local image fitting}
+Ưu điểm của mô hình này là không cần thiết phải chuẩn hóa $f_1, f_2$. Thực tế, $f_1, f_2$ làm cực tiểu hàm năng lượng có thể được cho bởi công thức (14)(15) và là các hàm trơn. Hơn nữa mô hình này cũng không cần phải mở rộng $f_1, f_2$ vì nó được định nghĩa trên toàn miền ảnh $\Omega$. Một ưu điểm nữa của mô hình này là việc khởi tạo lại hàm $\phi$ là không cần thiết do việc thêm hàm chuẩn hóa khoảng cách. Nhờ việc chuẩn hóa khoảng cách này mà việc khởi tạo hàm $\phi$ lúc đầu trở nên linh hoạt hơn. Một trường hợp đặc biêt là ta hoàn toàn có thể khởi tạo hàm $\phi$ là hàm nhị phân, nhận giá trị $c_0$ ngoài miền $R_0$, nhận giá trị $-c_0$ ở trong miền $R_0$.
+
+Ngoài việc phục vụ cho việc phân vùng, mô hình LBF còn có thể sử dụng cho việc khử nhiễu. Hình dưới là kết quả của mô hình LBF với ảnh màu, giải thích cho sự kết hợp giữa phân vùng và khử nhiễu được sử dụng trong mô hình LBF. Dòng đầu tiên là kết quả của LBF từ đường cong khởi tạo cho đến kết quả cuối cùng sau khi phân vùng. Dòng 2 và dòng 3 là kết quả tương ứng với ảnh $f_1, f_2$ được tính theo công thức $(3.31)(3.32)$. Chúng ta định nghĩa một ảnh khớp sau dựa trên $f_1, f_2, \phi$:
+\begin{equation}
+f=H_{\epsilon}(\phi)f_1+(1-H_{\epsilon}(\phi))f_2
+\end{equation}
+$f$ có thể dùng sử dụng để xấp xỉ ảnh gốc trong quá trình khử nhiễu. Dòng thứ 4 trong hình $(3.5)$ là kết quả của quá trình tiến hóa $f$. Khi hàm $\phi$ hội tụ ta có $f$ khớp với ảnh gốc và đồng thời khử được nhiễu của ảnh gốc ban đầu. 
+
+\begin{center}
+\includegraphics[]{figure/denoise.png}
+\captionof{figure}{Khử nhiễu với mô hình LBF}
+\end{center}
+
+Một nhược điểm của mô hình là quá trình  tính toán $\lambda_1 e_1 -\lambda_2 e_2$ còn tốn nhiều tài nguyên. Điều này có thể khắc phục nhờ việc dùng mô hình LIF sẽ được trình bày tiếp theo
+\section{Phương pháp Local image fitting(LIF)}
+Ở phần trước chúng ta đã thấy được mô hình LBF phân vùng hiệu quả với ảnh không đồng nhất cường độ, đồng thời hiệu suất của mô hình LBF cũng tốt hơn trong cả độ chính xác của kết quả cũng như tốc độ tính toán. Phần dưới đây sẽ trình bày về mô hình LIF với khả năng xử lý với ảnh không đồng nhất cường độ xám, sử dụng thông tin địa phương của ảnh để xây dựng hàm năng lượng dựa trên sự khác nhau của ảnh đã khớp so với ảnh ban đầu. Mô hình LIF thực hiện chuẩn hóa hàm tập mức bằng việc sử dụng hàm lọc Gauss sau mỗi vòng lặp. Điều này cũng giúp cho phương pháp này tránh khỏi quá trình khởi tạo lại hàm tập mức bằng dấu khoảng cách. Kết quả thực nghiệm đã cho thấy tốc độ khi thực hiện phân vùng với mô hình này tốt hơn so với mô hình LBF trong khi đưa ra một kết quả phân vùng tương đương.
 \subsection{Mô hình và phương trình với tập mức}
 Một hàm khớp địa phương (Local fitted image fomulation) được định nghĩa như sau:
 \begin{equation}
-I^{LFI}= m_1H_{\epsilon}(\Phi)+m_2(1-H_{\epsilon}(\Phi))
+I^{LFI}= m_1H_{\epsilon}(\phi)+m_2(1-H_{\epsilon}(\phi))
 \end{equation}
 Trong đó $m_1,m_2$ được định nghĩa như sau
 \begin{equation}
 \begin{cases}
- m_1=mean(I\in (\{x\in \Omega|\Phi(x)<0\}\cap W_k(x)))\\
-  m_2=mean(I\in (\{x\in \Omega|\Phi(x)>0\}\cap W_k(x)))
+ m_1=mean(I\in (\{x\in \Omega|\phi(x)<0\}\cap W_k(x)))\\
+  m_2=mean(I\in (\{x\in \Omega|\phi(x)>0\}\cap W_k(x)))
    \end{cases}
 \end{equation}
-trong đó $W_k(x)$ là một hàm cửa sổ hình chữ nhật. Ở đây ta chọn $W_k(x)$  là hàm cửa sổ Guassian $K_{\sigma}(x)$ với độ lệch chuẩn $\sigma$ và với kích thước $4k+1$ và $4k+1$ với $k$ là số nguyên lớn nhất không vượt quá $\sigma$. Mô hình này sử dụng hàm năng lượng khớp địa phương (local image fitting energy functional) thể hiện độ lệch giữa ảnh sau khi khớp và ảnh gốc:
+\begin{center}
+\includegraphics[scale=.7]{figure/3clif1.png}
+\captionof{figure}{Phân vùng với ảnh nhiều đối tượng có mức xám khác nhau}
+\end{center}
+trong đó $W_k(x)$ là một hàm cửa sổ hình chữ nhật. Ở đây ta chọn $W_k(x)$  là hàm cửa sổ Guassian $K_{\sigma}(x)$ với độ lệch chuẩn $\sigma$ và với kích thước $4k+1$ và $4k+1$ với $k$ là số nguyên lớn nhất không vượt quá $\sigma$. Việc sử dụng cửa sổ này thể hiện tính chất địa phương của mô hình. Việc tính $m_1, m_2$ chỉ thực hiện với vùng nằm trong cửa sổ mà không phải thực hiện trên toàn vùng như mô hình CV. Nhờ tính chất này mà mô hình LIF có thể xử lý được với ảnh không đồng nhất cường độ, ngoài ra còn có thể phân vùng với ảnh nhiều đối tượng với các cường độ xám khác nhau .Mô hình này sử dụng hàm năng lượng khớp địa phương thể hiện độ lệch giữa ảnh sau khi khớp và ảnh gốc:
 \begin{equation}
-E^{LIF}(\Phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-I^{LFI}(x)|^2\,dx
+E^{LIF}(\phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-I^{LFI}(x)|^2\,dx
+\end{equation}
+\begin{center}
+\includegraphics[]{figure/Gaussfilter.png}
+\captionof{figure}{Cửa sổ Gauss}
+\end{center}
+Thêm thành phần biến thiên $\eta$ vào hàm $\phi$ ta được $\bar{\phi}=\phi+\epsilon \eta$
+Cố định $c_1, c_2$ . Đạo hàm theo $\phi$ và cho $\epsilon$ tiến dần tới 0 ta có
+\begin{equation}
+\begin{split}
+\dfrac{\delta E^{LIF}}{\delta \phi } &=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\bar{\phi})-m2(1-H_{\epsilon}(\bar{\phi}))|^2\,dx) \\ 
+&=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(-\int_{\Omega}-\delta_{\epsilon}(\phi)(I(x)-m_1H_{\epsilon}(\bar{\phi})-m2(1-H_{\epsilon}(\bar{\phi})))(m_1-m_2)\eta\,dx) \\ 
+&=-(\int_{\Omega}-\delta_{\epsilon}(\phi)(I(x)-m_1 H_{\epsilon}(\phi)-m2(1-H_{\epsilon}(\phi)))(m_1-m_2)\eta\,dx)
+\end{split}
+\end{equation}
+Theo đó ta có phương trình Euler-Lagarange:
+\begin{equation}
+\delta_{\epsilon}(\phi)\{(I-I^{LFI})(m_1-m_2)\}=0
 \end{equation}
 Sử dụng phương pháp hướng giảm ta có
 \begin{equation}
-\dfrac{\partial \Phi}{\partial t}=(I-I^{LFI})(m_1-m_2)\delta_{\epsilon}(\Phi)
+\dfrac{\partial \phi}{\partial t}=(I-I^{LFI})(m_1-m_2)\delta_{\epsilon}(\phi)
 \end{equation}
-Trong quá trình làm việc theo phương pháp với tập mức, để đảm bảo tính hội tụ của $\Phi$, ta cần thực hiện thao tác khởi tạo lại $\Phi$. Tuy nhiên việc này đòi hỏi khá nhiều tài nguyên. Li et al đề xuất việc thêm hàm phạt độ lệch giữa $\Phi$ và hàm dấu khoảng cách(SDF).
+Trong quá trình làm việc theo phương pháp với tập mức, để đảm bảo tính hội tụ của $\phi$, ta cần thực hiện thao tác khởi tạo lại $\phi$. Tuy nhiên việc này đòi hỏi khá nhiều tài nguyên. Mô hình này thực hiện việc khởi tạo lại thành chuẩn hóa hàm $\phi$ sử dụng hàm chuẩn hóa Gauss $\phi=\phi* G_{\psi}$, trong đó $\psi$ là độ lệch chuẩn.
 
 Các bước của thuật toán như sau:
 \begin{itemize}
-\item Bước 1: Khởi tạo hàm $\Phi$ là hàm nhị phân như sau:
+\item Bước 1: Khởi tạo hàm $\phi$ là hàm nhị phân như sau:
 \begin{equation}
-\Phi_(x,t=0)=\begin{cases}
+\phi_(x,t=0)=\begin{cases}
 -\rho, x\in \Omega_0 -\partial \Omega_0\\
 0, x\in \partial \Omega_0\\
 \rho, x\in \Omega- \Omega_0
 \end{cases}
 \end{equation}
  trong đó $\rho>0$ là hằng số, $\Omega_0$ là tập con  của miền ảnh $\Omega$ và $\partial \Omega_0$ là biên của $\Omega_0$
- \item Bước 2: Tính toán $\Phi$ sử dụng phương trình (3.4)
- \item Bước 3: Chuẩn hóa hàm tập mức $\Phi$ bởi hàm nhân Gaussian. Ví dụ $\Phi=\G_{\psi}*\Phi$ trong đó $\psi$ là độ lệch chuẩn thỏa mãn lớn hơn $\sqrt{t}$ để tăng cường khả năng làm mịn
+ \item Bước 2: Tính toán $\phi$ sử dụng phương trình (3.4)
+ \item Bước 3: Chuẩn hóa hàm tập mức $\phi$ bởi hàm nhân Gaussian. Ví dụ $\phi=\G_{\psi}*\phi$ trong đó $\psi$ là độ lệch chuẩn thỏa mãn lớn hơn $\sqrt{t}$ để tăng cường khả năng làm mịn
  \item Bước 4: Kiểm tra điều kiện dừng, nếu không thỏa mãn quay lại bước 2
 \end{itemize}
 Qua quá trình thử nghiệm, tham số $\psi$ ở bước 3 thường được chọn trong khoảng 0.45 đến 1. Nếu nhiễu lớn thì $\psi$ nên chọn lớn hơn
 \subsection{Ưu nhược điểm của mô hình}
-So với mô hình LBF, tuy mô hình LBF không cần thao tác re-initialization không cần thiết, tuy nhiên độ phức tạp tính toán còn tương đối cao. Chi phí tính toán của mô hình LBF chủ yếu nằm ở thao tác tính toán $\lambda_1 e_1-\lambda_2 e_2$. Mô hình LIF có tốc độ tính toán tốt hơn hiều so với LBF. Đồng thời thực nghiệm cho thấy mô hình LIF có thể đạt tới việc phân chia nhỏ hơn pixel. Hình dưới cho thấy với phương pháp C-V kết quả cuối cùng thu được 2 ngón tay ở giữa bị dính vào nhau trong khi với phương pháp LIF thì chúng tách rời hoàn toàn.
+So với mô hình LBF, tuy mô hình LBF không cần thao tác re-initialization không cần thiết, tuy nhiên độ phức tạp tính toán còn tương đối cao. Chi phí tính toán của mô hình LBF chủ yếu nằm ở thao tác tính toán $\lambda_1 e_1-\lambda_2 e_2$. Mô hình LIF có tốc độ tính toán tốt hơn hiều so với LBF. Đồng thời thực nghiệm cho thấy mô hình LIF có thể đạt tới việc phân chia nhỏ hơn pixel(Hình 3.6). Hình dưới cho thấy với phương pháp C-V kết quả cuối cùng thu được 2 ngón tay ở giữa bị dính vào nhau trong khi với phương pháp LIF thì chúng tách rời hoàn toàn.
 \begin{center}
 \begin{figure}
 \caption{Hình b và c thể hiện kết quả của phương pháp C-V, hình  d và e thể hiện kết quả của phương pháp LIF}
@@ -650,15 +745,15 @@ So với mô hình LBF, tuy mô hình LBF không cần thao tác re-initializati
 \subsection{Mô hình}
 Cả 3 phương pháp phân vùng sử dụng biên động như đã trình bày ở trên đều có ưu nhược điểm của riêng mình. Với mô hình CV, nó hoạt động tốt với các ảnh mà cường độ xám trong và ngoài đối tượng trong ảnh đồng nhất, trong trường hợp  ảnh có cường độ sáng không đồng nhất thì mô hình này thường cho ra kết quả sai. Ngược lại, mô hình LBF,LIF trình bày ở phần 2,3 lại hoạt động tốt với ảnh không đồng nhất mức xám và tỏ ra không hiệu quả với ảnh đồng nhất mức xám. Trong phần này tôi đề xuất một mô hình kết hợp mô hình Global và Local để có thể xử lý được với nhiều loại ảnh khác nhau, giảm thời gian tính toán, đồng thời tăng tính hội tụ do việc giảm bớt các thành phần dễ bị ảnh hường bởi đường biên ban đầu. Trong mô hình CV ta lấy thành phần fitting term và bỏ đi thành phần regulalize term :
 \begin{equation}
-E^(GIF)=\int_{\Omega} |u_0-c_1|^2H(\Phi(x,y))+ |u_0-c_2|^2(1-H(\Phi(x,y))) \,dx\,dy
+E^(GIF)=\int_{\Omega} |u_0-c_1|^2H(\phi(x,y))+ |u_0-c_2|^2(1-H(\phi(x,y))) \,dx\,dy
 \end{equation} 
 Chúng ta gọi nó là GIF (Global image fitting). Ngoài ra trong mô hình này sử dụng thêm thành phần $E^{LIF}$ trong mô hình LIF:
 \begin{equation}
-E^{LIF}(\Phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\Phi))|^2\,dx
+E^{LIF}(\phi)=\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\phi)-m2(1-H_{\epsilon}(\phi))|^2\,dx
 \end{equation}
 trong đó 
 \begin{equation}
-\Phi_(x,t=0)=\begin{cases}
+\phi_(x,t=0)=\begin{cases}
 -\rho, x\in \Omega_0 -\partial \Omega_0\\
 0, x\in \partial \Omega_0\\
 \rho, x\in \Omega- \Omega_0
@@ -675,34 +770,76 @@ Tham số độ lệch chuẩn $\sigma$, và tham số chuẩn hóa $\psi$ đón
 \subsection{Giải số}
 Tiếp theo chúng ta sẽ xây dựng các bước giải số cho mô hình. Giá trị $c_1, c_2$ làm cực tiểu hàm năng lượng trên được xác định như sau:
 \begin{equation}
-c_1(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\Phi(x,y))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y))\,dx\,dy}
+c_1(\phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\phi(x,y))\,dx \,dy}{\int_{\Omega}H(\phi(x,y))\,dx\,dy}
 \end{equation}
 \begin{equation}
-c_2(\Phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\Phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\Phi(x,y)1-H(\Phi(x,y)))\,dx\,dy}
+c_2(\phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\phi(x,y)1-H(\phi(x,y)))\,dx\,dy}
 \end{equation}
-Cố định $c_1, c_2$ . Đạo hàm theo $\Phi$ và cho $\epsilon$ tiến dần tới 0 ta có
+Cố định $c_1, c_2$ . Thêm thành phần biến thiên $\eta$ ta được $\phi=\phi+\epsilon\eta$.Đạo hàm theo $\phi$ và cho $\epsilon$ tiến dần tới 0 ta có
 \begin{equation}
 \begin{split}
-\dfrac{\delta E^{GLIF}}{\delta\bar{\Phi} } &=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(\dfrac{1}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\bar{\Phi})-m2(1-H_{\epsilon}(\bar{\Phi}))|^2\,dx) \\ 
-&+\int_{\Omega} |u_0-c_1|^2H(\bar{\Phi})+ |u_0-c_2|^2(1-H(\bar{\Phi})) \,dx\\
-&=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(-\int_{\Omega}-\delta_{\epsilon}(\Phi)(I(x)-m_1H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\bar{\Phi})))(m_1-m_2)\psi\,dx) \\ 
-&+\alpha\delta_{\epsilon}(\bar{\Phi})\int_{\Omega} (I-c_1)^2+ (I_0-c_2)^2)\psi \,dx\\
-&=-(\int_{\Omega}-\delta_{\epsilon}(\Phi)(I(x)-m_1 H_{\epsilon}(\Phi)-m2(1-H_{\epsilon}(\Phi)))(m_1-m_2)\psi\,dx)\\
-&+\alpha\delta_{\epsilon}(\Phi)\int_{\Omega} ((I-c_1)^2+ (I_0-c_2)^2)\psi \,dx
+\dfrac{\delta E^{GLIF}}{\delta\bar{\phi} } &=\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(\dfrac{\alpha}{2}\int_{\Omega}|I(x)-m_1H_{\epsilon}(\bar{\phi})-m2(1-H_{\epsilon}(\bar{\phi}))|^2\,dx) \\ 
+&+(1-\alpha) \int_{\Omega} |u_0-c_1|^2H(\bar{\phi})+ |u_0-c_2|^2(1-H(\bar{\phi})) \,dx\\
+&=\alpha\lim_{\epsilon \rightarrow 0}\dfrac{d}{d \epsilon}(-\int_{\Omega}-\delta_{\epsilon}(\bar{\phi})(I(x)-m_1H_{\epsilon}(\phi)-m2(1-H_{\epsilon}(\bar{\phi})))(m_1-m_2)\eta\,dx) \\ 
+&+(1-\alpha)\delta_{\epsilon}(\bar{\phi})\int_{\Omega} (I-c_1)^2+ (I_0-c_2)^2)\eta \,dx\\
+&=-\alpha(\int_{\Omega}-\delta_{\epsilon}(\phi)(I(x)-m_1 H_{\epsilon}(\phi)-m2(1-H_{\epsilon}(\phi)))(m_1-m_2)\eta\,dx)\\
+&+(1-\alpha)\delta_{\epsilon}(\phi)\int_{\Omega} ((I-c_1)^2+ (I_0-c_2)^2)\eta \,dx
 \end{split}
 \end{equation}
 Theo đó ta có phương trình Euler-Lagarange:
 \begin{equation}
-\sigma_{\epsilon}(\Phi)\{(I-I^{LIF})(m_1-m_2)+\alpha((I-c_1)^2+ (I_0-c_2)^2)\}
+\delta_{\epsilon}(\phi)\{\alpha(I-I^{LFI})(m_1-m_2)+(1-\alpha)((I-c_1)^2+ (I_0-c_2)^2)\}
 \end{equation}
 Cụ thể các bước của thuật toán sẽ như sau:
 \begin{itemize}
-\item Bước 1: Khởi tạo đường cong $\Phi_0$ ban đầu
+\item Bước 1: Khởi tạo đường cong $\phi_0$ ban đầu
 \item Bước 2: Tính $c_1, c_2$ theo công thức 
-\item Bước 3: Tính giá trị $\Phi_{n+1}$ theo $\Phi_{n}$ theo công thức 
-\item Bước 4: Chuẩn hóa hàm tập mức $\Phi$ sử dụng hàm nhân Gauss $\Phi=G_{\psi}\Phi$, trong đó $\psi$ là độ lệch chuẩn
+\item Bước 3: Tính giá trị $\phi_{n+1}$ theo $\phi_{n}$ theo công thức 
+\item Bước 4: Chuẩn hóa hàm tập mức $\phi$ sử dụng hàm nhân Gauss $\phi=G_{\psi}\phi$, trong đó $\psi$ là độ lệch chuẩn
 \item Bước 5: Kiểm tra điều kiện dừng. Nếu thỏa mãn quay lại bước 2
 \end{itemize}
+\subsection{Kết quả}
+\begin{figure}[]
+\def\tabularxcolumn#1{m{#1}}
+%
+\begin{tabular}{cccc}
+\subfloat[]{\includegraphics[width=4cm]{figure/vessel2init1.png}} 
+   & \subfloat[]{\includegraphics[width=4cm]{figure/vessel2lbf1.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/vessel2lif1.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/vessel2GLIF1.png}} \\
+     \subfloat[]{\includegraphics[width=4cm]{figure/vessel3init1.png}} 
+   & \subfloat[]{\includegraphics[width=4cm]{figure/vessel3lbf1.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/vessel3lif1.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/vessel3GLIF1.png}}\\
+     \subfloat[]{\includegraphics[width=4cm]{figure/3cinit1.png}} 
+   & \subfloat[]{\includegraphics[width=4cm]{figure/3clbf1.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/3clif1.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/3cGLIF1.png}}\\
+      \subfloat[]{\includegraphics[width=4cm]{figure/bantayinit1.png}} 
+   & \subfloat[]{\includegraphics[width=4cm]{figure/bantaylbf1.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/bantaylif1.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/bantayGLIF1.png}}                
+   \end{tabular}
+
+
+\caption{Kết quả của mô hình GLIF so với các mô hình LBF và LIF. Ảnh a,e,i,m là đường cong khởi tạo ban đầu. Ảnh b,f,j,n là kết quả với mô hình LBF, ảnh c,g,k,o là kết quả với mô hình LIF. Ảnh d,h,l,p là kết quả với mô hình GLIF }\label{foo}
+\end{figure}
+Kết quả hình $(3.7)$ cho thấy mô hình GLIF xử lý tốt với cả ảnh đồng nhất cường độ và ảnh không đồng nhất cường độ. Đặc biệt  kết quả thực nghiệm cho thấy mô hình GLIF hoạt động được trong trường hợp $\Delta t$ lớn hơn so với các mô hình LBF và LIF trong khi vẫn đưa ra kết quả chấp nhận được. Điều này giúp tăng tốc độ chạy thuật toán. Hình $(3.8)$ là kết quả minh chứng cho điều này:
+\begin{figure}[]
+\def\tabularxcolumn#1{m{#1}}
+%
+\begin{tabular}{ccc}
+    \subfloat[]{\includegraphics[width=4cm]{figure/vessel2lbf2.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/vessel2lif2.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/vessel2GLIF2.png}} \\
+    \subfloat[]{\includegraphics[width=4cm]{figure/vessel3lbf2.png}}
+    & \subfloat[]{\includegraphics[width=4cm]{figure/vessel3lif2.png}}
+     & \subfloat[]{\includegraphics[width=4cm]{figure/vessel3GLIF2.png}}               
+   \end{tabular}
+
+
+\caption{Kết quả của mô hình GLIF so với các mô hình LBF và LIF với tham số $\Delta t=0.1$. Ảnh a, d là kết quả với mô hình LBF, ảnh b, e là kết quả với mô hình LIF. Ảnh c, f là kết quả với mô hình GLIF }\label{foo}
+\end{figure}
 \chapter{Áp dụng mô hình GLIF trong theo dõi đối tượng trong video }
 \section{Theo dõi đối tượng trong video là gì? Tại sao phải theo dõi đối tượng trong video}
 Theo vết đối tượng là một vấn đề quan trọng trong trong lĩnh vực thị giác may tính. Sự xuất hiện của các máy tính cấu hình mạnh và các camera chất lượng cao và sự cần thiết của việc phân tích video  là điều kiện để thúc đẩy sự phát triển của các thuật toán theo vết. Có 3 bước chính trong phân tích video là: Phát hiện các đối tượng chuyển động trong video, theo vết các đối đó theo từng frame, phân tích vết để phát hiện hành động của đối tượng. Do vậy, theo vết đối tượng phù hợp với: 
@@ -728,7 +865,7 @@ Có nhiều phương pháp theo vết đối tượng được đề xuất. Cá
 Đối tượng có thể được định nghĩa là bất kỳ thứ gì mà người ta quan tâm và muốn phân tích nó. Ví dụ như các phương tiện ở trên đường, người đi bộ trên đường, hay các bong bóng ở trong nước .... Các đối tượng có thể được đại diện bởi hình dạng, đối tượng.... Dưới đây là một số cách dùng để biểu diễn hình dạng đối tượng thường được sử dụng trong  theo vết. 
 \begin{itemize}
 \item Điểm: Một đối tượng được biểu diễn bởi một tập hợp các điểm. Cách này thường được dùng trong trường hợp đối tượng được theo vết có kích thước nhỏ
-\item Các hình dạng đơn giản: Đối tượng được đại diện bởi các tam giác, elips,.... Chuyển động của đối tượng theo cách tiếp cận này được mô hình hóa bằng các dịch chuyển, tuyến tính, hay phép chiếu. Mặc dù cách này phù hợp với việc theo dấu các đối tượng cứng rắn tuy nhiên nó có thể dùng cho các đối tượng không cứng
+\item Các hình dạng cơ bản: Đối tượng được đại diện bởi các tam giác, elips,.... Chuyển động của đối tượng theo cách tiếp cận này được mô hình hóa bằng các dịch chuyển, tuyến tính, hay phép chiếu. Mặc dù cách này phù hợp với việc theo dấu các đối tượng rigrid tuy nhiên nó có thể dùng cho các đối tượng không cứng
 \item Đường viền : Đường viền đại diện cho biên của vật. Phần bên trong đường viền được gọi là silhouette của đối tượng. Cách biểu diễn sử dụng đường biên này phù hợp với đối tượng non-rigrid
 \item Khớp nối: Một đối tượng sẽ được chia thành các phần khác nhau và được kết nối bởi các khớp nối. Ví dụ với cơ thể người có thể được chia ra làm các phần: thân, chân, tay,  đầu được kết nối bởi các khớp nối. Quan hệ giữa các thành phần được chi phối bởi các mô hình động học.
 \end{itemize}
@@ -757,6 +894,14 @@ output frame
 
 Thuât toán gặp khó khăn trong trường hợp đối tượng trong frame sau không giao với đường biên cuối cùng ở frame trước. Điều này có thể dẫn đến kết quả không mong muốn.
 \section{Kết quả}
+Hình 4.1 thể hiện kết quả của thuật toán trong khác frame khác nhau của video. Kết quả cho thấy thuật toán hoạt động tốt ngay cả trong trường hợp có sự thay đổi lớn trong các frame. Tuy vậy thuật toán chỉ giải quyết được trường hợp frame sau có giao nhau với biên của đối tượng trong frame trước. 
+\begin{center}
+\begin{figure}
+\caption{Kết quả trong các frame khác nhau}
+\includegraphics[scale=0.6]{figure/video.png}
+\end{figure}
+
+\end{center}   
 \chapter{Áp dụng GLIF trong phân vùng ảnh 3 chiều}
 \section{Ảnh 3 chiều trong thực tế}
 Ngày nay, với sự ra đời của các thiết bị y tế  như máy chụp cắt lớp(CT), máy cộng hưởng từ(MRI) với khả năng cung cấp hình ảnh 3 chiều của các bộ phận trong cơ thể, các bác sĩ đã dễ dàng chuẩn đoán và thực hiện thao tác với các bộ phận trong thực tế hơn nhờ quan sát trên các hình ảnh  3 chiều. Các thiết bị hoạt động theo cơ chế dùng tia X quang chụp cắt lớp các bộ phận theo nhiều hướng khác nhau. Hình ảnh cắt lớp 2 chiều được chụp từ các thiết bị này sau đó sẽ được đưa vào máy tính xử lý để có thể tạo dựng lại hình ảnh 3 chiều 
@@ -772,6 +917,46 @@ Trong đó $\Omega$ là không gian rời rạc 3 chiều. Một ảnh đã đư
 g(x)\in \mathbb{N}
 \end{equation}
 Ảnh nhị phân là một trường hợp đặc biệt của định nghĩa này, hàm g nhận giá trị 0 hoặc 1 tương ứng với nền và phần nội dung trong ảnh. 
+\section{Kết quả mô hình GLIF cho ảnh ba chiều}
+Có hai hướng tiếp cận chính trong phân vùng ảnh 3 chiều là thực hiện xử lý trên từng lát ảnh hoặc xử lý trực tiếp trên ba chiều. Trong phần này tôi thực hiện tiếp cận theo cách thứ 2 tức là thuật toán sẽ thực hiện xử lý trực tiếp trên ảnh 3 chiều thay vì xử lý trên từng lát ảnh.
+Để có thể áp dụng mô hình GLIF cho ảnh ba chiều thay vì xuất phát từ một đường cong khởi tạo ban đầu ta thực hiện xuất phát từ một mặt khởi tạo ban đầu. Các hàm năng lượng được viết lại trong ba chiều tương tự trong hai chiều. Dưới đây là kết quả phân vùng trong ảnh 3 chiều chạy chiều. HÌnh $(5.1)$ là kết qủa quá trình tiến hóa mặt  với các tham số trong thuật toán là $\Delta t=4,\psi=0.3,\mu=0.1 $.HÌnh $(5.2)$ là kết quả trên từng lát ảnh được trích ra từ kết quả đầu ra.
+\begin{figure}[]
+\def\tabularxcolumn#1{m{#1}}
+%
+\begin{tabular}{cc}
+\subfloat[Mặt khởi tạo ban đầu]{\includegraphics[width=7cm]{figure/lobster1.png}} 
+   & \subfloat[Bước lặp 11]{\includegraphics[width=7cm]{figure/lobster11.png}}\\  
+    \subfloat[Bước lặp 19]{\includegraphics[width=7cm]{figure/lobster19.png}} 
+   & \subfloat[Bước lặp 40]{\includegraphics[width=7cm]{figure/lobster40.png}}    
+   \end{tabular}
+
+
+\caption{Kết quả của mô hình GLIF với ảnh chụp cắt lớp một con tôm}\label{foo}
+\end{figure}
+\begin{center}
+\begin{figure}
+\caption{Kết quả phân vùng trong các lát ảnh khác nhau}
+\includegraphics[scale=0.5]{figure/lobsterslice.png}
+\end{figure}
+\end{center}
+Hình $(5.3)$ là kết qủa quá trình tiến hóa mặt được thực hiện trên ảnh chụp cắt lớp não với các tham số trong thuật toán là $\Delta t=0.1,\psi=0.3,\mu=0.1 $.Hình $(5.4)$ là kết trên từng lát ảnh ứng với kết quả đầu ra tương ứng với hình $(5.3)$.
+\begin{figure}[]
+\def\tabularxcolumn#1{m{#1}}
+%
+\begin{tabular}{cc}
+\subfloat[Mặt khởi tạo ban đầu]{\includegraphics[width=7cm]{figure/braininit1.png}} 
+   & \subfloat[Bước lặp 11]{\includegraphics[width=7cm]{figure/brain11.png}}   
+   \end{tabular}
+
+
+\caption{Kết quả của mô hình GLIF với ảnh chụp cắt lớp não người}\label{foo}
+\end{figure}
+\begin{center}
+\begin{figure}
+\caption{Kết quả phân vùng hình chụp cắt lớp não trên các lớp ảnh khác nhau}
+\includegraphics[scale=0.5]{figure/brainslice1.png}
+\end{figure}
+\end{center}
 %Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
 %Ta biết rằng, việc xấp xỉ tuyến tính cho cả vận tốc và áp suất trong bài toán Navier-Stokes sẽ dẫn đến một phép rời rạc hóa không ổn định, do không thỏa mãn điều kiện Babuska-Brezzi. Một phương pháp xấp xỉ rất phổ biến đối với bài toán Stokes được đề xuất bởi Arnold, Brezzi and Fortin \cite{ABF84}. Phương pháp này đề xuất xây dựng không gian các hàm "bubble", hay còn được biết đến là các phần tử Mini (Mini-element). Một tài liệu tham khảo chuẩn tắc về các phương pháp phần tử hữu hạn hỗn hợp là cuốn sách của Brezzi và Fortin \cite{BF91}. Giải pháp cho các kết hợp không hợp lý như trên là bổ sung các thành phần ổn định \cite{BF08,BH08}. Nói cách khác, một nhược điểm của quá trình giải số cho bài toán Navier-Stokes là tính ổn định của thành phần đối lưu trong phương trình động lực. Nhiều tác giả đã sử dụng kỹ thuật "upwinding" để xử lý thành phần hyperbolic này, chẳng hạn như \cite{RR99} dựa trên lược đồ phân phối thặng dư PSI (positive stream invariant), \cite{Mau95} đề xuất phương pháp Arbitrary Lagrangian Eulerian (ALE).\\
 %Các nghiên cứu trong đồ án này nhằm mục đích sử dụng các lợi thế của phép xấp xỉ liên tục Galerkin (phần tử hữu hạn Taylor-Hood) \cite{Qua09} và phương pháp đặc trưng cho thành phần không tuyến tính. Xấp xỉ này cho phép ta rời rạc hóa thời gian và tránh những hạn chế về mặt lý thuyết của CFL (Courant-Friedrichs-Levy) trên mỗi bước thời gian (\cite{PLT92} đề xuất cách lựa chọn bước thời gian phù hợp là $\De t \approx 1.5h$).

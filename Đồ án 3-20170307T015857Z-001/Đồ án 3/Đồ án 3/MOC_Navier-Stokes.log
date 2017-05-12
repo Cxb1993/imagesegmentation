@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  7 MAY 2017 23:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.7)  11 MAY 2017 12:31
 entering extended mode
 **./MOC_Navier-Stokes.tex
 (MOC_Navier-Stokes.tex
@@ -789,6 +789,9 @@ Package: cases 2002/05/02 ver 2.5
 \WF@everypar=\toks32
 Package: wrapfig 2003/01/31  v 3.6
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
@@ -807,19 +810,33 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 )
+\c@KVtest=\count122
+\sf@farskip=\skip78
+\sf@captopadj=\dimen148
+\sf@capskip=\skip79
+\sf@nearskip=\skip80
+\c@subfigure=\count123
+\c@subfigure@save=\count124
+\c@lofdepth=\count125
+\c@subtable=\count126
+\c@subtable@save=\count127
+\c@lotdepth=\count128
+\sf@top=\skip81
+\sf@bottom=\skip82
+)
 \@indexfile=\write3
 \openout3 = `MOC_Navier-Stokes.idx'.
 
 
 Writing index file MOC_Navier-Stokes.idx
-\c@Defi=\count122
-\c@Not=\count123
-\c@Lem=\count124
-\c@Hypo=\count125
-\c@Theo=\count126
-\c@Prop=\count127
-\c@Coro=\count128
-\c@Rem=\count129
+\c@Defi=\count129
+\c@Not=\count130
+\c@Lem=\count131
+\c@Hypo=\count132
+\c@Theo=\count133
+\c@Prop=\count134
+\c@Coro=\count135
+\c@Rem=\count136
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
@@ -838,37 +855,49 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 LaTeX Warning: Unused global option(s):
     [a4].
 
-(MOC_Navier-Stokes.aux)
+(MOC_Navier-Stokes.aux
+
+LaTeX Warning: Label `foo' multiply defined.
+
+
+LaTeX Warning: Label `foo' multiply defined.
+
+
+LaTeX Warning: Label `foo' multiply defined.
+
+
+LaTeX Warning: Label `foo' multiply defined.
+
+)
 \openout1 = `MOC_Navier-Stokes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-\c@lstlisting=\count130
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+\c@lstlisting=\count137
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen148
+\scratchcounter=\count138
+\scratchdimen=\dimen149
 \scratchbox=\box39
-\nofMPsegments=\count132
-\nofMParguments=\count133
+\nofMPsegments=\count139
+\nofMParguments=\count140
 \everyMPshowfont=\toks33
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen149
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
+\MPscratchCnt=\count141
+\MPscratchDim=\dimen150
+\MPnumerator=\count142
+\makeMPintoPDFobject=\count143
 \everyMPtoPDFconversion=\toks34
 ) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
@@ -947,6 +976,7 @@ G,.JBIG2,.JB2,.eps]
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 (MOC_Navier-Stokes.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
@@ -963,161 +993,478 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `MOC_Navier-Stokes.toc'.
 
- [2]
+ [2] [3]
 Ch\uhorn \ohorn ng 1.
-<figure/1921.png, id=10, 246.9225pt x 163.3603pt>
+<figure/1921.png, id=13, 246.9225pt x 163.3603pt>
 File: figure/1921.png Graphic file (type png)
  <use figure/1921.png>
-Package pdftex.def Info: figure/1921.png used on input line 144.
+Package pdftex.def Info: figure/1921.png used on input line 148.
 (pdftex.def)             Requested size: 246.92188pt x 163.3599pt.
 
-[3
+[4
 
-] <figure/htxulyanh.png, id=17, 664.73344pt x 288.3272pt>
+] <figure/htxulyanh.png, id=20, 664.73344pt x 288.3272pt>
 File: figure/htxulyanh.png Graphic file (type png)
 
 <use figure/htxulyanh.png>
-Package pdftex.def Info: figure/htxulyanh.png used on input line 150.
-(pdftex.def)             Requested size: 664.73183pt x 288.32648pt.
+Package pdftex.def Info: figure/htxulyanh.png used on input line 154.
+(pdftex.def)             Requested size: 465.31024pt x 201.82765pt.
 
-Overfull \hbox (206.92697pt too wide) in paragraph at lines 150--151
+Overfull \hbox (7.50539pt too wide) in paragraph at lines 154--155
  [] 
  []
 
-[4 <./figure/1921.png> <./figure/htxulyanh.png>]
-<figure/tpxulyanh.png, id=25, 440.39531pt x 280.04625pt>
+[5 <./figure/1921.png> <./figure/htxulyanh.png>]
+<figure/tpxulyanh.png, id=28, 440.39531pt x 280.04625pt>
 File: figure/tpxulyanh.png Graphic file (type png)
 
 <use figure/tpxulyanh.png>
-Package pdftex.def Info: figure/tpxulyanh.png used on input line 160.
+Package pdftex.def Info: figure/tpxulyanh.png used on input line 164.
 (pdftex.def)             Requested size: 440.39423pt x 280.04555pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 166.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 170.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
- [5 <./figure/tpxulyanh.png>] [6] [7] [8]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 170.
+ [6 <./figure/tpxulyanh.png>] [7] [8] [9]
 Ch\uhorn \ohorn ng 2.
-[9
+[10
 
-] <figure/nguongbiendo.png, id=44, 304.13625pt x 117.43875pt>
+] <figure/nguongbiendo.png, id=47, 304.13625pt x 117.43875pt>
 File: figure/nguongbiendo.png Graphic file (type png)
 
 <use figure/nguongbiendo.png>
-Package pdftex.def Info: figure/nguongbiendo.png used on input line 236.
+Package pdftex.def Info: figure/nguongbiendo.png used on input line 246.
 (pdftex.def)             Requested size: 304.1355pt x 117.43845pt.
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 241.
+LaTeX Warning: Command \' invalid in math mode on input line 251.
 
 Missing character: There is no ¸ in font cmr12!
-[10 <./figure/nguongbiendo.png>]
-LaTeX Font Info:    Try loading font information for T5+cmtt on input line 256.
+[11 <./figure/nguongbiendo.png>]
+LaTeX Font Info:    Try loading font information for T5+cmtt on input line 266.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\vntex\t5cmtt.fd"
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [11] [12] [13]
+) [12] [13] [14]
 
-LaTeX Warning: Command \' invalid in math mode on input line 325.
+LaTeX Warning: Command \' invalid in math mode on input line 335.
 
 Missing character: There is no ¸ in font cmr12!
-[14] [15] [16]
+[15] [16] [17] [18]
 Ch\uhorn \ohorn ng 3.
+[19
 
-LaTeX Warning: Command \` invalid in math mode on input line 385.
+]
+
+LaTeX Warning: Command \` invalid in math mode on input line 402.
 
 Missing character: There is no   in font cmr12!
-<figure/ytuong.png, id=75, 301.125pt x 77.53969pt>
+<figure/ytuong.png, id=85, 301.125pt x 77.53969pt>
 File: figure/ytuong.png Graphic file (type png)
  <use figure/ytuong.png>
-Package pdftex.def Info: figure/ytuong.png used on input line 387.
+Package pdftex.def Info: figure/ytuong.png used on input line 404.
 (pdftex.def)             Requested size: 301.12425pt x 77.53947pt.
 
-[17
-
-] <figure/fitting.png, id=79, 337.26pt x 100.87688pt>
+[20 <./figure/ytuong.png>] <figure/fitting.png, id=90, 337.26pt x 100.87688pt>
 File: figure/fitting.png Graphic file (type png)
 
 <use figure/fitting.png>
-Package pdftex.def Info: figure/fitting.png used on input line 408.
+Package pdftex.def Info: figure/fitting.png used on input line 425.
 (pdftex.def)             Requested size: 337.25917pt x 100.87662pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Underfull \hbox (badness 10000) in paragraph at lines 430--432
 
  []
 
-[18 <./figure/ytuong.png> <./figure/fitting.png>] [19] [20] [21]
-<figure/mistake.png, id=96, 306.39468pt x 213.79875pt>
+[21 <./figure/fitting.png>]
+<figure/insideoutside.png, id=95, 297.36093pt x 183.68625pt>
+File: figure/insideoutside.png Graphic file (type png)
+
+<use figure/insideoutside.png>
+Package pdftex.def Info: figure/insideoutside.png used on input line 456.
+(pdftex.def)             Requested size: 178.41792pt x 110.21259pt.
+ [22 <./figure/insideoutside.png>] [23] [24]
+<figure/mistake.png, id=109, 306.39468pt x 213.79875pt>
 File: figure/mistake.png Graphic file (type png)
 
 <use figure/mistake.png>
-Package pdftex.def Info: figure/mistake.png used on input line 516.
-(pdftex.def)             Requested size: 153.19696pt x 106.89911pt.
-
-Overfull \hbox (20.02058pt too wide) detected at line 525
-\OML/cmm/m/it/12 []BF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C; f[]\OT1/cmr/m/n/12 (
-\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/
-cmm/m/it/12 x\OT1/cmr/m/n/12 )) = \OML/cmm/m/it/12 [] [][] K\OT1/cmr/m/n/12 (\
-OML/cmm/m/it/12 x \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )\OMS/cm
-sy/m/n/12 j\OML/cmm/m/it/12 I\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 y\OT1/cmr/m/n/12
- ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\O
-T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j[] \OML/cmm/m/it/12 dy \OT1/cmr/m/n/12 + \OML/
-cmm/m/it/12 [] [][] K\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12   \O
-ML/cmm/m/it/12 y\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 I\OT1/cmr/m
-/n/12 (\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 
-f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j[] \OM
-L/cmm/m/it/12 dy
+Package pdftex.def Info: figure/mistake.png used on input line 550.
+(pdftex.def)             Requested size: 306.39394pt x 213.79822pt.
+ [25]
+Overfull \hbox (14.61603pt too wide) detected at line 560
+\OML/cmm/m/it/12 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C; f[]\OT1/cmr/m/n/12 (\O
+ML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cm
+m/m/it/12 x\OT1/cmr/m/n/12 )) = \OML/cmm/m/it/12 [] [][] K\OT1/cmr/m/n/12 (\OM
+L/cmm/m/it/12 x \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )\OMS/cmsy
+/m/n/12 j\OML/cmm/m/it/12 I\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 )
+ \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1
+/cmr/m/n/12 )\OMS/cmsy/m/n/12 j[] \OML/cmm/m/it/12 dy \OT1/cmr/m/n/12 + \OML/cm
+m/m/it/12 [] [][] K\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x \OMS/cmsy/m/n/12   \OML
+/cmm/m/it/12 y\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 I\OT1/cmr/m/n
+/12 (\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 f[
+]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j[] \OML/
+cmm/m/it/12 dy
  []
 
-[22 <./figure/mistake.png>] [23] [24] [25]
-<figure/subpixel.png, id=110, 591.71063pt x 140.02313pt>
+[26 <./figure/mistake.png>]
+<figure/LBFresult.png, id=117, 478.03593pt x 307.90031pt>
+File: figure/LBFresult.png Graphic file (type png)
+
+<use figure/LBFresult.png>
+Package pdftex.def Info: figure/LBFresult.png used on input line 567.
+(pdftex.def)             Requested size: 334.62286pt x 215.52873pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 575.
+
+<figure/noisyinit.png, id=118, 421.575pt x 316.18124pt>
+File: figure/noisyinit.png Graphic file (type png)
+
+<use figure/noisyinit.png>
+Package pdftex.def Info: figure/noisyinit.png used on input line 579.
+(pdftex.def)             Requested size: 199.16928pt x 149.37712pt.
+ <figure/noisy10.png, id=119, 578.16pt x 433.62pt>
+File: figure/noisy10.png Graphic file (type png)
+
+<use figure/noisy10.png>
+Package pdftex.def Info: figure/noisy10.png used on input line 580.
+(pdftex.def)             Requested size: 199.16928pt x 149.3741pt.
+ <figure/noisy30.png, id=120, 578.16pt x 433.62pt>
+File: figure/noisy30.png Graphic file (type png)
+
+<use figure/noisy30.png>
+Package pdftex.def Info: figure/noisy30.png used on input line 581.
+(pdftex.def)             Requested size: 199.16928pt x 149.3741pt.
+ <figure/noisy130.png, id=121, 578.16pt x 433.62pt>
+File: figure/noisy130.png Graphic file (type png)
+
+<use figure/noisy130.png>
+Package pdftex.def Info: figure/noisy130.png used on input line 582.
+(pdftex.def)             Requested size: 199.16928pt x 149.3741pt.
+ [27 <./figure/LBFresult.png>] [28 <./figure/noisyinit.png (PNG copy)> <./figur
+e/noisy10.png (PNG copy)> <./figure/noisy30.png (PNG copy)> <./figure/noisy130.
+png (PNG copy)>] [29] [30]
+<figure/denoise.png, id=134, 359.09157pt x 420.06938pt>
+File: figure/denoise.png Graphic file (type png)
+
+<use figure/denoise.png>
+Package pdftex.def Info: figure/denoise.png used on input line 669.
+(pdftex.def)             Requested size: 359.09068pt x 420.06836pt.
+ [31] [32 <./figure/denoise.png>]
+<figure/3clif1.png, id=143, 314.67563pt x 249.93375pt>
+File: figure/3clif1.png Graphic file (type png)
+ <use figure/3clif1.png>
+Package pdftex.def Info: figure/3clif1.png used on input line 689.
+(pdftex.def)             Requested size: 220.27142pt x 174.95242pt.
+
+[33] <figure/Gaussfilter.png, id=147, 218.31563pt x 152.06813pt>
+File: figure/Gaussfilter.png Graphic file (type png)
+
+<use figure/Gaussfilter.png>
+Package pdftex.def Info: figure/Gaussfilter.png used on input line 697.
+(pdftex.def)             Requested size: 218.31508pt x 152.06775pt.
+ [34 <./figure/3clif1.png> <./figure/Gaussfilter.png>] [35] <figure/subpixel.pn
+g, id=154, 591.71063pt x 140.02313pt>
 File: figure/subpixel.png Graphic file (type png)
 
 <use figure/subpixel.png>
-Package pdftex.def Info: figure/subpixel.png used on input line 644.
+Package pdftex.def Info: figure/subpixel.png used on input line 740.
 (pdftex.def)             Requested size: 414.19461pt x 98.01552pt.
- [26] [27 <./figure/subpixel.png>] [28] [29] [30]
+ [36 <./figure/subpixel.png>] [37] [38]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 802.
+
+<figure/vessel2init1.png, id=166, 262.73157pt x 258.9675pt>
+File: figure/vessel2init1.png Graphic file (type png)
+
+<use figure/vessel2init1.png>
+Package pdftex.def Info: figure/vessel2init1.png used on input line 806.
+(pdftex.def)             Requested size: 113.81102pt x 112.1797pt.
+
+<figure/vessel2lbf1.png, id=167, 326.72063pt x 258.9675pt>
+File: figure/vessel2lbf1.png Graphic file (type png)
+
+<use figure/vessel2lbf1.png>
+Package pdftex.def Info: figure/vessel2lbf1.png used on input line 807.
+(pdftex.def)             Requested size: 113.81102pt x 90.20926pt.
+
+<figure/vessel2lif1.png, id=168, 330.48468pt x 261.22594pt>
+File: figure/vessel2lif1.png Graphic file (type png)
+
+<use figure/vessel2lif1.png>
+Package pdftex.def Info: figure/vessel2lif1.png used on input line 808.
+(pdftex.def)             Requested size: 113.81102pt x 89.95961pt.
+
+<figure/vessel2GLIF1.png, id=169, 333.49594pt x 259.7203pt>
+File: figure/vessel2GLIF1.png Graphic file (type png)
+
+<use figure/vessel2GLIF1.png>
+Package pdftex.def Info: figure/vessel2GLIF1.png used on input line 809.
+(pdftex.def)             Requested size: 113.81102pt x 88.63266pt.
+
+<figure/vessel3init1.png, id=170, 204.765pt x 258.21469pt>
+File: figure/vessel3init1.png Graphic file (type png)
+
+<use figure/vessel3init1.png>
+Package pdftex.def Info: figure/vessel3init1.png used on input line 810.
+(pdftex.def)             Requested size: 113.81102pt x 143.5236pt.
+
+<figure/vessel3lbf1.png, id=171, 328.22626pt x 258.9675pt>
+File: figure/vessel3lbf1.png Graphic file (type png)
+
+<use figure/vessel3lbf1.png>
+Package pdftex.def Info: figure/vessel3lbf1.png used on input line 811.
+(pdftex.def)             Requested size: 113.81102pt x 89.79434pt.
+
+<figure/vessel3lif1.png, id=172, 327.47343pt x 258.9675pt>
+File: figure/vessel3lif1.png Graphic file (type png)
+
+<use figure/vessel3lif1.png>
+Package pdftex.def Info: figure/vessel3lif1.png used on input line 812.
+(pdftex.def)             Requested size: 113.81102pt x 89.99982pt.
+
+<figure/vessel3GLIF1.png, id=173, 328.22626pt x 258.9675pt>
+File: figure/vessel3GLIF1.png Graphic file (type png)
+
+<use figure/vessel3GLIF1.png>
+Package pdftex.def Info: figure/vessel3GLIF1.png used on input line 813.
+(pdftex.def)             Requested size: 113.81102pt x 89.79434pt.
+
+<figure/3cinit1.png, id=174, 229.60782pt x 256.70906pt>
+File: figure/3cinit1.png Graphic file (type png)
+
+<use figure/3cinit1.png>
+Package pdftex.def Info: figure/3cinit1.png used on input line 814.
+(pdftex.def)             Requested size: 113.81102pt x 127.24568pt.
+
+<figure/3clbf1.png, id=175, 325.96782pt x 257.46187pt>
+File: figure/3clbf1.png Graphic file (type png)
+ <use figure/3clbf1.png>
+Package pdftex.def Info: figure/3clbf1.png used on input line 815.
+(pdftex.def)             Requested size: 113.81102pt x 89.89299pt.
+File: figure/3clif1.png Graphic file (type png)
+
+<use figure/3clif1.png>
+Package pdftex.def Info: figure/3clif1.png used on input line 816.
+(pdftex.def)             Requested size: 113.81102pt x 90.39558pt.
+
+<figure/3cGLIF1.png, id=176, 316.93407pt x 255.20343pt>
+File: figure/3cGLIF1.png Graphic file (type png)
+
+<use figure/3cGLIF1.png>
+Package pdftex.def Info: figure/3cGLIF1.png used on input line 817.
+(pdftex.def)             Requested size: 113.81102pt x 91.6434pt.
+
+<figure/bantayinit1.png, id=177, 328.97906pt x 247.67531pt>
+File: figure/bantayinit1.png Graphic file (type png)
+
+<use figure/bantayinit1.png>
+Package pdftex.def Info: figure/bantayinit1.png used on input line 818.
+(pdftex.def)             Requested size: 113.81102pt x 85.68237pt.
+
+<figure/bantaylbf1.png, id=178, 328.97906pt x 259.7203pt>
+File: figure/bantaylbf1.png Graphic file (type png)
+
+<use figure/bantaylbf1.png>
+Package pdftex.def Info: figure/bantaylbf1.png used on input line 819.
+(pdftex.def)             Requested size: 113.81102pt x 89.8493pt.
+
+<figure/bantaylif1.png, id=179, 328.97906pt x 259.7203pt>
+File: figure/bantaylif1.png Graphic file (type png)
+
+<use figure/bantaylif1.png>
+Package pdftex.def Info: figure/bantaylif1.png used on input line 820.
+(pdftex.def)             Requested size: 113.81102pt x 89.8493pt.
+
+<figure/bantayGLIF1.png, id=180, 705.38531pt x 554.82281pt>
+File: figure/bantayGLIF1.png Graphic file (type png)
+
+<use figure/bantayGLIF1.png>
+Package pdftex.def Info: figure/bantayGLIF1.png used on input line 821.
+(pdftex.def)             Requested size: 113.81102pt x 89.51846pt.
+
+Overfull \hbox (45.43922pt too wide) in paragraph at lines 805--823
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 61.97122pt on input line 826.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 828.
+
+<figure/vessel2lbf2.png, id=181, 328.22626pt x 258.9675pt>
+File: figure/vessel2lbf2.png Graphic file (type png)
+
+<use figure/vessel2lbf2.png>
+Package pdftex.def Info: figure/vessel2lbf2.png used on input line 832.
+(pdftex.def)             Requested size: 113.81102pt x 89.79434pt.
+
+<figure/vessel2lif2.png, id=182, 331.2375pt x 262.73157pt>
+File: figure/vessel2lif2.png Graphic file (type png)
+
+<use figure/vessel2lif2.png>
+Package pdftex.def Info: figure/vessel2lif2.png used on input line 833.
+(pdftex.def)             Requested size: 113.81102pt x 90.26964pt.
+
+<figure/vessel2GLIF2.png, id=183, 328.97906pt x 262.73157pt>
+File: figure/vessel2GLIF2.png Graphic file (type png)
+
+<use figure/vessel2GLIF2.png>
+Package pdftex.def Info: figure/vessel2GLIF2.png used on input line 834.
+(pdftex.def)             Requested size: 113.81102pt x 90.89104pt.
+
+<figure/vessel3lbf2.png, id=184, 326.72063pt x 256.70906pt>
+File: figure/vessel3lbf2.png Graphic file (type png)
+
+<use figure/vessel3lbf2.png>
+Package pdftex.def Info: figure/vessel3lbf2.png used on input line 835.
+(pdftex.def)             Requested size: 113.81102pt x 89.42255pt.
+
+<figure/vessel3lif2.png, id=185, 328.97906pt x 261.22594pt>
+File: figure/vessel3lif2.png Graphic file (type png)
+
+<use figure/vessel3lif2.png>
+Package pdftex.def Info: figure/vessel3lif2.png used on input line 836.
+(pdftex.def)             Requested size: 113.81102pt x 90.37016pt.
+
+<figure/vessel3GLIF2.png, id=186, 328.97906pt x 261.22594pt>
+File: figure/vessel3GLIF2.png Graphic file (type png)
+
+<use figure/vessel3GLIF2.png>
+Package pdftex.def Info: figure/vessel3GLIF2.png used on input line 837.
+(pdftex.def)             Requested size: 113.81102pt x 90.37016pt.
+ [39] [40 <./figure/vessel2init1.png> <./figure/vessel2lbf1.png> <./figure/vess
+el2lif1.png> <./figure/vessel2GLIF1.png> <./figure/vessel3init1.png> <./figure/
+vessel3lbf1.png> <./figure/vessel3lif1.png> <./figure/vessel3GLIF1.png> <./figu
+re/3cinit1.png> <./figure/3clbf1.png> <./figure/3cGLIF1.png> <./figure/bantayin
+it1.png> <./figure/bantaylbf1.png> <./figure/bantaylif1.png> <./figure/bantayGL
+IF1.png>] [41 <./figure/vessel2lbf2.png> <./figure/vessel2lif2.png> <./figure/v
+essel2GLIF2.png> <./figure/vessel3lbf2.png> <./figure/vessel3lif2.png> <./figur
+e/vessel3GLIF2.png>]
 Ch\uhorn \ohorn ng 4.
-[31
+[42
 
-] [32] [33] [34] [35]
+] [43] [44] [45] <figure/video.png, id=215, 650.43pt x 368.87813pt>
+File: figure/video.png Graphic file (type png)
+
+<use figure/video.png>
+Package pdftex.def Info: figure/video.png used on input line 901.
+(pdftex.def)             Requested size: 390.261pt x 221.32857pt.
+ [46 <./figure/video.png>]
 Ch\uhorn \ohorn ng 5.
-[36
+[47
 
-] [37] (MOC_Navier-Stokes.aux) )
+]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 923.
+
+<figure/lobster1.png, id=222, 423.08063pt x 316.93407pt>
+File: figure/lobster1.png Graphic file (type png)
+
+<use figure/lobster1.png>
+Package pdftex.def Info: figure/lobster1.png used on input line 927.
+(pdftex.def)             Requested size: 199.16928pt x 149.19598pt.
+
+<figure/lobster11.png, id=223, 397.485pt x 269.50688pt>
+File: figure/lobster11.png Graphic file (type png)
+
+<use figure/lobster11.png>
+Package pdftex.def Info: figure/lobster11.png used on input line 928.
+(pdftex.def)             Requested size: 199.16928pt x 135.04507pt.
+
+<figure/lobster19.png, id=224, 389.20406pt x 268.00125pt>
+File: figure/lobster19.png Graphic file (type png)
+
+<use figure/lobster19.png>
+Package pdftex.def Info: figure/lobster19.png used on input line 929.
+(pdftex.def)             Requested size: 199.16928pt x 137.1491pt.
+
+<figure/lobster40.png, id=225, 359.09157pt x 246.9225pt>
+File: figure/lobster40.png Graphic file (type png)
+
+<use figure/lobster40.png>
+Package pdftex.def Info: figure/lobster40.png used on input line 930.
+(pdftex.def)             Requested size: 199.16928pt x 136.95694pt.
+
+<figure/lobsterslice.png, id=226, 874.01532pt x 217.5628pt>
+File: figure/lobsterslice.png Graphic file (type png)
+
+<use figure/lobsterslice.png>
+Package pdftex.def Info: figure/lobsterslice.png used on input line 939.
+(pdftex.def)             Requested size: 437.00659pt x 108.78113pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 943.
+
+<figure/braininit1.png, id=227, 726.46407pt x 578.91281pt>
+File: figure/braininit1.png Graphic file (type png)
+
+<use figure/braininit1.png>
+Package pdftex.def Info: figure/braininit1.png used on input line 947.
+(pdftex.def)             Requested size: 199.16928pt x 158.71124pt.
+
+<figure/brain11.png, id=228, 603.0028pt x 514.17094pt>
+File: figure/brain11.png Graphic file (type png)
+
+<use figure/brain11.png>
+Package pdftex.def Info: figure/brain11.png used on input line 948.
+(pdftex.def)             Requested size: 199.16928pt x 169.826pt.
+
+<figure/brainslice1.png, id=229, 864.98157pt x 273.27094pt>
+File: figure/brainslice1.png Graphic file (type png)
+
+<use figure/brainslice1.png>
+Package pdftex.def Info: figure/brainslice1.png used on input line 957.
+(pdftex.def)             Requested size: 432.48973pt x 136.63512pt.
+ [48] [49 <./figure/lobster1.png> <./figure/lobster11.png> <./figure/lobster19.
+png> <./figure/lobster40.png> <./figure/lobsterslice.png>] [50 <./figure/braini
+nit1.png> <./figure/brain11.png> <./figure/brainslice1.png>] (MOC_Navier-Stokes
+.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8531 strings out of 493333
- 116287 string characters out of 3139177
- 214921 words of memory out of 3000000
- 11894 multiletter control sequences out of 15000+200000
- 20311 words of font info for 45 fonts, out of 3000000 for 9000
+ 8883 strings out of 493333
+ 123322 string characters out of 3139177
+ 220871 words of memory out of 3000000
+ 12203 multiletter control sequences out of 15000+200000
+ 23811 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,18n,58p,1345b,4263s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,18n,58p,1345b,4425s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cme
-x10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols
-/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnbx10.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/vntex/vnr/vnr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/vntex/vnr/vnr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vntt10.
-pfb>
-Output written on MOC_Navier-Stokes.pdf (37 pages, 618688 bytes).
+x10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnbx10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/vntex/vnr/vnr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vnr12.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/vntex/vnr/vntt10.pfb>
+Output written on MOC_Navier-Stokes.pdf (50 pages, 2355831 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
+ 300 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 
