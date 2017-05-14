@@ -1,0 +1,3 @@
+rank(ts_rank(log(log(assets^2)), 250)^0.9/ts_rank(log(log(debt^2)), 250)) - 0.0392/rank(eps)
+(rank(delay(rank(sales/rel_num_cust)/ts_max(rank(sales/rel_num_cust),180),60))+1)*(1+ts_Rank(sales/inventory,250))- 0.01/rank(eps)
+max(indneutralize(rank(-sum(returns -rel_ret_all,5)/5),subindustry),indneutralize(rank(-sum(returns -rel_ret_all,5)/5),sector))
