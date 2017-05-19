@@ -1,17 +1,17 @@
-function [phi] = LIV_CV_VDIEO(sigma_phi,num_inter,sigma,file_name,mu,a_1,timestep,epsilon)
+function   LIV_CV_VDIEO(sigma_phi,num_inter,sigma,file_name,mu,a_1,timestep,epsilon)
 
 workingDir = 'C:\Users\doantuananh\Downloads\LIF_CHAN_VESE - Copy (2)';
 %mkdir(workingDir)
 mkdir(workingDir,'output');
 outputVideo = VideoWriter(fullfile(workingDir,'shuttle_output.avi'));
-outputVideo.FrameRate = 30;
+outputVideo.FrameRate = 15;
 
 open(outputVideo)
  %% ?o?n này thêm
 mov=VideoReader('shuttle_out2.avi');
-vidFrames=read(mov);
+%vidFrames=read(mov);
 nFrames=mov.NumberOfFrames;
-vidFramesgrey(:,:,:)=0.2989*vidFrames(:,:,1,:)+0.5870*vidFrames(:,:,2,:)+0.1140*vidFrames(:,:,3,:);
+%vidFramesgrey(:,:,:)=0.2989*vidFrames(:,:,1,:)+0.5870*vidFrames(:,:,2,:)+0.1140*vidFrames(:,:,3,:);
 
 %vidFramesgrey=double(vidFramesgrey);
 % for i=1:1
@@ -29,69 +29,132 @@ K_phi = fspecial('gaussian',5,sigma_phi);
 %[nrow,ncol] = size(Img);
 
 %    %Draw mask
-        figure;imagesc(vidFramesgrey(:,:,1), [0, 255]);colormap(gray);hold on; axis off;axis equal;
-       % text(6,6,'Left click to get points, right click to get end point','FontSize',[12],'Color', 'g');
-        BW=roipoly;
-        phi=c0*2*(0.5-BW);
-        hold on;
-        [c,h]=contour(phi,[0 0],'r');
-       set(h, 'linewidth', 2.5);
-        hold off;
+%         figure;imagesc(vidFramesgrey(:,:,1), [0, 255]);colormap(gray);hold on; axis off;axis equal;
+%        % text(6,6,'Left click to get points, right click to get end point','FontSize',[12],'Color', 'g');
+%         BW=roipoly;
+%         phi=c0*2*(0.5-BW);
+%         hold on;
+%         [c,h]=contour(phi,[0 0],'r');
+%        set(h, 'linewidth', 2.5);
+%         hold off;
 %        %end draw map;
 % 
- pause(0.01);
- figure;  imagesc(vidFramesgrey(:,:,1),[0 255]);colormap(gray);hold on;
- contour(phi,[0 0],'b');
+%  pause(0.01);
+%  figure;  imagesc(vidFramesgrey(:,:,1),[0 255]);colormap(gray);hold on;
+%  contour(phi,[0 0],'b');
 % 
-timestep = 0.005;
+timestep = 0.05;
 epsilon = 1.0;
-for m=2:nFrames
-    for n = 1:num_inter
-        old=phi;
-        [force,phi,f1,f2,Hphi]= Caculate_next_phi(mu,a_1,double(vidFramesgrey(:,:,m)),phi,timestep,epsilon,K);
-        
-        phi = conv2(phi,K_phi,'same');
-        new=phi;
-        indicator=checkstop(old,new,timestep);
-               if(indicator)
-        %           imagesc(Img,[0 255]);colormap(gray)
-        %       hold on;[c,h]=contour(phi,[0 0],'b');
-        %       set(h, 'linewidth', 2.5);
-        %       iterNum=[num2str(n), ' iterations'];
-        %       title(iterNum);
-        %       hold off;
-        %       figure;
-        %       mesh(phi);
-        %       return;
-            pause(0.0001);
-            imagesc(vidFramesgrey(:,:,m),[0 255]);colormap(gray)
-            hold on;[c,h]=contour(phi,[0 0],'b');
-            set(h, 'linewidth', 2.5);
-            iterNum=[num2str(n), ' iterations'];
-            title(iterNum);
-            hold off;
-               break;
-         end;
-        if mod(n,num_inter)==0
-            pause(0.0001);
-            imagesc(vidFramesgrey(:,:,m),[0 255]);colormap(gray)
-            hold on;[c,h]=contour(phi,[0 0],'b');
-            set(h, 'linewidth', 2.5);
-            iterNum=[num2str(n), ' iterations'];
-            title(iterNum);
-            hold off;
-        end
-        
-    end
-    img1=getframe(gcf);
-    writeVideo(outputVideo,img1);
-end
-figure;
-mesh(phi);
+% % for m=2:40
+% %     for n = 1:num_inter
+% %         old=phi;
+% %         [force,phi,f1,f2,Hphi]= Caculate_next_phi(mu,a_1,double(vidFramesgrey(:,:,m)),phi,timestep,epsilon,K);
+% %         
+% %         phi = conv2(phi,K_phi,'same');
+% %         new=phi;
+% %         indicator=checkstop(old,new,timestep);
+% %                if(indicator)
+% %         %           imagesc(Img,[0 255]);colormap(gray)
+% %         %       hold on;[c,h]=contour(phi,[0 0],'b');
+% %         %       set(h, 'linewidth', 2.5);
+% %         %       iterNum=[num2str(n), ' iterations'];
+% %         %       title(iterNum);
+% %         %       hold off;
+% %         %       figure;
+% %         %       mesh(phi);
+% %         %       return;
+% %             pause(0.0001);
+% %             imagesc(vidFramesgrey(:,:,m),[0 255]);colormap(gray)
+% %             hold on;[c,h]=contour(phi,[0 0],'b');
+% %             set(h, 'linewidth', 2.5);
+% %             iterNum=[num2str(n), ' iterations'];
+% %             title(iterNum);
+% %             hold off;
+% %                break;
+% %          end;
+% %         %if mod(n,num_inter)==0
+% %             pause(0.0001);
+% %             imagesc(vidFramesgrey(:,:,m),[0 255]);colormap(gray)
+% %             hold on;[c,h]=contour(phi,[0 0],'b');
+% %             set(h, 'linewidth', 2.5);
+% %             iterNum=[num2str(n), ' iterations'];
+% %             title(iterNum);
+% %             hold off;
+% %         %end
+% %         
+% %     end
+% %     img1=getframe(gcf);
+% %     writeVideo(outputVideo,img1);
+% % end
+% % figure;
+% % mesh(phi);
 %viet output
 
 
-close(outputVideo)
+%close(outputVideo)
+phi=0;
+videofig(mov.NumberOfFrames, @(frm) redraw(frm, mov,mu,a_1,phi,timestep,epsilon,K,num_inter,K_phi,c0));
+
+% Display initial frame
+redraw(1, mov,mu,a_1,phi,timestep,epsilon,K,num_inter,K_phi,c0);
+end
+function redraw(frame, vidObj,mu,a_1,phi,timestep,epsilon,K,num_inter,K_phi,c0)
+% REDRAW  Process a particular frame of the video
+%   REDRAW(FRAME, VIDOBJ)
+%       frame  - frame number to process
+%       vidObj - VideoReader object
+
+% Read frame
+f = vidObj.read(frame);
+
+        
+vidFramesgrey(:,:)=0.2989*f(:,:,1)+0.5870*f(:,:,2)+0.1140*f(:,:,3);
+
+if frame==1
+    figure;imagesc(vidFramesgrey(:,:), [0, 255]);colormap(gray);hold on; axis off;axis equal;
+       % text(6,6,'Left click to get points, right click to get end point','FontSize',[12],'Color', 'g');
+        BW=roipoly;
+        phi0=c0*2*(0.5-BW);
+        hold on;
+        [c,h]=contour(phi0,[0 0],'r');
+       set(h, 'linewidth', 2.5);
+        hold off;
+        phi=phi0;
+        for n = 1:num_inter
+        old=phi;
+        [force,phi,f1,f2,Hphi]= Caculate_next_phi(mu,a_1,double(vidFramesgrey(:,:)),phi,timestep,epsilon,K);
+         phi = conv2(phi,K_phi,'same');
+        new=phi;
+        indicator=checkstop(old,new,timestep);
+               if(indicator)
+                   break;
+               end
+        end
+else
+     for n = 1:num_inter
+        old=phi;
+        [force,phi,f1,f2,Hphi]= Caculate_next_phi(mu,a_1,double(vidFramesgrey(:,:)),phi,timestep,epsilon,K);
+         phi = conv2(phi,K_phi,'same');
+        new=phi;
+        indicator=checkstop(old,new,timestep);
+               if(indicator)
+                   break;
+               end
+        end
+end
+
+% Overlay edge on original image
+%f3 = bsxfun(@plus, f,  phi);
+
+% Display
+image(vidFramesgrey);
+hold on;
+ [c,h]=contour(phi,[0 0],'r');
+ hold off;
+axis image off
+
+end
+
 
 function [force,phi,f1,f2,Hphi] = Caculate_next_phi(mu,a_1,I,phi,timestep,epsilon,K)
 inidx = find(phi>=0); % frontground index
@@ -113,12 +176,13 @@ DiracPhi = Delta(phi,epsilon);
 [f1,f2] = Local_Avr(I,Hphi,K);
 
 phi = phi + timestep*(DiracPhi.*((a_1.*((I - f1.*Hphi - f2.*(1 - Hphi)).*(f1 - f2)))+(1-a_1)*force));
-
+end
 function H = Heaviside(phi,epsilon)
 H = 0.5*(1+(2/pi)*atan(phi./epsilon));
-
+end
 function Delta_h = Delta(phi,epsilon)
 Delta_h = (epsilon/pi)./(epsilon^2+phi.^2);
+end
 
 function [f1,f2] = Local_Avr(I,H,K)
 
@@ -128,6 +192,7 @@ f1 = f1./c1;
 f2 = conv2(I.*(1-H),K,'same');
 c2 = conv2(1-H,K,'same');
 f2 = f2./c2;
+end
 function k = curvature_central(u)
 % compute curvature for u with central difference scheme
 [ux,uy] = gradient(u);
@@ -137,11 +202,13 @@ Ny = uy./normDu;
 [nxx,junk] = gradient(Nx);
 [junk,nyy] = gradient(Ny);
 k = nxx+nyy;
+end
 function H=Heaviside1(z)
 % Heaviside step function (smoothed version)
 % Copyright (c) 2009, 
 % Yue Wu @ ECE Department, Tufts University
 % All Rights Reserved  
+
 
 Epsilon=10^(-5);
 H=zeros(size(z,1),size(z,2));
@@ -150,7 +217,8 @@ idx2=find(z<Epsilon & z>-Epsilon);
 H(idx1)=1;
 for i=1:length(idx2)
     H(idx2(i))=1/2*(1+z(idx2(i))/Epsilon+1/pi*sin(pi*z(idx2(i))/Epsilon));
-end;
+end
+end
 function g = NeumannBoundCond(f)
 % Make a function satisfy Neumann boundary condition
 [nrow,ncol] = size(f);
@@ -158,6 +226,7 @@ g = f;
 g([1 nrow],[1 ncol]) = g([3 nrow-2],[3 ncol-2]);  
 g([1 nrow],2:end-1) = g([3 nrow-2],2:end-1);          
 g(2:end-1,[1 ncol]) = g(2:end-1,[3 ncol-2]);
+end
 function KG = kappa(I)
 % get curvature information of input image
 % input: 2D image I
@@ -186,6 +255,8 @@ KG(end,:) = eps;
 KG(:,1) = eps;
 KG(:,end) = eps;
 KG = KG./max(max(abs(KG)));
+end
+
 function indicator = checkstop(old,new,dt)
 % indicate whether we should performance further iteraions or stop
 
@@ -203,3 +274,4 @@ function indicator = checkstop(old,new,dt)
     end
 
 return
+end
