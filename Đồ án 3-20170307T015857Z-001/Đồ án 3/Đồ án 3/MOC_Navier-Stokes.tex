@@ -11,7 +11,7 @@
 \usepackage[titletoc]{appendix}
 \usepackage{cases}
 \usepackage{wrapfig}
-
+\usepackage{gensymb}
 %\usepackage[demo]{graphicx}
 \usepackage{subfig}
 \usepackage{tabularx}
@@ -113,37 +113,36 @@
 %% Kết thúc đoạn thêm
 \begin{document}
 \tableofcontents
-%\newpage
-%\listoffigures
-%\newpage
+\newpage
+\listoffigures
+\newpage
 %\listoftables
 \newpage
 
-%\addcontentsline{toc}{chapter}{{\bf Lời nói đầu}}
+\addcontentsline{toc}{chapter}{{\bf Lời nói đầu}}
 %
-%\chapter*{Lời nói đầu}
-%Phương trình Navier-Stokes không nén thường được sử dụng để mô hình hóa nhiều hiện tượng vật lý quan trọng trong thực tế, như dòng chảy của máu, dòng chảy trong các đường ống, dòng không khí chuyển động xung quanh cánh máy bay, các hiện tượng truyền nhiệt và thời tiết. Trong những thập kỷ qua, việc phát triển và phân tích các phương pháp số cho các bài toán về dòng chảy Stokes và Navier-Stokes không nén đã đạt được nhiều tiến bộ to lớn, thể hiện qua những nghiên cứu và nguồn tài liệu dồi dào về đề tài này. Nhiều gói phần mềm mã nguồn mở cũng như thương mại đã được phát triển và có thể được sử dụng như những "hộp đen" để giải quyết một lớp lớn các bài toán trong công nghiệp. Tuy nhiên, các bài toán về phương trình Navier-Stokes vẫn tiếp tục đặt ra những yêu cầu và thách thức lớn lao cho các nghiên cứu trong tương lai, nhằm phát triển và hoàn thiện hơn nữa các phương pháp giải số cho lớp bài toán này.\\
-%Nội dung đồ án này được trình bày trong 4 chương:
-%\begin{itemize}
-%\item[i] Chương 1: trình bày sự cần thiết của nghiên cứu và một số vấn đề liên quan đối với các phương pháp số cho bài toán Navier-Stokes không nén.
-%\item[ii] Chương 2: trình bày các lý thuyết cơ bản về bài toán Navier-Stokes không nén và một số phương pháp giải số được áp dụng như: phương pháp đặc trưng và phương pháp phần tử hữu hạn.
-%\item[iii] Chương 3: trình bày kết quả của một số thí nghiệm giải số điển hình và các so sánh.
-%\item[iv] Chương 4: kết luận và đưa ra các hướng nghiên cứu trong tương lai.
-%\end{itemize}
-%Tính khoa học và tính mới mẻ của đồ án này nằm ở việc nghiên cứu các phương pháp đặc trưng và phương pháp phần tử hữu hạn và áp dụng các phương pháp này vào giải số cho bài toán Navier-Stokes không nén. Một số thí nghiệm Navier-Stokes không nén kinh điển đã được thực hiện nhằm kiểm tra tính tin cậy của lược đồ giải số. Các kết quả giải số trong hai chiều và ba chiều được đưa ra và so sánh với kết quả được đề cập trong nhiều nghiên cứu trước đây. Các so sánh cho thấy rằng, kết quả thu được hoàn toàn phù hợp và lược đồ giải số đưa ra là đáng tin cậy. Nội dung đồ án đã được gửi đăng kỷ yếu Hội nghị Toán ứng dụng và Tin học năm 2016.\\
-%Để đạt được những kết quả này, em xin gửi lời cảm ơn chân thành và sâu sắc nhất tới {\bf TS. Tạ Thị Thanh Mai}. Cô đã luôn tận tình hướng dẫn, giúp đỡ để em có thể hoàn thành đồ án này. Em cũng xin gửi lời cảm ơn tới các thầy cô trong Viện Toán ứng dụng và Tin học, Đại học Bách Khoa Hà Nội đã dành sự quan tâm, chỉ bảo cũng như tạo mọi điều kiện thuận lợi nhất cho em trong quá trình thực hiện đồ án.\\
-%Mặc dù em đã dành nhiều thời gian, công sức để hoàn thiện nhưng đồ án vẫn không thể tránh khỏi những sai sót. Em rất mong nhận được những góp ý quý báu của thầy cô và các bạn để nội dung đồ án được hoàn thiện hơn nữa.\\\\
-%Em xin chân thành cảm ơn!\\
-%
-%
-%\begin{flushright}
-%Hà Nội, ngày 22 tháng 12 năm 2016\\[0.5cm]
-%{Sinh viên thực hiện \hspace*{1.4cm}.}\\[0.1cm]
-%\textbf{Lê Văn Chiến\hspace*{2.0cm}}
-%\end{flushright}
+\chapter*{Lời nói đầu}
+Từ trước đến nay việc thu thập thông tin của con người thông qua việc quan sát xảy ra rất thường xuyên. Và ngày càng ra đời nhiều công cụ trợ giúp con người trong quá trình quan sát và ghi lại thông tin như máy chụp ảnh, camera,.... Đầu ra của các thiết bị này là ảnh hay video. Một nhu cầu cần thiết là trích rút thông tin từ các ảnh hay video này. Một trong các công việc quan trọng trong quá trình trích rút thông tin là thực hiện phân vùng trên các ảnh hay video này. Công việc này giúp giải quyết các vấn đề mà đôi khi không thể dùng mắt thường để quan sát được. Đồ án này thực hiện tìm hiểu một số phương pháp phân vùng hay dùng tập trung vào phương pháp sử dụng biên động. Đồng thời đưa ra một mô hình cải tiến dựa trên các mô hình dựa trên biên động đã có, đồng thời áp dụng mô hình cải tiến này trong phân vùng ảnh 3 chiều và trong theo vết đối tượng trong video. Nội dung đồ án bao gồm  các phần sau
+\begin{itemize}
+\item[i] Chương 1: Trình bày các kiến thức cơ bản về xử lý ảnh và các vấn đề trong xử lý ảnh.
+\item[ii] Chương 2: Trình bày một số hướng tiếp cận cho quá trình phân vùng ảnh.
+\item[iii] Chương 3: Trình bày một số mô hình phân vùng dựa trên biên động và đưa ra mô hình cải tiến.
+\item[iv] Chương 4: Áp dụng mô hình cải tiến trong theo vết đối tượng trong video.
+\item[v] Chương 4: Áp dụng mô hình cải tiến trong phân vùng 3 chiều.
+\end{itemize}
+ Em xin gửi lời cảm ơn chân thành  tới {\bf TS. Thiều Quang Tùng} đã luôn tận tình hướng dẫn, giúp đỡ để em có thể hoàn thành đồ án này.\\
+Trong quá trình hoàn thiện nhưng đồ án vẫn không thể tránh khỏi những sai sót. Em rất mong nhận được những góp ý quý báu của thầy cô và các bạn để nội dung đồ án được hoàn thiện hơn nữa.\\\\
+Em xin chân thành cảm ơn!\\
+
+
+\begin{flushright}
+Hà Nội, ngày 28 tháng 5 năm 2017\\[0.5cm]
+{Sinh viên thực hiện \hspace*{1.4cm}.}\\[0.1cm]
+\textbf{Đoàn Tú Anh\hspace*{2.0cm}}
+\end{flushright}
 \chapter{Xử lý ảnh và các vấn đề cơ bản của xử lý ảnh}
 \section{Xử lý ảnh là gì?}
-Một ảnh có thể được đại diện bởi một hàm 2 chiều $f(x,y)$.$(x, y)$ là tọa độ của các điểm trong mặt phẳng, giá trị $f$ tại các cặp tọa độ $(x,y)$ được gọi là cường độ  hay mức xám của ảnh tại điểm đó. Ảnh số là tâp hợp hữu hạn các  phần tử, mỗi phần tử có một tọa độ riêng và một giá trị $f$ riêng. Các giá trị này gọi là $pixel$ hay $ image elements$ . Một tron các ứng dụng của ảnh số là trong ngành công nghiệp báo chí, khi ảnh lần đầu tiên được truyền qua cáp biến giữa London và NewYork. Việc truyền ảnh qua cáp biển này đã rút ngắn quá trình truyền ảnh qua Đại Tây Dương từ hơn một tuần xuống còn chưa đến 3 giờ. Một máy in đặc biệt mã hóa bức ảnh để truyền tải đi và khôi phục lại ảnh gốc ở đầu cuối. Sự phát triển của phần cứng máy tính đã giúp cho lĩnh vực đồ họa và xử lý ảnh phát triển một cách mạnh mẽ và ngày càng có nhiều ứng dụng trong cuộc sống.
+Một ảnh có thể được đại diện bởi một hàm 2 chiều $f(x,y)$.Với $(x, y)$ là tọa độ của các điểm trong mặt phẳng, giá trị $f$ tại các cặp tọa độ $(x,y)$ được gọi là cường độ  hay mức xám của ảnh tại điểm đó. Ảnh số là tâp hợp hữu hạn các  phần tử, mỗi phần tử có một tọa độ riêng và một giá trị $f$ riêng. Các giá trị này gọi là $pixel$ hay $ image elements$ . Một trong các ứng dụng của ảnh số là trong ngành công nghiệp báo chí, khi ảnh lần đầu tiên được truyền qua cáp biến giữa London và NewYork. Việc truyền ảnh qua cáp biển này đã rút ngắn quá trình truyền ảnh qua Đại Tây Dương từ hơn một tuần xuống còn chưa đến 3 giờ. Một máy in đặc biệt mã hóa bức ảnh để truyền tải đi và khôi phục lại ảnh gốc ở đầu cuối. Sự phát triển của phần cứng máy tính đã giúp cho lĩnh vực đồ họa và xử lý ảnh phát triển một cách mạnh mẽ và ngày càng có nhiều ứng dụng trong cuộc sống.
 \begin{center}
 \includegraphics[]{figure/1921.png}
 \captionof{figure}{Một bức ảnh được tạo ra bởi máy điện ấn năm 1921}
@@ -154,8 +153,8 @@ Quá trình xử lý ảnh được xem là quá trình tho tác với ảnh đ�
 \includegraphics[scale=0.7]{figure/htxulyanh.png}
 \captionof{figure}{Các quá trình của xử lý ảnh}
 \end{center}
-Đầu tiên là quá trình thu nhận ảnh. Ảnh có thể được thu nhận qua camera. Đầu ra có thể là dạng tín hiệu tương tự hoặc cũng có thể là tín hiệu số hóa. Ngoài ra ảnh còn có thể được thu nhận qua bộ cảm ứng sensor ,tranh, ảnh được quét thông qua máy quét.
-Quá trình số hóa thực hiện biến đổi tín hiệu tương tự thành tín hiệu rời rạc sau đó được đưa vào quá trình phân tích,xử lý hoặc thực hiện lưu trữ ảnh.
+Đầu tiên là quá trình thu nhận ảnh. Ảnh có thể được thu nhận qua camera. Đầu ra có thể là dạng tín hiệu tương tự hoặc cũng có thể là tín hiệu số hóa. Ngoài ra ảnh còn có thể được thu nhận qua bộ cảm ứng sensor , tranh, ảnh được quét thông qua máy quét.
+Quá trình số hóa thực hiện biến đổi tín hiệu tương tự thành tín hiệu rời rạc sau đó được đưa vào quá trình phân tích, xử lý hoặc thực hiện lưu trữ ảnh.
 
 Quá trình phân tích ảnh bao gồm nhiều bước nhỏ. Với một số ảnh, do thiết bị thu nhận ảnh, nguồn sáng hay nhiễu mà ảnh có thể bị suy biến. Do vậy chúng ta cần thực hiện quá trình tăng cường ảnh nhằm tăng chất lương hoặc làm nổi bật một số đặc tính chính của ảnh. Tiếp theo là quá tình phát hiện các đặc tính như biên ảnh (Edge Detection), phân vùng ảnh (Segmentation)...
 Cuối cùng tùy theo ứng dụng mà có thể thực hiện quá trình nhận dạng, phân lớp hay ra quyết định 
@@ -167,7 +166,7 @@ Một hệ sử lý ảnh có thể được mô tả gồm các thành phần n
 \section{Một số vấn đề trong xử lý ảnh}
 \subsection{Một số khái niệm trong xử lý ảnh}
 \begin{itemize}
-\item Điểm ảnh: là một phần tử nhỏ nhất của ảnh. Một điểm ảnh có thể xem là tọa độ và cường độ sáng tại một điểm trong không gian của đối tượng. 
+\item Điểm ảnh: là một phần tử nhỏ nhất của ảnh. Một điểm ảnh có thể coi như gồm hai thành phần tọa độ và cường độ sáng tại một điểm trong không gian của đối tượng. 
 \item Mức xám, màu: là kết quả của sự mã hóa cường độ sáng của một điểm ảnh với một giá trị số.
 \end{itemize}
 \subsection{Tăng cường khôi phục ảnh}
@@ -185,7 +184,7 @@ Ngoài ra người ta còn sử dụng một số công cụ thống kê trong b
 \subsection{Phân tích ảnh}
 Việc phân tích ảnh nhằm đưa ra các mô tả đặc trưng về ảnh. Các kỹ thuật được xử dụng ở bước này nhằm xác định biên của ảnh. Ngoài ra người ta cũng sử dụng các kỹ thuật để phân vùng ảnh. Các kỹ thuật thường hay dùng là tách, hợp thành phần dựa theo các tiêu chuẩn đánh giá như màu sắc, cường độ ,... Các phương pháp thường được dùng như phân tích cây tứ phân, phân vùng dựa theo cấu trúc, phân vùng dựa theo đồ thị.
 \subsection{Nhận dạng ảnh}
-Nhận dạng là quá trình phân loại các đối tượng được biểu diễn theo một mô hình nào đó và gán cho chúng vào các lớp dựa theo các quy luật. Quá trình nhận dạng theo các mẫu có trước được gọi là học có thầy (supervised learning), trong trường hợp ngược lại gọi là học không có thầy. Có ba cách tiếp cận khác nhau trong nhận dạng ảnh: 
+Nhận dạng là quá trình phân loại các đối tượng được biểu diễn theo một mô hình nào đó và gán cho chúng vào các lớp dựa theo các quy luật. Quá trình nhận dạng theo các mẫu có trước được gọi là học có thầy (supervised learning), trong trường hợp ngược lại gọi là học không có thầy(unsupervised learning). Một số cách tiếp cận khác trong nhận dạng ảnh như: 
 \begin{itemize}
 \item Nhận dạng dựa vào phân hoạch không gian
 \item Nhận dạng  cấu trúc
@@ -196,8 +195,8 @@ Với hai cách tiếp cận đầu, sau khi thu nhận, ảnh cần trải qua 
 Trong thực tế, người ta đã áp dụng thành công nhận dạng cho nhiều đối tượng khác nhau như: 
 
 \begin{itemize}
-\item Nhận dạng vân tay phục vụ cho mục đích bảo mật và phát hiện tội phạm
-\item Nhận dạng chữ in phục vụ  cho quá trình số hóa tài liệu, tự động đọc tài liệu
+\item Nhận dạng vân tay phục vụ cho mục đích bảo mật và phát hiện tội phạm.
+\item Nhận dạng chữ in phục vụ  cho quá trình số hóa tài liệu, tự động đọc tài liệu.
 \item Nhận dạng chữ viết tay với các ràng buộc về cách viết, kiểu chữ... 
 \end{itemize}
 \subsection{Nén ảnh}
@@ -248,10 +247,10 @@ Việc chọn ngưỡng sẽ bao gồm các bước sau:
 \end{center}
 Ở đây 5 ngưỡng được chọn và ảnh sẽ được phân vùng thành 4 vùng. Ta ký hiệu các vùng đó là $C_k$ trong đó $k=1,2,3,4$   . Các vùng sẽ được phân như sau:
 \begin{equation}
-P(m,n) \in C_{k} nếu T_{k-1}<P(m,n)<T_{k}; k=1,2,3,4
+P(m,n) \in C_{k}\textrm{ nếu } T_{k-1}<P(m,n)<T_{k}; k=1,2,3,4
 \end{equation} 
 \end{itemize}
-Nếu sau khi phân vùng theo ngưỡng vừa mà chọn ảnh rõ nét thì kết thúc, ngược lại phải điều chỉnh ngưỡng và phân vùng lại cho đến khi đạt được kết quả mong muốn
+Nếu sau khi phân vùng theo ngưỡng vừa mà chọn ảnh rõ nét thì kết thúc, ngược lại phải điều chỉnh ngưỡng và phân vùng lại cho đến khi đạt được kết quả mong muốn.
 \section{Phân vùng ảnh theo miền đồng nhất}
 Kỹ thuật này sử dụng tính chất đồng nhất của các đặc trưng nào đó của ảnh. Cách thức phân vùng sẽ phụ thuộc vào việc lựa chọn đặc trưng dùng để thực hiện phân vùng. Các đặc trưng thường được dùng là mức xám với ảnh đen trắng và màu với ảnh màu
 Với cách tiếp cận này, các phương pháp thường được sử dụng là :
@@ -282,7 +281,7 @@ dsmiencon.Push(MienAnh)
 }
 \end{lstlisting}
 
-Tiêu chuẩn đồng nhất có thể dựa vào mức xám. Một cách đơn giản ta có thể chọn giá trị chênh lệch giữa giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất trong miền đang xét. Hàm kiểm tra mức xám có thể được viết như sau: Giả sử $(m1,n1), (m_2,n_2)$ là tọa độ điểm đầu và điểm cuối của miền đang xét
+Tiêu chuẩn đồng nhất có thể dựa vào mức xám. Một cách đơn giản ta có thể chọn giá trị chênh lệch giữa giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất trong miền đang xét. Hàm kiểm tra mức xám có thể được viết như sau: Giả sử $(m_1,n_1), (m_2,n_2)$ là tọa độ điểm đầu và điểm cuối của miền đang xét
 \begin{lstlisting}
 Func ktdongnhat(miendangxet)
 {
@@ -308,12 +307,214 @@ Trong cách này, hai vùng sẽ được nối lại với nhau nếu chúng th
 \item Có mức xám đồng nhất
 \end{itemize}
 
-Để xác định tính kế cần giữa 2 vùng người ta sử dụng tính liên thông. Có 2 quan niệm về liên thông là 4 liên thông và 8 liên thông. Với 4 liên thông,  một điểm ảnh sẽ có 4 điểm ảnh kế cận theo 2 hướng $x,y$. Còn với 8 liên thông, một điểm ảnh sẽ có 4 điểm ảnh theo 2 hướng $x,y$ là 4 điểm ảnh theo các hướng chéo $45$ độ
+Để xác định tính kế cần giữa 2 vùng người ta sử dụng tính liên thông. Có 2 quan niệm về liên thông là 4 liên thông và 8 liên thông. Với 4 liên thông,  một điểm ảnh sẽ có 4 điểm ảnh kế cận theo 2 hướng $x,y$. Còn với 8 liên thông, một điểm ảnh sẽ có 4 điểm ảnh theo 2 hướng $x,y$ là 4 điểm ảnh theo các hướng chéo $45$ độ.
 \subsection{Phân vùng ảnh dựa trên hợp và tách vùng}
-Đề khắc phục được nhược điểm của 2 phương pháp cây tứ phân và phương pháp phát triển cục bộ người ta đưa ra phương pháp kết hợp ý tưởng hợp và tách vùng của 2 phương pháp trên. Với phương pháp tách, việc thực hiện chia quá chi tiết còn với phương pháp hợp mặc dù giảm được tối thiểu số vùng sau khi chia tuy nhiên không cho ta thấy rõ được mối liên hệ giữa các miền.
-Phương pháp kết hợp giữa hợp và tách thực hiện như sau. Đầu tiên , ta thực hiện tách miền ảnh theo cây tứ phân, thực hiện phân đoạn từ gốc đến lá, tiếp theo tiến hành duyệt cây theo chiều ngược lại để hợp các vùng đồng nhất. Trong thao tác hợp các vùng đồng nhất, có thể có nhiều vùng thỏa mãn điều kiện đồng nhất. Vì vậy ta phải xây dựng một hàm đánh giá giá trị đồng nhất của các vùng với nhau trả về các giá trị trong đoạn $[0,1]$ trong  đó 0 là không đồng nhất, và 1 là hoàn toàn đồng nhất. Với hàm đánh giá kiểu này,  trong quá trình thực hiện thao tác hợp, trong trường hợp có nhiều vùng thỏa mãn điều kiện đồng nhất, ta sẽ thực hiện chọn vùng mà giá trị hàm đồng nhất trả về lớn nhất để thực hiện hợp vùng.
-\section{Phân vùng ảnh dựa trên phân tích kết cấu}
+Đề khắc phục được nhược điểm của 2 phương pháp cây tứ phân và phương pháp phát triển cục bộ người ta đưa ra phương pháp kết hợp ý tưởng hợp và tách vùng của 2 phương pháp trên. Với phương pháp tách, việc thực hiện chia quá chi tiết còn với phương pháp hợp mặc dù giảm được tối thiểu số vùng sau khi chia tuy nhiên không cho ta thấy rõ được mối liên hệ giữa các miền vùng.
 
+Phương pháp kết hợp giữa hợp và tách thực hiện như sau. Đầu tiên , ta thực hiện tách miền ảnh theo cây tứ phân, thực hiện phân đoạn từ gốc đến lá, tiếp theo tiến hành duyệt cây theo chiều ngược lại để hợp các vùng đồng nhất. Trong thao tác hợp các vùng đồng nhất, có thể có nhiều vùng thỏa mãn điều kiện đồng nhất. Vì vậy ta phải xây dựng một hàm đánh giá giá trị đồng nhất của các vùng với nhau trả về các giá trị trong đoạn $[0,1]$ trong  đó 0 là không đồng nhất, và 1 là hoàn toàn đồng nhất. Với hàm đánh giá kiểu này,  trong quá trình thực hiện thao tác hợp, trong trường hợp có nhiều vùng thỏa mãn điều kiện đồng nhất, ta sẽ thực hiện chọn vùng mà giá trị hàm đồng nhất trả về lớn nhất để thực hiện hợp vùng.
+\section{Phân vùng ảnh dựa theo phát hiện biên}
+Với một ảnh thì biên là một đặc tính quan trọng phục vụ làm đầu vào cho nhiều công việc khác nhau trong việc xử lý ảnh. 
+Các quá trình thực hiện phân vùng theo đường biên sẽ thực hiện theo các bước như sau:
+\begin{itemize}
+\item Phát hiện biên
+\item Làm mảnh biên
+\item Nhị phân hóa đường biên
+\item Biểu diễn đường biên
+\item Phân vùng từ đường biên nhận được.
+\end{itemize}
+\subsection{Phát hiện biên }
+Về cơ bản phương pháp phát hiện biên có thể chia thành hai loại chính là :
+\begin{itemize}
+\item Phát hiện biên trực tiếp: phương pháp này làm nổi bật biên dựa trên sự thay đổi về độ xám của các điểm ảnh. Kỹ thuật hay được dùng là đạo hàm. Trong trường hợp đạo hàm dùng là bậc nhất thì ta có phương pháp gradient, trong trường hợp đạo hàm được dùng là bậc hai thì ta có kỹ thuật laplace. Ngoài ra người ta còn sử dụng kỹ thuật đi theo đường bao dựa vào quy hoạch động.
+\item Phát hiện biên gián tiếp:  Phương pháp này lợi dụng kết quả của việc phân vùng ảnh để thực hiện tìm biên. Sau khi có kết quả phân vùng ảnh thành các vùng khác nhau thì ranh giới giữa các vùng sẽ được chọn làm biên. Hai bài toán phân vùng  và bài toán tìm biên có thể xem là bài toán đỗi ngẫu. Có được đường biên ta có thể phân ảnh ra các vùng khác nhau và ngược lại có được các vùng khác nhau ta cũng có thể xây dựng đường biên từ đó. Do phần này trình bày việc áp dụng tìm biên trong việc phân vùng nên chỉ đề cập đến các phương pháp tìm biên trực tiếp.
+\end{itemize}
+\subsubsection{Phương pháp gradient}
+Như đã đề cận ở trên, phương pháp phát hiện biên trực tiếp sử dụng sự biến thiên của cường độ ảnh. Vector gradient thể hiện tốc độ biến đối của cường độ ảnh theo các trục $x,y$ 
+\begin{equation}
+\begin{cases}
+ \dfrac{\partial f(x,y)}{\partial x}=f_x\approx\dfrac{f(x+dx,y)-f(x,y)}{dx}\\
+ \dfrac{\partial f(x,y)}{\partial y}=f_x\approx\dfrac{f(x,y+dy)-f(x,y)}{dy}\\
+   \end{cases}
+\end{equation}
+Thực ra các điểm ảnh được định nghĩa một cách rời rạc nên không tồn tại đạo hàm mà thực chất đạo hàm chỉ là một mô phỏng về mặt lý thuyết và được tính xấp xỉ trong quá trình xử lý nhờ phép cuộn với một mặt lạ được định nghĩa trước
+\begin{itemize}
+\item Kỹ thuật prewitt:
+Kỹ thuật này sử dụng hai mặt nạ theo các hướng x,y 
+\begin{align*}
+   H_x= \begin{pmatrix}
+        -1 & 0 & 1 \\
+        -1 & 0 & 1  \\
+        -1 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+\begin{align*}
+   H_y= \begin{pmatrix}
+        -1 & -1 & -1 \\
+        0 & 0 & 0  \\
+        1 & 1 & 1
+    \end{pmatrix}
+\end{align*}
+Đạo hàm sẽ được xấp xỉ thành $I\ast H_x+I\ast H_y$
+
+\item Kỹ thuật Sobel:
+Tương tự như kỹ thuật prewitt, kỹ thuật Sobel sử dụng hai mặt nạ nhân theo hai hướng x,y
+\begin{align*}
+   H_x= \begin{pmatrix}
+        -1 & 0 & 1 \\
+        -2 & 0 & 2  \\
+        -1 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+\begin{align*}
+   H_y= \begin{pmatrix}
+        -1 & -2 & -1 \\
+        0 & 0 & 0  \\
+        1 & 1 & 1
+    \end{pmatrix}
+\end{align*}
+Đạo hàm sẽ được xấp xỉ thành $I\ast H_x+I\ast H_y$
+\item Kỹ thuật Kỹ thuật la bàn: 
+Kỹ thuật này sử dụng 8 mặt nạ theo 8 hướng : 0\degree, 80\degree, 95\degree, 135\degree, 180\degree, 225\degree, 270\degree, 315\degree
+\begin{align*}
+    \begin{matrix}
+       H_1= \begin{pmatrix}
+        5 & 5 & -3 \\
+        5 & 0 & -3  \\
+        -3 & -3 & -3
+    \end{pmatrix} & H_2=\begin{pmatrix}
+        5 & 5 & 5 \\
+        -3 & 0 & -3  \\
+        -3 & -3 & -3
+    \end{pmatrix} \\
+        H_3=\begin{pmatrix}
+        -3 & 5 & 5 \\
+        -3 & 0 & 5  \\
+        -3 & -3 & -3
+    \end{pmatrix} & H_4=\begin{pmatrix}
+        -3 & -3 & 5 \\
+        -3 & 0 & 5  \\
+        -3 & -3 & 5
+    \end{pmatrix}\\
+       H_5= \begin{pmatrix}
+        -3 & -3 & -3 \\
+        -3 & 0 & 5  \\
+        -3 & 5 & 5
+    \end{pmatrix} & H_5=\begin{pmatrix}
+        -3 & -3 & -3 \\
+        -3 & 0 & -3  \\
+        5 & 5 & 5
+    \end{pmatrix}\\
+        H_7=\begin{pmatrix}
+        -3 & -3 & -3 \\
+        5 & 0 & -3  \\
+        5 & 5 & -3
+    \end{pmatrix} & H_8=\begin{pmatrix}
+        5 & -3 & -3 \\
+        5 & 0 & -3  \\
+        5 & -3 & -3
+    \end{pmatrix}
+    \end{matrix}
+\end{align*}
+\end{itemize}
+Đạo hà sẽ được xấp xỉ thành $$\sum_{i=1}^{8} I\ast H_i$$
+\subsubsection{Kỹ thuật phát hiện biên Laplace }
+Trong trường hợp độ chênh lệch mức xám lớn thì phương pháp gradient hoạt động tương đối tốt, còn trong trường hợp gradient. Tuy nhiên trong trường hợp độ chênh lệch mức xám thấp, phương pháp Laplace. Toán tử laplace được định nghĩa như sau:
+
+\begin{equation}
+\nabla ^2 f=\dfrac{\partial^2 f }{\partial x^2}+\dfrac{\partial^2 f }{\partial y^2}
+\end{equation}
+Với 
+\begin{equation}
+\begin{split}
+\dfrac{\partial^2 f }{\partial x^2} &=\dfrac{\partial}{\partial x}(\dfrac{\partial f}{\partial x})\\
+&\approx \dfrac{\partial f}{\partial x} (f(x+1,y)-f(x,y))\\
+&\approx (f(x+1,y)-f(x,y))-(f(x,y)-f(x-1,y))\\
+&\approx f(x+1,y)-2f(x,y)+f(x-1,y)
+\end{split}
+\end{equation} 
+và  
+\begin{equation}
+\begin{split}
+\dfrac{\partial^2 f }{\partial y^2} &=\dfrac{\partial}{\partial y}(\dfrac{\partial f}{\partial y})\\
+&\approx \dfrac{\partial f}{\partial y} (f(x,y+1)-f(x,y))\\
+& \approx (f(x,y+1)-f(x,y))-(f(x,y)-f(x,y-1)) \\
+& \approx f(x,y+1)-2f(x,y)+f(x,y-1)
+\end{split}
+\end{equation} 
+ Do đó $\nabla ^2 f\approx f(x+1,y)+f(x,y+1)-4f(x,y)+f(x-1,y)+f(x,y-1)$
+ Từ đó ta có thể xấp xỉ đạo hàm bậc 2 Laplace sử dụng ma trận 
+\begin{align*}
+   H_x= \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & -4 & 1  \\
+        0 & 1 & 0
+    \end{pmatrix}
+\end{align*}
+ Ngoài ra người ta còn sử dụng thêm các loại mặt nạ khác để xấp xỉ toán tử đạo hàm như :
+ \begin{align*}
+    \begin{matrix}
+       H_1= \begin{pmatrix}
+        0 & -1 & 0 \\
+        -1 & 4 & -1  \\
+        0 & -1 & 0
+    \end{pmatrix} & H_2=\begin{pmatrix}
+        -1 & -1 & -1 \\
+        -1 & 8 & -1  \\
+        -1 & -1 & -1
+    \end{pmatrix} & H_3=\begin{pmatrix}
+         1 & -2 & 1 \\
+        -2 & 4 & -2  \\
+        1 & -2 & 1
+   \end{pmatrix}\\
+    \end{matrix}
+\end{align*}
+\subsubsection{Dò biên theo quy hoạch động}
+Dò biên theo phương pháp Gradient xác định cực trị cục bộ của gradient theo các hướng, còn phương pháp Laplace dựa vào các điểm không của đạo hàm. Phương pháp dò biên theo quy hoạch động tìm cực trị toàn cục theo nhiều bước. Ý tưởng của phương pháp này dựa trên nguyên lý tối ưu Bellman. Nguyên lý này như sau:
+Giả sử $P$ là đường đi ngắn nhất từ đỉnh $i$ đến đỉnh $j$ và $k$ là một đỉnh nằm trên đường đi P. Giả sử $P=P1\oplus P2$ với $P1$ là đường đi con của $P$ từ i đến k và P2 là đường đi con của $P$ từ $k$ đến $j$. Nguyên lý Bellman nói rằng $P1$ cũng là đường đi ngắn nhất từ $i$ đến $k$, vì nếu có một đường đi khác là $P1’$ từ $i$ đến $k$ có độ lớn nhỏ hơn hơn $P1$ thì $P1’\oplus P2$ là đường đi từ $i$ đến $j$ mà có độ lớn nhỏ hơn $P$, điều này mâu thuẫn với tính ngắn nhất của $P$
+
+Giả sử biểu đồ biên được biểu diễn dưới dạng được biểu diễn dưới dạng đồ thị liên thông $N$ chặng . Hàm đánh giá được tính theo công thức:
+
+\begin{equation}
+S(x_1,x_2,...,x_N,N)=\sum_{i=1}^{N}|G(x_k)|-\alpha \sum_{i=1}^{N}|\theta(x_k)-\theta(x_{k-1})|-\beta \sum_{i=1}^{N}d(x_N,x_{N-1})
+\end{equation}
+Trong đó 
+\begin{itemize}
+\item $x_k=1,2,..., N$ biểu diễn các đỉnh của đồ thị trong chặng $x_k$
+\item $d(x,y)$ là khoảng cách giữa hai đỉnh $x, y$ 
+\item $g(x_k), \theta(x_k)$ là gradient hướng và gradient biên độ của đỉnh $x_k$
+\item $\alpha ,\beta$ là các hằng số âm. 
+\end{itemize}
+Ta định nghĩa hàm $\phi$ như sau:
+
+\begin{equation}
+\phi(x_n)=Max_{x_1,x_2,...,x_{N-1}} s(x_1,x_2,..., x_N,N)
+\end{equation}
+Ta có thể định nghĩa đệ quy lại hàm đánh giá như sau:
+\begin{equation}
+S(x_1,x_2,...,x_N,N)=S(x_1,x_2,...,x_{N-1},N-1)+ |G(x_k)|-\alpha|\theta(x_k)-\theta(x_{k-1})|-\beta d(x_N,x_{N-1})
+\end{equation}
+Đặt $f(x_{N-1},x_{N})=|G(x_N)|-\alpha|\theta(x_N)-\theta(x_{N-1})|-\beta d(x_N,x_{N-1})$  ta được
+\begin{equation}
+ S(x_1,x_2,...,x_N,N)=S(x_1,x_2,...,x_{N-1},N-1)+f(x_{n-1},x_{N})
+\end{equation}
+\begin{equation}
+\phi(x_k,k)=Max_{x_1,x_2,...,x_{k-1}}\{S(x_1, x_2, x_k,k)+f(x_{k-1},x_{k})\}=Max_{x_1,x_2,...,x_{k-1}}\{\phi(x_{k-1},k-1)+f(x_{k-1},x_{k})\} \text{Với k=1,...,N}
+\end{equation}
+Thay vì tìm tối ưu toàn cục ta tìm tối ưu trên $N$ chặng. Với mỗi chặng $k$ ta phải tìm $x_k$ để tối ưu $\phi(x_k,x)$
+Như vậy ta có thuật toán như sau:
+\begin{itemize}
+\item Xuất phát từ một điểm ban đầu $X_A$, ta xác định các đường tới $X_B$
+\item Việc dò tìm đường này giống việc duyệt đồ thị theo chiều sâu. Tại $X_A$ ta xác định các điểm tiếp theo dựa vào các điểm lân cận và các điểm trước đó. Nếu hướng hợp lệ ta chọn như một đỉnh trên đường cần tìm. Ngược lại để tìm đỉnh có khả năng ta chọn 1 trong 8 lân cận của đỉnh đang xét với chi phí lớn nhất. Trong trường hợp có nhiều đỉnh thỏa mãn ta cần lưu trữ các đỉnh này thành các đỉnh có khả năng. Nếu không có đỉnh nào được chọn trong 8 lân cận thì  sẽ phải qua lui để chọn đỉnh khác đã lưu.
+\item Quá trình lặp lại cho đến khi đỉnh được xem xét hiện tại là đỉnh đích.
+\end{itemize}
+\subsection{Làm mảnh biên}
+Việc làm mảnh đường biên thực chất là làm nổi đường biên với độ rộng 1 pixel. Trong rất nhiều các phương pháp dò biên thì kết quả biên đầu ra đã có độ rộng 1 pixel, tuy nhiên một số phương pháp khác lại không cho ra kết quả như vậy. Điều này dẫn tới việc phải thực hiện làm mảnh biên 
+
+Với phương pháp gradient, tập hợp những điểm cực trị cục bộ có thể coi như biên. Do vậy việc xác định chính xác các điểm này có thể giúp xác định biên với 1 pixel. Với mỗi điểm ảnh $I(x,y)$ ta sẽ xác định các điểm lân cận với  nó theo hướng gradient, giả sử các điểm đó là $I(x_1,y_1)$,$I(x_2,y_2)$. Nếu $I(x,y)$ lớn hơn cả hai hai điểm $I(x_1,y_1)$,$I(x_2,y_2)$  thì điểm $I(x,y)$ sẽ được giữ lại, trường hợp ngược lại thì $I(x,y)$ sẽ được gán giá trị 0 có thể coi như loại bỏ. 
+\subsection{Nhị phân hóa đường biên}
+Nhị phân hóa đường biên là một giai đoạn quan trọng trong quá trình trích chọn đặc trưng. Kết quả của đầu ra sau quá trình làm mảnh biên nhiều khi kết quả xuất hiện các phần không mong muốn như: đường biên có chân hay đường cong không khép kín. Quá trình nhị phân hóa đường biên có thể giải quyết vấn đề này. Nó giúp xác định đường bao nào cần và đường bao nào không cần. Phương pháp thường hay dùng là chọn ngưỡng thích nghi. Ngưỡng được chọn sẽ phụ thuộc vào  hướng gradient nhằm làm giảm sự xoắn của biên độ. Trong quá trình chọn ngưỡng thích nghi, ngưỡng sẽ thay đổi sử dụng   hệ số thích nghi thông qua lời giải sử dụng toán tử đạo hàm theo hướng tìm được để tinh chỉnh. 
+\subsection{Biểu diễn đường biên}
+Sau khi đã có được biểu đồ biên chúng ta cần tìm cách biểu diễn đươc nó một cách thích hợp để phục vụ cho việc phân tích. Có rất nhiều cách biểu diễn khác nhau và nó sẽ được lựa chọn  tùy thuộc vào ứng dụng của quá trình phân vùng. Ngoài ra chúng ta có thể thêm các điều kiện vào việc biểu diễn để loại bỏ các đường cong không khép kín hoặc các chân rết.  Các biểu diễn này dựa trên các cấu trúc cơ bản như: điểm, đoạn thằng, cung, các đường cong. Trong thực tế luôn có sự ràng buộc giữa khả nằng biểu diễn và hiệu quả tính toán. Khả năng biểu diễn càng lớn thì yêu cầu tính toán lại càng lớn, còn việc biểu diễn qua các đối tượng đơn giản hơn thì việc biểu diễn đối tượng phức tạp hơn lại trở nên khó khăn xong độ phức tạp tính toán lại giảm. Các đối tượng thường được sử dụng để biểu diễn biên là điểm, đường thẳng, cung, đường cong,...
 \section{Phân vùng ảnh dựa trên sự phân lớp điểm ảnh}
 Cho một ảnh với các điểm ảnh: $p_{i}$ với $i=[1,N*M]$, $M,N$ lần lượt là chiều rộng và chiều cao của ảnh. Với mỗi điểm ảnh ta chọn một thuộc tính để phục vụ cho việc phân vùng. Giả sử giá trị thuộc tính là $A(p_{i})$ với điểm ảnh thứ $i$. Thuật toán thực hiện chia tập hợp các điểm ảnh thành vào cá lớp và từ các lớp này tiến hành xây dựng vùng tương ứng. Tiêu chí dùng để phân vùng là độ tương đồng giữa các điểm ảnh trên thuộc tính phân vùng được chọn. Ta hoàn toản có thể sử dụng thuộc tính phân vùng nhiều chiều tùy vào yêu cầu của việc phân vùng.
 Ta có ví dụ về việc phân vùng với thuộc tính được chọn là một chiều, cụ thể là mức xám của điểm ảnh:
@@ -326,13 +527,13 @@ Khởi tạo $t=0$:
 \begin{equation}
 T_i(t)=i\dfrac{lmax-lmin}{K}+l_{min}; i=0,...K. 
 \end{equation}
-Với $l_{max},l_{min}$ lần lượt là giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất của các điểm ảnh trong ảnh.
+Với $l_{max}, l_{min}$ lần lượt là giá trị mức xám lớn nhất và giá trị mức xám nhỏ nhất của các điểm ảnh trong ảnh.
 \end{itemize}
 \item Bước 2: Thực hiện bước lặp theo thời gian:
 \begin{itemize}
 \item Phân lớp theo các ngưỡng $T_i(k-1)$ với tiêu chí
 \begin{equation}
-p_i\in C_k nếu T_{k-1}(t-1)<A(p_i)<T_{k}(t-1), i=1...K
+p_i\in C_k \textrm{ nếu }T_{k-1}(t-1)<A(p_i)<T_{k}(t-1), i=1...K
 \end{equation}
 \item Tính giá trị trung bình mức xám của các lớp 
 
@@ -356,10 +557,10 @@ Nếu $T_i(t)\approx T_i(t-1)$ hoặc $m_{i}(t-1)\approx m_{i}(t)$ Thì dừng
 \begin{itemize}
 \item Đỉnh kề: Hai đỉnh $v_i, v_j$ trong đồ thị được gọi là kề nhau nếu $(v_i,v_j)$ là cạnh của đồ thị. Bậc của một đỉnh $deg(v)$ là số cạnh nối với đỉnh $v$
 \item Đồ thị con và đồ thị riêng:
-Đồ thị $G'=(V',E')$ là đồ thị con của đồ thị $G=(V,E)$ nếu $V'\in V$ và $E'=E\cap (V',V')$ 
-Đồ thị  $G''=(V,E')$ được gọi là đồ thị riêng của đồ thị $G=(V,E)$ nếu $E'\in E$
+Đồ thị $G'=(V',E')$ là đồ thị con của đồ thị $G=(V,E)$ nếu $V' \subset V$ và $E'=E\cap (V',V')$ 
+Đồ thị  $G''=(V,E')$ được gọi là đồ thị riêng của đồ thị $G=(V,E)$ nếu $E'\subset E$
 \item Cây bao chùm tối thiểu: Một cây được gọi là cây bao chùm tối thiểu của đồ thị $G$  nếu nó chứa tất cả các đỉnh của $G$ và trọng số nối mỗi đỉnh với một đỉnh bất kỳ là cạnh có trọng số nhỏ nhất trong các cạnh nối với đỉnh đó trong G. 
-\item Vùng ảnh trên đồ thị: Với một phân vùng S, một vùng $C\in S$ tương ứng với một thành phần liên thông $G'=(V', E')$ trong đó  $V'\in V, E' \in E$ sao cho trong một vùng, trọng số nối hai cạnh bất kỳ nhỏ còn trọng số ứng với cạnh nối hai vùng có giá trị lớn.
+\item Vùng ảnh trên đồ thị: Với một phân vùng S, một vùng $C\in S$ tương ứng với một thành phần liên thông $G'=(V', E')$ trong đó  $V'\subset V, E' \subset E$ sao cho trong một vùng, trọng số nối hai cạnh bất kỳ nhỏ còn trọng số ứng với cạnh nối hai vùng có giá trị lớn.
 \end{itemize}
 \subsection{Các định nghĩa và tính chất liên quan}
 Để có được việc phân vùng chúng ta cần xây dựng một tính chất để biết được có hay không môt ranh giới giữa hai vùng trong một phân vùng. Tính chất này được xây dựng thông qua việc so sánh sự khác nhau giữa các điểm ảnh trong cùng một vùng và sự khác nhau giữa các điểm ảnh giữa hai vùng dọc theo ranh giới giữa hai vùng.
@@ -377,29 +578,28 @@ Chúng ta định nghĩa  sự khác biệt nội bộ tối thiểu của hai v
 \begin{equation}
 Mint(C_1, C_2)= min(Int(C_1)+T(C_1),Int(C_2)+T(C_2))
 \end{equation}
-với $T=\dfrac{k}{|C|}$, k là hằng số, $|C|$ là kích thước của vùng $C$. Lúc này ta có tính chất so sánh $C_1, C_2$  được định nghĩa như sau:
+với $T=\dfrac{k}{|C|}$, k là hằng số, $|C|$ là kích thước của vùng $C$. Lúc này ta có tính chất để xác định có tồn tại ranh giới phân vùng hay không giữa $C_1, C_2$  được định nghĩa như sau:
 \begin{equation}
 D(C_1, C_2)=
 \begin{cases}
- 1, if Diff(C_1, C_2)>Mint(C_1, C_2)\\
- 0, if otherwise\\
+ 1, \textrm{Nếu } Diff(C_1, C_2)>Mint(C_1, C_2)\\
+ 0, \textrm{Trong trường hợp còn lại}\\
    \end{cases}
 \end{equation}
-Trong thực tế $k$ không cố định và được chọn tùy vào ý kiến chuyên gia. Trong trường hợp $ k$ lớn thì kích thước các vùng đầu ra sẽ lớn, ngược lại kích thước đầu ra sẽ nhỏ. Giá trị của $k$ sẽ không nhỏ hơn kích thước  của vùng nhỏ nhất
-\section{Phân vùng ảnh dựa trên biểu diễn và xử lý đa phân giải}
+Trong thực tế $k$ không cố định và được chọn tùy vào ý kiến chuyên gia. Trong trường hợp $ k$ lớn thì kích thước các vùng đầu ra sẽ lớn, ngược lại kích thước đầu ra sẽ nhỏ. Giá trị của $k$ sẽ không nhỏ hơn kích thước  của vùng nhỏ nhất.
 \chapter{Phương pháp phân vùng ảnh sử dụng biên động}
-Mô hình biên động là một mô hình thành công nhất trong phân vùng ảnh. Các mô hình biên động hiện tại đang có có thể chia làm hai loại chính là: mô hình dựa trên cạnh (edge-based models), và mô hình dựa trên vùng (region-based models). Cả hai loại này đều có ưu, nhược điểm riêng và việc lựa chọn cách nào còn tùy thuộc vào ứng dung
+Mô hình biên động là một mô hình thành công nhất trong phân vùng ảnh. Các mô hình biên động hiện tại đang có có thể chia làm hai loại chính là: mô hình dựa trên cạnh (edge-based models), và mô hình dựa trên vùng (region-based models). Cả hai loại này đều có ưu, nhược điểm riêng và việc lựa chọn cách nào còn tùy thuộc vào ứng dụng.
 
 Ý tưởng của các phương pháp theo hướng tiếp cận này là xuất phát từ đường cong ban đầu, ta thực hiện biến đổi đường biên ban đầu theo thời gian  và dừng lại ở biên của vật. Việc biến đổi đường biên được thực hiện thông qua xây dựng một vòng lặp nhằm đạt được giá trị cuối cùng của đường cong thỏa mãn cực tiểu hoặc cực đại một hàm năng lượng (enery function) nào đó.
 
 Mô hình dựa trên cạnh sử dụng gradient ảnh để dừng đường biên tại biên của vật. Mô hình dựa trên cạnh thường gồm hai thành phần dừng dựa trên cạnh  và thành phần lực cầu để kiểm soát chuyển động của đường biên. Thành phần dừng phục vụ cho việc dừng đường biên tại biên mong muốn. Thành phần lực cầu thực hiện co, mở rộng cạnh. Do vậy đường biên khởi tạo ban đầu có thể ở xa biên mong muốn. Khó khăn của mô hình này là việc lựa chọn lực cầu cho phù hợp. Nếu chọn lực cầu quá nhỏ, có thể quá trình phát triển biên sẽ không thể vượt qua một số vùng bằng phằng của đối tượng. Ngược lại nó có thể bỏ qua một số vùng biên yếu của vật.
 
-Mô hình dựa trên miền có một số lợi thế so với mô hình dựa trên cạnh. Đầu tiên là việc mô hình dựa trên miền không sử dụng gradient ảnh do đó nó có hiệu suất tốt hơn đối với ảnh có biên yếu. Tiếp theo, nó ít ảnh hưởng bởi đường cong khởi tạo ban đầu hơn so với mô hình dựa trên canh.  Phần dưới đây sẽ là ba mô hình biên động dựa trên miền điển hình và một mô hình cải tiến kết hợp các lợi thế của các mô hình trên để giải quyết tốt hơn với các đầu vào đa dạng.
+Mô hình dựa trên miền có một số lợi thế so với mô hình dựa trên cạnh. Đầu tiên là việc mô hình dựa trên miền không sử dụng gradient ảnh do đó nó có hiệu suất tốt hơn đối với ảnh có biên yếu. Tiếp theo, nó ít ảnh hưởng bởi đường cong khởi tạo ban đầu hơn so với mô hình dựa trên cạnh.  Phần dưới đây sẽ là ba mô hình biên động dựa trên miền điển hình và một mô hình cải tiến kết hợp các lợi thế của các mô hình trên để giải quyết tốt hơn với các đầu vào đa dạng.
 \section{Phương pháp Chan-Vese(CV)}
 
 
 \subsection{Mô hình}
-Chúng ta định nghĩa đường cong $C\in \Omega$ là biên của một tập con mở $\omega$ của $\Omega$. Giả sử rằng ảnh được chia làm hai vùng được xấp xỉ bởi các hằng số cường độ khác nhau $u_0^i và u_0^0$. Đối tượng cần xác định trong ảnh được đại diện bởi vùng có cường độ $u_0^i$. Giả sử biên của nó là $C_0$. Vì vậy chúng ta có $u_0\approx u_0^i$ trong đối tượng, và $u_0\approx u_0^o$.
+Chúng ta định nghĩa đường cong $C\in \Omega$ là biên của một tập con mở $\omega$ của $\Omega$. Giả sử rằng cường độ ảnh là tương đối đồng nhất và được chia làm hai vùng được xấp xỉ bởi các hằng số cường độ khác nhau $u_0^i$ và $u_0^0$. Đối tượng cần xác định trong ảnh được đại diện bởi vùng có cường độ $u_0^i$. Giả sử biên của nó là $C_0$. Vì vậy chúng ta có $u_0\approx u_0^i$ trong đối tượng, và $u_0\approx u_0^o$ ở ngoài đối tượng.
 \begin{center}
 \includegraphics[scale=1]{figure/ytuong.png}
 \end{center}
@@ -420,7 +620,7 @@ c_1=average(u_0 inside(C))\\
 c_2=average(u_0 outside(C))
 \end{align}
 \end{center} 
-Trong trường hợp đường cong C nằm ngoài đối tượng, ta có $F_1>0, F_2\approx 0$. Nếu đường cong $C$ nằm trong đối tượng ta có $F_1 \approx0, F_2> 0$. Nếu đường cong $C$ một phần nằm trong và một phần nằm ngoài đối tượng ta có $F_1>0, F_2> 0$. Nếu đường cong $C$ khớp với đối tượng $F_1 \approx 0, F_2\approx 0$:
+Hai thành phần $F_1, F_2$ được đưa ra nhằm so sánh sự khác nhau giữa cường độ ảnh trong cũng như ngoài đường cong đang xét so với cường độ ảnh với cường độ ảnh trong và ngoài đối tượng tương ứng. Trong trường hợp đường cong C bao phía ngoài đối tượng, ta có $F_1>0, F_2\approx 0$. Nếu đường cong $C$ nằm trong đối tượng ta có $F_1 \approx0, F_2> 0$. Nếu đường cong $C$ một phần nằm trong và một phần nằm ngoài đối tượng ta có $F_1>0, F_2> 0$. Nếu đường cong $C$ khớp với đối tượng $F_1 \approx 0, F_2\approx 0$:
 \begin{center}
 \includegraphics[scale=1]{figure/fitting.png}
 \end{center}
@@ -430,7 +630,7 @@ Trong trường hợp đường cong C nằm ngoài đối tượng, ta có $F_1
 \end{equation}
 Trong đó $C$ là độ dài đường cong $C$, $Area(inside(C))$ là độ lớn phần diện tích giới hạn bởi đường cong. Trong hầu hết bài toán ta chọn $\nu=0$ và $\mu$ là tham số thay đổi tùy theo đầu vào để được kết quả tốt. Tham số $\mu $ được chọn càng nhỏ thì mô hình càng có khả năng phát hiện các đối tượng nhỏ. Trong trường hợp chỉ cần phát hiện các đối tượng có kích thước lớn, $\mu$ được chọn lớn hơn.\\
 
-Tổng kết lại ta có hàm năng lượng
+Tổng kết lại ta có hàm năng lượng: 
 
 \begin{equation}
 \begin{split}
@@ -456,7 +656,7 @@ Ta coi biên C được đại diện bởi tập mức 0 của một hàm $\phi
 \includegraphics[scale=0.6]{figure/insideoutside.png}
 \captionof{figure}{Đường cong $C=\{(x, y), \phi(x,y)=0 \}$}
 \end{center}
-Thay biến chưa biết C bởi biến chưa biết $\phi$.  Trong quá trình xây dựng lại phương trình theo $\phi$ ta sử dụng hàm Heviside $\phi$ và Hàm Delta Dirac $\delta_0$
+Thay biến chưa biết C bởi biến chưa biết $\phi$.  Trong quá trình xây dựng lại phương trình theo $\phi$ ta sử dụng hàm Heviside $\phi$ và hàm Delta Dirac $\delta_0$
  \begin{equation}
  H(z)=
 \begin{cases}
@@ -478,30 +678,31 @@ c_1(\phi)=\dfrac{\int_{\Omega}u_0(x,y)H(\phi(x,y))\,dx \,dy}{\int_{\Omega}H(\phi
 \begin{equation}
 c_2(\phi)=\dfrac{\int_{\Omega}u_0(x,y)(1-H(\phi(x,y)))\,dx \,dy}{\int_{\Omega}H(\phi(x,y)1-H(\phi(x,y)))\,dx\,dy}
 \end{equation}
-Để tính toán phương trình Euler-Lagrange cho hàm $\phi$ ta thực hiện chuẩn hóa $H$ và $\delta_0$ tương ứng thành  $H_{\epsilon}$ và $\delta_{\epsilon}$, $\epsilon \rightarrow 0$. Hàm mở rộng $H_{\epsilon}$ có thể chọn là hàm $H_{1,{\epsilon}}$ trên $C^2(\bar{\Omega})$ của $H$ và $\delta_{\epsilon}=H'_{\epsilon}$:
+Để tính toán phương trình Euler-Lagrange cho hàm $\phi$ ta thực hiện mở rộng $H$ và $\delta_0$ tương ứng thành  $H_{\epsilon}$ và $\delta_{\epsilon}$, $\epsilon \rightarrow 0$. Hàm mở rộng $H_{\epsilon}$ có thể chọn là hàm $H_{1,{\epsilon}}$ trên $C^2(\bar{\Omega})$ của $H$ và $\delta_{\epsilon}=H'_{\epsilon}$:
 \begin{equation}
  H_{1,\epsilon}(z)=
 \begin{cases}
  1 & \text{nếu} z> \epsilon\\
 0 & \text{nếu} z <\epsilon \\
-\dfrac{1}{2}(1+\dfrac{z}{\epsilon}+\dfrac{1}{\pi}\sin(\dfrac{\pi z}{\epsilon})) & \text{nếu} z <|\epsilon|\\
+\dfrac{1}{2}(1+\dfrac{z}{\epsilon}+\dfrac{1}{\pi}\sin(\dfrac{\pi z}{\epsilon})) & \text{ nếu } z <|\epsilon|\\
    \end{cases}
 \end{equation}
 Ngoài ra ta có thể sử dụng hàm mở rộng của H trên $C^{\infty}(\bar{\Omega})$:
 \begin{equation}
  H_{2,\epsilon}(z)=\dfrac{1}{2}(1+\dfrac{z}{\epsilon}+\dfrac{1}{\pi}\sin(\dfrac{\pi z}{\epsilon}))  \text{nếu} z <|\epsilon|
 \end{equation}
-Cả hai hàm $ H{1,\epsilon}(z),  H{2,\epsilon}(z)$ đều tiến dần đến $H$ và $ \delta_{1,\epsilon}(z),  \delta_{2,\epsilon}(z)$ đều tiến dần đến $\delta_0$ khi $\epsilon\rightarrow 0$ khi $\epsilon\rightarrow 0$. Tuy vậy điều khác nhau là $ \delta_{1,\epsilon}$ hỗ trợ ít hơn, cụ thể là trong đoạn $[-\epsilon, \epsilon]$ còn $ \delta_{2,\epsilon}$ lại khác 0 tại mọi điểm. Do hàm năng lượng đã xây dựng bên trên không lồi do vậy có thể có cực trị địa phương, và kết quả có thể phụ thuộc vào đường cong khởi tạo ban đầu. Với $H{1,\epsilon}(z), \delta_{1,\epsilon}(z)$ thuật toán có thể đưa ra kết quả là cực trị địa phương, trong khi với $H{1,\epsilon}(z), \delta_{1,\epsilon}(z)$ thuật toán có xu hướng đưa ra kết quả là cực trị toàn cục
+Cả hai hàm $ H_{1,\epsilon}(z),  H_{2,\epsilon}(z)$ đều tiến dần đến $H$ và $ \delta_{1,\epsilon}(z),  \delta_{2,\epsilon}(z)$ đều tiến dần đến $\delta_0$ khi $\epsilon\rightarrow 0$ khi $\epsilon\rightarrow 0$. Tuy vậy điều khác nhau là $ \delta_{1,\epsilon}$ hỗ trợ ít hơn, cụ thể là trong đoạn $[-\epsilon, \epsilon]$ còn $ \delta_{2,\epsilon}$ lại khác 0 tại mọi điểm. Do hàm năng lượng đã xây dựng bên trên không lồi do vậy có thể có cực trị địa phương, và kết quả có thể phụ thuộc vào đường cong khởi tạo ban đầu. Với $H_{1,\epsilon}(z), \delta_{1,\epsilon}(z)$ thuật toán có thể đưa ra kết quả là cực trị địa phương, trong khi với $H_{2,\epsilon}(z), \delta_{2,\epsilon}(z)$ thuật toán có xu hướng đưa ra kết quả là cực trị toàn cục.
+
  Hàm mở rộng của $F(c_1,c_2,C)$ thành
 \begin{equation}
 \begin{split}
-F(c_1, c_2, \phi)&=\mu \int_{\Omega}\delta_0(x,y)|\nabla \phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H( \phi(x,y))\,dx\,dy \\ 
-&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H(\phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H(\phi(x,y))) \,dx\,dy
+F(c_1, c_2, \phi)&=\mu \int_{\Omega}\delta_{2,\epsilon}(x,y)|\nabla \phi(x,y)|\,dx\,dy+\nu  \int_{\Omega}H_{2,\epsilon}( \phi(x,y))\,dx\,dy \\ 
+&+\lambda_1 .\int_{\Omega} |u_0-c_1|^2H_{2,\epsilon}(\phi(x,y)) \,dx\,dy\\&+\lambda_2 .\iint_{\Omega} |u_0-c_2|^2(1-H_{2,\epsilon}(\phi(x,y))) \,dx\,dy
 \end{split}
 \end{equation}
 Cố định $c_1, c_2$, thực hiện cực tiểu hàm $F_{\epsilon}$ theo $\phi$, ta thu được phương trình Euler-Lagrange theo $\phi$. Tham số hóa $\phi$ theo thời gian và áp dụng phương pháp hướng giảm ta được:
 \begin{equation}
-\dfrac{\partial \phi}{\partial t}= \delta_{\epsilon}(\phi)[\mu- div(\dfrac{\nabla \phi}{|\nabla \phi|})- \nu- \lambda_1 (u_0-c_1)^2-\lambda_2 (u_0-c_2)^2]  \text{trong} (0,\infty)\times \Omega
+\dfrac{\partial \phi}{\partial t}= \delta_{2,\epsilon}(\phi)[\mu- div(\dfrac{\nabla \phi}{|\nabla \phi|})- \nu- \lambda_1 (u_0-c_1)^2-\lambda_2 (u_0-c_2)^2]  \text{trong} (0,\infty)\times \Omega
 \end{equation}
 \begin{equation}
 \phi(0,x,y)=\phi_0(x,y) \text{trong} \Omega 
@@ -510,29 +711,35 @@ Cố định $c_1, c_2$, thực hiện cực tiểu hàm $F_{\epsilon}$ theo $\p
 \dfrac{\delta_{\epsilon}(\phi)}{|\nabla \phi|}\dfrac{\partial \phi}{\partial \vec{n}}=0
 \end{equation}
 
-Trong đó $\vec{n}$ là vector pháp tuyến hướng ra ngoài của biên $\Omega$, và $\dfrac{\partial \phi}{\partial \vec{n}} $ là đạo hàm theo vector pháp tuyến của $\phi$. Trong quá trình tính toán xấp xỉ các giá trị $\phi_x, \phi_y$ ở các điểm gần biên, ta cần biết được giá trị $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên $\partial \Omega$ trong khi ta chỉ có giá trị tại các điểm nằm trong và trên biên của $\Omega$, một cách tự nhiên người ta có thể chọn $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên bằng với giá trị của $\phi(x,y)$ tại điểm gần $(x,y)$  nhất trên biên, hay $\dfrac{\partial \phi}{\partial \vec{n}}=0$. Thuật toán theo mô hình này được mô tả cụ thể như sau:
-Khi làm việc với hàm Level set, thủ tục cần thiết là khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách ứng với $\phi$. Điều này giúp ngăn việc hàm $\phi$ ko trở nên quá lớn dẫn đến việc thuật toán không hội tụ.
+Trong đó $\vec{n}$ là vector pháp tuyến hướng ra ngoài của biên $\Omega$, và $\dfrac{\partial \phi}{\partial \vec{n}} $ là đạo hàm theo vector pháp tuyến của $\phi$. Trong quá trình tính toán xấp xỉ các giá trị $\phi_x, \phi_y$ ở các điểm gần biên, ta cần biết được giá trị $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên $\partial \Omega$ trong khi ta chỉ có giá trị tại các điểm nằm trong và trên biên của $\Omega$, một cách tự nhiên người ta có thể chọn $\phi(x,y)$ tại các điểm $(x, y)$ nằm ngoài biên bằng với giá trị của $\phi(x,y)$ tại điểm gần $(x,y)$  nhất trên biên, hay $\dfrac{\partial \phi}{\partial \vec{n}}=0$. Khi làm việc với hàm Level set, thủ tục cần thiết là khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách ứng với $\phi$. Trong quá trình cập nhật $\phi$, nó sẽ được điều chỉnh để khớp với biên của vật. Tuy nhiên trong quá trình cập nhật dải giá trị của $\phi$: ($max(\phi)-min(\phi)$) sẽ thay đổi. Điều này sẽ dẫn đến vấn đề  khi số bước lặp lớn dải giá trị của $\phi$ sẽ tăng dần  dẫn đến có thể không thể tiếp tục tính toán do hạn chế về số chữ số chính xác có thể tính toán được. Do đó quá trình tiến hóa $\phi$ có thể trở nên thiếu chính xác hoăc $\phi$ dừng hẳn quá trình tiến hóa. Vấn đề này có thể giải quyết bằng việc khởi tạo lại hàm phi bằng hàm dấu khoảng cách (signed distance function) . Hàm $\phi$ sẽ được khởi tạo thành hàm khác với các giá trị tương ứng bằng khoảng cách tới điểm gần nhất trên đường mức 0 ứng với $\phi$, đồng thời có dấu giống với dấu tương ứng với giá trị của $\phi$. Việc tính toán hàm dấu khoảng cách này có thể được thực hiện qua một số bước lặp với việc giải hệ phương trình sau:
+\begin{equation}
+\begin{cases}
+ \psi^{\tau}=sign(\phi^n)(1-|\nabla \phi|)\\
+ \psi^{0}=\phi^n
+   \end{cases}
+\end{equation}
+ Trong đó $\phi^{\tau}$ là hàm dấu khoảng cách thu được ở bước $\tau$, $\psi^{0}$ là hàm dấu khoảng cách khởi tạo ban đầu. Cuối cùng ta có thuật toán như sau:
 \begin{itemize}
 \item Bước 1: Khởi tạo $\phi^0=\phi_0, n=0$
 \item Bước 2: Tính toán các giá trị $c_1(\phi^n), c_2(\phi^n)$
-\item Bước 3: Giải phương trình đạo hàm riêng (1.14) để có $\phi^{n+1}$
+\item Bước 3: Giải phương trình đạo hàm riêng (3.16) để có $\phi^{n+1}$
 \item Bước 4: Khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách tới đường cong
 \item Bước 5: Kiểm tra điều kiện dừng, nếu không thỏa mãn thì gán $n=n+1$ và quay lại bước 2
 \end{itemize}
-Các tính toán xấp xỉ được dùng trong quá trình giải số hệ phương trình đạo hàm riêng (1.14) như sau:
+Các tính toán xấp xỉ được dùng trong quá trình giải số hệ phương trình đạo hàm riêng (3.16) như sau:
 \begin{equation}
 \begin{split}
 &k=div(\dfrac{\nabla \phi}{|\phi|})=\dfrac{\phi_{xx}\phi^2_{y}-2\phi_{xy}\phi_{x}\phi{y}+\phi_{yy}\phi^2_{x}}{(\phi^2_x+\phi^2_y)^{3/2}}\\
-&\phi_x= \dfrac{1}{2h}(\phi_{i+1,j}-\phi_{i-1,j}) \\ 
-&\phi_x= \dfrac{1}{2h}(\phi_{i,j+1}-\phi_{i,j-1}) \\
-&\phi_{xx}= \dfrac{1}{h^2}(\phi_{i+1,j}-\phi_{i,j}+\phi_{i-1,j}) \\
-&\phi_{yy}= \dfrac{1}{h^2}(\phi_{i,j+1}-\phi_{i,j}+\phi_{i,j-1}) \\
-&\phi_{xy}= \dfrac{1}{h^2}(\phi_{i+1,j+1}-\phi_{i-1,j+1}-\phi_{i,j+1}+\phi_{i,j-1}) 
+&\phi_x\approx \dfrac{1}{2h}(\phi_{i+1,j}-\phi_{i-1,j}) \\ 
+&\phi_x\approx \dfrac{1}{2h}(\phi_{i,j+1}-\phi_{i,j-1}) \\
+&\phi_{xx}\approx \dfrac{1}{h^2}(\phi_{i+1,j}-\phi_{i,j}+\phi_{i-1,j}) \\
+&\phi_{yy}\approx \dfrac{1}{h^2}(\phi_{i,j+1}-\phi_{i,j}+\phi_{i,j-1}) \\
+&\phi_{xy}\approx \dfrac{1}{h^2}(\phi_{i+1,j+1}-\phi_{i-1,j+1}-\phi_{i,j+1}+\phi_{i,j-1}) 
 \end{split}
 \end{equation}
-trong đó $h$ là khoảng cách lưới. Khi đó (7) có thể được rời rạc hóa thành thành
+trong đó $h$ là khoảng cách lưới. Khi đó (7) có thể được rời rạc hóa thành thành: 
 \begin{equation}
-\dfrac{\phi_{n+1}-\phi{n}}{\Delta t}=\delta_{\epsilon}(\phi_{n+1})[\mu k-\lambda_1 (u_{i,j}-c_1(\phi^{n}))^2+\lambda_2 (u_{i,j}-c_2(\phi^{n}))^2]
+\dfrac{\phi_{n+1}-\phi_{n}}{\Delta t}=\delta_{\epsilon}(\phi_{n})[\mu k-\lambda_1 (u_{i,j}-c_1(\phi^{n}))^2+\lambda_2 (u_{i,j}-c_2(\phi^{n}))^2]
 \end{equation}
 Từ đó ta có thể tính được $\phi^{n+1}$ theo $\phi{n}$
 Chú ý là thành phần $|C|$ có thể viết lại dưới dạng tổng quát hơn thành $|C|^p$. Nếu ta xét đến trường hợp số chiều $N>1(\Omega \in \mathrm{R}^N )$, khi đó ta có thể chọn $p=1$ hoặc $p=\dfrac{N}{N-1}$
@@ -892,9 +1099,9 @@ output frame
 
 \end{lstlisting}
 
-Thuât toán gặp khó khăn trong trường hợp đối tượng trong frame sau không giao với đường biên cuối cùng ở frame trước. Điều này có thể dẫn đến kết quả không mong muốn.
+Thuât toán gặp khó khăn trong trường hợp đối tượng trong frame sau không giao với đường biên cuối cùng ở frame trước. Điều này có thể dẫn đến kết quả không mong muốn. Trong quá trình áp dụng mô hình GLIF cho theo vết đối tượng  , tôi chỉ thực hiện đưa ra kết quả với các video với độ đồng nhất cao trong đối tượng và ngoài đối tượng.  
 \section{Kết quả}
-Hình 4.1 thể hiện kết quả của thuật toán trong khác frame khác nhau của video. Kết quả cho thấy thuật toán hoạt động tốt ngay cả trong trường hợp có sự thay đổi lớn trong các frame. Tuy vậy thuật toán chỉ giải quyết được trường hợp frame sau có giao nhau với biên của đối tượng trong frame trước. 
+Hình 4.1 thể hiện kết quả của thuật toán trong khác frame khác nhau của video. Kết quả cho thấy thuật toán hoạt động tốt ngay cả trong trường hợp có sự thay đổi lớn trong các frame. Tuy vậy thuật toán chỉ giải quyết được trường hợp frame sau có giao nhau với biên của đối tượng trong frame trước. Một vấn đề xảy ra là quá trình áp dụng  mô hình này  trong thực tế cho thấy tốc độ còn chậm mặc dù đường biên của đối tượng trong frame trước khá gần với đường biên của đối tượng trong frame sau. Do đó tôi thực hiện thay đổi quá trình khởi tạo lại hàm $\phi$ bằng hàm dấu khoảng cách thành việc khởi tạo lại hàm $\phi$ thành hàm khác với các giá trị bằng $c_0(c_0>0)$ nếu $\phi(x)>0$ và bằng $-c_0$ nếu $\phi(x)<0$ . Kết quả thực nghiệm cho thấy áp dụng việc khởi tạo  tỏ ra hiệu quả hơn nhiều này thay cho việc khởi tạo $\phi$ thành  hàm dấu khoảng cách.
 \begin{center}
 \begin{figure}
 \caption{Kết quả trong các frame khác nhau}
